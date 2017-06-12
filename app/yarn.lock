@@ -2,3 +2,45 @@
 # yarn lockfile v1
 
 
+async@~0.2.9:
+  version "0.2.10"
+  resolved "https://registry.yarnpkg.com/async/-/async-0.2.10.tgz#b6bbe0b0674b9d719708ca38de8c237cb526c3d1"
+
+config-obj@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/config-obj/-/config-obj-0.0.1.tgz#bb5d665cb5284dd5781da2af95ad5c8e4da8b79e"
+
+dateformat@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-2.0.0.tgz#2743e3abb5c3fc2462e527dca445e04e9f4dee17"
+
+diffsvn2git@^0.0.21:
+  version "0.0.21"
+  resolved "https://registry.yarnpkg.com/diffsvn2git/-/diffsvn2git-0.0.21.tgz#b8a097ac1ca52de0e1d424f3fd45c5fb7cb031c5"
+  dependencies:
+    dateformat "^2.0.0"
+    svn-spawn "^0.1.5"
+
+easy-spawn@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/easy-spawn/-/easy-spawn-0.0.2.tgz#f22440ac025db94ff0fb45a09596cca9a8ece45c"
+  dependencies:
+    config-obj "0.0.1"
+
+sax@0.5.x:
+  version "0.5.8"
+  resolved "https://registry.yarnpkg.com/sax/-/sax-0.5.8.tgz#d472db228eb331c2506b0e8c15524adb939d12c1"
+
+svn-spawn@^0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/svn-spawn/-/svn-spawn-0.1.5.tgz#206b885447e1bb8d6ef2c785b6d182247c0422a5"
+  dependencies:
+    async "~0.2.9"
+    easy-spawn "0.0.2"
+    xml2js "~0.2.7"
+
+xml2js@~0.2.7:
+  version "0.2.8"
+  resolved "https://registry.yarnpkg.com/xml2js/-/xml2js-0.2.8.tgz#9b81690931631ff09d1957549faf54f4f980b3c2"
+  dependencies:
+    sax "0.5.x"

@@ -14,5 +14,8 @@
   },
   "license": "MIT",
   "dependencies": {
+    "dateformat": "^2.0.0",
+    "svn-spawn": "^0.1.5",
+    "diffsvn2git": "^0.0.21"
   }
 }
