@@ -17,7 +17,10 @@
     "dateformat": "^2.0.0",
     "diffsvn2git": "^0.0.25",
     "loaders.css": "^0.1.2",
+    "moment": "^2.18.1",
     "prop-types": "^15.5.10",
+    "react-datepicker": "^0.47.0",
+    "react-dom": "^15.6.1",
     "react-loaders": "^2.5.0",
     "svn-spawn": "^0.1.5"
   }

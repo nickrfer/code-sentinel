@@ -69,23 +69,16 @@ app.on('ready', async () => {
 
   mainWindow.on('minimize', (event) => {
     event.preventDefault();
-    mainWindow.hide();
   });
 
-  mainWindow.on('close', (event) => {
-    if (!app.isQuiting) {
-      event.preventDefault();
-      mainWindow.hide();
-    } else {
-      mainWindow = null;
-    }
-    return false;
+  mainWindow.on('close', () => {
+    mainWindow = null;
   });
 
   const menuBuilder = new MenuBuilder(mainWindow);
   menuBuilder.buildMenu();
 
-  tray = new Tray(iconPath);
+  /*tray = new Tray(iconPath);
   tray.setToolTip('Code Sentinel');
   tray.on('click', () => {
     mainWindow.show();
@@ -100,5 +93,5 @@ app.on('ready', async () => {
     ]);
 
     this.popUpContextMenu(menuConfig);
-  });
+  });*/
 });

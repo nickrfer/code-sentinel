@@ -18,9 +18,8 @@ export default class Home extends Component {
     };
   }
 
-  onRevisionLoaded() {
-    this.setState({ loading: false });
-    console.log('state: ', this.state.loading);
+  startRevisionLoading(isLoading: boolean) {
+    this.setState({ loading: isLoading });
   }
 
   render() {
@@ -30,7 +29,9 @@ export default class Home extends Component {
           <Loader type="pacman" active={this.state.loading} size="lg" />
         </div>
         <div className={styles.container} style={this.state.loading ? { display: 'none' } : { }} data-tid="container" key="home-container">
-          <SvnRevisionList onRevisionLoaded={() => this.onRevisionLoaded()} />
+          <SvnRevisionList
+            startRevisionLoading={(isLoading) => this.startRevisionLoading(isLoading)}
+          />
         </div>
       </div>
     );

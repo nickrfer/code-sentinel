@@ -25,17 +25,8 @@ export default {
       {
         test: /\.scss$/,
         loaders: ['style', 'css', 'sass']
-      } /*,
-      {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('css!sass')
-      }*/
-    ] /*,
-    plugins: [
-      new ExtractTextPlugin('public/style.css', {
-        allChunks: true
-      })
-    ]*/
+      }
+    ]
   },
 
   output: {
