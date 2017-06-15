@@ -1,9 +1,13 @@
 /* eslint global-require: 1, flowtype-errors/show-errors: 0 */
 // @flow
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, Tray, Menu } from 'electron';
+import path from 'path';
 import MenuBuilder from './menu';
 
+let tray = null;
+
 let mainWindow = null;
+const iconPath = path.join(__dirname, 'robot-ico.png');
 
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
@@ -12,7 +16,6 @@ if (process.env.NODE_ENV === 'production') {
 
 if (process.env.NODE_ENV === 'development' || process.env.DEBUG_PROD === 'true') {
   require('electron-debug')();
-  const path = require('path');
   const p = path.join(__dirname, '..', 'app', 'node_modules');
   require('module').globalPaths.push(p);
 }
@@ -26,8 +29,8 @@ const installExtensions = async () => {
   ];
 
   return Promise
-    .all(extensions.map(name => installer.default(installer[name], forceDownload)))
-    .catch(console.log);
+  .all(extensions.map(name => installer.default(installer[name], forceDownload)))
+  .catch(console.log);
 };
 
 
@@ -46,27 +49,56 @@ app.on('ready', async () => {
   }
 
   mainWindow = new BrowserWindow({
-    show: false,
-    width: 1024,
-    height: 728
+    height: 700,
+    width: 728,
+    resizable: false,
+    webPreferences: { backgroundThrottling: false },
+    icon: iconPath
   });
-
   mainWindow.loadURL(`file://${__dirname}/app.html`);
 
   // @TODO: Use 'ready-to-show' event
   //        https://github.com/electron/electron/blob/master/docs/api/browser-window.md#using-ready-to-show-event
   mainWindow.webContents.on('did-finish-load', () => {
     if (!mainWindow) {
-      throw new Error('"mainWindow" is not defined');
+        throw new Error('"mainWindow" is not defined');
     }
     mainWindow.show();
     mainWindow.focus();
   });
 
-  mainWindow.on('closed', () => {
-    mainWindow = null;
+  mainWindow.on('minimize', (event) => {
+    event.preventDefault();
+    mainWindow.hide();
+  });
+
+  mainWindow.on('close', (event) => {
+    if (!app.isQuiting) {
+      event.preventDefault();
+      mainWindow.hide();
+    } else {
+      mainWindow = null;
+    }
+    return false;
   });
 
   const menuBuilder = new MenuBuilder(mainWindow);
   menuBuilder.buildMenu();
+
+  tray = new Tray(iconPath);
+  tray.setToolTip('Code Sentinel');
+  tray.on('click', () => {
+    mainWindow.show();
+  });
+
+  tray.on('right-click', () => {
+    const menuConfig = Menu.buildFromTemplate([
+      {
+        label: 'Quit',
+        click: () => app.quit()
+      }
+    ]);
+
+    this.popUpContextMenu(menuConfig);
+  });
 });

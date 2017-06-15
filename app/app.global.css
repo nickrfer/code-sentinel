@@ -1,13 +1,22 @@
 @import "~font-awesome/css/font-awesome.css";
 
+.loader-hidden {
+  display: none !important;
+}
+
+.loader-active {
+  display: block !important;
+  position: absolute !important;
+  top: 30%;
+  left: 25em;
+}
+
 body {
   position: relative;
-  color: white;
+  color: black;
   height: 100vh;
-  background-color: #232c39;
-  background-image: linear-gradient(45deg, rgba(0, 216, 255, 0.5) 10%, rgba(0, 1, 127, 0.7));
-  font-family: Arial, Helvetica, Helvetica Neue, serif;
   overflow-y: hidden;
+  background-color: #657ba0;
 }
 
 h2 {
@@ -15,11 +24,7 @@ h2 {
   font-size: 2.25rem;
   font-weight: bold;
   letter-spacing: -0.025em;
-  color: #fff;
-}
-
-p {
-  font-size: 24px;
+  color: black;
 }
 
 li {
@@ -27,7 +32,7 @@ li {
 }
 
 a {
-  color: white;
+  color: black;
   opacity: 0.75;
   text-decoration: none;
 }

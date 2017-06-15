@@ -4,6 +4,7 @@
 
 import path from 'path';
 import webpack from 'webpack';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import { dependencies as externals } from './app/package.json';
 
 export default {
@@ -19,7 +20,22 @@ export default {
           cacheDirectory: true
         }
       }
-    }]
+    }],
+    loaders: [
+      {
+        test: /\.scss$/,
+        loaders: ['style', 'css', 'sass']
+      } /*,
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract('css!sass')
+      }*/
+    ] /*,
+    plugins: [
+      new ExtractTextPlugin('public/style.css', {
+        allChunks: true
+      })
+    ]*/
   },
 
   output: {

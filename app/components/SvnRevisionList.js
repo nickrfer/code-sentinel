@@ -2,16 +2,26 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import path from 'path';
+import util from 'util';
 import _ from 'lodash';
 import dateFormat from 'dateformat';
+import { func, array } from 'prop-types';
 import DiffSvn2Git from 'diffsvn2git';
 import styles from './SvnRevisionList.css';
 
 const workingPath = path.resolve('tmp/repo');
-console.log('working path: ', workingPath);
 const diffSvn2Git = new DiffSvn2Git({ cwd: workingPath });
 
 export default class SvnRevisionList extends Component {
+
+  propTypes: {
+    onRevisionLoaded: func.isRequired
+  };
+
+  state: {
+    revisions: array,
+    onRevisionLoaded: func.isRequired
+  };
 
   constructor(props) {
     super(props);
@@ -20,36 +30,54 @@ export default class SvnRevisionList extends Component {
     };
   }
 
+  componentDidUpdate() {
+
+  }
+
   componentWillMount() {
     const self = this;
-    console.log('Init render');
-    diffSvn2Git.listRevisionsByDate('2015-04-12').then((loadedRevisions) => {
-      console.log(loadedRevisions);
+
+    diffSvn2Git.listRevisionsByDate('2011-04-15').then((loadedRevisions) => {
 
       self.setState({
-          revisions: loadedRevisions
+        revisions: loadedRevisions
       });
+      console.log('onRevisionLoaded');
+      this.props.onRevisionLoaded();
     });
-    console.log('End render');
+  }
+
+  createItem(rows: Array<any>, revision: Object) {
+    rows.push(
+      <li key={revision.$.revision}>
+        <div style={styles.fileName}>
+          <i className="material-icons">label</i>
+          <p>{`r${revision.$.revision} | ${dateFormat(revision.date, 'dd/mm/yyyy HH:MM:ss')} | ${revision.author} | ${revision.msg}`}</p>
+        </div>
+      </li>
+    );
   }
 
   render() {
-    let rows = [];
+    const rows = [];
 
-    console.log('Revisions: ', this.state.revisions);
-    this.state.revisions.forEach(revision => {
-      rows.push(<li className="collection-item avatar" key={revision.author}>
-        <i className="material-icons circle btn-floating">review</i>
-        <div style={styles.fileName}>
-          <p>{`r${revision.$.revision} | ${dateFormat(revision.date, 'dd/mm/yyyy HH:MM:ss')} | ${revision.author} | ${revision.msg}`}</p>
-        </div>
-      </li>);
+    this.state.revisions.forEach(revisionList => {
+      if (util.isArray(revisionList)) {
+        revisionList.forEach(revision => {
+          this.createItem(rows, revision);
+        });
+      } else {
+        this.createItem(rows, revisionList);
+      }
     });
 
     return (
-      <ul className="collection video-list">
-        {rows}
-      </ul>
+      <div>
+        <ul className="video-list">
+          {rows}
+        </ul>
+      </div>
     );
   }
+
 }

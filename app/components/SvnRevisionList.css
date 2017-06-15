@@ -1,5 +1,5 @@
 .video-select-screen h4, .video-select-screen-small h4 {
-  text-align: center;
+  text-align: left;
 }
 
 .video-list .collection-item {
@@ -70,4 +70,16 @@
   display: flex;
   align-self: center;
   width: 50%;
+}
+
+div {
+  text-align: left !important;
+}
+
+i {
+  position: absolute !important;
+}
+
+p {
+  margin-left: 2.5em;
 }

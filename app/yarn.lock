@@ -2,6 +2,12 @@
 # yarn lockfile v1
 
 
+async@^2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/async/-/async-2.4.1.tgz#62a56b279c98a11d0987096a01cc3eeb8eb7bbd7"
+  dependencies:
+    lodash "^4.14.0"
+
 async@~0.2.9:
   version "0.2.10"
   resolved "https://registry.yarnpkg.com/async/-/async-0.2.10.tgz#b6bbe0b0674b9d719708ca38de8c237cb526c3d1"
@@ -14,12 +20,15 @@ dateformat@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-2.0.0.tgz#2743e3abb5c3fc2462e527dca445e04e9f4dee17"
 
-diffsvn2git@^0.0.21:
-  version "0.0.21"
-  resolved "https://registry.yarnpkg.com/diffsvn2git/-/diffsvn2git-0.0.21.tgz#b8a097ac1ca52de0e1d424f3fd45c5fb7cb031c5"
+diffsvn2git@^0.0.25:
+  version "0.0.25"
+  resolved "https://registry.yarnpkg.com/diffsvn2git/-/diffsvn2git-0.0.25.tgz#92b8168569369cf4a156759db3170a77be6bd716"
   dependencies:
+    async "^2.4.1"
     dateformat "^2.0.0"
+    easy-spawn "0.0.2"
     svn-spawn "^0.1.5"
+    xml2js "^0.4.17"
 
 easy-spawn@0.0.2:
   version "0.0.2"
@@ -27,9 +36,17 @@ easy-spawn@0.0.2:
   dependencies:
     config-obj "0.0.1"
 
+lodash@^4.0.0, lodash@^4.14.0:
+  version "4.17.4"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
+
 sax@0.5.x:
   version "0.5.8"
   resolved "https://registry.yarnpkg.com/sax/-/sax-0.5.8.tgz#d472db228eb331c2506b0e8c15524adb939d12c1"
+
+sax@>=0.6.0:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.2.tgz#fd8631a23bc7826bef5d871bdb87378c95647828"
 
 svn-spawn@^0.1.5:
   version "0.1.5"
@@ -39,8 +56,21 @@ svn-spawn@^0.1.5:
     easy-spawn "0.0.2"
     xml2js "~0.2.7"
 
+xml2js@^0.4.17:
+  version "0.4.17"
+  resolved "https://registry.yarnpkg.com/xml2js/-/xml2js-0.4.17.tgz#17be93eaae3f3b779359c795b419705a8817e868"
+  dependencies:
+    sax ">=0.6.0"
+    xmlbuilder "^4.1.0"
+
 xml2js@~0.2.7:
   version "0.2.8"
   resolved "https://registry.yarnpkg.com/xml2js/-/xml2js-0.2.8.tgz#9b81690931631ff09d1957549faf54f4f980b3c2"
   dependencies:
     sax "0.5.x"
+
+xmlbuilder@^4.1.0:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/xmlbuilder/-/xmlbuilder-4.2.1.tgz#aa58a3041a066f90eaa16c2f5389ff19f3f461a5"
+  dependencies:
+    lodash "^4.0.0"
