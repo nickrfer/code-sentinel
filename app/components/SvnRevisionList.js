@@ -62,6 +62,7 @@ export default class SvnRevisionList extends Component {
   }
 
   generateDiffTest(revisionSelected) {
+    this.props.startRevisionLoading(true);
     console.log('revisionSelected: ', revisionSelected);
     diffSvn2Git.parse(revisionSelected).then((patch) => {
       console.log('Patch result: ');
@@ -71,6 +72,7 @@ export default class SvnRevisionList extends Component {
       console.log(diff2HtmlResult);
 
       this.setState({ prettyDiffHtml: diff2HtmlResult });
+      this.props.startRevisionLoading(false);
     });
   }
 
@@ -81,7 +83,9 @@ export default class SvnRevisionList extends Component {
           style={styles.fileName}
         >
           <i className="material-icons">label</i>
-          <p role="button" onClick={this.generateDiffTest(revision.$.revision)}>{`r${revision.$.revision} | ${dateFormat(revision.date, 'dd/mm/yyyy HH:MM:ss')} | ${revision.author} | ${revision.msg}`}</p>
+          <p role="button" onClick={() => this.generateDiffTest(revision.$.revision)}>
+            {`r${revision.$.revision} | ${dateFormat(revision.date, 'dd/mm/yyyy HH:MM:ss')} | ${revision.author} | ${revision.msg}`}
+          </p>
         </div>
       </li>
     );
