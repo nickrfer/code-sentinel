@@ -78,12 +78,10 @@ export default class SvnRevisionList extends Component {
     rows.push(
       <li key={revision.$.revision}>
         <div
-          role="button"
           style={styles.fileName}
-          onClick={this.generateDiffTest(revision.$.revision)}
         >
           <i className="material-icons">label</i>
-          <p>{`r${revision.$.revision} | ${dateFormat(revision.date, 'dd/mm/yyyy HH:MM:ss')} | ${revision.author} | ${revision.msg}`}</p>
+          <p role="button" onClick={this.generateDiffTest(revision.$.revision)}>{`r${revision.$.revision} | ${dateFormat(revision.date, 'dd/mm/yyyy HH:MM:ss')} | ${revision.author} | ${revision.msg}`}</p>
         </div>
       </li>
     );
