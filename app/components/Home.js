@@ -11,7 +11,7 @@ export default class Home extends Component {
     loading: boolean
   };
 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     this.state = {
       loading: true

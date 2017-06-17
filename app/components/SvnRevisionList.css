@@ -74,6 +74,7 @@
 
 div {
   text-align: left !important;
+  cursor: pointer;
 }
 
 i {

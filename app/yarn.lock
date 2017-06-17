@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+abbrev@1:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.0.tgz#d0554c2256636e2f56e7c2e5ad183f859428d81f"
+
 asap@~2.0.3:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/asap/-/asap-2.0.5.tgz#522765b50c3510490e52d7dcfe085ef9ba96958f"
@@ -40,6 +44,18 @@ dateformat@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-2.0.0.tgz#2743e3abb5c3fc2462e527dca445e04e9f4dee17"
 
+diff2html@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/diff2html/-/diff2html-2.3.0.tgz#375fb0783ca8fa90307749399bc9c75eb7cf6580"
+  dependencies:
+    diff "^3.2.0"
+    hogan.js "^3.0.2"
+    whatwg-fetch "^2.0.3"
+
+diff@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/diff/-/diff-3.2.0.tgz#c9ce393a4b7cbd0b058a725c93df299027868ff9"
+
 diffsvn2git@^0.0.25:
   version "0.0.25"
   resolved "https://registry.yarnpkg.com/diffsvn2git/-/diffsvn2git-0.0.25.tgz#92b8168569369cf4a156759db3170a77be6bd716"
@@ -74,6 +90,13 @@ fbjs@^0.8.9:
     setimmediate "^1.0.5"
     ua-parser-js "^0.7.9"
 
+hogan.js@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/hogan.js/-/hogan.js-3.0.2.tgz#4cd9e1abd4294146e7679e41d7898732b02c7bfd"
+  dependencies:
+    mkdirp "0.3.0"
+    nopt "1.0.10"
+
 iconv-lite@~0.4.13:
   version "0.4.18"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.18.tgz#23d8656b16aae6742ac29732ea8f0336a4789cf2"
@@ -107,6 +130,10 @@ loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.3.1:
   dependencies:
     js-tokens "^3.0.0"
 
+mkdirp@0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.3.0.tgz#1bbf5ab1ba827af23575143490426455f481fe1e"
+
 moment@^2.17.1, moment@^2.18.1:
   version "2.18.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
@@ -117,6 +144,12 @@ node-fetch@^1.0.1:
   dependencies:
     encoding "^0.1.11"
     is-stream "^1.0.1"
+
+nopt@1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/nopt/-/nopt-1.0.10.tgz#6ddd21bd2a31417b92727dd585f8a6f37608ebee"
+  dependencies:
+    abbrev "1"
 
 object-assign@^4.1.0, object-assign@^4.1.1:
   version "4.1.1"
@@ -144,15 +177,6 @@ react-datepicker@^0.47.0:
     prop-types "^15.5.8"
     react-onclickoutside "^5.11.1"
     tether "^1.4.0"
-
-react-dom@^15.6.1:
-  version "15.6.1"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.6.1.tgz#2cb0ed4191038e53c209eb3a79a23e2a4cf99470"
-  dependencies:
-    fbjs "^0.8.9"
-    loose-envify "^1.1.0"
-    object-assign "^4.1.0"
-    prop-types "^15.5.10"
 
 react-loaders@^2.5.0:
   version "2.5.0"
@@ -206,7 +230,7 @@ ua-parser-js@^0.7.9:
   version "0.7.12"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.12.tgz#04c81a99bdd5dc52263ea29d24c6bf8d4818a4bb"
 
-whatwg-fetch@>=0.10.0:
+whatwg-fetch@>=0.10.0, whatwg-fetch@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-2.0.3.tgz#9c84ec2dcf68187ff00bc64e1274b442176e1c84"
 
