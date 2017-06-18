@@ -63,12 +63,17 @@ export default class SvnRevisionList extends Component {
 
   generateDiffTest(revisionSelected) {
     this.props.startRevisionLoading(true);
-    console.log('revisionSelected: ', revisionSelected);
-    diffSvn2Git.parse(revisionSelected).then((patch) => {
+    console.log('revisionSelected:', revisionSelected.trim());
+    diffSvn2Git.parse(revisionSelected.trim()).then((patch) => {
       console.log('Patch result: ');
 
+      const diff2HtmlConfig = { inputFormat: 'diff',
+        outputFormat: 'line-by-line',
+        showFiles: true
+      };
+
       console.log('Diff2Html result: ');
-      const diff2HtmlResult = Diff2Html.getPrettyHtml(patch);
+      const diff2HtmlResult = Diff2Html.getPrettyHtml(patch, diff2HtmlConfig);
       console.log(diff2HtmlResult);
 
       this.setState({ prettyDiffHtml: diff2HtmlResult });

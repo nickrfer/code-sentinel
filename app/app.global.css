@@ -11,34 +11,13 @@
   left: 25em;
 }
 
-body {
-  position: relative;
-  color: black;
-  height: 100vh;
-  overflow-y: hidden;
-  background-color: #657ba0;
-}
-
-h2 {
-  margin: 0;
-  font-size: 2.25rem;
-  font-weight: bold;
-  letter-spacing: -0.025em;
-  color: black;
+.pacman > div {
+  border-right-color: transparent !important;
+  border-left-color: #657ba0 !important;
+  border-bottom-color: #657ba0 !important;
+  border-top-color: #657ba0 !important;
 }
 
 li {
   list-style: none;
-}
-
-a {
-  color: black;
-  opacity: 0.75;
-  text-decoration: none;
-}
-
-a:hover {
-  opacity: 1;
-  text-decoration: none;
-  cursor: pointer;
 }

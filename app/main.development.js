@@ -49,19 +49,18 @@ app.on('ready', async () => {
   }
 
   mainWindow = new BrowserWindow({
-    height: 700,
-    width: 728,
-    resizable: false,
+    resizable: true,
     webPreferences: { backgroundThrottling: false },
     icon: iconPath
   });
+  mainWindow.maximize();
   mainWindow.loadURL(`file://${__dirname}/app.html`);
 
   // @TODO: Use 'ready-to-show' event
   //        https://github.com/electron/electron/blob/master/docs/api/browser-window.md#using-ready-to-show-event
   mainWindow.webContents.on('did-finish-load', () => {
     if (!mainWindow) {
-        throw new Error('"mainWindow" is not defined');
+      throw new Error('"mainWindow" is not defined');
     }
     mainWindow.show();
     mainWindow.focus();

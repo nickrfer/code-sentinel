@@ -16,7 +16,7 @@
   "dependencies": {
     "dateformat": "^2.0.0",
     "diff2html": "^2.3.0",
-    "diffsvn2git": "^0.0.25",
+    "diffsvn2git": "^0.1.0",
     "loaders.css": "^0.1.2",
     "moment": "^2.18.1",
     "react-datepicker": "^0.47.0",
