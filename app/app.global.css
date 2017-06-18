@@ -8,7 +8,7 @@
   display: block !important;
   position: absolute !important;
   top: 30%;
-  left: 25em;
+  left: 50%;
 }
 
 .pacman > div {
@@ -18,6 +18,42 @@
   border-top-color: #657ba0 !important;
 }
 
+.pacman>div:nth-child(3), .pacman>div:nth-child(4), .pacman>div:nth-child(5), .pacman>div:nth-child(6) {
+  background-color: #657ba0 !important;
+}
+
 li {
   list-style: none;
+}
+
+.d2h-file-name {
+  font-size: 12px !important;
+}
+
+.d2h-file-wrapper {
+  font-size: 12px !important;
+  line-height: 0px !important;
+}
+
+.d2h-wrapper {
+  font-size: 12px !important;
+  line-height: 0px !important;
+  overflow-x: scroll;
+}
+
+.d2h-diff-tbody>tr>td {
+  font-size: 12px !important;
+  line-height: 0px !important;
+}
+
+.line-num1 {
+  overflow: visible;
+}
+
+.line-num2 {
+  overflow: visible;
+}
+
+.diff-container {
+  width: 85.000em !important;
 }

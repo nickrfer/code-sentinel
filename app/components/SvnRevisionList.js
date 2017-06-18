@@ -118,10 +118,10 @@ export default class SvnRevisionList extends Component {
           onChange={this.fetchRevisionList.bind(this)}
           isClearable
         />
-        <ul className="video-list">
+        <ul>
           {rows}
         </ul>
-        <div>
+        <div className="diff-container">
           { ReactHtmlParser(this.state.prettyDiffHtml) }
         </div>
       </div>
