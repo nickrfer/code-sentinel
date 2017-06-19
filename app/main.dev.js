@@ -89,7 +89,12 @@ app.on('ready', async () => {
   });
 
   const menuBuilder = new MenuBuilder(mainWindow);
-  menuBuilder.buildMenu();
+  menuBuilder.buildMenu(Menu.buildFromTemplate([
+    {
+      label: 'Quit',
+      click: () => app.quit()
+    }
+  ]));
 
   /*tray = new Tray(iconPath);
   tray.setToolTip('Code Sentinel');
