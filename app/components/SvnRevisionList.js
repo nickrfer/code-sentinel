@@ -68,8 +68,10 @@ export default class SvnRevisionList extends Component {
       console.log('Patch result: ');
 
       const diff2HtmlConfig = { inputFormat: 'diff',
-        outputFormat: 'line-by-line',
-        showFiles: true
+        outputFormat: 'side-by-side',
+        showFiles: true,
+        matching: 'words',
+        synchronisedScroll: true
       };
 
       console.log('Diff2Html result: ');
@@ -121,9 +123,7 @@ export default class SvnRevisionList extends Component {
         <ul>
           {rows}
         </ul>
-        <div className="diff-container">
-          { ReactHtmlParser(this.state.prettyDiffHtml) }
-        </div>
+        <div className="diff-container" dangerouslySetInnerHTML={{ __html: this.state.prettyDiffHtml }} />
       </div>
     );
   }
