@@ -9,6 +9,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/react-datepicker/0.47.0/react-datepicker.min.css" rel="stylesheet" type="text/css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/github.min.css" rel="stylesheet" type="text/css" />
     <link href="https://cdn.rawgit.com/rtfpessoa/diff2html/master/dist/diff2html.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.rawgit.com/Rudeg/react-input-calendar/master/style/index.css" rel="stylesheet" type="text/css" />
     <script>
       (function() {
         if (!process.env.HOT) {
@@ -26,21 +27,18 @@
     <script>
       {
         const scripts = [];
-
         // Dynamically insert the DLL script in development env in the
         // renderer process
         if (process.env.NODE_ENV === 'development') {
-          scripts.push('../dll/vendor.dll.js');
+          scripts.push('../dll/renderer.dev.dll.js');
         }
-
         // Dynamically insert the bundled app script in the renderer process
         const port = process.env.PORT || 1212;
         scripts.push(
           (process.env.HOT)
-            ? 'http://localhost:' + port + '/dist/bundle.js'
-            : './dist/bundle.js'
+            ? 'http://localhost:' + port + '/dist/renderer.dev.js'
+            : './dist/renderer.prod.js'
         );
-
         document.write(
           scripts
             .map(script => '<script defer src="' + script + '"><\/script>')
@@ -48,11 +46,10 @@
         );
       }
     </script>
-    <script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.js"></script>
+  </body>
+  <script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.js"></script>
     <script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
     <script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/languages/scala.min.js"></script>
     <script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/diff2html/2.3.0/diff2html.min.js"></script>
     <script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/diff2html/2.3.0/diff2html-ui.min.js"></script>
-    <script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react-datepicker/0.47.0/react-datepicker.min.js"></script>
-  </body>
 </html>

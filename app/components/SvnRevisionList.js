@@ -14,7 +14,8 @@ import { array, boolean, func, date } from 'prop-types';
 import 'react-datepicker/dist/react-datepicker.css';
 import styles from './SvnRevisionList.css';
 
-const workingPath = path.resolve('tmp/repo');
+const workingPath = path.resolve('repos/main');
+console.log('#workingPath: ', workingPath);
 const diffSvn2Git = new DiffSvn2Git({ cwd: workingPath });
 
 export default class SvnRevisionList extends Component {
@@ -28,14 +29,16 @@ export default class SvnRevisionList extends Component {
     revisionDate: date,
     onRevisionDateChanged: func.isRequired,
     startRevisionLoading: func.isRequired,
-    prettyDiffHtml: string
+    prettyDiffHtml: string,
+    diffOutputFormat: string
   };
 
   constructor(props) {
     super(props);
     this.state = {
       revisions: [],
-      revisionDate: moment('13/04/2015', 'DD/MM/YYYY'),
+      revisionDate: moment(),
+      diffOutputFormat: 'side-by-side',
       prettyDiffHtml: ''
     };
   }
@@ -68,7 +71,7 @@ export default class SvnRevisionList extends Component {
       console.log('Patch result: ');
 
       const diff2HtmlConfig = { inputFormat: 'diff',
-        outputFormat: 'side-by-side',
+        outputFormat: this.state.diffOutputFormat,
         showFiles: true,
         matching: 'words',
         synchronisedScroll: true
@@ -118,12 +121,11 @@ export default class SvnRevisionList extends Component {
           dateFormat="DD/MM/YYYY"
           selected={this.state.revisionDate}
           onChange={this.fetchRevisionList.bind(this)}
-          isClearable
         />
         <ul>
           {rows}
         </ul>
-        <div className="diff-container" dangerouslySetInnerHTML={{ __html: this.state.prettyDiffHtml }} />
+        <div className="diff-container" dangerouslySetInnerHTML={{__html: this.state.prettyDiffHtml}}></div>
       </div>
     );
   }

@@ -57,3 +57,7 @@ li {
 .diff-container {
   width: 85.000em !important;
 }
+
+.react-datepicker {
+  display: none !important;
+}

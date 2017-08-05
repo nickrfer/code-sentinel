@@ -1,34 +1,31 @@
 {
-  "name": "code-sentinel",
-  "productName": "Code-Sentinel",
-  "version": "0.0.1",
-  "description": "Simple electron code review app based on SVN and written in react, which shows all the commits for the selected date and generates diffs if a revision is selected.",
-  "main": "main.js",
+  "name": "electron-react-boilerplate",
+  "productName": "ElectronReact",
+  "version": "0.12.0",
+  "description": "Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development",
   "scripts": {
-    "test": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 node --trace-warnings ./test/runTests.js",
-    "test-all": "npm run lint && npm run flow && npm run test && npm run build && npm run test-e2e",
-    "test-watch": "npm test -- --watch",
-    "test-e2e": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 node --trace-warnings ./test/runTests.js e2e",
+    "build": "concurrently \"npm run build-main\" \"npm run build-renderer\"",
+    "build-dll": "cross-env NODE_ENV=development node --trace-warnings -r babel-register ./node_modules/webpack/bin/webpack --config webpack.config.renderer.dev.dll.js --colors",
+    "build-main": "cross-env NODE_ENV=production node --trace-warnings -r babel-register ./node_modules/webpack/bin/webpack --config webpack.config.main.prod.js --colors",
+    "build-renderer": "cross-env NODE_ENV=production node --trace-warnings -r babel-register ./node_modules/webpack/bin/webpack --config webpack.config.renderer.prod.js --colors",
+    "dev": "cross-env START_HOT=1 npm run start-renderer-dev",
     "lint": "eslint --cache --format=node_modules/eslint-formatter-pretty .",
     "lint-fix": "npm run lint -- --fix",
     "lint-styles": "stylelint app/*.css app/components/*.css --syntax scss",
     "lint-styles-fix": "stylefmt -r app/*.css app/components/*.css",
-    "hot-updates-server": "cross-env NODE_ENV=development node --trace-warnings -r babel-register ./node_modules/webpack-dev-server/bin/webpack-dev-server --config webpack.config.renderer.dev.js",
-    "build": "concurrently \"npm run build-main\" \"npm run build-renderer\"",
-    "build-dll": "cross-env NODE_ENV=development node --trace-warnings -r babel-register ./node_modules/webpack/bin/webpack --config webpack.config.renderer.dev.dll.js --progress --profile --colors",
-    "build-main": "cross-env NODE_ENV=production node --trace-warnings -r babel-register ./node_modules/webpack/bin/webpack --config webpack.config.main.prod.js --progress --profile --colors",
-    "build-renderer": "cross-env NODE_ENV=production node --trace-warnings -r babel-register ./node_modules/webpack/bin/webpack --config webpack.config.renderer.prod.js --progress --profile --colors",
-    "start": "cross-env NODE_ENV=production electron ./app/",
-    "prestart": "npm run build",
-    "flow": "flow check",
-    "flow-typed": "rimraf flow-typed/npm && flow-typed install --overwrite || true",
-    "start-hot-renderer": "cross-env HOT=1 NODE_ENV=development electron -r babel-register -r babel-polyfill ./app/main.dev",
-    "postinstall": "concurrently \"npm run flow-typed\" \"npm run build\" \"npm run build-dll\" \"install-app-deps\" \"node node_modules/fbjs-scripts/node/check-dev-engines.js package.json\"",
-    "dev": "cross-env START_HOT=1 npm run hot-updates-server",
     "package": "npm run build && build --publish never",
-    "package-win": "npm run build && build --win --x64",
+    "package-all": "npm run build && build -mwl",
     "package-linux": "npm run build && build --linux",
-    "package-all": "npm run build && build -mwl"
+    "package-win": "npm run build && build --win --x64",
+    "postinstall": "concurrently \" npm run build-dll\" \"electron-builder install-app-deps\" \"node node_modules/fbjs-scripts/node/check-dev-engines.js package.json\"",
+    "prestart": "npm run build",
+    "start": "cross-env NODE_ENV=production electron ./app/",
+    "start-main-dev": "cross-env HOT=1 NODE_ENV=development electron -r babel-register ./app/main.dev",
+    "start-renderer-dev": "cross-env NODE_ENV=development node --trace-warnings -r babel-register ./node_modules/webpack-dev-server/bin/webpack-dev-server --config webpack.config.renderer.dev.js",
+    "test": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 node --trace-warnings ./test/runTests.js",
+    "test-all": "npm run lint && npm run build && npm run test && npm run test-e2e",
+    "test-e2e": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 node --trace-warnings ./test/runTests.js e2e",
+    "test-watch": "npm test -- --watch"
   },
   "browserslist": "electron 1.6",
   "build": {
@@ -74,16 +71,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nickrfer/code-sentinel.git"
+    "url": "git+https://github.com/chentsulin/electron-react-boilerplate.git"
   },
   "author": {
-    "name": "Nicolas Ferreira",
-    "email": "nickrfer@gmail.com",
-    "url": "https://github.com/nickrfer"
+    "name": "C. T. Lin",
+    "email": "chentsulin@gmail.com",
+    "url": "https://github.com/chentsulin"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nickrfer/code-sentinel/issues"
+    "url": "https://github.com/chentsulin/electron-react-boilerplate/issues"
   },
   "keywords": [
     "electron",
@@ -94,15 +91,9 @@
     "sass",
     "webpack",
     "hot",
-    "reload",
-    "code-review",
-    "code-sentinel",
-    "diffSvn2Git",
-    "svn",
-    "git",
-    "diff"
+    "reload"
   ],
-  "homepage": "https://github.com/nickrfer/code-sentinel#readme",
+  "homepage": "https://github.com/chentsulin/electron-react-boilerplate#readme",
   "jest": {
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/internals/mocks/fileMock.js",
@@ -117,7 +108,10 @@
     ],
     "transform": {
       "^.+\\.js$": "babel-jest"
-    }
+    },
+    "setupFiles": [
+      "./internals/scripts/CheckBuiltsExist.js"
+    ]
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
@@ -156,7 +150,7 @@
     "eslint-plugin-flowtype-errors": "^3.3.0",
     "eslint-plugin-import": "^2.6.0",
     "eslint-plugin-jest": "^20.0.3",
-    "eslint-plugin-jsx-a11y": "^5.0.3",
+    "eslint-plugin-jsx-a11y": "5.0.3",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^7.1.0",
     "express": "^4.15.3",
@@ -190,23 +184,29 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
+    "dateformat": "^2.0.0",
     "devtron": "^1.4.0",
+    "diff2html": "^2.3.0",
+    "diffsvn2git": "^0.1.0",
     "electron-debug": "^1.2.0",
     "font-awesome": "^4.7.0",
     "history": "^4.6.3",
-    "prop-types": "^15.5.10",
+    "loaders.css": "^0.1.2",
+    "moment": "^2.18.1",
     "react": "^15.6.1",
     "react-datepicker": "^0.47.0",
     "react-dom": "^15.6.1",
     "react-hot-loader": "3.0.0-beta.6",
     "react-html-parser": "^1.0.3",
+    "react-loaders": "^2.5.0",
     "react-redux": "^5.0.5",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
     "react-router-redux": "^5.0.0-alpha.6",
     "redux": "^3.7.1",
     "redux-thunk": "^2.2.0",
-    "source-map-support": "^0.4.15"
+    "source-map-support": "^0.4.15",
+    "svn-spawn": "^0.1.5"
   },
   "devEngines": {
     "node": ">=7.x",

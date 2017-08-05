@@ -1,2 +1,10538 @@
-module.exports=function(e){function o(d){if(s[d])return s[d].exports;var r=s[d]={i:d,l:!1,exports:{}};return e[d].call(r.exports,r,r.exports,o),r.l=!0,r.exports}var s={};return o.m=e,o.c=s,o.d=function(e,s,d){o.o(e,s)||Object.defineProperty(e,s,{configurable:!1,enumerable:!0,get:d})},o.n=function(e){var s=e&&e.__esModule?function(){return e['default']}:function(){return e};return o.d(s,'a',s),s},o.o=function(e,o){return Object.prototype.hasOwnProperty.call(e,o)},o.p='',o(o.s=5)}({"./app/main.dev.js":function(e,o,s){'use strict';function d(e){return e&&e.__esModule?e:{default:e}}function r(e){return function(){var o=e.apply(this,arguments);return new Promise(function(e,s){function d(r,n){try{var t=o[r](n),l=t.value}catch(e){return void s(e)}return t.done?void e(l):Promise.resolve(l).then(function(e){d('next',e)},function(e){d('throw',e)})}return d('next')})}}var n=s(2),t=s(0),l=d(t),u=s('./app/menu.js'),m=d(u);let c=null;const a=l.default.join(__dirname,'robot-ico.png');{const e=s('./node_modules/source-map-support/source-map-support.js');e.install()}(()=>{var e=r(function*(){const e=s('./node_modules/electron-devtools-installer/dist/index.js'),o=!!process.env.UPGRADE_EXTENSIONS;return Promise.all(['REACT_DEVELOPER_TOOLS','REDUX_DEVTOOLS'].map(function(s){return e.default(e[s],o)})).catch(console.log)});return function(){return e.apply(this,arguments)}})();n.app.on('window-all-closed',()=>{'darwin'!==process.platform&&n.app.quit()}),n.app.on('ready',r(function*(){!1,c=new n.BrowserWindow({resizable:!0,webPreferences:{backgroundThrottling:!1},icon:a}),c.maximize(),c.loadURL(`file://${__dirname}/app.html`),c.webContents.on('did-finish-load',function(){if(!c)throw new Error('"mainWindow" is not defined');c.show(),c.focus()}),c.on('minimize',function(e){e.preventDefault()}),c.on('closed',function(){c=null});const e=new m.default(c);e.buildMenu(Menu.buildFromTemplate([{label:'Quit',click:function(){return n.app.quit()}}]))}))},"./app/menu.js":function(e,o,s){'use strict';Object.defineProperty(o,'__esModule',{value:!0});var d=s(2);o.default=class{constructor(e){this.mainWindow=e}buildMenu(){let e='darwin'===process.platform?this.buildDarwinTemplate():this.buildDefaultTemplate();const o=d.Menu.buildFromTemplate(e);return d.Menu.setApplicationMenu(o),o}setupDevelopmentEnvironment(){this.mainWindow.openDevTools(),this.mainWindow.webContents.on('context-menu',(o,e)=>{const s=e.x,r=e.y;d.Menu.buildFromTemplate([{label:'Inspect element',click:()=>{this.mainWindow.inspectElement(s,r)}}]).popup(this.mainWindow)})}buildDarwinTemplate(){const e={label:'Help',submenu:[{label:'Learn More',click(){d.shell.openExternal('http://electron.atom.io')}},{label:'Documentation',click(){d.shell.openExternal('https://github.com/atom/electron/tree/master/docs#readme')}},{label:'Community Discussions',click(){d.shell.openExternal('https://discuss.atom.io/c/electron')}},{label:'Search Issues',click(){d.shell.openExternal('https://github.com/atom/electron/issues')}}]},o={label:'View',submenu:[{label:'Toggle Full Screen',accelerator:'Ctrl+Command+F',click:()=>{this.mainWindow.setFullScreen(!this.mainWindow.isFullScreen())}}]};return[{label:'Electron',submenu:[{label:'About ElectronReact',selector:'orderFrontStandardAboutPanel:'},{type:'separator'},{label:'Services',submenu:[]},{type:'separator'},{label:'Hide ElectronReact',accelerator:'Command+H',selector:'hide:'},{label:'Hide Others',accelerator:'Command+Shift+H',selector:'hideOtherApplications:'},{label:'Show All',selector:'unhideAllApplications:'},{type:'separator'},{label:'Quit',accelerator:'Command+Q',click:()=>{d.app.quit()}}]},{label:'Edit',submenu:[{label:'Undo',accelerator:'Command+Z',selector:'undo:'},{label:'Redo',accelerator:'Shift+Command+Z',selector:'redo:'},{type:'separator'},{label:'Cut',accelerator:'Command+X',selector:'cut:'},{label:'Copy',accelerator:'Command+C',selector:'copy:'},{label:'Paste',accelerator:'Command+V',selector:'paste:'},{label:'Select All',accelerator:'Command+A',selector:'selectAll:'}]},o,{label:'Window',submenu:[{label:'Minimize',accelerator:'Command+M',selector:'performMiniaturize:'},{label:'Close',accelerator:'Command+W',selector:'performClose:'},{type:'separator'},{label:'Bring All to Front',selector:'arrangeInFront:'}]},e]}buildDefaultTemplate(){const e=[{label:'&File',submenu:[{label:'&Open',accelerator:'Ctrl+O'},{label:'&Close',accelerator:'Ctrl+W',click:()=>{this.mainWindow.close()}}]},{label:'&View',submenu:[{label:'Toggle &Full Screen',accelerator:'F11',click:()=>{this.mainWindow.setFullScreen(!this.mainWindow.isFullScreen())}}]},{label:'Help',submenu:[{label:'Learn More',click(){d.shell.openExternal('http://electron.atom.io')}},{label:'Documentation',click(){d.shell.openExternal('https://github.com/atom/electron/tree/master/docs#readme')}},{label:'Community Discussions',click(){d.shell.openExternal('https://discuss.atom.io/c/electron')}},{label:'Search Issues',click(){d.shell.openExternal('https://github.com/atom/electron/issues')}}]}];return e}},e.exports=o['default']},"./node_modules/7zip/index.js":function(e,o,s){var d=s(0).resolve,r=s('./node_modules/7zip/package.json').bin;e.exports=function(e,o){return Object.keys(e).reduce(function(s,d){return s[d]=o(e[d]),s},{})}(r,function(e){return d(__dirname,e)})},"./node_modules/7zip/package.json":function(e){e.exports={name:'7zip',version:'0.0.6',description:'7zip Windows Package via Node.js',keywords:['7z','7zip','7-zip','windows','install'],repository:'git@github.com:fritx/win-7zip.git',bin:{"7z":'7zip-lite/7z.exe'},main:'index.js',scripts:{test:'mocha'},license:'GNU LGPL'}},"./node_modules/babel-polyfill/lib/index.js":function(e,o,s){'use strict';function d(e,o,s){e[o]||Object[r](e,o,{writable:!0,configurable:!0,value:s})}if(s('./node_modules/core-js/shim.js'),s('./node_modules/regenerator-runtime/runtime.js'),s('./node_modules/core-js/fn/regexp/escape.js'),global._babelPolyfill)throw new Error('only one instance of babel-polyfill is allowed');global._babelPolyfill=!0;var r='defineProperty';d(String.prototype,'padLeft',''.padStart),d(String.prototype,'padRight',''.padEnd),['pop','reverse','shift','keys','values','entries','indexOf','every','some','forEach','map','filter','find','findIndex','includes','join','slice','concat','push','splice','unshift','sort','lastIndexOf','reduce','reduceRight','copyWithin','fill'].forEach(function(e){[][e]&&d(Array,e,Function.call.bind([][e]))})},"./node_modules/balanced-match/index.js":function(e){function o(e,o,n){e instanceof RegExp&&(e=s(e,n)),o instanceof RegExp&&(o=s(o,n));var t=d(e,o,n);return t&&{start:t[0],end:t[1],pre:n.slice(0,t[0]),body:n.slice(t[0]+e.length,t[1]),post:n.slice(t[1]+o.length)}}function s(e,o){var s=o.match(e);return s?s[0]:null}function d(e,o,s){var d=s.indexOf(e),r=s.indexOf(o,d+1),n=d,t,l,u,m,c;if(0<=d&&0<r){for(t=[],u=s.length;0<=n&&!c;)n==d?(t.push(n),d=s.indexOf(e,n+1)):1==t.length?c=[t.pop(),r]:(l=t.pop(),l<u&&(u=l,m=r),r=s.indexOf(o,n+1)),n=d<r&&0<=d?d:r;t.length&&(c=[u,m])}return c}e.exports=o,o.range=d},"./node_modules/brace-expansion/index.js":function(e,o,s){function d(e){return parseInt(e,10)==e?parseInt(e,10):e.charCodeAt(0)}function r(e){return e.split('\\\\').join(c).split('\\{').join(i).split('\\}').join(h).split('\\,').join(j).split('\\.').join(f)}function n(e){return e.split(c).join('\\').split(i).join('{').split(h).join('}').split(j).join(',').split(f).join('.')}function t(e){if(!e)return[''];var o=[],s=g('{','}',e);if(!s)return e.split(',');var d=s.pre,r=s.body,n=s.post,l=d.split(',');l[l.length-1]+='{'+r+'}';var u=t(n);return n.length&&(l[l.length-1]+=u.shift(),l.push.apply(l,u)),o.push.apply(o,l),o}function l(e){return'{'+e+'}'}function u(e){return /^-?0\d/.test(e)}function m(e,o){return e<=o}function a(e,o){return e>=o}function _(e,o){var s=[],r=g('{','}',e);if(!r||/\$$/.test(r.pre))return[e];var f=/^-?\d+\.\.-?\d+(?:\.\.-?\d+)?$/.test(r.body),b=/^[a-zA-Z]\.\.[a-zA-Z](?:\.\.-?\d+)?$/.test(r.body),E=f||b,S=0<=r.body.indexOf(',');if(!E&&!S)return r.post.match(/,.*\}/)?(e=r.pre+'{'+r.body+h+r.post,_(e)):[e];var O;if(E)O=r.body.split(/\.\./);else if(O=t(r.body),1===O.length&&(O=_(O[0],!1).map(l),1===O.length)){var n=r.post.length?_(r.post,!1):[''];return n.map(function(e){return r.pre+O[0]+e})}var R=r.pre,n=r.post.length?_(r.post,!1):[''],A;if(E){var I=d(O[0]),x=d(O[1]),y=Math.max(O[0].length,O[1].length),T=3==O.length?Math.abs(d(O[2])):1,v=m;x<I&&(T*=-1,v=a);var N=O.some(u);A=[];for(var L=I;v(L,x);L+=T){var i;if(b)i=String.fromCharCode(L),'\\'===i&&(i='');else if(i=L+'',N){var c=y-i.length;if(0<c){var P=Array(c+1).join('0');i=0>L?'-'+P+i.slice(1):P+i}}A.push(i)}}else A=p(O,function(e){return _(e,!1)});for(var C=0;C<A.length;C++)for(var j=0,k;j<n.length;j++)k=R+A[C]+n[j],(!o||E||k)&&s.push(k);return s}var p=s('./node_modules/concat-map/index.js'),g=s('./node_modules/balanced-match/index.js');e.exports=function(e){return e?('{}'===e.substr(0,2)&&(e='\\{\\}'+e.substr(2)),_(r(e),!0).map(n)):[]};var c='\0SLASH'+Math.random()+'\0',i='\0OPEN'+Math.random()+'\0',h='\0CLOSE'+Math.random()+'\0',j='\0COMMA'+Math.random()+'\0',f='\0PERIOD'+Math.random()+'\0'},"./node_modules/concat-map/index.js":function(e){e.exports=function(e,s){for(var d=[],r=0,n;r<e.length;r++)n=s(e[r],r),o(n)?d.push.apply(d,n):d.push(n);return d};var o=Array.isArray||function(e){return'[object Array]'===Object.prototype.toString.call(e)}},"./node_modules/core-js/fn/regexp/escape.js":function(e,o,s){s('./node_modules/core-js/modules/core.regexp.escape.js'),e.exports=s('./node_modules/core-js/modules/_core.js').RegExp.escape},"./node_modules/core-js/modules/_a-function.js":function(e){e.exports=function(e){if('function'!=typeof e)throw TypeError(e+' is not a function!');return e}},"./node_modules/core-js/modules/_a-number-value.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_cof.js');e.exports=function(e,o){if('number'!=typeof e&&'Number'!=d(e))throw TypeError(o);return+e}},"./node_modules/core-js/modules/_add-to-unscopables.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_wks.js')('unscopables'),r=Array.prototype;void 0==r[d]&&s('./node_modules/core-js/modules/_hide.js')(r,d,{}),e.exports=function(e){r[d][e]=!0}},"./node_modules/core-js/modules/_an-instance.js":function(e){e.exports=function(e,o,s,d){if(!(e instanceof o)||void 0!==d&&d in e)throw TypeError(s+': incorrect invocation!');return e}},"./node_modules/core-js/modules/_an-object.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_is-object.js');e.exports=function(e){if(!d(e))throw TypeError(e+' is not an object!');return e}},"./node_modules/core-js/modules/_array-copy-within.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_to-object.js'),r=s('./node_modules/core-js/modules/_to-index.js'),n=s('./node_modules/core-js/modules/_to-length.js');e.exports=[].copyWithin||function(e,o){var s=d(this),t=n(s.length),l=r(e,t),u=r(o,t),m=2<arguments.length?arguments[2]:void 0,c=Math.min((void 0===m?t:r(m,t))-u,t-l),a=1;for(u<l&&l<u+c&&(a=-1,u+=c-1,l+=c-1);0<c--;)u in s?s[l]=s[u]:delete s[l],l+=a,u+=a;return s}},"./node_modules/core-js/modules/_array-fill.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_to-object.js'),r=s('./node_modules/core-js/modules/_to-index.js'),n=s('./node_modules/core-js/modules/_to-length.js');e.exports=function(e){for(var o=d(this),s=n(o.length),t=arguments.length,l=r(1<t?arguments[1]:void 0,s),u=2<t?arguments[2]:void 0,m=void 0===u?s:r(u,s);m>l;)o[l++]=e;return o}},"./node_modules/core-js/modules/_array-from-iterable.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_for-of.js');e.exports=function(e,o){var s=[];return d(e,!1,s.push,s,o),s}},"./node_modules/core-js/modules/_array-includes.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_to-iobject.js'),r=s('./node_modules/core-js/modules/_to-length.js'),n=s('./node_modules/core-js/modules/_to-index.js');e.exports=function(e){return function(o,s,t){var l=d(o),u=r(l.length),m=n(t,u),c;if(e&&s!=s){for(;u>m;)if(c=l[m++],c!=c)return!0;}else for(;u>m;m++)if((e||m in l)&&l[m]===s)return e||m||0;return!e&&-1}}},"./node_modules/core-js/modules/_array-methods.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_ctx.js'),r=s('./node_modules/core-js/modules/_iobject.js'),n=s('./node_modules/core-js/modules/_to-object.js'),t=s('./node_modules/core-js/modules/_to-length.js'),l=s('./node_modules/core-js/modules/_array-species-create.js');e.exports=function(e,o){var s=1==e,u=4==e,m=6==e,c=o||l;return function(o,l,a){for(var i=n(o),j=r(i),_=d(l,a,3),p=t(j.length),g=0,h=s?c(o,p):2==e?c(o,0):void 0,f,y;p>g;g++)if((5==e||m||g in j)&&(f=j[g],y=_(f,g,i),e))if(s)h[g]=y;else if(y)switch(e){case 3:return!0;case 5:return f;case 6:return g;case 2:h.push(f);}else if(u)return!1;return m?-1:3==e||u?u:h}}},"./node_modules/core-js/modules/_array-reduce.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_a-function.js'),r=s('./node_modules/core-js/modules/_to-object.js'),n=s('./node_modules/core-js/modules/_iobject.js'),t=s('./node_modules/core-js/modules/_to-length.js');e.exports=function(e,o,s,l,u){d(o);var m=r(e),c=n(m),a=t(m.length),j=u?a-1:0,_=u?-1:1;if(2>s)for(;;){if(j in c){l=c[j],j+=_;break}if(j+=_,u?0>j:a<=j)throw TypeError('Reduce of empty array with no initial value')}for(;u?0<=j:a>j;j+=_)j in c&&(l=o(l,c[j],j,m));return l}},"./node_modules/core-js/modules/_array-species-constructor.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_is-object.js'),r=s('./node_modules/core-js/modules/_is-array.js'),n=s('./node_modules/core-js/modules/_wks.js')('species');e.exports=function(e){var o;return r(e)&&(o=e.constructor,'function'==typeof o&&(o===Array||r(o.prototype))&&(o=void 0),d(o)&&(o=o[n],null===o&&(o=void 0))),void 0===o?Array:o}},"./node_modules/core-js/modules/_array-species-create.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_array-species-constructor.js');e.exports=function(e,o){return new(d(e))(o)}},"./node_modules/core-js/modules/_bind.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_a-function.js'),r=s('./node_modules/core-js/modules/_is-object.js'),n=s('./node_modules/core-js/modules/_invoke.js'),t=[].slice,l={},u=function(e,o,s){if(!(o in l)){for(var d=[],r=0;r<o;r++)d[r]='a['+r+']';l[o]=Function('F,a','return new F('+d.join(',')+')')}return l[o](e,s)};e.exports=Function.bind||function(e){var o=d(this),s=t.call(arguments,1),l=function(){var d=s.concat(t.call(arguments));return this instanceof l?u(o,d.length,d):n(o,d,e)};return r(o.prototype)&&(l.prototype=o.prototype),l}},"./node_modules/core-js/modules/_classof.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_cof.js'),r=s('./node_modules/core-js/modules/_wks.js')('toStringTag'),n='Arguments'==d(function(){return arguments}()),t=function(e,o){try{return e[o]}catch(o){}};e.exports=function(e){var o,s,l;return void 0===e?'Undefined':null===e?'Null':'string'==typeof(s=t(o=Object(e),r))?s:n?d(o):'Object'==(l=d(o))&&'function'==typeof o.callee?'Arguments':l}},"./node_modules/core-js/modules/_cof.js":function(e){var o={}.toString;e.exports=function(e){return o.call(e).slice(8,-1)}},"./node_modules/core-js/modules/_collection-strong.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_object-dp.js').f,r=s('./node_modules/core-js/modules/_object-create.js'),n=s('./node_modules/core-js/modules/_redefine-all.js'),t=s('./node_modules/core-js/modules/_ctx.js'),l=s('./node_modules/core-js/modules/_an-instance.js'),u=s('./node_modules/core-js/modules/_defined.js'),m=s('./node_modules/core-js/modules/_for-of.js'),c=s('./node_modules/core-js/modules/_iter-define.js'),a=s('./node_modules/core-js/modules/_iter-step.js'),i=s('./node_modules/core-js/modules/_set-species.js'),j=s('./node_modules/core-js/modules/_descriptors.js'),_=s('./node_modules/core-js/modules/_meta.js').fastKey,p=j?'_s':'size',g=function(e,o){var s=_(o),d;if('F'!==s)return e._i[s];for(d=e._f;d;d=d.n)if(d.k==o)return d};e.exports={getConstructor:function(e,o,s,c){var a=e(function(e,d){l(e,a,o,'_i'),e._i=r(null),e._f=void 0,e._l=void 0,e[p]=0,void 0!=d&&m(d,s,e[c],e)});return n(a.prototype,{clear:function(){for(var e=this,o=e._i,s=e._f;s;s=s.n)s.r=!0,s.p&&(s.p=s.p.n=void 0),delete o[s.i];e._f=e._l=void 0,e[p]=0},delete:function(e){var o=this,s=g(o,e);if(s){var d=s.n,r=s.p;delete o._i[s.i],s.r=!0,r&&(r.n=d),d&&(d.p=r),o._f==s&&(o._f=d),o._l==s&&(o._l=r),o[p]--}return!!s},forEach:function(e){l(this,a,'forEach');for(var o=t(e,1<arguments.length?arguments[1]:void 0,3),s;s=s?s.n:this._f;)for(o(s.v,s.k,this);s&&s.r;)s=s.p},has:function(e){return!!g(this,e)}}),j&&d(a.prototype,'size',{get:function(){return u(this[p])}}),a},def:function(e,o,s){var d=g(e,o),r,n;return d?d.v=s:(e._l=d={i:n=_(o,!0),k:o,v:s,p:r=e._l,n:void 0,r:!1},!e._f&&(e._f=d),r&&(r.n=d),e[p]++,'F'!==n&&(e._i[n]=d)),e},getEntry:g,setStrong:function(e,o,s){c(e,o,function(e,o){this._t=e,this._k=o,this._l=void 0},function(){for(var e=this,o=e._k,s=e._l;s&&s.r;)s=s.p;return e._t&&(e._l=s=s?s.n:e._t._f)?'keys'==o?a(0,s.k):'values'==o?a(0,s.v):a(0,[s.k,s.v]):(e._t=void 0,a(1))},s?'entries':'values',!s,!0),i(o)}}},"./node_modules/core-js/modules/_collection-to-json.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_classof.js'),r=s('./node_modules/core-js/modules/_array-from-iterable.js');e.exports=function(e){return function(){if(d(this)!=e)throw TypeError(e+'#toJSON isn\'t generic');return r(this)}}},"./node_modules/core-js/modules/_collection-weak.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_redefine-all.js'),r=s('./node_modules/core-js/modules/_meta.js').getWeak,n=s('./node_modules/core-js/modules/_an-object.js'),t=s('./node_modules/core-js/modules/_is-object.js'),l=s('./node_modules/core-js/modules/_an-instance.js'),u=s('./node_modules/core-js/modules/_for-of.js'),m=s('./node_modules/core-js/modules/_array-methods.js'),c=s('./node_modules/core-js/modules/_has.js'),a=m(5),i=m(6),j=0,_=function(e){return e._l||(e._l=new p)},p=function(){this.a=[]},g=function(e,o){return a(e.a,function(e){return e[0]===o})};p.prototype={get:function(e){var o=g(this,e);if(o)return o[1]},has:function(e){return!!g(this,e)},set:function(e,o){var s=g(this,e);s?s[1]=o:this.a.push([e,o])},delete:function(e){var o=i(this.a,function(o){return o[0]===e});return~o&&this.a.splice(o,1),!!~o}},e.exports={getConstructor:function(e,o,s,n){var m=e(function(e,d){l(e,m,o,'_i'),e._i=j++,e._l=void 0,void 0!=d&&u(d,s,e[n],e)});return d(m.prototype,{delete:function(e){if(!t(e))return!1;var o=r(e);return!0===o?_(this)['delete'](e):o&&c(o,this._i)&&delete o[this._i]},has:function(e){if(!t(e))return!1;var o=r(e);return!0===o?_(this).has(e):o&&c(o,this._i)}}),m},def:function(e,o,s){var d=r(n(o),!0);return!0===d?_(e).set(o,s):d[e._i]=s,e},ufstore:_}},"./node_modules/core-js/modules/_collection.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_global.js'),r=s('./node_modules/core-js/modules/_export.js'),n=s('./node_modules/core-js/modules/_redefine.js'),t=s('./node_modules/core-js/modules/_redefine-all.js'),l=s('./node_modules/core-js/modules/_meta.js'),u=s('./node_modules/core-js/modules/_for-of.js'),m=s('./node_modules/core-js/modules/_an-instance.js'),c=s('./node_modules/core-js/modules/_is-object.js'),a=s('./node_modules/core-js/modules/_fails.js'),i=s('./node_modules/core-js/modules/_iter-detect.js'),j=s('./node_modules/core-js/modules/_set-to-string-tag.js'),_=s('./node_modules/core-js/modules/_inherit-if-required.js');e.exports=function(e,o,s,p,g,h){var f=d[e],y=f,b=g?'set':'add',E=y&&y.prototype,x={},S=function(e){var o=E[e];n(E,e,'delete'==e?function(e){return h&&!c(e)?!1:o.call(this,0===e?0:e)}:'has'==e?function(e){return h&&!c(e)?!1:o.call(this,0===e?0:e)}:'get'==e?function(e){return h&&!c(e)?void 0:o.call(this,0===e?0:e)}:'add'==e?function(e){return o.call(this,0===e?0:e),this}:function(e,s){return o.call(this,0===e?0:e,s),this})};if('function'!=typeof y||!(h||E.forEach&&!a(function(){new y().entries().next()})))y=p.getConstructor(o,e,g,b),t(y.prototype,s),l.NEED=!0;else{var O=new y,R=O[b](h?{}:-0,1)!=O,A=a(function(){O.has(1)}),I=i(function(e){new y(e)}),T=!h&&a(function(){for(var e=new y,o=5;o--;)e[b](o,o);return!e.has(-0)});I||(y=o(function(o,s){m(o,y,e);var d=_(new f,o,y);return void 0!=s&&u(s,g,d[b],d),d}),y.prototype=E,E.constructor=y),(A||T)&&(S('delete'),S('has'),g&&S('get')),(T||R)&&S(b),h&&E.clear&&delete E.clear}return j(y,e),x[e]=y,r(r.G+r.W+r.F*(y!=f),x),h||p.setStrong(y,e,g),y}},"./node_modules/core-js/modules/_core.js":function(e){var o=e.exports={version:'2.4.0'};'number'==typeof __e&&(__e=o)},"./node_modules/core-js/modules/_create-property.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_object-dp.js'),r=s('./node_modules/core-js/modules/_property-desc.js');e.exports=function(e,o,s){o in e?d.f(e,o,r(0,s)):e[o]=s}},"./node_modules/core-js/modules/_ctx.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_a-function.js');e.exports=function(e,o,s){return(d(e),void 0===o)?e:1===s?function(s){return e.call(o,s)}:2===s?function(s,d){return e.call(o,s,d)}:3===s?function(s,d,r){return e.call(o,s,d,r)}:function(){return e.apply(o,arguments)}}},"./node_modules/core-js/modules/_date-to-primitive.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_an-object.js'),r=s('./node_modules/core-js/modules/_to-primitive.js'),n='number';e.exports=function(e){if('string'!==e&&e!==n&&'default'!==e)throw TypeError('Incorrect hint');return r(d(this),e!=n)}},"./node_modules/core-js/modules/_defined.js":function(e){e.exports=function(e){if(void 0==e)throw TypeError('Can\'t call method on  '+e);return e}},"./node_modules/core-js/modules/_descriptors.js":function(e,o,s){e.exports=!s('./node_modules/core-js/modules/_fails.js')(function(){return 7!=Object.defineProperty({},'a',{get:function(){return 7}}).a})},"./node_modules/core-js/modules/_dom-create.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_is-object.js'),r=s('./node_modules/core-js/modules/_global.js').document,n=d(r)&&d(r.createElement);e.exports=function(e){return n?r.createElement(e):{}}},"./node_modules/core-js/modules/_enum-bug-keys.js":function(e){e.exports=['constructor','hasOwnProperty','isPrototypeOf','propertyIsEnumerable','toLocaleString','toString','valueOf']},"./node_modules/core-js/modules/_enum-keys.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_object-keys.js'),r=s('./node_modules/core-js/modules/_object-gops.js'),n=s('./node_modules/core-js/modules/_object-pie.js');e.exports=function(e){var o=d(e),s=r.f;if(s)for(var t=s(e),l=n.f,u=0,m;t.length>u;)l.call(e,m=t[u++])&&o.push(m);return o}},"./node_modules/core-js/modules/_export.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_global.js'),r=s('./node_modules/core-js/modules/_core.js'),n=s('./node_modules/core-js/modules/_hide.js'),t=s('./node_modules/core-js/modules/_redefine.js'),l=s('./node_modules/core-js/modules/_ctx.js'),u='prototype',m=function(e,o,s){var c=e&m.F,a=e&m.G,i=e&m.S,j=e&m.P,_=e&m.B,p=a?d:i?d[o]||(d[o]={}):(d[o]||{})[u],g=a?r:r[o]||(r[o]={}),h=g[u]||(g[u]={}),f,y,b,E;for(f in a&&(s=o),s)y=!c&&p&&void 0!==p[f],b=(y?p:s)[f],E=_&&y?l(b,d):j&&'function'==typeof b?l(Function.call,b):b,p&&t(p,f,b,e&m.U),g[f]!=b&&n(g,f,E),j&&h[f]!=b&&(h[f]=b)};d.core=r,m.F=1,m.G=2,m.S=4,m.P=8,m.B=16,m.W=32,m.U=64,m.R=128,e.exports=m},"./node_modules/core-js/modules/_fails-is-regexp.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_wks.js')('match');e.exports=function(e){var o=/./;try{'/./'[e](o)}catch(s){try{return o[d]=!1,!'/./'[e](o)}catch(e){}}return!0}},"./node_modules/core-js/modules/_fails.js":function(e){e.exports=function(e){try{return!!e()}catch(o){return!0}}},"./node_modules/core-js/modules/_fix-re-wks.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_hide.js'),r=s('./node_modules/core-js/modules/_redefine.js'),n=s('./node_modules/core-js/modules/_fails.js'),t=s('./node_modules/core-js/modules/_defined.js'),l=s('./node_modules/core-js/modules/_wks.js');e.exports=function(e,o,s){var u=l(e),m=s(t,u,''[e]),c=m[0],a=m[1];n(function(){var o={};return o[u]=function(){return 7},7!=''[e](o)})&&(r(String.prototype,e,c),d(RegExp.prototype,u,2==o?function(e,o){return a.call(e,this,o)}:function(e){return a.call(e,this)}))}},"./node_modules/core-js/modules/_flags.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_an-object.js');e.exports=function(){var e=d(this),o='';return e.global&&(o+='g'),e.ignoreCase&&(o+='i'),e.multiline&&(o+='m'),e.unicode&&(o+='u'),e.sticky&&(o+='y'),o}},"./node_modules/core-js/modules/_for-of.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_ctx.js'),r=s('./node_modules/core-js/modules/_iter-call.js'),n=s('./node_modules/core-js/modules/_is-array-iter.js'),t=s('./node_modules/core-js/modules/_an-object.js'),l=s('./node_modules/core-js/modules/_to-length.js'),u=s('./node_modules/core-js/modules/core.get-iterator-method.js'),m={},c={},o=e.exports=function(e,o,s,a,i){var j=i?function(){return e}:u(e),_=d(s,a,o?2:1),p=0,g,h,f,y;if('function'!=typeof j)throw TypeError(e+' is not iterable!');if(n(j)){for(g=l(e.length);g>p;p++)if(y=o?_(t(h=e[p])[0],h[1]):_(e[p]),y===m||y===c)return y;}else for(f=j.call(e);!(h=f.next()).done;)if(y=r(f,_,h.value,o),y===m||y===c)return y};o.BREAK=m,o.RETURN=c},"./node_modules/core-js/modules/_global.js":function(e){var o=e.exports='undefined'!=typeof window&&window.Math==Math?window:'undefined'!=typeof self&&self.Math==Math?self:Function('return this')();'number'==typeof __g&&(__g=o)},"./node_modules/core-js/modules/_has.js":function(e){var o={}.hasOwnProperty;e.exports=function(e,s){return o.call(e,s)}},"./node_modules/core-js/modules/_hide.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_object-dp.js'),r=s('./node_modules/core-js/modules/_property-desc.js');e.exports=s('./node_modules/core-js/modules/_descriptors.js')?function(e,o,s){return d.f(e,o,r(1,s))}:function(e,o,s){return e[o]=s,e}},"./node_modules/core-js/modules/_html.js":function(e,o,s){e.exports=s('./node_modules/core-js/modules/_global.js').document&&document.documentElement},"./node_modules/core-js/modules/_ie8-dom-define.js":function(e,o,s){e.exports=!s('./node_modules/core-js/modules/_descriptors.js')&&!s('./node_modules/core-js/modules/_fails.js')(function(){return 7!=Object.defineProperty(s('./node_modules/core-js/modules/_dom-create.js')('div'),'a',{get:function(){return 7}}).a})},"./node_modules/core-js/modules/_inherit-if-required.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_is-object.js'),r=s('./node_modules/core-js/modules/_set-proto.js').set;e.exports=function(e,o,s){var n=o.constructor,t;return n!==s&&'function'==typeof n&&(t=n.prototype)!==s.prototype&&d(t)&&r&&r(e,t),e}},"./node_modules/core-js/modules/_invoke.js":function(e){e.exports=function(e,o,s){var d=void 0===s;switch(o.length){case 0:return d?e():e.call(s);case 1:return d?e(o[0]):e.call(s,o[0]);case 2:return d?e(o[0],o[1]):e.call(s,o[0],o[1]);case 3:return d?e(o[0],o[1],o[2]):e.call(s,o[0],o[1],o[2]);case 4:return d?e(o[0],o[1],o[2],o[3]):e.call(s,o[0],o[1],o[2],o[3]);}return e.apply(s,o)}},"./node_modules/core-js/modules/_iobject.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_cof.js');e.exports=Object('z').propertyIsEnumerable(0)?Object:function(e){return'String'==d(e)?e.split(''):Object(e)}},"./node_modules/core-js/modules/_is-array-iter.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_iterators.js'),r=s('./node_modules/core-js/modules/_wks.js')('iterator'),n=Array.prototype;e.exports=function(e){return void 0!==e&&(d.Array===e||n[r]===e)}},"./node_modules/core-js/modules/_is-array.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_cof.js');e.exports=Array.isArray||function(e){return'Array'==d(e)}},"./node_modules/core-js/modules/_is-integer.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_is-object.js'),r=Math.floor;e.exports=function(e){return!d(e)&&isFinite(e)&&r(e)===e}},"./node_modules/core-js/modules/_is-object.js":function(e){e.exports=function(e){return'object'==typeof e?null!==e:'function'==typeof e}},"./node_modules/core-js/modules/_is-regexp.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_is-object.js'),r=s('./node_modules/core-js/modules/_cof.js'),n=s('./node_modules/core-js/modules/_wks.js')('match');e.exports=function(e){var o;return d(e)&&(void 0===(o=e[n])?'RegExp'==r(e):!!o)}},"./node_modules/core-js/modules/_iter-call.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_an-object.js');e.exports=function(o,e,s,r){try{return r?e(d(s)[0],s[1]):e(s)}catch(s){var n=o['return'];throw void 0!==n&&d(n.call(o)),s}}},"./node_modules/core-js/modules/_iter-create.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_object-create.js'),r=s('./node_modules/core-js/modules/_property-desc.js'),n=s('./node_modules/core-js/modules/_set-to-string-tag.js'),t={};s('./node_modules/core-js/modules/_hide.js')(t,s('./node_modules/core-js/modules/_wks.js')('iterator'),function(){return this}),e.exports=function(e,o,s){e.prototype=d(t,{next:r(1,s)}),n(e,o+' Iterator')}},"./node_modules/core-js/modules/_iter-define.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_library.js'),r=s('./node_modules/core-js/modules/_export.js'),n=s('./node_modules/core-js/modules/_redefine.js'),t=s('./node_modules/core-js/modules/_hide.js'),l=s('./node_modules/core-js/modules/_has.js'),u=s('./node_modules/core-js/modules/_iterators.js'),m=s('./node_modules/core-js/modules/_iter-create.js'),c=s('./node_modules/core-js/modules/_set-to-string-tag.js'),a=s('./node_modules/core-js/modules/_object-gpo.js'),i=s('./node_modules/core-js/modules/_wks.js')('iterator'),j=!([].keys&&'next'in[].keys()),_='keys',p='values',g=function(){return this};e.exports=function(e,o,s,h,f,y,b){m(s,o,h);var E=function(e){return!j&&e in R?R[e]:e===_?function(){return new s(this,e)}:e===p?function(){return new s(this,e)}:function(){return new s(this,e)}},x=o+' Iterator',S=f==p,O=!1,R=e.prototype,A=R[i]||R['@@iterator']||f&&R[f],I=A||E(f),T=f?S?E('entries'):I:void 0,k='Array'==o?R.entries||A:A,v,N,L;if(k&&(L=a(k.call(new e)),L!==Object.prototype&&(c(L,x,!0),!d&&!l(L,i)&&t(L,i,g))),S&&A&&A.name!==p&&(O=!0,I=function(){return A.call(this)}),(!d||b)&&(j||O||!R[i])&&t(R,i,I),u[o]=I,u[x]=g,f)if(v={values:S?I:E(p),keys:y?I:E(_),entries:T},b)for(N in v)N in R||n(R,N,v[N]);else r(r.P+r.F*(j||O),o,v);return v}},"./node_modules/core-js/modules/_iter-detect.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_wks.js')('iterator'),r=!1;try{var n=[7][d]();n['return']=function(){r=!0},Array.from(n,function(){throw 2})}catch(o){}e.exports=function(e,o){if(!o&&!r)return!1;var s=!1;try{var n=[7],t=n[d]();t.next=function(){return{done:s=!0}},n[d]=function(){return t},e(n)}catch(o){}return s}},"./node_modules/core-js/modules/_iter-step.js":function(e){e.exports=function(e,o){return{value:o,done:!!e}}},"./node_modules/core-js/modules/_iterators.js":function(e){e.exports={}},"./node_modules/core-js/modules/_keyof.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_object-keys.js'),r=s('./node_modules/core-js/modules/_to-iobject.js');e.exports=function(e,o){for(var s=r(e),n=d(s),t=n.length,l=0,u;t>l;)if(s[u=n[l++]]===o)return u}},"./node_modules/core-js/modules/_library.js":function(e){e.exports=!1},"./node_modules/core-js/modules/_math-expm1.js":function(e){var o=Math.expm1;e.exports=!o||22025.465794806718<o(10)||22025.465794806718>o(10)||-2e-17!=o(-2e-17)?function(e){return 0==(e=+e)?e:-1e-6<e&&1e-6>e?e+e*e/2:Math.exp(e)-1}:o},"./node_modules/core-js/modules/_math-log1p.js":function(e){e.exports=Math.log1p||function(e){return-1e-8<(e=+e)&&1e-8>e?e-e*e/2:Math.log(1+e)}},"./node_modules/core-js/modules/_math-sign.js":function(e){e.exports=Math.sign||function(e){return 0==(e=+e)||e!=e?e:0>e?-1:1}},"./node_modules/core-js/modules/_meta.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_uid.js')('meta'),r=s('./node_modules/core-js/modules/_is-object.js'),n=s('./node_modules/core-js/modules/_has.js'),t=s('./node_modules/core-js/modules/_object-dp.js').f,l=0,u=Object.isExtensible||function(){return!0},m=!s('./node_modules/core-js/modules/_fails.js')(function(){return u(Object.preventExtensions({}))}),c=function(e){t(e,d,{value:{i:'O'+ ++l,w:{}}})},a=e.exports={KEY:d,NEED:!1,fastKey:function(e,o){if(!r(e))return'symbol'==typeof e?e:('string'==typeof e?'S':'P')+e;if(!n(e,d)){if(!u(e))return'F';if(!o)return'E';c(e)}return e[d].i},getWeak:function(e,o){if(!n(e,d)){if(!u(e))return!0;if(!o)return!1;c(e)}return e[d].w},onFreeze:function(e){return m&&a.NEED&&u(e)&&!n(e,d)&&c(e),e}}},"./node_modules/core-js/modules/_metadata.js":function(e,o,s){var d=s('./node_modules/core-js/modules/es6.map.js'),r=s('./node_modules/core-js/modules/_export.js'),n=s('./node_modules/core-js/modules/_shared.js')('metadata'),t=n.store||(n.store=new(s('./node_modules/core-js/modules/es6.weak-map.js'))),l=function(e,o,s){var r=t.get(e);if(!r){if(!s)return;t.set(e,r=new d)}var n=r.get(o);if(!n){if(!s)return;r.set(o,n=new d)}return n};e.exports={store:t,map:l,has:function(e,o,s){var d=l(o,s,!1);return void 0!==d&&d.has(e)},get:function(e,o,s){var d=l(o,s,!1);return void 0===d?void 0:d.get(e)},set:function(e,o,s,d){l(s,d,!0).set(e,o)},keys:function(e,o){var s=l(e,o,!1),d=[];return s&&s.forEach(function(e,o){d.push(o)}),d},key:function(e){return void 0===e||'symbol'==typeof e?e:e+''},exp:function(e){r(r.S,'Reflect',e)}}},"./node_modules/core-js/modules/_microtask.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_global.js'),r=s('./node_modules/core-js/modules/_task.js').set,n=d.MutationObserver||d.WebKitMutationObserver,t=d.process,l=d.Promise,u='process'==s('./node_modules/core-js/modules/_cof.js')(t);e.exports=function(){var e=function(){var e,d;for(u&&(e=t.domain)&&e.exit();o;){d=o.fn,o=o.next;try{d()}catch(d){throw o?m():s=void 0,d}}s=void 0,e&&e.enter()},o,s,m;if(u)m=function(){t.nextTick(e)};else if(n){var c=!0,a=document.createTextNode('');new n(e).observe(a,{characterData:!0}),m=function(){a.data=c=!c}}else if(l&&l.resolve){var i=l.resolve();m=function(){i.then(e)}}else m=function(){r.call(d,e)};return function(e){var d={fn:e,next:void 0};s&&(s.next=d),o||(o=d,m()),s=d}}},"./node_modules/core-js/modules/_object-assign.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_object-keys.js'),r=s('./node_modules/core-js/modules/_object-gops.js'),n=s('./node_modules/core-js/modules/_object-pie.js'),t=s('./node_modules/core-js/modules/_to-object.js'),l=s('./node_modules/core-js/modules/_iobject.js'),u=Object.assign;e.exports=!u||s('./node_modules/core-js/modules/_fails.js')(function(){var e={},o={},s=Symbol(),d='abcdefghijklmnopqrst';return e[s]=7,d.split('').forEach(function(e){o[e]=e}),7!=u({},e)[s]||Object.keys(u({},o)).join('')!=d})?function(e){for(var o=t(e),s=arguments.length,u=1,m=r.f,c=n.f;s>u;)for(var a=l(arguments[u++]),i=m?d(a).concat(m(a)):d(a),_=i.length,p=0,j;_>p;)c.call(a,j=i[p++])&&(o[j]=a[j]);return o}:u},"./node_modules/core-js/modules/_object-create.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_an-object.js'),r=s('./node_modules/core-js/modules/_object-dps.js'),n=s('./node_modules/core-js/modules/_enum-bug-keys.js'),t=s('./node_modules/core-js/modules/_shared-key.js')('IE_PROTO'),l=function(){},u='prototype',m=function(){var e=s('./node_modules/core-js/modules/_dom-create.js')('iframe'),o=n.length,d='<',r='>',t;for(e.style.display='none',s('./node_modules/core-js/modules/_html.js').appendChild(e),e.src='javascript:',t=e.contentWindow.document,t.open(),t.write(d+'script'+r+'document.F=Object'+d+'/script'+r),t.close(),m=t.F;o--;)delete m[u][n[o]];return m()};e.exports=Object.create||function(e,o){var s;return null===e?s=m():(l[u]=d(e),s=new l,l[u]=null,s[t]=e),void 0===o?s:r(s,o)}},"./node_modules/core-js/modules/_object-dp.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_an-object.js'),r=s('./node_modules/core-js/modules/_ie8-dom-define.js'),n=s('./node_modules/core-js/modules/_to-primitive.js'),t=Object.defineProperty;o.f=s('./node_modules/core-js/modules/_descriptors.js')?Object.defineProperty:function(e,o,s){if(d(e),o=n(o,!0),d(s),r)try{return t(e,o,s)}catch(o){}if('get'in s||'set'in s)throw TypeError('Accessors not supported!');return'value'in s&&(e[o]=s.value),e}},"./node_modules/core-js/modules/_object-dps.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_object-dp.js'),r=s('./node_modules/core-js/modules/_an-object.js'),n=s('./node_modules/core-js/modules/_object-keys.js');e.exports=s('./node_modules/core-js/modules/_descriptors.js')?Object.defineProperties:function(e,o){r(e);for(var s=n(o),t=s.length,l=0,u;t>l;)d.f(e,u=s[l++],o[u]);return e}},"./node_modules/core-js/modules/_object-forced-pam.js":function(e,o,s){e.exports=s('./node_modules/core-js/modules/_library.js')||!s('./node_modules/core-js/modules/_fails.js')(function(){var e=Math.random();__defineSetter__.call(null,e,function(){}),delete s('./node_modules/core-js/modules/_global.js')[e]})},"./node_modules/core-js/modules/_object-gopd.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_object-pie.js'),r=s('./node_modules/core-js/modules/_property-desc.js'),n=s('./node_modules/core-js/modules/_to-iobject.js'),t=s('./node_modules/core-js/modules/_to-primitive.js'),l=s('./node_modules/core-js/modules/_has.js'),u=s('./node_modules/core-js/modules/_ie8-dom-define.js'),m=Object.getOwnPropertyDescriptor;o.f=s('./node_modules/core-js/modules/_descriptors.js')?m:function(e,o){if(e=n(e),o=t(o,!0),u)try{return m(e,o)}catch(o){}return l(e,o)?r(!d.f.call(e,o),e[o]):void 0}},"./node_modules/core-js/modules/_object-gopn-ext.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_to-iobject.js'),r=s('./node_modules/core-js/modules/_object-gopn.js').f,n={}.toString,t='object'==typeof window&&window&&Object.getOwnPropertyNames?Object.getOwnPropertyNames(window):[],l=function(e){try{return r(e)}catch(o){return t.slice()}};e.exports.f=function(e){return t&&'[object Window]'==n.call(e)?l(e):r(d(e))}},"./node_modules/core-js/modules/_object-gopn.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_object-keys-internal.js'),r=s('./node_modules/core-js/modules/_enum-bug-keys.js').concat('length','prototype');o.f=Object.getOwnPropertyNames||function(e){return d(e,r)}},"./node_modules/core-js/modules/_object-gops.js":function(e,o){o.f=Object.getOwnPropertySymbols},"./node_modules/core-js/modules/_object-gpo.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_has.js'),r=s('./node_modules/core-js/modules/_to-object.js'),n=s('./node_modules/core-js/modules/_shared-key.js')('IE_PROTO'),t=Object.prototype;e.exports=Object.getPrototypeOf||function(e){return e=r(e),d(e,n)?e[n]:'function'==typeof e.constructor&&e instanceof e.constructor?e.constructor.prototype:e instanceof Object?t:null}},"./node_modules/core-js/modules/_object-keys-internal.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_has.js'),r=s('./node_modules/core-js/modules/_to-iobject.js'),n=s('./node_modules/core-js/modules/_array-includes.js')(!1),t=s('./node_modules/core-js/modules/_shared-key.js')('IE_PROTO');e.exports=function(e,o){var s=r(e),l=0,u=[],m;for(m in s)m!=t&&d(s,m)&&u.push(m);for(;o.length>l;)d(s,m=o[l++])&&(~n(u,m)||u.push(m));return u}},"./node_modules/core-js/modules/_object-keys.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_object-keys-internal.js'),r=s('./node_modules/core-js/modules/_enum-bug-keys.js');e.exports=Object.keys||function(e){return d(e,r)}},"./node_modules/core-js/modules/_object-pie.js":function(e,o){o.f={}.propertyIsEnumerable},"./node_modules/core-js/modules/_object-sap.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_core.js'),n=s('./node_modules/core-js/modules/_fails.js');e.exports=function(e,o){var s=(r.Object||{})[e]||Object[e],t={};t[e]=o(s),d(d.S+d.F*n(function(){s(1)}),'Object',t)}},"./node_modules/core-js/modules/_object-to-array.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_object-keys.js'),r=s('./node_modules/core-js/modules/_to-iobject.js'),n=s('./node_modules/core-js/modules/_object-pie.js').f;e.exports=function(e){return function(o){for(var s=r(o),t=d(s),l=t.length,u=0,m=[],c;l>u;)n.call(s,c=t[u++])&&m.push(e?[c,s[c]]:s[c]);return m}}},"./node_modules/core-js/modules/_own-keys.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_object-gopn.js'),r=s('./node_modules/core-js/modules/_object-gops.js'),n=s('./node_modules/core-js/modules/_an-object.js'),t=s('./node_modules/core-js/modules/_global.js').Reflect;e.exports=t&&t.ownKeys||function(e){var o=d.f(n(e)),s=r.f;return s?o.concat(s(e)):o}},"./node_modules/core-js/modules/_parse-float.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_global.js').parseFloat,r=s('./node_modules/core-js/modules/_string-trim.js').trim;e.exports=1/d(s('./node_modules/core-js/modules/_string-ws.js')+'-0')==-Infinity?d:function(e){var o=r(e+'',3),s=d(o);return 0===s&&'-'==o.charAt(0)?-0:s}},"./node_modules/core-js/modules/_parse-int.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_global.js').parseInt,r=s('./node_modules/core-js/modules/_string-trim.js').trim,n=s('./node_modules/core-js/modules/_string-ws.js'),t=/^[\-+]?0[xX]/;e.exports=8!==d(n+'08')||22!==d(n+'0x16')?function(e,o){var s=r(e+'',3);return d(s,o>>>0||(t.test(s)?16:10))}:d},"./node_modules/core-js/modules/_partial.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_path.js'),r=s('./node_modules/core-js/modules/_invoke.js'),n=s('./node_modules/core-js/modules/_a-function.js');e.exports=function(){for(var e=n(this),o=arguments.length,s=Array(o),t=0,l=d._,u=!1;o>t;)(s[t]=arguments[t++])===l&&(u=!0);return function(){var d=this,n=arguments.length,t=0,m=0,c;if(!u&&!n)return r(e,s,d);if(c=s.slice(),u)for(;o>t;t++)c[t]===l&&(c[t]=arguments[m++]);for(;n>m;)c.push(arguments[m++]);return r(e,c,d)}}},"./node_modules/core-js/modules/_path.js":function(e,o,s){e.exports=s('./node_modules/core-js/modules/_global.js')},"./node_modules/core-js/modules/_property-desc.js":function(e){e.exports=function(e,o){return{enumerable:!(1&e),configurable:!(2&e),writable:!(4&e),value:o}}},"./node_modules/core-js/modules/_redefine-all.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_redefine.js');e.exports=function(e,o,s){for(var r in o)d(e,r,o[r],s);return e}},"./node_modules/core-js/modules/_redefine.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_global.js'),r=s('./node_modules/core-js/modules/_hide.js'),n=s('./node_modules/core-js/modules/_has.js'),t=s('./node_modules/core-js/modules/_uid.js')('src'),l='toString',u=Function[l],m=(''+u).split(l);s('./node_modules/core-js/modules/_core.js').inspectSource=function(e){return u.call(e)},(e.exports=function(e,o,s,l){var u='function'==typeof s;u&&(n(s,'name')||r(s,'name',o)),e[o]===s||(u&&(n(s,t)||r(s,t,e[o]?''+e[o]:m.join(o+''))),e===d?e[o]=s:l?e[o]?e[o]=s:r(e,o,s):(delete e[o],r(e,o,s)))})(Function.prototype,l,function(){return'function'==typeof this&&this[t]||u.call(this)})},"./node_modules/core-js/modules/_replacer.js":function(e){e.exports=function(e,o){var s=o===Object(o)?function(e){return o[e]}:o;return function(o){return(o+'').replace(e,s)}}},"./node_modules/core-js/modules/_same-value.js":function(e){e.exports=Object.is||function(e,o){return e===o?0!==e||1/e==1/o:e!=e&&o!=o}},"./node_modules/core-js/modules/_set-proto.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_is-object.js'),r=s('./node_modules/core-js/modules/_an-object.js'),n=function(e,o){if(r(e),!d(o)&&null!==o)throw TypeError(o+': can\'t set as prototype!')};e.exports={set:Object.setPrototypeOf||('__proto__'in{}?function(e,o,d){try{d=s('./node_modules/core-js/modules/_ctx.js')(Function.call,s('./node_modules/core-js/modules/_object-gopd.js').f(Object.prototype,'__proto__').set,2),d(e,[]),o=!(e instanceof Array)}catch(s){o=!0}return function(e,s){return n(e,s),o?e.__proto__=s:d(e,s),e}}({},!1):void 0),check:n}},"./node_modules/core-js/modules/_set-species.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_global.js'),r=s('./node_modules/core-js/modules/_object-dp.js'),n=s('./node_modules/core-js/modules/_descriptors.js'),t=s('./node_modules/core-js/modules/_wks.js')('species');e.exports=function(e){var o=d[e];n&&o&&!o[t]&&r.f(o,t,{configurable:!0,get:function(){return this}})}},"./node_modules/core-js/modules/_set-to-string-tag.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_object-dp.js').f,r=s('./node_modules/core-js/modules/_has.js'),n=s('./node_modules/core-js/modules/_wks.js')('toStringTag');e.exports=function(e,o,s){e&&!r(e=s?e:e.prototype,n)&&d(e,n,{configurable:!0,value:o})}},"./node_modules/core-js/modules/_shared-key.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_shared.js')('keys'),r=s('./node_modules/core-js/modules/_uid.js');e.exports=function(e){return d[e]||(d[e]=r(e))}},"./node_modules/core-js/modules/_shared.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_global.js'),r='__core-js_shared__',n=d[r]||(d[r]={});e.exports=function(e){return n[e]||(n[e]={})}},"./node_modules/core-js/modules/_species-constructor.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_an-object.js'),r=s('./node_modules/core-js/modules/_a-function.js'),n=s('./node_modules/core-js/modules/_wks.js')('species');e.exports=function(e,o){var s=d(e).constructor,t;return void 0===s||void 0==(t=d(s)[n])?o:r(t)}},"./node_modules/core-js/modules/_strict-method.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_fails.js');e.exports=function(e,o){return!!e&&d(function(){o?e.call(null,function(){},1):e.call(null)})}},"./node_modules/core-js/modules/_string-at.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_to-integer.js'),r=s('./node_modules/core-js/modules/_defined.js');e.exports=function(e){return function(o,n){var t=r(o)+'',s=d(n),u=t.length,l,m;return 0>s||s>=u?e?'':void 0:(l=t.charCodeAt(s),55296>l||56319<l||s+1===u||56320>(m=t.charCodeAt(s+1))||57343<m?e?t.charAt(s):l:e?t.slice(s,s+2):(l-55296<<10)+(m-56320)+65536)}}},"./node_modules/core-js/modules/_string-context.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_is-regexp.js'),r=s('./node_modules/core-js/modules/_defined.js');e.exports=function(e,o,s){if(d(o))throw TypeError('String#'+s+' doesn\'t accept regex!');return r(e)+''}},"./node_modules/core-js/modules/_string-html.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_fails.js'),n=s('./node_modules/core-js/modules/_defined.js'),t=/"/g,l=function(e,o,s,d){var r=n(e)+'',l='<'+o;return''!==s&&(l+=' '+s+'="'+(d+'').replace(t,'&quot;')+'"'),l+'>'+r+'</'+o+'>'};e.exports=function(e,o){var s={};s[e]=o(l),d(d.P+d.F*r(function(){var o=''[e]('"');return o!==o.toLowerCase()||3<o.split('"').length}),'String',s)}},"./node_modules/core-js/modules/_string-pad.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_to-length.js'),r=s('./node_modules/core-js/modules/_string-repeat.js'),n=s('./node_modules/core-js/modules/_defined.js');e.exports=function(e,o,s,t){var l=n(e)+'',u=l.length,m=void 0===s?' ':s+'',c=d(o);if(c<=u||''==m)return l;var a=c-u,i=r.call(m,Math.ceil(a/m.length));return i.length>a&&(i=i.slice(0,a)),t?i+l:l+i}},"./node_modules/core-js/modules/_string-repeat.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_to-integer.js'),r=s('./node_modules/core-js/modules/_defined.js');e.exports=function(e){var o=r(this)+'',s='',t=d(e);if(0>t||t==Infinity)throw RangeError('Count can\'t be negative');for(;0<t;(t>>>=1)&&(o+=o))1&t&&(s+=o);return s}},"./node_modules/core-js/modules/_string-trim.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_defined.js'),n=s('./node_modules/core-js/modules/_fails.js'),t=s('./node_modules/core-js/modules/_string-ws.js'),l='['+t+']',u='\u200B\x85',m=RegExp('^'+l+l+'*'),c=RegExp(l+l+'*$'),a=function(e,o,s){var r={},l=n(function(){return!!t[e]()||u[e]()!=u}),m=r[e]=l?o(i):t[e];s&&(r[s]=m),d(d.P+d.F*l,'String',r)},i=a.trim=function(e,o){return e=r(e)+'',1&o&&(e=e.replace(m,'')),2&o&&(e=e.replace(c,'')),e};e.exports=a},"./node_modules/core-js/modules/_string-ws.js":function(e){e.exports='\t\n\x0B\f\r \xA0\u1680\u180E\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF'},"./node_modules/core-js/modules/_task.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_ctx.js'),r=s('./node_modules/core-js/modules/_invoke.js'),n=s('./node_modules/core-js/modules/_html.js'),t=s('./node_modules/core-js/modules/_dom-create.js'),l=s('./node_modules/core-js/modules/_global.js'),u=l.process,m=l.setImmediate,c=l.clearImmediate,a=l.MessageChannel,j=0,_={},i='onreadystatechange',p=function(){var e=+this;if(_.hasOwnProperty(e)){var o=_[e];delete _[e],o()}},g=function(e){p.call(e.data)},h,f,y;m&&c||(m=function(e){for(var o=[],s=1;arguments.length>s;)o.push(arguments[s++]);return _[++j]=function(){r('function'==typeof e?e:Function(e),o)},h(j),j},c=function(e){delete _[e]},'process'==s('./node_modules/core-js/modules/_cof.js')(u)?h=function(e){u.nextTick(d(p,e,1))}:a?(f=new a,y=f.port2,f.port1.onmessage=g,h=d(y.postMessage,y,1)):l.addEventListener&&'function'==typeof postMessage&&!l.importScripts?(h=function(e){l.postMessage(e+'','*')},l.addEventListener('message',g,!1)):i in t('script')?h=function(e){n.appendChild(t('script'))[i]=function(){n.removeChild(this),p.call(e)}}:h=function(e){setTimeout(d(p,e,1),0)}),e.exports={set:m,clear:c}},"./node_modules/core-js/modules/_to-index.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_to-integer.js'),r=Math.max,n=Math.min;e.exports=function(e,o){return e=d(e),0>e?r(e+o,0):n(e,o)}},"./node_modules/core-js/modules/_to-integer.js":function(e){var o=Math.ceil,s=Math.floor;e.exports=function(e){return isNaN(e=+e)?0:(0<e?s:o)(e)}},"./node_modules/core-js/modules/_to-iobject.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_iobject.js'),r=s('./node_modules/core-js/modules/_defined.js');e.exports=function(e){return d(r(e))}},"./node_modules/core-js/modules/_to-length.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_to-integer.js'),r=Math.min;e.exports=function(e){return 0<e?r(d(e),9007199254740991):0}},"./node_modules/core-js/modules/_to-object.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_defined.js');e.exports=function(e){return Object(d(e))}},"./node_modules/core-js/modules/_to-primitive.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_is-object.js');e.exports=function(e,o){if(!d(e))return e;var s,r;if(o&&'function'==typeof(s=e.toString)&&!d(r=s.call(e)))return r;if('function'==typeof(s=e.valueOf)&&!d(r=s.call(e)))return r;if(!o&&'function'==typeof(s=e.toString)&&!d(r=s.call(e)))return r;throw TypeError('Can\'t convert object to primitive value')}},"./node_modules/core-js/modules/_typed-array.js":function(e,o,s){'use strict';if(s('./node_modules/core-js/modules/_descriptors.js')){var d=s('./node_modules/core-js/modules/_library.js'),r=s('./node_modules/core-js/modules/_global.js'),n=s('./node_modules/core-js/modules/_fails.js'),t=s('./node_modules/core-js/modules/_export.js'),l=s('./node_modules/core-js/modules/_typed.js'),u=s('./node_modules/core-js/modules/_typed-buffer.js'),m=s('./node_modules/core-js/modules/_ctx.js'),c=s('./node_modules/core-js/modules/_an-instance.js'),a=s('./node_modules/core-js/modules/_property-desc.js'),i=s('./node_modules/core-js/modules/_hide.js'),j=s('./node_modules/core-js/modules/_redefine-all.js'),_=s('./node_modules/core-js/modules/_to-integer.js'),p=s('./node_modules/core-js/modules/_to-length.js'),g=s('./node_modules/core-js/modules/_to-index.js'),h=s('./node_modules/core-js/modules/_to-primitive.js'),f=s('./node_modules/core-js/modules/_has.js'),y=s('./node_modules/core-js/modules/_same-value.js'),b=s('./node_modules/core-js/modules/_classof.js'),E=s('./node_modules/core-js/modules/_is-object.js'),x=s('./node_modules/core-js/modules/_to-object.js'),S=s('./node_modules/core-js/modules/_is-array-iter.js'),R=s('./node_modules/core-js/modules/_object-create.js'),A=s('./node_modules/core-js/modules/_object-gpo.js'),I=s('./node_modules/core-js/modules/_object-gopn.js').f,T=s('./node_modules/core-js/modules/core.get-iterator-method.js'),O=s('./node_modules/core-js/modules/_uid.js'),k=s('./node_modules/core-js/modules/_wks.js'),v=s('./node_modules/core-js/modules/_array-methods.js'),N=s('./node_modules/core-js/modules/_array-includes.js'),L=s('./node_modules/core-js/modules/_species-constructor.js'),P=s('./node_modules/core-js/modules/es6.array.iterator.js'),C=s('./node_modules/core-js/modules/_iterators.js'),w=s('./node_modules/core-js/modules/_iter-detect.js'),M=s('./node_modules/core-js/modules/_set-species.js'),F=s('./node_modules/core-js/modules/_array-fill.js'),D=s('./node_modules/core-js/modules/_array-copy-within.js'),G=s('./node_modules/core-js/modules/_object-dp.js'),U=s('./node_modules/core-js/modules/_object-gopd.js'),B=G.f,Y=U.f,W=r.RangeError,V=r.TypeError,z=r.Uint8Array,H='ArrayBuffer',$='Shared'+H,X='BYTES_PER_ELEMENT',q='prototype',K=Array[q],J=u.ArrayBuffer,Q=u.DataView,Z=v(0),ee=v(2),oe=v(3),se=v(4),de=v(5),re=v(6),ne=N(!0),te=N(!1),le=P.values,ue=P.keys,me=P.entries,ce=K.lastIndexOf,ae=K.reduce,ie=K.reduceRight,je=K.join,_e=K.sort,pe=K.slice,ge=K.toString,he=K.toLocaleString,fe=k('iterator'),ye=k('toStringTag'),be=O('typed_constructor'),Ee=O('def_constructor'),xe=l.CONSTR,Se=l.TYPED,Oe=l.VIEW,Re='Wrong length!',Ae=v(1,function(e,o){return Le(L(e,e[Ee]),o)}),Ie=n(function(){return 1===new z(new Uint16Array([1]).buffer)[0]}),Te=!!z&&!!z[q].set&&n(function(){new z(1).set({})}),ke=function(e,o){if(void 0===e)throw V(Re);var s=p(e);if(o&&!y(+e,s))throw W(Re);return s},ve=function(e,o){var s=_(e);if(0>s||s%o)throw W('Wrong offset!');return s},Ne=function(e){if(E(e)&&Se in e)return e;throw V(e+' is not a typed array!')},Le=function(e,o){if(!(E(e)&&be in e))throw V('It is not a typed array constructor!');return new e(o)},Pe=function(e,o){return Ce(L(e,e[Ee]),o)},Ce=function(e,o){for(var s=0,d=o.length,r=Le(e,d);d>s;)r[s]=o[s++];return r},we=function(e,o,s){B(e,o,{get:function(){return this._d[s]}})},Me=function(e){var o=x(e),s=arguments.length,d=1<s?arguments[1]:void 0,r=void 0!==d,n=T(o),t,l,u,c,a,i;if(void 0!=n&&!S(n)){for(i=n.call(o),u=[],t=0;!(a=i.next()).done;t++)u.push(a.value);o=u}for(r&&2<s&&(d=m(d,arguments[2],2)),t=0,l=p(o.length),c=Le(this,l);l>t;t++)c[t]=r?d(o[t],t):o[t];return c},Fe=function(){for(var e=0,o=arguments.length,s=Le(this,o);o>e;)s[e]=arguments[e++];return s},De=!!z&&n(function(){he.call(new z(1))}),Ge=function(){return he.apply(De?pe.call(Ne(this)):Ne(this),arguments)},Ue={copyWithin:function(e,o){return D.call(Ne(this),e,o,2<arguments.length?arguments[2]:void 0)},every:function(e){return se(Ne(this),e,1<arguments.length?arguments[1]:void 0)},fill:function(){return F.apply(Ne(this),arguments)},filter:function(e){return Pe(this,ee(Ne(this),e,1<arguments.length?arguments[1]:void 0))},find:function(e){return de(Ne(this),e,1<arguments.length?arguments[1]:void 0)},findIndex:function(e){return re(Ne(this),e,1<arguments.length?arguments[1]:void 0)},forEach:function(e){Z(Ne(this),e,1<arguments.length?arguments[1]:void 0)},indexOf:function(e){return te(Ne(this),e,1<arguments.length?arguments[1]:void 0)},includes:function(e){return ne(Ne(this),e,1<arguments.length?arguments[1]:void 0)},join:function(){return je.apply(Ne(this),arguments)},lastIndexOf:function(){return ce.apply(Ne(this),arguments)},map:function(e){return Ae(Ne(this),e,1<arguments.length?arguments[1]:void 0)},reduce:function(){return ae.apply(Ne(this),arguments)},reduceRight:function(){return ie.apply(Ne(this),arguments)},reverse:function(){for(var e=this,o=Ne(e).length,s=Math.floor(o/2),d=0,r;d<s;)r=e[d],e[d++]=e[--o],e[o]=r;return e},some:function(e){return oe(Ne(this),e,1<arguments.length?arguments[1]:void 0)},sort:function(e){return _e.call(Ne(this),e)},subarray:function(e,o){var s=Ne(this),d=s.length,r=g(e,d);return new(L(s,s[Ee]))(s.buffer,s.byteOffset+r*s.BYTES_PER_ELEMENT,p((void 0===o?d:g(o,d))-r))}},Be=function(e,o){return Pe(this,pe.call(Ne(this),e,o))},Ye=function(e){Ne(this);var o=ve(arguments[1],1),s=this.length,d=x(e),r=p(d.length),n=0;if(r+o>s)throw W(Re);for(;n<r;)this[o+n]=d[n++]},We={entries:function(){return me.call(Ne(this))},keys:function(){return ue.call(Ne(this))},values:function(){return le.call(Ne(this))}},Ve=function(e,o){return E(e)&&e[Se]&&'symbol'!=typeof o&&o in e&&+o+''==o+''},ze=function(e,o){return Ve(e,o=h(o,!0))?a(2,e[o]):Y(e,o)},He=function(e,o,s){return Ve(e,o=h(o,!0))&&E(s)&&f(s,'value')&&!f(s,'get')&&!f(s,'set')&&!s.configurable&&(!f(s,'writable')||s.writable)&&(!f(s,'enumerable')||s.enumerable)?(e[o]=s.value,e):B(e,o,s)};xe||(U.f=ze,G.f=He),t(t.S+t.F*!xe,'Object',{getOwnPropertyDescriptor:ze,defineProperty:He}),n(function(){ge.call({})})&&(ge=he=function(){return je.call(this)});var $e=j({},Ue);j($e,We),i($e,fe,We.values),j($e,{slice:Be,set:Ye,constructor:function(){},toString:ge,toLocaleString:Ge}),we($e,'buffer','b'),we($e,'byteOffset','o'),we($e,'byteLength','l'),we($e,'length','e'),B($e,ye,{get:function(){return this[Se]}}),e.exports=function(e,o,s,u){u=!!u;var m=e+(u?'Clamped':'')+'Array',a=r[m],j=a||{},_=a&&A(a),g=!a||!l.ABV,h={},f=a&&a[q],y=function(s,d){var r=s._d;return r.v['get'+e](d*o+r.o,Ie)},x=function(s,d,r){var n=s._d;u&&(r=0>(r=Math.round(r))?0:255<r?255:255&r),n.v['set'+e](d*o+n.o,r,Ie)},S=function(e,o){B(e,o,{get:function(){return y(this,o)},set:function(e){return x(this,o,e)},enumerable:!0})};g?(a=s(function(e,s,d,r){c(e,a,m,'_d');var n=0,t=0,l,u,j,_;if(!E(s))j=ke(s,!0),u=j*o,l=new J(u);else if(s instanceof J||(_=b(s))==H||_==$){l=s,t=ve(d,o);var g=s.byteLength;if(void 0===r){if(g%o)throw W(Re);if(u=g-t,0>u)throw W(Re)}else if(u=p(r)*o,u+t>g)throw W(Re);j=u/o}else return Se in s?Ce(a,s):Me.call(a,s);for(i(e,'_d',{b:l,o:t,l:u,e:j,v:new Q(l)});n<j;)S(e,n++)}),f=a[q]=R($e),i(f,'constructor',a)):!w(function(e){new a(null),new a(e)},!0)&&(a=s(function(e,s,d,r){c(e,a,m);var n;return E(s)?s instanceof J||(n=b(s))==H||n==$?void 0===r?void 0===d?new j(s):new j(s,ve(d,o)):new j(s,ve(d,o),r):Se in s?Ce(a,s):Me.call(a,s):new j(ke(s,'Uint8Array'!=m))}),Z(_===Function.prototype?I(j):I(j).concat(I(_)),function(e){e in a||i(a,e,j[e])}),a[q]=f,!d&&(f.constructor=a));var O=f[fe],T=!!O&&('values'==O.name||void 0==O.name),k=We.values;i(a,be,!0),i(f,Se,m),i(f,Oe,!0),i(f,Ee,a),(u?new a(1)[ye]!=m:!(ye in f))&&B(f,ye,{get:function(){return m}}),h[m]=a,t(t.G+t.W+t.F*(a!=j),h),t(t.S,m,{BYTES_PER_ELEMENT:o,from:Me,of:Fe}),X in f||i(f,X,o),t(t.P,m,Ue),M(m),t(t.P+t.F*Te,m,{set:Ye}),t(t.P+t.F*!T,m,We),t(t.P+t.F*(f.toString!=ge),m,{toString:ge}),t(t.P+t.F*n(function(){new a(1).slice()}),m,{slice:Be}),t(t.P+t.F*(n(function(){return[1,2].toLocaleString()!=new a([1,2]).toLocaleString()})||!n(function(){f.toLocaleString.call([1,2])})),m,{toLocaleString:Ge}),C[m]=T?O:k,d||T||i(f,fe,k)}}else e.exports=function(){}},"./node_modules/core-js/modules/_typed-buffer.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_global.js'),r=s('./node_modules/core-js/modules/_descriptors.js'),n=s('./node_modules/core-js/modules/_library.js'),t=s('./node_modules/core-js/modules/_typed.js'),l=s('./node_modules/core-js/modules/_hide.js'),u=s('./node_modules/core-js/modules/_redefine-all.js'),m=s('./node_modules/core-js/modules/_fails.js'),c=s('./node_modules/core-js/modules/_an-instance.js'),a=s('./node_modules/core-js/modules/_to-integer.js'),i=s('./node_modules/core-js/modules/_to-length.js'),_=s('./node_modules/core-js/modules/_object-gopn.js').f,p=s('./node_modules/core-js/modules/_object-dp.js').f,g=s('./node_modules/core-js/modules/_array-fill.js'),h=s('./node_modules/core-js/modules/_set-to-string-tag.js'),f='ArrayBuffer',y='DataView',b='prototype',E='Wrong length!',x='Wrong index!',S=d[f],O=d[y],R=d.Math,A=d.RangeError,I=d.Infinity,T=S,k=R.abs,v=R.pow,N=R.floor,L=R.log,P=R.LN2,C='buffer',w='byteLength',M='byteOffset',F=r?'_b':C,D=r?'_l':w,G=r?'_o':M,U=function(o,d,r){var n=Array(r),t=8*r-d-1,l=(1<<t)-1,u=l>>1,a=23===d?v(2,-24)-v(2,-77):0,j=0,i=0>o||0===o&&0>1/o?1:0,s,_,m;for(o=k(o),o!=o||o===I?(_=o==o?0:1,s=l):(s=N(L(o)/P),1>o*(m=v(2,-s))&&(s--,m*=2),o+=1<=s+u?a/m:a*v(2,1-u),2<=o*m&&(s++,m/=2),s+u>=l?(_=0,s=l):1<=s+u?(_=(o*m-1)*v(2,d),s+=u):(_=o*v(2,u-1)*v(2,d),s=0));8<=d;n[j++]=255&_,_/=256,d-=8);for(s=s<<d|_,t+=d;0<t;n[j++]=255&s,s/=256,t-=8);return n[--j]|=128*i,n},B=function(o,d,r){var n=8*r-d-1,t=(1<<n)-1,l=t>>1,u=n-7,c=r-1,a=o[c--],s=127&a,e;for(a>>=7;0<u;s=256*s+o[c],c--,u-=8);for(e=s&(1<<-u)-1,s>>=-u,u+=d;0<u;e=256*e+o[c],c--,u-=8);if(0===s)s=1-l;else{if(s===t)return e?NaN:a?-I:I;e+=v(2,d),s-=l}return(a?-1:1)*e*v(2,s-d)},Y=function(e){return e[3]<<24|e[2]<<16|e[1]<<8|e[0]},W=function(e){return[255&e]},V=function(e){return[255&e,255&e>>8]},z=function(e){return[255&e,255&e>>8,255&e>>16,255&e>>24]},H=function(e){return U(e,52,8)},$=function(e){return U(e,23,4)},X=function(e,o,s){p(e[b],o,{get:function(){return this[s]}})},q=function(e,o,s,d){var r=+s,n=a(r);if(r!=n||0>n||n+o>e[D])throw A(x);var t=e[F]._b,l=n+e[G],u=t.slice(l,l+o);return d?u:u.reverse()},K=function(e,o,s,d,r,n){var t=+s,l=a(t);if(t!=l||0>l||l+o>e[D])throw A(x);for(var u=e[F]._b,m=l+e[G],c=d(+r),j=0;j<o;j++)u[m+j]=c[n?j:o-j-1]},J=function(e,o){c(e,S,f);var s=+o,d=i(s);if(s!=d)throw A(E);return d};if(!t.ABV)S=function(e){var o=J(this,e);this._b=g.call(Array(o),0),this[D]=o},O=function(e,o,s){c(this,O,y),c(e,S,y);var d=e[D],r=a(o);if(0>r||r>d)throw A('Wrong offset!');if(s=void 0===s?d-r:i(s),r+s>d)throw A(E);this[F]=e,this[G]=r,this[D]=s},r&&(X(S,w,'_l'),X(O,C,'_b'),X(O,w,'_l'),X(O,M,'_o')),u(O[b],{getInt8:function(e){return q(this,1,e)[0]<<24>>24},getUint8:function(e){return q(this,1,e)[0]},getInt16:function(e){var o=q(this,2,e,arguments[1]);return(o[1]<<8|o[0])<<16>>16},getUint16:function(e){var o=q(this,2,e,arguments[1]);return o[1]<<8|o[0]},getInt32:function(e){return Y(q(this,4,e,arguments[1]))},getUint32:function(e){return Y(q(this,4,e,arguments[1]))>>>0},getFloat32:function(e){return B(q(this,4,e,arguments[1]),23,4)},getFloat64:function(e){return B(q(this,8,e,arguments[1]),52,8)},setInt8:function(e,o){K(this,1,e,W,o)},setUint8:function(e,o){K(this,1,e,W,o)},setInt16:function(e,o){K(this,2,e,V,o,arguments[2])},setUint16:function(e,o){K(this,2,e,V,o,arguments[2])},setInt32:function(e,o){K(this,4,e,z,o,arguments[2])},setUint32:function(e,o){K(this,4,e,z,o,arguments[2])},setFloat32:function(e,o){K(this,4,e,$,o,arguments[2])},setFloat64:function(e,o){K(this,8,e,H,o,arguments[2])}});else{if(!m(function(){new S})||!m(function(){new S(.5)})){S=function(e){return new T(J(this,e))};for(var Q=S[b]=T[b],Z=_(T),ee=0,j;Z.length>ee;)(j=Z[ee++])in S||l(S,j,T[j]);n||(Q.constructor=S)}var oe=new O(new S(2)),se=O[b].setInt8;oe.setInt8(0,2147483648),oe.setInt8(1,2147483649),(oe.getInt8(0)||!oe.getInt8(1))&&u(O[b],{setInt8:function(e,o){se.call(this,e,o<<24>>24)},setUint8:function(e,o){se.call(this,e,o<<24>>24)}},!0)}h(S,f),h(O,y),l(O[b],t.VIEW,!0),o[f]=S,o[y]=O},"./node_modules/core-js/modules/_typed.js":function(e,o,s){for(var d=s('./node_modules/core-js/modules/_global.js'),r=s('./node_modules/core-js/modules/_hide.js'),n=s('./node_modules/core-js/modules/_uid.js'),t=n('typed_array'),l=n('view'),u=!!(d.ArrayBuffer&&d.DataView),m=u,c=0,a=['Int8Array','Uint8Array','Uint8ClampedArray','Int16Array','Uint16Array','Int32Array','Uint32Array','Float32Array','Float64Array'],i;c<9;)(i=d[a[c++]])?(r(i.prototype,t,!0),r(i.prototype,l,!0)):m=!1;e.exports={ABV:u,CONSTR:m,TYPED:t,VIEW:l}},"./node_modules/core-js/modules/_uid.js":function(e){var o=0,s=Math.random();e.exports=function(e){return'Symbol('.concat(void 0===e?'':e,')_',(++o+s).toString(36))}},"./node_modules/core-js/modules/_wks-define.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_global.js'),r=s('./node_modules/core-js/modules/_core.js'),n=s('./node_modules/core-js/modules/_library.js'),t=s('./node_modules/core-js/modules/_wks-ext.js'),l=s('./node_modules/core-js/modules/_object-dp.js').f;e.exports=function(e){var o=r.Symbol||(r.Symbol=n?{}:d.Symbol||{});'_'==e.charAt(0)||e in o||l(o,e,{value:t.f(e)})}},"./node_modules/core-js/modules/_wks-ext.js":function(e,o,s){o.f=s('./node_modules/core-js/modules/_wks.js')},"./node_modules/core-js/modules/_wks.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_shared.js')('wks'),r=s('./node_modules/core-js/modules/_uid.js'),n=s('./node_modules/core-js/modules/_global.js').Symbol,t='function'==typeof n,l=e.exports=function(e){return d[e]||(d[e]=t&&n[e]||(t?n:r)('Symbol.'+e))};l.store=d},"./node_modules/core-js/modules/core.get-iterator-method.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_classof.js'),r=s('./node_modules/core-js/modules/_wks.js')('iterator'),n=s('./node_modules/core-js/modules/_iterators.js');e.exports=s('./node_modules/core-js/modules/_core.js').getIteratorMethod=function(e){if(void 0!=e)return e[r]||e['@@iterator']||n[d(e)]}},"./node_modules/core-js/modules/core.regexp.escape.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_replacer.js')(/[\\^$*+?.()|[\]{}]/g,'\\$&');d(d.S,'RegExp',{escape:function(e){return r(e)}})},"./node_modules/core-js/modules/es6.array.copy-within.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.P,'Array',{copyWithin:s('./node_modules/core-js/modules/_array-copy-within.js')}),s('./node_modules/core-js/modules/_add-to-unscopables.js')('copyWithin')},"./node_modules/core-js/modules/es6.array.every.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_array-methods.js')(4);d(d.P+d.F*!s('./node_modules/core-js/modules/_strict-method.js')([].every,!0),'Array',{every:function(e){return r(this,e,arguments[1])}})},"./node_modules/core-js/modules/es6.array.fill.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.P,'Array',{fill:s('./node_modules/core-js/modules/_array-fill.js')}),s('./node_modules/core-js/modules/_add-to-unscopables.js')('fill')},"./node_modules/core-js/modules/es6.array.filter.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_array-methods.js')(2);d(d.P+d.F*!s('./node_modules/core-js/modules/_strict-method.js')([].filter,!0),'Array',{filter:function(e){return r(this,e,arguments[1])}})},"./node_modules/core-js/modules/es6.array.find-index.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_array-methods.js')(6),n='findIndex',t=!0;n in[]&&[,][n](function(){t=!1}),d(d.P+d.F*t,'Array',{findIndex:function(e){return r(this,e,1<arguments.length?arguments[1]:void 0)}}),s('./node_modules/core-js/modules/_add-to-unscopables.js')(n)},"./node_modules/core-js/modules/es6.array.find.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_array-methods.js')(5),n='find',t=!0;n in[]&&[,][n](function(){t=!1}),d(d.P+d.F*t,'Array',{find:function(e){return r(this,e,1<arguments.length?arguments[1]:void 0)}}),s('./node_modules/core-js/modules/_add-to-unscopables.js')(n)},"./node_modules/core-js/modules/es6.array.for-each.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_array-methods.js')(0),n=s('./node_modules/core-js/modules/_strict-method.js')([].forEach,!0);d(d.P+d.F*!n,'Array',{forEach:function(e){return r(this,e,arguments[1])}})},"./node_modules/core-js/modules/es6.array.from.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_ctx.js'),r=s('./node_modules/core-js/modules/_export.js'),n=s('./node_modules/core-js/modules/_to-object.js'),t=s('./node_modules/core-js/modules/_iter-call.js'),l=s('./node_modules/core-js/modules/_is-array-iter.js'),u=s('./node_modules/core-js/modules/_to-length.js'),m=s('./node_modules/core-js/modules/_create-property.js'),c=s('./node_modules/core-js/modules/core.get-iterator-method.js');r(r.S+r.F*!s('./node_modules/core-js/modules/_iter-detect.js')(function(e){Array.from(e)}),'Array',{from:function(e){var o=n(e),s='function'==typeof this?this:Array,r=arguments.length,a=1<r?arguments[1]:void 0,i=void 0!==a,j=0,_=c(o),p,g,h,f;if(i&&(a=d(a,2<r?arguments[2]:void 0,2)),void 0!=_&&!(s==Array&&l(_)))for(f=_.call(o),g=new s;!(h=f.next()).done;j++)m(g,j,i?t(f,a,[h.value,j],!0):h.value);else for(p=u(o.length),g=new s(p);p>j;j++)m(g,j,i?a(o[j],j):o[j]);return g.length=j,g}})},"./node_modules/core-js/modules/es6.array.index-of.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_array-includes.js')(!1),n=[].indexOf,t=!!n&&0>1/[1].indexOf(1,-0);d(d.P+d.F*(t||!s('./node_modules/core-js/modules/_strict-method.js')(n)),'Array',{indexOf:function(e){return t?n.apply(this,arguments)||0:r(this,e,arguments[1])}})},"./node_modules/core-js/modules/es6.array.is-array.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.S,'Array',{isArray:s('./node_modules/core-js/modules/_is-array.js')})},"./node_modules/core-js/modules/es6.array.iterator.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_add-to-unscopables.js'),r=s('./node_modules/core-js/modules/_iter-step.js'),n=s('./node_modules/core-js/modules/_iterators.js'),t=s('./node_modules/core-js/modules/_to-iobject.js');e.exports=s('./node_modules/core-js/modules/_iter-define.js')(Array,'Array',function(e,o){this._t=t(e),this._i=0,this._k=o},function(){var e=this._t,o=this._k,s=this._i++;return!e||s>=e.length?(this._t=void 0,r(1)):'keys'==o?r(0,s):'values'==o?r(0,e[s]):r(0,[s,e[s]])},'values'),n.Arguments=n.Array,d('keys'),d('values'),d('entries')},"./node_modules/core-js/modules/es6.array.join.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_to-iobject.js'),n=[].join;d(d.P+d.F*(s('./node_modules/core-js/modules/_iobject.js')!=Object||!s('./node_modules/core-js/modules/_strict-method.js')(n)),'Array',{join:function(e){return n.call(r(this),void 0===e?',':e)}})},"./node_modules/core-js/modules/es6.array.last-index-of.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_to-iobject.js'),n=s('./node_modules/core-js/modules/_to-integer.js'),t=s('./node_modules/core-js/modules/_to-length.js'),l=[].lastIndexOf,u=!!l&&0>1/[1].lastIndexOf(1,-0);d(d.P+d.F*(u||!s('./node_modules/core-js/modules/_strict-method.js')(l)),'Array',{lastIndexOf:function(e){if(u)return l.apply(this,arguments)||0;var o=r(this),s=t(o.length),d=s-1;for(1<arguments.length&&(d=Math.min(d,n(arguments[1]))),0>d&&(d=s+d);0<=d;d--)if(d in o&&o[d]===e)return d||0;return-1}})},"./node_modules/core-js/modules/es6.array.map.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_array-methods.js')(1);d(d.P+d.F*!s('./node_modules/core-js/modules/_strict-method.js')([].map,!0),'Array',{map:function(e){return r(this,e,arguments[1])}})},"./node_modules/core-js/modules/es6.array.of.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_create-property.js');d(d.S+d.F*s('./node_modules/core-js/modules/_fails.js')(function(){function e(){}return!(Array.of.call(e)instanceof e)}),'Array',{of:function(){for(var e=0,o=arguments.length,s=new('function'==typeof this?this:Array)(o);o>e;)r(s,e,arguments[e++]);return s.length=o,s}})},"./node_modules/core-js/modules/es6.array.reduce-right.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_array-reduce.js');d(d.P+d.F*!s('./node_modules/core-js/modules/_strict-method.js')([].reduceRight,!0),'Array',{reduceRight:function(e){return r(this,e,arguments.length,arguments[1],!0)}})},"./node_modules/core-js/modules/es6.array.reduce.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_array-reduce.js');d(d.P+d.F*!s('./node_modules/core-js/modules/_strict-method.js')([].reduce,!0),'Array',{reduce:function(e){return r(this,e,arguments.length,arguments[1],!1)}})},"./node_modules/core-js/modules/es6.array.slice.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_html.js'),n=s('./node_modules/core-js/modules/_cof.js'),t=s('./node_modules/core-js/modules/_to-index.js'),l=s('./node_modules/core-js/modules/_to-length.js'),u=[].slice;d(d.P+d.F*s('./node_modules/core-js/modules/_fails.js')(function(){r&&u.call(r)}),'Array',{slice:function(e,o){var s=l(this.length),d=n(this);if(o=void 0===o?s:o,'Array'==d)return u.call(this,e,o);for(var r=t(e,s),m=t(o,s),c=l(m-r),a=Array(c),j=0;j<c;j++)a[j]='String'==d?this.charAt(r+j):this[r+j];return a}})},"./node_modules/core-js/modules/es6.array.some.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_array-methods.js')(3);d(d.P+d.F*!s('./node_modules/core-js/modules/_strict-method.js')([].some,!0),'Array',{some:function(e){return r(this,e,arguments[1])}})},"./node_modules/core-js/modules/es6.array.sort.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_a-function.js'),n=s('./node_modules/core-js/modules/_to-object.js'),t=s('./node_modules/core-js/modules/_fails.js'),l=[].sort,u=[1,2,3];d(d.P+d.F*(t(function(){u.sort(void 0)})||!t(function(){u.sort(null)})||!s('./node_modules/core-js/modules/_strict-method.js')(l)),'Array',{sort:function(e){return void 0===e?l.call(n(this)):l.call(n(this),r(e))}})},"./node_modules/core-js/modules/es6.array.species.js":function(e,o,s){s('./node_modules/core-js/modules/_set-species.js')('Array')},"./node_modules/core-js/modules/es6.date.now.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.S,'Date',{now:function(){return new Date().getTime()}})},"./node_modules/core-js/modules/es6.date.to-iso-string.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_fails.js'),n=Date.prototype.getTime,t=function(e){return 9<e?e:'0'+e};d(d.P+d.F*(r(function(){return'0385-07-25T07:06:39.999Z'!=new Date(-50000000000001).toISOString()})||!r(function(){new Date(NaN).toISOString()})),'Date',{toISOString:function(){if(!isFinite(n.call(this)))throw RangeError('Invalid time value');var e=this,o=e.getUTCFullYear(),d=e.getUTCMilliseconds(),r=0>o?'-':9999<o?'+':'';return r+('00000'+Math.abs(o)).slice(r?-6:-4)+'-'+t(e.getUTCMonth()+1)+'-'+t(e.getUTCDate())+'T'+t(e.getUTCHours())+':'+t(e.getUTCMinutes())+':'+t(e.getUTCSeconds())+'.'+(99<d?d:'0'+t(d))+'Z'}})},"./node_modules/core-js/modules/es6.date.to-json.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_to-object.js'),n=s('./node_modules/core-js/modules/_to-primitive.js');d(d.P+d.F*s('./node_modules/core-js/modules/_fails.js')(function(){return null!==new Date(NaN).toJSON()||1!==Date.prototype.toJSON.call({toISOString:function(){return 1}})}),'Date',{toJSON:function(){var e=r(this),o=n(e);return'number'!=typeof o||isFinite(o)?e.toISOString():null}})},"./node_modules/core-js/modules/es6.date.to-primitive.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_wks.js')('toPrimitive'),r=Date.prototype;d in r||s('./node_modules/core-js/modules/_hide.js')(r,d,s('./node_modules/core-js/modules/_date-to-primitive.js'))},"./node_modules/core-js/modules/es6.date.to-string.js":function(e,o,s){var d=Date.prototype,r='Invalid Date',n='toString',t=d[n],l=d.getTime;new Date(NaN)+''!=r&&s('./node_modules/core-js/modules/_redefine.js')(d,n,function(){var e=l.call(this);return e===e?t.call(this):r})},"./node_modules/core-js/modules/es6.function.bind.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.P,'Function',{bind:s('./node_modules/core-js/modules/_bind.js')})},"./node_modules/core-js/modules/es6.function.has-instance.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_is-object.js'),r=s('./node_modules/core-js/modules/_object-gpo.js'),n=s('./node_modules/core-js/modules/_wks.js')('hasInstance'),t=Function.prototype;n in t||s('./node_modules/core-js/modules/_object-dp.js').f(t,n,{value:function(e){if('function'!=typeof this||!d(e))return!1;if(!d(this.prototype))return e instanceof this;for(;e=r(e);)if(this.prototype===e)return!0;return!1}})},"./node_modules/core-js/modules/es6.function.name.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_object-dp.js').f,r=s('./node_modules/core-js/modules/_property-desc.js'),n=s('./node_modules/core-js/modules/_has.js'),t=Function.prototype,l=/^\s*function ([^ (]*)/,u='name',m=Object.isExtensible||function(){return!0};u in t||s('./node_modules/core-js/modules/_descriptors.js')&&d(t,u,{configurable:!0,get:function(){try{var e=this,o=(''+e).match(l)[1];return n(e,u)||!m(e)||d(e,u,r(5,o)),o}catch(o){return''}}})},"./node_modules/core-js/modules/es6.map.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_collection-strong.js');e.exports=s('./node_modules/core-js/modules/_collection.js')('Map',function(e){return function(){return e(this,0<arguments.length?arguments[0]:void 0)}},{get:function(e){var o=d.getEntry(this,e);return o&&o.v},set:function(e,o){return d.def(this,0===e?0:e,o)}},d,!0)},"./node_modules/core-js/modules/es6.math.acosh.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_math-log1p.js'),n=Math.sqrt,t=Math.acosh;d(d.S+d.F*!(t&&710==Math.floor(t(Number.MAX_VALUE))&&t(Infinity)==Infinity),'Math',{acosh:function(e){return 1>(e=+e)?NaN:94906265.62425156<e?Math.log(e)+Math.LN2:r(e-1+n(e-1)*n(e+1))}})},"./node_modules/core-js/modules/es6.math.asinh.js":function(e,o,s){function d(e){return isFinite(e=+e)&&0!=e?0>e?-d(-e):Math.log(e+Math.sqrt(e*e+1)):e}var r=s('./node_modules/core-js/modules/_export.js'),n=Math.asinh;r(r.S+r.F*!(n&&0<1/n(0)),'Math',{asinh:d})},"./node_modules/core-js/modules/es6.math.atanh.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=Math.atanh;d(d.S+d.F*!(r&&0>1/r(-0)),'Math',{atanh:function(e){return 0==(e=+e)?e:Math.log((1+e)/(1-e))/2}})},"./node_modules/core-js/modules/es6.math.cbrt.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_math-sign.js');d(d.S,'Math',{cbrt:function(e){return r(e=+e)*Math.pow(Math.abs(e),1/3)}})},"./node_modules/core-js/modules/es6.math.clz32.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.S,'Math',{clz32:function(e){return(e>>>=0)?31-Math.floor(Math.log(e+0.5)*Math.LOG2E):32}})},"./node_modules/core-js/modules/es6.math.cosh.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=Math.exp;d(d.S,'Math',{cosh:function(e){return(r(e=+e)+r(-e))/2}})},"./node_modules/core-js/modules/es6.math.expm1.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_math-expm1.js');d(d.S+d.F*(r!=Math.expm1),'Math',{expm1:r})},"./node_modules/core-js/modules/es6.math.fround.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_math-sign.js'),n=Math.pow,t=n(2,-52),l=n(2,-23),u=n(2,127)*(2-l),m=n(2,-126),c=function(e){return e+1/t-1/t};d(d.S,'Math',{fround:function(e){var o=Math.abs(e),s=r(e),d,n;return o<m?s*c(o/m/l)*m*l:(d=(1+l/t)*o,n=d-(d-o),n>u||n!=n?s*Infinity:s*n)}})},"./node_modules/core-js/modules/es6.math.hypot.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=Math.abs;d(d.S,'Math',{hypot:function(){for(var e=0,o=0,s=arguments.length,d=0,n,t;o<s;)n=r(arguments[o++]),d<n?(t=d/n,e=e*t*t+1,d=n):0<n?(t=n/d,e+=t*t):e+=n;return d==Infinity?Infinity:d*Math.sqrt(e)}})},"./node_modules/core-js/modules/es6.math.imul.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=Math.imul;d(d.S+d.F*s('./node_modules/core-js/modules/_fails.js')(function(){return-5!=r(4294967295,5)||2!=r.length}),'Math',{imul:function(e,o){var s=65535,d=+e,r=+o,n=s&d,t=s&r;return 0|n*t+((s&d>>>16)*t+n*(s&r>>>16)<<16>>>0)}})},"./node_modules/core-js/modules/es6.math.log10.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.S,'Math',{log10:function(e){return Math.log(e)/Math.LN10}})},"./node_modules/core-js/modules/es6.math.log1p.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.S,'Math',{log1p:s('./node_modules/core-js/modules/_math-log1p.js')})},"./node_modules/core-js/modules/es6.math.log2.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.S,'Math',{log2:function(e){return Math.log(e)/Math.LN2}})},"./node_modules/core-js/modules/es6.math.sign.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.S,'Math',{sign:s('./node_modules/core-js/modules/_math-sign.js')})},"./node_modules/core-js/modules/es6.math.sinh.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_math-expm1.js'),n=Math.exp;d(d.S+d.F*s('./node_modules/core-js/modules/_fails.js')(function(){return!0}),'Math',{sinh:function(e){return 1>Math.abs(e=+e)?(r(e)-r(-e))/2:(n(e-1)-n(-e-1))*(Math.E/2)}})},"./node_modules/core-js/modules/es6.math.tanh.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_math-expm1.js'),n=Math.exp;d(d.S,'Math',{tanh:function(e){var o=r(e=+e),s=r(-e);return o==Infinity?1:s==Infinity?-1:(o-s)/(n(e)+n(-e))}})},"./node_modules/core-js/modules/es6.math.trunc.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.S,'Math',{trunc:function(e){return(0<e?Math.floor:Math.ceil)(e)}})},"./node_modules/core-js/modules/es6.number.constructor.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_global.js'),r=s('./node_modules/core-js/modules/_has.js'),n=s('./node_modules/core-js/modules/_cof.js'),t=s('./node_modules/core-js/modules/_inherit-if-required.js'),u=s('./node_modules/core-js/modules/_to-primitive.js'),l=s('./node_modules/core-js/modules/_fails.js'),m=s('./node_modules/core-js/modules/_object-gopn.js').f,c=s('./node_modules/core-js/modules/_object-gopd.js').f,a=s('./node_modules/core-js/modules/_object-dp.js').f,_=s('./node_modules/core-js/modules/_string-trim.js').trim,i='Number',p=d[i],g=p,h=p.prototype,f=n(s('./node_modules/core-js/modules/_object-create.js')(h))==i,y='trim'in String.prototype,b=function(e){var o=u(e,!1);if('string'==typeof o&&2<o.length){o=y?o.trim():_(o,3);var s=o.charCodeAt(0),d,r,n;if(43===s||45===s){if(d=o.charCodeAt(2),88===d||120===d)return NaN;}else if(48===s){switch(o.charCodeAt(1)){case 66:case 98:r=2,n=49;break;case 79:case 111:r=8,n=55;break;default:return+o;}for(var t=o.slice(2),m=0,c=t.length,l;m<c;m++)if(l=t.charCodeAt(m),48>l||l>n)return NaN;return parseInt(t,r)}}return+o};if(!p(' 0o1')||!p('0b1')||p('+0x1')){p=function(e){var o=1>arguments.length?0:e,s=this;return s instanceof p&&(f?l(function(){h.valueOf.call(s)}):n(s)!=i)?t(new g(b(o)),s,p):b(o)};for(var E=s('./node_modules/core-js/modules/_descriptors.js')?m(g):['MAX_VALUE','MIN_VALUE','NaN','NEGATIVE_INFINITY','POSITIVE_INFINITY','EPSILON','isFinite','isInteger','isNaN','isSafeInteger','MAX_SAFE_INTEGER','MIN_SAFE_INTEGER','parseFloat','parseInt','isInteger'],x=0,j;E.length>x;x++)r(g,j=E[x])&&!r(p,j)&&a(p,j,c(g,j));p.prototype=h,h.constructor=p,s('./node_modules/core-js/modules/_redefine.js')(d,i,p)}},"./node_modules/core-js/modules/es6.number.epsilon.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.S,'Number',{EPSILON:2.220446049250313e-16})},"./node_modules/core-js/modules/es6.number.is-finite.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_global.js').isFinite;d(d.S,'Number',{isFinite:function(e){return'number'==typeof e&&r(e)}})},"./node_modules/core-js/modules/es6.number.is-integer.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.S,'Number',{isInteger:s('./node_modules/core-js/modules/_is-integer.js')})},"./node_modules/core-js/modules/es6.number.is-nan.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.S,'Number',{isNaN:function(e){return e!=e}})},"./node_modules/core-js/modules/es6.number.is-safe-integer.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_is-integer.js'),n=Math.abs;d(d.S,'Number',{isSafeInteger:function(e){return r(e)&&9007199254740991>=n(e)}})},"./node_modules/core-js/modules/es6.number.max-safe-integer.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.S,'Number',{MAX_SAFE_INTEGER:9007199254740991})},"./node_modules/core-js/modules/es6.number.min-safe-integer.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.S,'Number',{MIN_SAFE_INTEGER:-9007199254740991})},"./node_modules/core-js/modules/es6.number.parse-float.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_parse-float.js');d(d.S+d.F*(Number.parseFloat!=r),'Number',{parseFloat:r})},"./node_modules/core-js/modules/es6.number.parse-int.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_parse-int.js');d(d.S+d.F*(Number.parseInt!=r),'Number',{parseInt:r})},"./node_modules/core-js/modules/es6.number.to-fixed.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_to-integer.js'),n=s('./node_modules/core-js/modules/_a-number-value.js'),l=s('./node_modules/core-js/modules/_string-repeat.js'),t=1 .toFixed,u=Math.floor,m=[0,0,0,0,0,0],c='Number.toFixed: incorrect invocation!',a='0',i=function(e,o){for(var s=-1,d=o;6>++s;)d+=e*m[s],m[s]=d%1e7,d=u(d/1e7)},_=function(e){for(var o=6,s=0;0<=--o;)s+=m[o],m[o]=u(s/e),s=1e7*(s%e)},p=function(){for(var e=6,o='';0<=--e;)if(''!=o||0==e||0!==m[e]){var s=m[e]+'';o=''==o?s:o+l.call(a,7-s.length)+s}return o},g=function(e,o,s){return 0===o?s:1==o%2?g(e,o-1,s*e):g(e*e,o/2,s)},h=function(e){for(var o=0,s=e;4096<=s;)o+=12,s/=4096;for(;2<=s;)o+=1,s/=2;return o};d(d.P+d.F*('0.000'!==8e-5.toFixed(3)||'1'!==0.9.toFixed(0)||'1.25'!==1.255.toFixed(2)||'1000000000000000128'!==1000000000000000100 .toFixed(0)||!s('./node_modules/core-js/modules/_fails.js')(function(){t.call({})})),'Number',{toFixed:function(o){var d=n(this,c),t=r(o),u='',s=a,m,f,y,j;if(0>t||20<t)throw RangeError(c);if(d!=d)return'NaN';if(-1e21>=d||1e21<=d)return d+'';if(0>d&&(u='-',d=-d),1e-21<d)if(m=h(d*g(2,69,1))-69,f=0>m?d*g(2,-m,1):d/g(2,m,1),f*=4503599627370496,m=52-m,0<m){for(i(0,f),y=t;7<=y;)i(1e7,0),y-=7;for(i(g(10,y,1),0),y=m-1;23<=y;)_(8388608),y-=23;_(1<<y),i(1,1),_(2),s=p()}else i(0,f),i(1<<-m,0),s=p()+l.call(a,t);return 0<t?(j=s.length,s=u+(j<=t?'0.'+l.call(a,t-j)+s:s.slice(0,j-t)+'.'+s.slice(j-t))):s=u+s,s}})},"./node_modules/core-js/modules/es6.number.to-precision.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_fails.js'),n=s('./node_modules/core-js/modules/_a-number-value.js'),t=1 .toPrecision;d(d.P+d.F*(r(function(){return'1'!==t.call(1,void 0)})||!r(function(){t.call({})})),'Number',{toPrecision:function(e){var o=n(this,'Number#toPrecision: incorrect invocation!');return void 0===e?t.call(o):t.call(o,e)}})},"./node_modules/core-js/modules/es6.object.assign.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.S+d.F,'Object',{assign:s('./node_modules/core-js/modules/_object-assign.js')})},"./node_modules/core-js/modules/es6.object.create.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.S,'Object',{create:s('./node_modules/core-js/modules/_object-create.js')})},"./node_modules/core-js/modules/es6.object.define-properties.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.S+d.F*!s('./node_modules/core-js/modules/_descriptors.js'),'Object',{defineProperties:s('./node_modules/core-js/modules/_object-dps.js')})},"./node_modules/core-js/modules/es6.object.define-property.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.S+d.F*!s('./node_modules/core-js/modules/_descriptors.js'),'Object',{defineProperty:s('./node_modules/core-js/modules/_object-dp.js').f})},"./node_modules/core-js/modules/es6.object.freeze.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_is-object.js'),r=s('./node_modules/core-js/modules/_meta.js').onFreeze;s('./node_modules/core-js/modules/_object-sap.js')('freeze',function(e){return function(o){return e&&d(o)?e(r(o)):o}})},"./node_modules/core-js/modules/es6.object.get-own-property-descriptor.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_to-iobject.js'),r=s('./node_modules/core-js/modules/_object-gopd.js').f;s('./node_modules/core-js/modules/_object-sap.js')('getOwnPropertyDescriptor',function(){return function(e,o){return r(d(e),o)}})},"./node_modules/core-js/modules/es6.object.get-own-property-names.js":function(e,o,s){s('./node_modules/core-js/modules/_object-sap.js')('getOwnPropertyNames',function(){return s('./node_modules/core-js/modules/_object-gopn-ext.js').f})},"./node_modules/core-js/modules/es6.object.get-prototype-of.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_to-object.js'),r=s('./node_modules/core-js/modules/_object-gpo.js');s('./node_modules/core-js/modules/_object-sap.js')('getPrototypeOf',function(){return function(e){return r(d(e))}})},"./node_modules/core-js/modules/es6.object.is-extensible.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_is-object.js');s('./node_modules/core-js/modules/_object-sap.js')('isExtensible',function(e){return function(o){return!!d(o)&&(!e||e(o))}})},"./node_modules/core-js/modules/es6.object.is-frozen.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_is-object.js');s('./node_modules/core-js/modules/_object-sap.js')('isFrozen',function(e){return function(o){return!d(o)||!!e&&e(o)}})},"./node_modules/core-js/modules/es6.object.is-sealed.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_is-object.js');s('./node_modules/core-js/modules/_object-sap.js')('isSealed',function(e){return function(o){return!d(o)||!!e&&e(o)}})},"./node_modules/core-js/modules/es6.object.is.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.S,'Object',{is:s('./node_modules/core-js/modules/_same-value.js')})},"./node_modules/core-js/modules/es6.object.keys.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_to-object.js'),r=s('./node_modules/core-js/modules/_object-keys.js');s('./node_modules/core-js/modules/_object-sap.js')('keys',function(){return function(e){return r(d(e))}})},"./node_modules/core-js/modules/es6.object.prevent-extensions.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_is-object.js'),r=s('./node_modules/core-js/modules/_meta.js').onFreeze;s('./node_modules/core-js/modules/_object-sap.js')('preventExtensions',function(e){return function(o){return e&&d(o)?e(r(o)):o}})},"./node_modules/core-js/modules/es6.object.seal.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_is-object.js'),r=s('./node_modules/core-js/modules/_meta.js').onFreeze;s('./node_modules/core-js/modules/_object-sap.js')('seal',function(e){return function(o){return e&&d(o)?e(r(o)):o}})},"./node_modules/core-js/modules/es6.object.set-prototype-of.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.S,'Object',{setPrototypeOf:s('./node_modules/core-js/modules/_set-proto.js').set})},"./node_modules/core-js/modules/es6.object.to-string.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_classof.js');({})[s('./node_modules/core-js/modules/_wks.js')('toStringTag')]='z',s('./node_modules/core-js/modules/_redefine.js')(Object.prototype,'toString',function(){return'[object '+d(this)+']'},!0)},"./node_modules/core-js/modules/es6.parse-float.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_parse-float.js');d(d.G+d.F*(parseFloat!=r),{parseFloat:r})},"./node_modules/core-js/modules/es6.parse-int.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_parse-int.js');d(d.G+d.F*(parseInt!=r),{parseInt:r})},"./node_modules/core-js/modules/es6.promise.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_library.js'),r=s('./node_modules/core-js/modules/_global.js'),n=s('./node_modules/core-js/modules/_ctx.js'),t=s('./node_modules/core-js/modules/_classof.js'),l=s('./node_modules/core-js/modules/_export.js'),u=s('./node_modules/core-js/modules/_is-object.js'),m=s('./node_modules/core-js/modules/_a-function.js'),c=s('./node_modules/core-js/modules/_an-instance.js'),a=s('./node_modules/core-js/modules/_for-of.js'),i=s('./node_modules/core-js/modules/_species-constructor.js'),j=s('./node_modules/core-js/modules/_task.js').set,_=s('./node_modules/core-js/modules/_microtask.js')(),p='Promise',g=r.TypeError,h=r.process,f=r[p],h=r.process,y='process'==t(h),b=function(){},E=!!function(){try{var e=f.resolve(1),o=(e.constructor={})[s('./node_modules/core-js/modules/_wks.js')('species')]=function(e){e(b,b)};return(y||'function'==typeof PromiseRejectionEvent)&&e.then(b)instanceof o}catch(o){}}(),S=function(e,o){return e===o||e===f&&o===C},x=function(e){var o;return u(e)&&'function'==typeof(o=e.then)&&o},O=function(e){return S(f,e)?new R(e):new w(e)},R=w=function(e){var o,s;this.promise=new e(function(e,d){if(void 0!=o||void 0!=s)throw g('Bad Promise constructor');o=e,s=d}),this.resolve=m(o),this.reject=m(s)},A=function(e){try{e()}catch(o){return{error:o}}},I=function(e,o){if(!e._n){e._n=!0;var s=e._c;_(function(){for(var d=e._v,r=1==e._s,n=0,t=function(o){var s=r?o.ok:o.fail,n=o.resolve,t=o.reject,l=o.domain,u,m;try{s?(!r&&(2==e._h&&v(e),e._h=1),!0===s?u=d:(l&&l.enter(),u=s(d),l&&l.exit()),u===o.promise?t(g('Promise-chain cycle')):(m=x(u))?m.call(u,n,t):n(u)):t(d)}catch(o){t(o)}};s.length>n;)t(s[n++]);e._c=[],e._n=!1,o&&!e._h&&T(e)})}},T=function(e){j.call(r,function(){var o=e._v,s,d,n;if(k(e)&&(s=A(function(){y?h.emit('unhandledRejection',o,e):(d=r.onunhandledrejection)?d({promise:e,reason:o}):(n=r.console)&&n.error&&n.error('Unhandled promise rejection',o)}),e._h=y||k(e)?2:1),e._a=void 0,s)throw s.error})},k=function(e){if(1==e._h)return!1;for(var o=e._a||e._c,s=0,d;o.length>s;)if(d=o[s++],d.fail||!k(d.promise))return!1;return!0},v=function(e){j.call(r,function(){var o;y?h.emit('rejectionHandled',e):(o=r.onrejectionhandled)&&o({promise:e,reason:e._v})})},N=function(e){var o=this;o._d||(o._d=!0,o=o._w||o,o._v=e,o._s=2,!o._a&&(o._a=o._c.slice()),I(o,!0))},L=function(e){var o=this,s;if(!o._d){o._d=!0,o=o._w||o;try{if(o===e)throw g('Promise can\'t be resolved itself');(s=x(e))?_(function(){var d={_w:o,_d:!1};try{s.call(e,n(L,d,1),n(N,d,1))}catch(o){N.call(d,o)}}):(o._v=e,o._s=1,I(o,!1))}catch(s){N.call({_w:o,_d:!1},s)}}},P,w,C;E||(f=function(e){c(this,f,p,'_h'),m(e),P.call(this);try{e(n(L,this,1),n(N,this,1))}catch(e){N.call(this,e)}},P=function(){this._c=[],this._a=void 0,this._s=0,this._d=!1,this._v=void 0,this._h=0,this._n=!1},P.prototype=s('./node_modules/core-js/modules/_redefine-all.js')(f.prototype,{then:function(e,o){var s=O(i(this,f));return s.ok='function'!=typeof e||e,s.fail='function'==typeof o&&o,s.domain=y?h.domain:void 0,this._c.push(s),this._a&&this._a.push(s),this._s&&I(this,!1),s.promise},catch:function(e){return this.then(void 0,e)}}),R=function(){var e=new P;this.promise=e,this.resolve=n(L,e,1),this.reject=n(N,e,1)}),l(l.G+l.W+l.F*!E,{Promise:f}),s('./node_modules/core-js/modules/_set-to-string-tag.js')(f,p),s('./node_modules/core-js/modules/_set-species.js')(p),C=s('./node_modules/core-js/modules/_core.js')[p],l(l.S+l.F*!E,p,{reject:function(e){var o=O(this),s=o.reject;return s(e),o.promise}}),l(l.S+l.F*(d||!E),p,{resolve:function(e){if(e instanceof f&&S(e.constructor,this))return e;var o=O(this),s=o.resolve;return s(e),o.promise}}),l(l.S+l.F*!(E&&s('./node_modules/core-js/modules/_iter-detect.js')(function(e){f.all(e)['catch'](b)})),p,{all:function(e){var o=this,s=O(o),d=s.resolve,r=s.reject,n=A(function(){var s=[],n=0,t=1;a(e,!1,function(e){var l=n++,u=!1;s.push(void 0),t++,o.resolve(e).then(function(e){u||(u=!0,s[l]=e,--t||d(s))},r)}),--t||d(s)});return n&&r(n.error),s.promise},race:function(e){var o=this,s=O(o),d=s.reject,r=A(function(){a(e,!1,function(e){o.resolve(e).then(s.resolve,d)})});return r&&d(r.error),s.promise}})},"./node_modules/core-js/modules/es6.reflect.apply.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_a-function.js'),n=s('./node_modules/core-js/modules/_an-object.js'),t=(s('./node_modules/core-js/modules/_global.js').Reflect||{}).apply,l=Function.apply;d(d.S+d.F*!s('./node_modules/core-js/modules/_fails.js')(function(){t(function(){})}),'Reflect',{apply:function(e,o,s){var d=r(e),u=n(s);return t?t(d,o,u):l.call(d,o,u)}})},"./node_modules/core-js/modules/es6.reflect.construct.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_object-create.js'),n=s('./node_modules/core-js/modules/_a-function.js'),t=s('./node_modules/core-js/modules/_an-object.js'),l=s('./node_modules/core-js/modules/_is-object.js'),u=s('./node_modules/core-js/modules/_fails.js'),m=s('./node_modules/core-js/modules/_bind.js'),c=(s('./node_modules/core-js/modules/_global.js').Reflect||{}).construct,a=u(function(){function e(){}return!(c(function(){},[],e)instanceof e)}),i=!u(function(){c(function(){})});d(d.S+d.F*(a||i),'Reflect',{construct:function(e,o){n(e),t(o);var s=3>arguments.length?e:n(arguments[2]);if(i&&!a)return c(e,o,s);if(e==s){switch(o.length){case 0:return new e;case 1:return new e(o[0]);case 2:return new e(o[0],o[1]);case 3:return new e(o[0],o[1],o[2]);case 4:return new e(o[0],o[1],o[2],o[3]);}var d=[null];return d.push.apply(d,o),new(m.apply(e,d))}var u=s.prototype,j=r(l(u)?u:Object.prototype),_=Function.apply.call(e,j,o);return l(_)?_:j}})},"./node_modules/core-js/modules/es6.reflect.define-property.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_object-dp.js'),r=s('./node_modules/core-js/modules/_export.js'),n=s('./node_modules/core-js/modules/_an-object.js'),t=s('./node_modules/core-js/modules/_to-primitive.js');r(r.S+r.F*s('./node_modules/core-js/modules/_fails.js')(function(){Reflect.defineProperty(d.f({},1,{value:1}),1,{value:2})}),'Reflect',{defineProperty:function(e,o,s){n(e),o=t(o,!0),n(s);try{return d.f(e,o,s),!0}catch(o){return!1}}})},"./node_modules/core-js/modules/es6.reflect.delete-property.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_object-gopd.js').f,n=s('./node_modules/core-js/modules/_an-object.js');d(d.S,'Reflect',{deleteProperty:function(e,o){var s=r(n(e),o);return s&&!s.configurable?!1:delete e[o]}})},"./node_modules/core-js/modules/es6.reflect.enumerate.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_an-object.js'),n=function(e){this._t=r(e),this._i=0;var o=this._k=[],s;for(s in e)o.push(s)};s('./node_modules/core-js/modules/_iter-create.js')(n,'Object',function(){var e=this,o=e._k,s;do if(e._i>=o.length)return{value:void 0,done:!0};while(!((s=o[e._i++])in e._t));return{value:s,done:!1}}),d(d.S,'Reflect',{enumerate:function(e){return new n(e)}})},"./node_modules/core-js/modules/es6.reflect.get-own-property-descriptor.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_object-gopd.js'),r=s('./node_modules/core-js/modules/_export.js'),n=s('./node_modules/core-js/modules/_an-object.js');r(r.S,'Reflect',{getOwnPropertyDescriptor:function(e,o){return d.f(n(e),o)}})},"./node_modules/core-js/modules/es6.reflect.get-prototype-of.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_object-gpo.js'),n=s('./node_modules/core-js/modules/_an-object.js');d(d.S,'Reflect',{getPrototypeOf:function(e){return r(n(e))}})},"./node_modules/core-js/modules/es6.reflect.get.js":function(e,o,s){function d(e,o){var s=3>arguments.length?e:arguments[2],l,c;return m(e)===s?e[o]:(l=r.f(e,o))?t(l,'value')?l.value:void 0===l.get?void 0:l.get.call(s):u(c=n(e))?d(c,o,s):void 0}var r=s('./node_modules/core-js/modules/_object-gopd.js'),n=s('./node_modules/core-js/modules/_object-gpo.js'),t=s('./node_modules/core-js/modules/_has.js'),l=s('./node_modules/core-js/modules/_export.js'),u=s('./node_modules/core-js/modules/_is-object.js'),m=s('./node_modules/core-js/modules/_an-object.js');l(l.S,'Reflect',{get:d})},"./node_modules/core-js/modules/es6.reflect.has.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.S,'Reflect',{has:function(e,o){return o in e}})},"./node_modules/core-js/modules/es6.reflect.is-extensible.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_an-object.js'),n=Object.isExtensible;d(d.S,'Reflect',{isExtensible:function(e){return r(e),!n||n(e)}})},"./node_modules/core-js/modules/es6.reflect.own-keys.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.S,'Reflect',{ownKeys:s('./node_modules/core-js/modules/_own-keys.js')})},"./node_modules/core-js/modules/es6.reflect.prevent-extensions.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_an-object.js'),n=Object.preventExtensions;d(d.S,'Reflect',{preventExtensions:function(e){r(e);try{return n&&n(e),!0}catch(o){return!1}}})},"./node_modules/core-js/modules/es6.reflect.set-prototype-of.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_set-proto.js');r&&d(d.S,'Reflect',{setPrototypeOf:function(e,o){r.check(e,o);try{return r.set(e,o),!0}catch(o){return!1}}})},"./node_modules/core-js/modules/es6.reflect.set.js":function(e,o,s){function d(e,o,s){var u=4>arguments.length?e:arguments[3],i=n.f(c(e),o),j,_;if(!i){if(a(_=t(e)))return d(_,o,s,u);i=m(0)}return l(i,'value')?!1!==i.writable&&a(u)&&(j=n.f(u,o)||m(0),j.value=s,r.f(u,o,j),!0):void 0!==i.set&&(i.set.call(u,s),!0)}var r=s('./node_modules/core-js/modules/_object-dp.js'),n=s('./node_modules/core-js/modules/_object-gopd.js'),t=s('./node_modules/core-js/modules/_object-gpo.js'),l=s('./node_modules/core-js/modules/_has.js'),u=s('./node_modules/core-js/modules/_export.js'),m=s('./node_modules/core-js/modules/_property-desc.js'),c=s('./node_modules/core-js/modules/_an-object.js'),a=s('./node_modules/core-js/modules/_is-object.js');u(u.S,'Reflect',{set:d})},"./node_modules/core-js/modules/es6.regexp.constructor.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_global.js'),r=s('./node_modules/core-js/modules/_inherit-if-required.js'),n=s('./node_modules/core-js/modules/_object-dp.js').f,t=s('./node_modules/core-js/modules/_object-gopn.js').f,l=s('./node_modules/core-js/modules/_is-regexp.js'),u=s('./node_modules/core-js/modules/_flags.js'),m=d.RegExp,c=m,a=m.prototype,j=/a/g,_=/a/g,g=new m(j)!==j;if(s('./node_modules/core-js/modules/_descriptors.js')&&(!g||s('./node_modules/core-js/modules/_fails.js')(function(){return _[s('./node_modules/core-js/modules/_wks.js')('match')]=!1,m(j)!=j||m(_)==_||'/a/i'!=m(j,'i')}))){m=function(e,o){var s=this instanceof m,d=l(e),n=void 0===o;return!s&&d&&e.constructor===m&&n?e:r(g?new c(d&&!n?e.source:e,o):c((d=e instanceof m)?e.source:e,d&&n?u.call(e):o),s?this:a,m)};for(var p=function(e){(e in m)||n(m,e,{configurable:!0,get:function(){return c[e]},set:function(o){c[e]=o}})},h=t(c),f=0;h.length>f;)p(h[f++]);a.constructor=m,m.prototype=a,s('./node_modules/core-js/modules/_redefine.js')(d,'RegExp',m)}s('./node_modules/core-js/modules/_set-species.js')('RegExp')},"./node_modules/core-js/modules/es6.regexp.flags.js":function(e,o,s){s('./node_modules/core-js/modules/_descriptors.js')&&'g'!=/./g.flags&&s('./node_modules/core-js/modules/_object-dp.js').f(RegExp.prototype,'flags',{configurable:!0,get:s('./node_modules/core-js/modules/_flags.js')})},"./node_modules/core-js/modules/es6.regexp.match.js":function(e,o,s){s('./node_modules/core-js/modules/_fix-re-wks.js')('match',1,function(e,o,s){return[function(s){'use strict';var d=e(this),r=void 0==s?void 0:s[o];return void 0===r?new RegExp(s)[o](d+''):r.call(s,d)},s]})},"./node_modules/core-js/modules/es6.regexp.replace.js":function(e,o,s){s('./node_modules/core-js/modules/_fix-re-wks.js')('replace',2,function(e,o,s){return[function(d,r){'use strict';var n=e(this),t=void 0==d?void 0:d[o];return void 0===t?s.call(n+'',d,r):t.call(d,n,r)},s]})},"./node_modules/core-js/modules/es6.regexp.search.js":function(e,o,s){s('./node_modules/core-js/modules/_fix-re-wks.js')('search',1,function(e,o,s){return[function(s){'use strict';var d=e(this),r=void 0==s?void 0:s[o];return void 0===r?new RegExp(s)[o](d+''):r.call(s,d)},s]})},"./node_modules/core-js/modules/es6.regexp.split.js":function(e,o,s){s('./node_modules/core-js/modules/_fix-re-wks.js')('split',2,function(e,o,d){'use strict';var r=s('./node_modules/core-js/modules/_is-regexp.js'),n=d,t=[].push,l='split',u='length',m='lastIndex';if('c'=='abbc'[l](/(b)*/)[1]||4!='test'[l](/(?:)/,-1)[u]||2!='ab'[l](/(?:ab)*/)[u]||4!='.'[l](/(.?)(.?)/)[u]||1<'.'[l](/()()/)[u]||''[l](/.?/)[u]){var c=void 0===/()??/.exec('')[1];d=function(e,o){var s=this+'';if(void 0===e&&0===o)return[];if(!r(e))return n.call(s,e,o);var d=[],l=(e.ignoreCase?'i':'')+(e.multiline?'m':'')+(e.unicode?'u':'')+(e.sticky?'y':''),a=0,j=void 0===o?4294967295:o>>>0,_=new RegExp(e.source,l+'g'),p,g,h,f,y;for(c||(p=new RegExp('^'+_.source+'$(?!\\s)',l));(g=_.exec(s))&&(h=g.index+g[0][u],!(h>a&&(d.push(s.slice(a,g.index)),!c&&1<g[u]&&g[0].replace(p,function(){for(y=1;y<arguments[u]-2;y++)void 0===arguments[y]&&(g[y]=void 0)}),1<g[u]&&g.index<s[u]&&t.apply(d,g.slice(1)),f=g[0][u],a=h,d[u]>=j)));)_[m]===g.index&&_[m]++;return a===s[u]?(f||!_.test(''))&&d.push(''):d.push(s.slice(a)),d[u]>j?d.slice(0,j):d}}else'0'[l](void 0,0)[u]&&(d=function(e,o){return void 0===e&&0===o?[]:n.call(this,e,o)});return[function(s,r){var n=e(this),t=void 0==s?void 0:s[o];return void 0===t?d.call(n+'',s,r):t.call(s,n,r)},d]})},"./node_modules/core-js/modules/es6.regexp.to-string.js":function(e,o,s){'use strict';s('./node_modules/core-js/modules/es6.regexp.flags.js');var d=s('./node_modules/core-js/modules/_an-object.js'),r=s('./node_modules/core-js/modules/_flags.js'),n=s('./node_modules/core-js/modules/_descriptors.js'),t='toString',l=/./[t],u=function(e){s('./node_modules/core-js/modules/_redefine.js')(RegExp.prototype,t,e,!0)};s('./node_modules/core-js/modules/_fails.js')(function(){return'/a/b'!=l.call({source:'a',flags:'b'})})?u(function(){var e=d(this);return'/'.concat(e.source,'/','flags'in e?e.flags:!n&&e instanceof RegExp?r.call(e):void 0)}):l.name!=t&&u(function(){return l.call(this)})},"./node_modules/core-js/modules/es6.set.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_collection-strong.js');e.exports=s('./node_modules/core-js/modules/_collection.js')('Set',function(e){return function(){return e(this,0<arguments.length?arguments[0]:void 0)}},{add:function(e){return d.def(this,e=0===e?0:e,e)}},d)},"./node_modules/core-js/modules/es6.string.anchor.js":function(e,o,s){'use strict';s('./node_modules/core-js/modules/_string-html.js')('anchor',function(e){return function(o){return e(this,'a','name',o)}})},"./node_modules/core-js/modules/es6.string.big.js":function(e,o,s){'use strict';s('./node_modules/core-js/modules/_string-html.js')('big',function(e){return function(){return e(this,'big','','')}})},"./node_modules/core-js/modules/es6.string.blink.js":function(e,o,s){'use strict';s('./node_modules/core-js/modules/_string-html.js')('blink',function(e){return function(){return e(this,'blink','','')}})},"./node_modules/core-js/modules/es6.string.bold.js":function(e,o,s){'use strict';s('./node_modules/core-js/modules/_string-html.js')('bold',function(e){return function(){return e(this,'b','','')}})},"./node_modules/core-js/modules/es6.string.code-point-at.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_string-at.js')(!1);d(d.P,'String',{codePointAt:function(e){return r(this,e)}})},"./node_modules/core-js/modules/es6.string.ends-with.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_to-length.js'),n=s('./node_modules/core-js/modules/_string-context.js'),t='endsWith',l=''[t];d(d.P+d.F*s('./node_modules/core-js/modules/_fails-is-regexp.js')(t),'String',{endsWith:function(e){var o=n(this,e,t),s=1<arguments.length?arguments[1]:void 0,d=r(o.length),l=void 0===s?d:Math.min(r(s),d),u=e+'';return o.slice(l-u.length,l)===u}})},"./node_modules/core-js/modules/es6.string.fixed.js":function(e,o,s){'use strict';s('./node_modules/core-js/modules/_string-html.js')('fixed',function(e){return function(){return e(this,'tt','','')}})},"./node_modules/core-js/modules/es6.string.fontcolor.js":function(e,o,s){'use strict';s('./node_modules/core-js/modules/_string-html.js')('fontcolor',function(e){return function(o){return e(this,'font','color',o)}})},"./node_modules/core-js/modules/es6.string.fontsize.js":function(e,o,s){'use strict';s('./node_modules/core-js/modules/_string-html.js')('fontsize',function(e){return function(o){return e(this,'font','size',o)}})},"./node_modules/core-js/modules/es6.string.from-code-point.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_to-index.js'),n=String.fromCharCode,t=String.fromCodePoint;d(d.S+d.F*(!!t&&1!=t.length),'String',{fromCodePoint:function(){for(var e=[],o=arguments.length,s=0,d;o>s;){if(d=+arguments[s++],r(d,1114111)!==d)throw RangeError(d+' is not a valid code point');e.push(65536>d?n(d):n(((d-=65536)>>10)+55296,d%1024+56320))}return e.join('')}})},"./node_modules/core-js/modules/es6.string.includes.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_string-context.js'),n='includes';d(d.P+d.F*s('./node_modules/core-js/modules/_fails-is-regexp.js')(n),'String',{includes:function(e){return!!~r(this,e,n).indexOf(e,1<arguments.length?arguments[1]:void 0)}})},"./node_modules/core-js/modules/es6.string.italics.js":function(e,o,s){'use strict';s('./node_modules/core-js/modules/_string-html.js')('italics',function(e){return function(){return e(this,'i','','')}})},"./node_modules/core-js/modules/es6.string.iterator.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_string-at.js')(!0);s('./node_modules/core-js/modules/_iter-define.js')(String,'String',function(e){this._t=e+'',this._i=0},function(){var e=this._t,o=this._i,s;return o>=e.length?{value:void 0,done:!0}:(s=d(e,o),this._i+=s.length,{value:s,done:!1})})},"./node_modules/core-js/modules/es6.string.link.js":function(e,o,s){'use strict';s('./node_modules/core-js/modules/_string-html.js')('link',function(e){return function(o){return e(this,'a','href',o)}})},"./node_modules/core-js/modules/es6.string.raw.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_to-iobject.js'),n=s('./node_modules/core-js/modules/_to-length.js');d(d.S,'String',{raw:function(e){for(var o=r(e.raw),s=n(o.length),d=arguments.length,t=[],l=0;s>l;)t.push(o[l++]+''),l<d&&t.push(arguments[l]+'');return t.join('')}})},"./node_modules/core-js/modules/es6.string.repeat.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.P,'String',{repeat:s('./node_modules/core-js/modules/_string-repeat.js')})},"./node_modules/core-js/modules/es6.string.small.js":function(e,o,s){'use strict';s('./node_modules/core-js/modules/_string-html.js')('small',function(e){return function(){return e(this,'small','','')}})},"./node_modules/core-js/modules/es6.string.starts-with.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_to-length.js'),n=s('./node_modules/core-js/modules/_string-context.js'),t='startsWith',l=''[t];d(d.P+d.F*s('./node_modules/core-js/modules/_fails-is-regexp.js')(t),'String',{startsWith:function(e){var o=n(this,e,t),s=r(Math.min(1<arguments.length?arguments[1]:void 0,o.length)),d=e+'';return o.slice(s,s+d.length)===d}})},"./node_modules/core-js/modules/es6.string.strike.js":function(e,o,s){'use strict';s('./node_modules/core-js/modules/_string-html.js')('strike',function(e){return function(){return e(this,'strike','','')}})},"./node_modules/core-js/modules/es6.string.sub.js":function(e,o,s){'use strict';s('./node_modules/core-js/modules/_string-html.js')('sub',function(e){return function(){return e(this,'sub','','')}})},"./node_modules/core-js/modules/es6.string.sup.js":function(e,o,s){'use strict';s('./node_modules/core-js/modules/_string-html.js')('sup',function(e){return function(){return e(this,'sup','','')}})},"./node_modules/core-js/modules/es6.string.trim.js":function(e,o,s){'use strict';s('./node_modules/core-js/modules/_string-trim.js')('trim',function(e){return function(){return e(this,3)}})},"./node_modules/core-js/modules/es6.symbol.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_global.js'),r=s('./node_modules/core-js/modules/_has.js'),n=s('./node_modules/core-js/modules/_descriptors.js'),t=s('./node_modules/core-js/modules/_export.js'),l=s('./node_modules/core-js/modules/_redefine.js'),u=s('./node_modules/core-js/modules/_meta.js').KEY,m=s('./node_modules/core-js/modules/_fails.js'),c=s('./node_modules/core-js/modules/_shared.js'),a=s('./node_modules/core-js/modules/_set-to-string-tag.js'),j=s('./node_modules/core-js/modules/_uid.js'),_=s('./node_modules/core-js/modules/_wks.js'),p=s('./node_modules/core-js/modules/_wks-ext.js'),g=s('./node_modules/core-js/modules/_wks-define.js'),h=s('./node_modules/core-js/modules/_keyof.js'),f=s('./node_modules/core-js/modules/_enum-keys.js'),y=s('./node_modules/core-js/modules/_is-array.js'),b=s('./node_modules/core-js/modules/_an-object.js'),E=s('./node_modules/core-js/modules/_to-iobject.js'),x=s('./node_modules/core-js/modules/_to-primitive.js'),S=s('./node_modules/core-js/modules/_property-desc.js'),O=s('./node_modules/core-js/modules/_object-create.js'),R=s('./node_modules/core-js/modules/_object-gopn-ext.js'),A=s('./node_modules/core-js/modules/_object-gopd.js'),I=s('./node_modules/core-js/modules/_object-dp.js'),T=s('./node_modules/core-js/modules/_object-keys.js'),k=A.f,v=I.f,N=R.f,L=d.Symbol,P=d.JSON,C=P&&P.stringify,w='prototype',M=_('_hidden'),F=_('toPrimitive'),D={}.propertyIsEnumerable,G=c('symbol-registry'),U=c('symbols'),B=c('op-symbols'),Y=Object[w],W='function'==typeof L,V=d.QObject,z=!V||!V[w]||!V[w].findChild,H=n&&m(function(){return 7!=O(v({},'a',{get:function(){return v(this,'a',{value:7}).a}})).a})?function(e,o,s){var d=k(Y,o);d&&delete Y[o],v(e,o,s),d&&e!==Y&&v(Y,o,d)}:v,$=function(e){var o=U[e]=O(L[w]);return o._k=e,o},X=W&&'symbol'==typeof L.iterator?function(e){return'symbol'==typeof e}:function(e){return e instanceof L},q=function(e,o,s){return e===Y&&q(B,o,s),b(e),o=x(o,!0),b(s),r(U,o)?(s.enumerable?(r(e,M)&&e[M][o]&&(e[M][o]=!1),s=O(s,{enumerable:S(0,!1)})):(!r(e,M)&&v(e,M,S(1,{})),e[M][o]=!0),H(e,o,s)):v(e,o,s)},K=function(e,o){b(e);for(var s=f(o=E(o)),d=0,r=s.length,n;r>d;)q(e,n=s[d++],o[n]);return e},J=function(e){var o=D.call(this,e=x(e,!0));return this===Y&&r(U,e)&&!r(B,e)?!1:o||!r(this,e)||!r(U,e)||r(this,M)&&this[M][e]?o:!0},Q=function(e,o){if(e=E(e),o=x(o,!0),e!==Y||!r(U,o)||r(B,o)){var s=k(e,o);return s&&r(U,o)&&!(r(e,M)&&e[M][o])&&(s.enumerable=!0),s}},Z=function(e){for(var o=N(E(e)),s=[],d=0,n;o.length>d;)r(U,n=o[d++])||n==M||n==u||s.push(n);return s},ee=function(e){for(var o=e===Y,s=N(o?B:E(e)),d=[],n=0,t;s.length>n;)r(U,t=s[n++])&&(!o||r(Y,t))&&d.push(U[t]);return d};W||(L=function(){if(this instanceof L)throw TypeError('Symbol is not a constructor!');var e=j(0<arguments.length?arguments[0]:void 0),o=function(s){this===Y&&o.call(B,s),r(this,M)&&r(this[M],e)&&(this[M][e]=!1),H(this,e,S(1,s))};return n&&z&&H(Y,e,{configurable:!0,set:o}),$(e)},l(L[w],'toString',function(){return this._k}),A.f=Q,I.f=q,s('./node_modules/core-js/modules/_object-gopn.js').f=R.f=Z,s('./node_modules/core-js/modules/_object-pie.js').f=J,s('./node_modules/core-js/modules/_object-gops.js').f=ee,n&&!s('./node_modules/core-js/modules/_library.js')&&l(Y,'propertyIsEnumerable',J,!0),p.f=function(e){return $(_(e))}),t(t.G+t.W+t.F*!W,{Symbol:L});for(var oe=['hasInstance','isConcatSpreadable','iterator','match','replace','search','species','split','toPrimitive','toStringTag','unscopables'],se=0;oe.length>se;)_(oe[se++]);for(var oe=T(_.store),se=0;oe.length>se;)g(oe[se++]);t(t.S+t.F*!W,'Symbol',{for:function(e){return r(G,e+='')?G[e]:G[e]=L(e)},keyFor:function(e){if(X(e))return h(G,e);throw TypeError(e+' is not a symbol!')},useSetter:function(){z=!0},useSimple:function(){z=!1}}),t(t.S+t.F*!W,'Object',{create:function(e,o){return void 0===o?O(e):K(O(e),o)},defineProperty:q,defineProperties:K,getOwnPropertyDescriptor:Q,getOwnPropertyNames:Z,getOwnPropertySymbols:ee}),P&&t(t.S+t.F*(!W||m(function(){var e=L();return'[null]'!=C([e])||'{}'!=C({a:e})||'{}'!=C(Object(e))})),'JSON',{stringify:function(e){if(!(void 0===e||X(e))){for(var o=[e],s=1,d,r;arguments.length>s;)o.push(arguments[s++]);return d=o[1],'function'==typeof d&&(r=d),(r||!y(d))&&(d=function(e,o){if(r&&(o=r.call(this,e,o)),!X(o))return o}),o[1]=d,C.apply(P,o)}}}),L[w][F]||s('./node_modules/core-js/modules/_hide.js')(L[w],F,L[w].valueOf),a(L,'Symbol'),a(Math,'Math',!0),a(d.JSON,'JSON',!0)},"./node_modules/core-js/modules/es6.typed.array-buffer.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_typed.js'),n=s('./node_modules/core-js/modules/_typed-buffer.js'),t=s('./node_modules/core-js/modules/_an-object.js'),l=s('./node_modules/core-js/modules/_to-index.js'),u=s('./node_modules/core-js/modules/_to-length.js'),m=s('./node_modules/core-js/modules/_is-object.js'),c=s('./node_modules/core-js/modules/_global.js').ArrayBuffer,a=s('./node_modules/core-js/modules/_species-constructor.js'),i=n.ArrayBuffer,j=n.DataView,_=r.ABV&&c.isView,p=i.prototype.slice,g=r.VIEW,h='ArrayBuffer';d(d.G+d.W+d.F*(c!==i),{ArrayBuffer:i}),d(d.S+d.F*!r.CONSTR,h,{isView:function(e){return _&&_(e)||m(e)&&g in e}}),d(d.P+d.U+d.F*s('./node_modules/core-js/modules/_fails.js')(function(){return!new i(2).slice(1,void 0).byteLength}),h,{slice:function(e,o){if(void 0!==p&&void 0===o)return p.call(t(this),e);for(var s=t(this).byteLength,d=l(e,s),r=l(void 0===o?s:o,s),n=new(a(this,i))(u(r-d)),m=new j(this),c=new j(n),_=0;d<r;)c.setUint8(_++,m.getUint8(d++));return n}}),s('./node_modules/core-js/modules/_set-species.js')(h)},"./node_modules/core-js/modules/es6.typed.data-view.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.G+d.W+d.F*!s('./node_modules/core-js/modules/_typed.js').ABV,{DataView:s('./node_modules/core-js/modules/_typed-buffer.js').DataView})},"./node_modules/core-js/modules/es6.typed.float32-array.js":function(e,o,s){s('./node_modules/core-js/modules/_typed-array.js')('Float32',4,function(e){return function(o,s,d){return e(this,o,s,d)}})},"./node_modules/core-js/modules/es6.typed.float64-array.js":function(e,o,s){s('./node_modules/core-js/modules/_typed-array.js')('Float64',8,function(e){return function(o,s,d){return e(this,o,s,d)}})},"./node_modules/core-js/modules/es6.typed.int16-array.js":function(e,o,s){s('./node_modules/core-js/modules/_typed-array.js')('Int16',2,function(e){return function(o,s,d){return e(this,o,s,d)}})},"./node_modules/core-js/modules/es6.typed.int32-array.js":function(e,o,s){s('./node_modules/core-js/modules/_typed-array.js')('Int32',4,function(e){return function(o,s,d){return e(this,o,s,d)}})},"./node_modules/core-js/modules/es6.typed.int8-array.js":function(e,o,s){s('./node_modules/core-js/modules/_typed-array.js')('Int8',1,function(e){return function(o,s,d){return e(this,o,s,d)}})},"./node_modules/core-js/modules/es6.typed.uint16-array.js":function(e,o,s){s('./node_modules/core-js/modules/_typed-array.js')('Uint16',2,function(e){return function(o,s,d){return e(this,o,s,d)}})},"./node_modules/core-js/modules/es6.typed.uint32-array.js":function(e,o,s){s('./node_modules/core-js/modules/_typed-array.js')('Uint32',4,function(e){return function(o,s,d){return e(this,o,s,d)}})},"./node_modules/core-js/modules/es6.typed.uint8-array.js":function(e,o,s){s('./node_modules/core-js/modules/_typed-array.js')('Uint8',1,function(e){return function(o,s,d){return e(this,o,s,d)}})},"./node_modules/core-js/modules/es6.typed.uint8-clamped-array.js":function(e,o,s){s('./node_modules/core-js/modules/_typed-array.js')('Uint8',1,function(e){return function(o,s,d){return e(this,o,s,d)}},!0)},"./node_modules/core-js/modules/es6.weak-map.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_array-methods.js')(0),r=s('./node_modules/core-js/modules/_redefine.js'),n=s('./node_modules/core-js/modules/_meta.js'),t=s('./node_modules/core-js/modules/_object-assign.js'),l=s('./node_modules/core-js/modules/_collection-weak.js'),u=s('./node_modules/core-js/modules/_is-object.js'),m=n.getWeak,c=Object.isExtensible,a=l.ufstore,i={},j=function(e){return function(){return e(this,0<arguments.length?arguments[0]:void 0)}},_={get:function(e){if(u(e)){var o=m(e);return!0===o?a(this).get(e):o?o[this._i]:void 0}},set:function(e,o){return l.def(this,e,o)}},p=e.exports=s('./node_modules/core-js/modules/_collection.js')('WeakMap',j,_,l,!0,!0),g;7!=new p().set((Object.freeze||Object)(i),7).get(i)&&(g=l.getConstructor(j),t(g.prototype,_),n.NEED=!0,d(['delete','has','get','set'],function(e){var o=p.prototype,s=o[e];r(o,e,function(o,d){if(u(o)&&!c(o)){this._f||(this._f=new g);var r=this._f[e](o,d);return'set'==e?this:r}return s.call(this,o,d)})}))},"./node_modules/core-js/modules/es6.weak-set.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_collection-weak.js');s('./node_modules/core-js/modules/_collection.js')('WeakSet',function(e){return function(){return e(this,0<arguments.length?arguments[0]:void 0)}},{add:function(e){return d.def(this,e,!0)}},d,!1,!0)},"./node_modules/core-js/modules/es7.array.includes.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_array-includes.js')(!0);d(d.P,'Array',{includes:function(e){return r(this,e,1<arguments.length?arguments[1]:void 0)}}),s('./node_modules/core-js/modules/_add-to-unscopables.js')('includes')},"./node_modules/core-js/modules/es7.asap.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_microtask.js')(),n=s('./node_modules/core-js/modules/_global.js').process,t='process'==s('./node_modules/core-js/modules/_cof.js')(n);d(d.G,{asap:function(e){var o=t&&n.domain;r(o?o.bind(e):e)}})},"./node_modules/core-js/modules/es7.error.is-error.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_cof.js');d(d.S,'Error',{isError:function(e){return'Error'===r(e)}})},"./node_modules/core-js/modules/es7.map.to-json.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.P+d.R,'Map',{toJSON:s('./node_modules/core-js/modules/_collection-to-json.js')('Map')})},"./node_modules/core-js/modules/es7.math.iaddh.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.S,'Math',{iaddh:function(e,o,s,d){var r=e>>>0,n=s>>>0;return 0|(o>>>0)+(d>>>0)+((r&n|(r|n)&~(r+n>>>0))>>>31)}})},"./node_modules/core-js/modules/es7.math.imulh.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.S,'Math',{imulh:function(e,o){var s=65535,d=+e,r=+o,n=d&s,l=r&s,m=d>>16,c=r>>16,a=(m*l>>>0)+(n*l>>>16);return m*c+(a>>16)+((n*c>>>0)+(a&s)>>16)}})},"./node_modules/core-js/modules/es7.math.isubh.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.S,'Math',{isubh:function(e,o,s,d){var r=e>>>0,n=s>>>0;return 0|(o>>>0)-(d>>>0)-((~r&n|~(r^n)&r-n>>>0)>>>31)}})},"./node_modules/core-js/modules/es7.math.umulh.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.S,'Math',{umulh:function(e,o){var s=65535,d=+e,r=+o,n=d&s,l=r&s,m=d>>>16,c=r>>>16,a=(m*l>>>0)+(n*l>>>16);return m*c+(a>>>16)+((n*c>>>0)+(a&s)>>>16)}})},"./node_modules/core-js/modules/es7.object.define-getter.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_to-object.js'),n=s('./node_modules/core-js/modules/_a-function.js'),t=s('./node_modules/core-js/modules/_object-dp.js');s('./node_modules/core-js/modules/_descriptors.js')&&d(d.P+s('./node_modules/core-js/modules/_object-forced-pam.js'),'Object',{__defineGetter__:function(e,o){t.f(r(this),e,{get:n(o),enumerable:!0,configurable:!0})}})},"./node_modules/core-js/modules/es7.object.define-setter.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_to-object.js'),n=s('./node_modules/core-js/modules/_a-function.js'),t=s('./node_modules/core-js/modules/_object-dp.js');s('./node_modules/core-js/modules/_descriptors.js')&&d(d.P+s('./node_modules/core-js/modules/_object-forced-pam.js'),'Object',{__defineSetter__:function(e,o){t.f(r(this),e,{set:n(o),enumerable:!0,configurable:!0})}})},"./node_modules/core-js/modules/es7.object.entries.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_object-to-array.js')(!0);d(d.S,'Object',{entries:function(e){return r(e)}})},"./node_modules/core-js/modules/es7.object.get-own-property-descriptors.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_own-keys.js'),n=s('./node_modules/core-js/modules/_to-iobject.js'),t=s('./node_modules/core-js/modules/_object-gopd.js'),l=s('./node_modules/core-js/modules/_create-property.js');d(d.S,'Object',{getOwnPropertyDescriptors:function(e){for(var o=n(e),s=t.f,d=r(o),u={},m=0,c;d.length>m;)l(u,c=d[m++],s(o,c));return u}})},"./node_modules/core-js/modules/es7.object.lookup-getter.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_to-object.js'),n=s('./node_modules/core-js/modules/_to-primitive.js'),t=s('./node_modules/core-js/modules/_object-gpo.js'),l=s('./node_modules/core-js/modules/_object-gopd.js').f;s('./node_modules/core-js/modules/_descriptors.js')&&d(d.P+s('./node_modules/core-js/modules/_object-forced-pam.js'),'Object',{__lookupGetter__:function(e){var o=r(this),s=n(e,!0),d;do if(d=l(o,s))return d.get;while(o=t(o))}})},"./node_modules/core-js/modules/es7.object.lookup-setter.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_to-object.js'),n=s('./node_modules/core-js/modules/_to-primitive.js'),t=s('./node_modules/core-js/modules/_object-gpo.js'),l=s('./node_modules/core-js/modules/_object-gopd.js').f;s('./node_modules/core-js/modules/_descriptors.js')&&d(d.P+s('./node_modules/core-js/modules/_object-forced-pam.js'),'Object',{__lookupSetter__:function(e){var o=r(this),s=n(e,!0),d;do if(d=l(o,s))return d.set;while(o=t(o))}})},"./node_modules/core-js/modules/es7.object.values.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_object-to-array.js')(!1);d(d.S,'Object',{values:function(e){return r(e)}})},"./node_modules/core-js/modules/es7.observable.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_global.js'),n=s('./node_modules/core-js/modules/_core.js'),t=s('./node_modules/core-js/modules/_microtask.js')(),l=s('./node_modules/core-js/modules/_wks.js')('observable'),u=s('./node_modules/core-js/modules/_a-function.js'),m=s('./node_modules/core-js/modules/_an-object.js'),c=s('./node_modules/core-js/modules/_an-instance.js'),a=s('./node_modules/core-js/modules/_redefine-all.js'),i=s('./node_modules/core-js/modules/_hide.js'),j=s('./node_modules/core-js/modules/_for-of.js'),_=j.RETURN,p=function(e){return null==e?void 0:u(e)},g=function(e){var o=e._c;o&&(e._c=void 0,o())},h=function(e){return void 0===e._o},f=function(e){h(e)||(e._o=void 0,g(e))},y=function(o,e){m(o),this._c=void 0,this._o=o,o=new b(this);try{var s=e(o),d=s;null!=s&&('function'==typeof s.unsubscribe?s=function(){d.unsubscribe()}:u(s),this._c=s)}catch(s){return void o.error(s)}h(this)&&g(this)};y.prototype=a({},{unsubscribe:function(){f(this)}});var b=function(e){this._s=e};b.prototype=a({},{next:function(e){var o=this._s;if(!h(o)){var s=o._o;try{var d=p(s.next);if(d)return d.call(s,e)}catch(s){try{f(o)}finally{throw s}}}},error:function(e){var o=this._s;if(h(o))throw e;var s=o._o;o._o=void 0;try{var d=p(s.error);if(!d)throw e;e=d.call(s,e)}catch(s){try{g(o)}finally{throw s}}return g(o),e},complete:function(e){var o=this._s;if(!h(o)){var s=o._o;o._o=void 0;try{var d=p(s.complete);e=d?d.call(s,e):void 0}catch(s){try{g(o)}finally{throw s}}return g(o),e}}});var E=function(e){c(this,E,'Observable','_f')._f=u(e)};a(E.prototype,{subscribe:function(e){return new y(e,this._f)},forEach:function(e){var o=this;return new(n.Promise||r.Promise)(function(s,d){u(e);var r=o.subscribe({next:function(o){try{return e(o)}catch(o){d(o),r.unsubscribe()}},error:d,complete:s})})}}),a(E,{from:function(e){var o='function'==typeof this?this:E,s=p(m(e)[l]);if(s){var d=m(s.call(e));return d.constructor===o?d:new o(function(e){return d.subscribe(e)})}return new o(function(o){var s=!1;return t(function(){if(!s){try{if(j(e,!1,function(e){if(o.next(e),s)return _})===_)return}catch(d){if(s)throw d;return void o.error(d)}o.complete()}}),function(){s=!0}})},of:function(){for(var e=0,o=arguments.length,s=Array(o);e<o;)s[e]=arguments[e++];return new('function'==typeof this?this:E)(function(e){var o=!1;return t(function(){if(!o){for(var d=0;d<s.length;++d)if(e.next(s[d]),o)return;e.complete()}}),function(){o=!0}})}}),i(E.prototype,l,function(){return this}),d(d.G,{Observable:E}),s('./node_modules/core-js/modules/_set-species.js')('Observable')},"./node_modules/core-js/modules/es7.reflect.define-metadata.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_metadata.js'),r=s('./node_modules/core-js/modules/_an-object.js'),n=d.key,t=d.set;d.exp({defineMetadata:function(e,o,s,d){t(e,o,r(s),n(d))}})},"./node_modules/core-js/modules/es7.reflect.delete-metadata.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_metadata.js'),r=s('./node_modules/core-js/modules/_an-object.js'),n=d.key,t=d.map,l=d.store;d.exp({deleteMetadata:function(e,o){var s=3>arguments.length?void 0:n(arguments[2]),d=t(r(o),s,!1);if(void 0===d||!d['delete'](e))return!1;if(d.size)return!0;var u=l.get(o);return u['delete'](s),!!u.size||l['delete'](o)}})},"./node_modules/core-js/modules/es7.reflect.get-metadata-keys.js":function(e,o,s){var d=s('./node_modules/core-js/modules/es6.set.js'),r=s('./node_modules/core-js/modules/_array-from-iterable.js'),n=s('./node_modules/core-js/modules/_metadata.js'),t=s('./node_modules/core-js/modules/_an-object.js'),l=s('./node_modules/core-js/modules/_object-gpo.js'),u=n.keys,m=n.key,c=function(e,o){var s=u(e,o),n=l(e);if(null===n)return s;var t=c(n,o);return t.length?s.length?r(new d(s.concat(t))):t:s};n.exp({getMetadataKeys:function(e){return c(t(e),2>arguments.length?void 0:m(arguments[1]))}})},"./node_modules/core-js/modules/es7.reflect.get-metadata.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_metadata.js'),r=s('./node_modules/core-js/modules/_an-object.js'),n=s('./node_modules/core-js/modules/_object-gpo.js'),t=d.has,l=d.get,u=d.key,m=function(e,o,s){var d=t(e,o,s);if(d)return l(e,o,s);var r=n(o);return null===r?void 0:m(e,r,s)};d.exp({getMetadata:function(e,o){return m(e,r(o),3>arguments.length?void 0:u(arguments[2]))}})},"./node_modules/core-js/modules/es7.reflect.get-own-metadata-keys.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_metadata.js'),r=s('./node_modules/core-js/modules/_an-object.js'),n=d.keys,t=d.key;d.exp({getOwnMetadataKeys:function(e){return n(r(e),2>arguments.length?void 0:t(arguments[1]))}})},"./node_modules/core-js/modules/es7.reflect.get-own-metadata.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_metadata.js'),r=s('./node_modules/core-js/modules/_an-object.js'),n=d.get,t=d.key;d.exp({getOwnMetadata:function(e,o){return n(e,r(o),3>arguments.length?void 0:t(arguments[2]))}})},"./node_modules/core-js/modules/es7.reflect.has-metadata.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_metadata.js'),r=s('./node_modules/core-js/modules/_an-object.js'),n=s('./node_modules/core-js/modules/_object-gpo.js'),t=d.has,l=d.key,u=function(e,o,s){var d=t(e,o,s);if(d)return!0;var r=n(o);return null!==r&&u(e,r,s)};d.exp({hasMetadata:function(e,o){return u(e,r(o),3>arguments.length?void 0:l(arguments[2]))}})},"./node_modules/core-js/modules/es7.reflect.has-own-metadata.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_metadata.js'),r=s('./node_modules/core-js/modules/_an-object.js'),n=d.has,t=d.key;d.exp({hasOwnMetadata:function(e,o){return n(e,r(o),3>arguments.length?void 0:t(arguments[2]))}})},"./node_modules/core-js/modules/es7.reflect.metadata.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_metadata.js'),r=s('./node_modules/core-js/modules/_an-object.js'),n=s('./node_modules/core-js/modules/_a-function.js'),t=d.key,l=d.set;d.exp({metadata:function(e,o){return function(s,d){l(e,o,(void 0===d?n:r)(s),t(d))}}})},"./node_modules/core-js/modules/es7.set.to-json.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.P+d.R,'Set',{toJSON:s('./node_modules/core-js/modules/_collection-to-json.js')('Set')})},"./node_modules/core-js/modules/es7.string.at.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_string-at.js')(!0);d(d.P,'String',{at:function(e){return r(this,e)}})},"./node_modules/core-js/modules/es7.string.match-all.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_defined.js'),n=s('./node_modules/core-js/modules/_to-length.js'),t=s('./node_modules/core-js/modules/_is-regexp.js'),l=s('./node_modules/core-js/modules/_flags.js'),u=RegExp.prototype,m=function(e,o){this._r=e,this._s=o};s('./node_modules/core-js/modules/_iter-create.js')(m,'RegExp String',function(){var e=this._r.exec(this._s);return{value:e,done:null===e}}),d(d.P,'String',{matchAll:function(e){if(r(this),!t(e))throw TypeError(e+' is not a regexp!');var o=this+'',s='flags'in u?e.flags+'':l.call(e),d=new RegExp(e.source,~s.indexOf('g')?s:'g'+s);return d.lastIndex=n(e.lastIndex),new m(d,o)}})},"./node_modules/core-js/modules/es7.string.pad-end.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_string-pad.js');d(d.P,'String',{padEnd:function(e){return r(this,e,1<arguments.length?arguments[1]:void 0,!1)}})},"./node_modules/core-js/modules/es7.string.pad-start.js":function(e,o,s){'use strict';var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_string-pad.js');d(d.P,'String',{padStart:function(e){return r(this,e,1<arguments.length?arguments[1]:void 0,!0)}})},"./node_modules/core-js/modules/es7.string.trim-left.js":function(e,o,s){'use strict';s('./node_modules/core-js/modules/_string-trim.js')('trimLeft',function(e){return function(){return e(this,1)}},'trimStart')},"./node_modules/core-js/modules/es7.string.trim-right.js":function(e,o,s){'use strict';s('./node_modules/core-js/modules/_string-trim.js')('trimRight',function(e){return function(){return e(this,2)}},'trimEnd')},"./node_modules/core-js/modules/es7.symbol.async-iterator.js":function(e,o,s){s('./node_modules/core-js/modules/_wks-define.js')('asyncIterator')},"./node_modules/core-js/modules/es7.symbol.observable.js":function(e,o,s){s('./node_modules/core-js/modules/_wks-define.js')('observable')},"./node_modules/core-js/modules/es7.system.global.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js');d(d.S,'System',{global:s('./node_modules/core-js/modules/_global.js')})},"./node_modules/core-js/modules/web.dom.iterable.js":function(e,o,s){for(var d=s('./node_modules/core-js/modules/es6.array.iterator.js'),r=s('./node_modules/core-js/modules/_redefine.js'),n=s('./node_modules/core-js/modules/_global.js'),t=s('./node_modules/core-js/modules/_hide.js'),l=s('./node_modules/core-js/modules/_iterators.js'),u=s('./node_modules/core-js/modules/_wks.js'),m=u('iterator'),c=u('toStringTag'),a=l.Array,j=['NodeList','DOMTokenList','MediaList','StyleSheetList','CSSRuleList'],_=0;5>_;_++){var i=j[_],p=n[i],g=p&&p.prototype,h;if(g)for(h in g[m]||t(g,m,a),g[c]||t(g,c,i),l[i]=a,d)g[h]||r(g,h,d[h],!0)}},"./node_modules/core-js/modules/web.immediate.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_export.js'),r=s('./node_modules/core-js/modules/_task.js');d(d.G+d.B,{setImmediate:r.set,clearImmediate:r.clear})},"./node_modules/core-js/modules/web.timers.js":function(e,o,s){var d=s('./node_modules/core-js/modules/_global.js'),r=s('./node_modules/core-js/modules/_export.js'),n=s('./node_modules/core-js/modules/_invoke.js'),t=s('./node_modules/core-js/modules/_partial.js'),l=d.navigator,u=!!l&&/MSIE .\./.test(l.userAgent),m=function(e){return u?function(o,s){return e(n(t,[].slice.call(arguments,2),'function'==typeof o?o:Function(o)),s)}:e};r(r.G+r.B+r.F*u,{setTimeout:m(d.setTimeout),setInterval:m(d.setInterval)})},"./node_modules/core-js/shim.js":function(e,o,s){s('./node_modules/core-js/modules/es6.symbol.js'),s('./node_modules/core-js/modules/es6.object.create.js'),s('./node_modules/core-js/modules/es6.object.define-property.js'),s('./node_modules/core-js/modules/es6.object.define-properties.js'),s('./node_modules/core-js/modules/es6.object.get-own-property-descriptor.js'),s('./node_modules/core-js/modules/es6.object.get-prototype-of.js'),s('./node_modules/core-js/modules/es6.object.keys.js'),s('./node_modules/core-js/modules/es6.object.get-own-property-names.js'),s('./node_modules/core-js/modules/es6.object.freeze.js'),s('./node_modules/core-js/modules/es6.object.seal.js'),s('./node_modules/core-js/modules/es6.object.prevent-extensions.js'),s('./node_modules/core-js/modules/es6.object.is-frozen.js'),s('./node_modules/core-js/modules/es6.object.is-sealed.js'),s('./node_modules/core-js/modules/es6.object.is-extensible.js'),s('./node_modules/core-js/modules/es6.object.assign.js'),s('./node_modules/core-js/modules/es6.object.is.js'),s('./node_modules/core-js/modules/es6.object.set-prototype-of.js'),s('./node_modules/core-js/modules/es6.object.to-string.js'),s('./node_modules/core-js/modules/es6.function.bind.js'),s('./node_modules/core-js/modules/es6.function.name.js'),s('./node_modules/core-js/modules/es6.function.has-instance.js'),s('./node_modules/core-js/modules/es6.parse-int.js'),s('./node_modules/core-js/modules/es6.parse-float.js'),s('./node_modules/core-js/modules/es6.number.constructor.js'),s('./node_modules/core-js/modules/es6.number.to-fixed.js'),s('./node_modules/core-js/modules/es6.number.to-precision.js'),s('./node_modules/core-js/modules/es6.number.epsilon.js'),s('./node_modules/core-js/modules/es6.number.is-finite.js'),s('./node_modules/core-js/modules/es6.number.is-integer.js'),s('./node_modules/core-js/modules/es6.number.is-nan.js'),s('./node_modules/core-js/modules/es6.number.is-safe-integer.js'),s('./node_modules/core-js/modules/es6.number.max-safe-integer.js'),s('./node_modules/core-js/modules/es6.number.min-safe-integer.js'),s('./node_modules/core-js/modules/es6.number.parse-float.js'),s('./node_modules/core-js/modules/es6.number.parse-int.js'),s('./node_modules/core-js/modules/es6.math.acosh.js'),s('./node_modules/core-js/modules/es6.math.asinh.js'),s('./node_modules/core-js/modules/es6.math.atanh.js'),s('./node_modules/core-js/modules/es6.math.cbrt.js'),s('./node_modules/core-js/modules/es6.math.clz32.js'),s('./node_modules/core-js/modules/es6.math.cosh.js'),s('./node_modules/core-js/modules/es6.math.expm1.js'),s('./node_modules/core-js/modules/es6.math.fround.js'),s('./node_modules/core-js/modules/es6.math.hypot.js'),s('./node_modules/core-js/modules/es6.math.imul.js'),s('./node_modules/core-js/modules/es6.math.log10.js'),s('./node_modules/core-js/modules/es6.math.log1p.js'),s('./node_modules/core-js/modules/es6.math.log2.js'),s('./node_modules/core-js/modules/es6.math.sign.js'),s('./node_modules/core-js/modules/es6.math.sinh.js'),s('./node_modules/core-js/modules/es6.math.tanh.js'),s('./node_modules/core-js/modules/es6.math.trunc.js'),s('./node_modules/core-js/modules/es6.string.from-code-point.js'),s('./node_modules/core-js/modules/es6.string.raw.js'),s('./node_modules/core-js/modules/es6.string.trim.js'),s('./node_modules/core-js/modules/es6.string.iterator.js'),s('./node_modules/core-js/modules/es6.string.code-point-at.js'),s('./node_modules/core-js/modules/es6.string.ends-with.js'),s('./node_modules/core-js/modules/es6.string.includes.js'),s('./node_modules/core-js/modules/es6.string.repeat.js'),s('./node_modules/core-js/modules/es6.string.starts-with.js'),s('./node_modules/core-js/modules/es6.string.anchor.js'),s('./node_modules/core-js/modules/es6.string.big.js'),s('./node_modules/core-js/modules/es6.string.blink.js'),s('./node_modules/core-js/modules/es6.string.bold.js'),s('./node_modules/core-js/modules/es6.string.fixed.js'),s('./node_modules/core-js/modules/es6.string.fontcolor.js'),s('./node_modules/core-js/modules/es6.string.fontsize.js'),s('./node_modules/core-js/modules/es6.string.italics.js'),s('./node_modules/core-js/modules/es6.string.link.js'),s('./node_modules/core-js/modules/es6.string.small.js'),s('./node_modules/core-js/modules/es6.string.strike.js'),s('./node_modules/core-js/modules/es6.string.sub.js'),s('./node_modules/core-js/modules/es6.string.sup.js'),s('./node_modules/core-js/modules/es6.date.now.js'),s('./node_modules/core-js/modules/es6.date.to-json.js'),s('./node_modules/core-js/modules/es6.date.to-iso-string.js'),s('./node_modules/core-js/modules/es6.date.to-string.js'),s('./node_modules/core-js/modules/es6.date.to-primitive.js'),s('./node_modules/core-js/modules/es6.array.is-array.js'),s('./node_modules/core-js/modules/es6.array.from.js'),s('./node_modules/core-js/modules/es6.array.of.js'),s('./node_modules/core-js/modules/es6.array.join.js'),s('./node_modules/core-js/modules/es6.array.slice.js'),s('./node_modules/core-js/modules/es6.array.sort.js'),s('./node_modules/core-js/modules/es6.array.for-each.js'),s('./node_modules/core-js/modules/es6.array.map.js'),s('./node_modules/core-js/modules/es6.array.filter.js'),s('./node_modules/core-js/modules/es6.array.some.js'),s('./node_modules/core-js/modules/es6.array.every.js'),s('./node_modules/core-js/modules/es6.array.reduce.js'),s('./node_modules/core-js/modules/es6.array.reduce-right.js'),s('./node_modules/core-js/modules/es6.array.index-of.js'),s('./node_modules/core-js/modules/es6.array.last-index-of.js'),s('./node_modules/core-js/modules/es6.array.copy-within.js'),s('./node_modules/core-js/modules/es6.array.fill.js'),s('./node_modules/core-js/modules/es6.array.find.js'),s('./node_modules/core-js/modules/es6.array.find-index.js'),s('./node_modules/core-js/modules/es6.array.species.js'),s('./node_modules/core-js/modules/es6.array.iterator.js'),s('./node_modules/core-js/modules/es6.regexp.constructor.js'),s('./node_modules/core-js/modules/es6.regexp.to-string.js'),s('./node_modules/core-js/modules/es6.regexp.flags.js'),s('./node_modules/core-js/modules/es6.regexp.match.js'),s('./node_modules/core-js/modules/es6.regexp.replace.js'),s('./node_modules/core-js/modules/es6.regexp.search.js'),s('./node_modules/core-js/modules/es6.regexp.split.js'),s('./node_modules/core-js/modules/es6.promise.js'),s('./node_modules/core-js/modules/es6.map.js'),s('./node_modules/core-js/modules/es6.set.js'),s('./node_modules/core-js/modules/es6.weak-map.js'),s('./node_modules/core-js/modules/es6.weak-set.js'),s('./node_modules/core-js/modules/es6.typed.array-buffer.js'),s('./node_modules/core-js/modules/es6.typed.data-view.js'),s('./node_modules/core-js/modules/es6.typed.int8-array.js'),s('./node_modules/core-js/modules/es6.typed.uint8-array.js'),s('./node_modules/core-js/modules/es6.typed.uint8-clamped-array.js'),s('./node_modules/core-js/modules/es6.typed.int16-array.js'),s('./node_modules/core-js/modules/es6.typed.uint16-array.js'),s('./node_modules/core-js/modules/es6.typed.int32-array.js'),s('./node_modules/core-js/modules/es6.typed.uint32-array.js'),s('./node_modules/core-js/modules/es6.typed.float32-array.js'),s('./node_modules/core-js/modules/es6.typed.float64-array.js'),s('./node_modules/core-js/modules/es6.reflect.apply.js'),s('./node_modules/core-js/modules/es6.reflect.construct.js'),s('./node_modules/core-js/modules/es6.reflect.define-property.js'),s('./node_modules/core-js/modules/es6.reflect.delete-property.js'),s('./node_modules/core-js/modules/es6.reflect.enumerate.js'),s('./node_modules/core-js/modules/es6.reflect.get.js'),s('./node_modules/core-js/modules/es6.reflect.get-own-property-descriptor.js'),s('./node_modules/core-js/modules/es6.reflect.get-prototype-of.js'),s('./node_modules/core-js/modules/es6.reflect.has.js'),s('./node_modules/core-js/modules/es6.reflect.is-extensible.js'),s('./node_modules/core-js/modules/es6.reflect.own-keys.js'),s('./node_modules/core-js/modules/es6.reflect.prevent-extensions.js'),s('./node_modules/core-js/modules/es6.reflect.set.js'),s('./node_modules/core-js/modules/es6.reflect.set-prototype-of.js'),s('./node_modules/core-js/modules/es7.array.includes.js'),s('./node_modules/core-js/modules/es7.string.at.js'),s('./node_modules/core-js/modules/es7.string.pad-start.js'),s('./node_modules/core-js/modules/es7.string.pad-end.js'),s('./node_modules/core-js/modules/es7.string.trim-left.js'),s('./node_modules/core-js/modules/es7.string.trim-right.js'),s('./node_modules/core-js/modules/es7.string.match-all.js'),s('./node_modules/core-js/modules/es7.symbol.async-iterator.js'),s('./node_modules/core-js/modules/es7.symbol.observable.js'),s('./node_modules/core-js/modules/es7.object.get-own-property-descriptors.js'),s('./node_modules/core-js/modules/es7.object.values.js'),s('./node_modules/core-js/modules/es7.object.entries.js'),s('./node_modules/core-js/modules/es7.object.define-getter.js'),s('./node_modules/core-js/modules/es7.object.define-setter.js'),s('./node_modules/core-js/modules/es7.object.lookup-getter.js'),s('./node_modules/core-js/modules/es7.object.lookup-setter.js'),s('./node_modules/core-js/modules/es7.map.to-json.js'),s('./node_modules/core-js/modules/es7.set.to-json.js'),s('./node_modules/core-js/modules/es7.system.global.js'),s('./node_modules/core-js/modules/es7.error.is-error.js'),s('./node_modules/core-js/modules/es7.math.iaddh.js'),s('./node_modules/core-js/modules/es7.math.isubh.js'),s('./node_modules/core-js/modules/es7.math.imulh.js'),s('./node_modules/core-js/modules/es7.math.umulh.js'),s('./node_modules/core-js/modules/es7.reflect.define-metadata.js'),s('./node_modules/core-js/modules/es7.reflect.delete-metadata.js'),s('./node_modules/core-js/modules/es7.reflect.get-metadata.js'),s('./node_modules/core-js/modules/es7.reflect.get-metadata-keys.js'),s('./node_modules/core-js/modules/es7.reflect.get-own-metadata.js'),s('./node_modules/core-js/modules/es7.reflect.get-own-metadata-keys.js'),s('./node_modules/core-js/modules/es7.reflect.has-metadata.js'),s('./node_modules/core-js/modules/es7.reflect.has-own-metadata.js'),s('./node_modules/core-js/modules/es7.reflect.metadata.js'),s('./node_modules/core-js/modules/es7.asap.js'),s('./node_modules/core-js/modules/es7.observable.js'),s('./node_modules/core-js/modules/web.timers.js'),s('./node_modules/core-js/modules/web.immediate.js'),s('./node_modules/core-js/modules/web.dom.iterable.js'),e.exports=s('./node_modules/core-js/modules/_core.js')},"./node_modules/cross-unzip/index.js":function(e,o,s){'use strict';function d(e,o,s){s=r(s);var d=n(e,o,{stdio:'ignore'});d.on('error',function(e){s(e)}),d.on('exit',function(e){s(e?new Error('Exited with code '+e):null)})}function r(e){var o=!1;return function(){o||(o=!0,e.apply(this,t.call(arguments)))}}var n=s(8).spawn,t=Array.prototype.slice,l='win32'===process.platform?function(e,o,r){var n=s('./node_modules/7zip/index.js')['7z'];d(n,['x',e,'-y','-o'+o],r)}:function(e,o,s){d('unzip',['-o',e,'-d',o],s)};l.unzip=l,e.exports=l},"./node_modules/electron-devtools-installer/dist/downloadChromeExtension.js":function(e,o,s){'use strict';function d(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(o,'__esModule',{value:!0});var r=s(1),n=d(r),t=s(0),l=d(t),u=s('./node_modules/rimraf/rimraf.js'),m=d(u),c=s('./node_modules/cross-unzip/index.js'),a=d(c),i=s('./node_modules/electron-devtools-installer/dist/utils.js');o.default=function e(o,s){var d=2<arguments.length&&void 0!==arguments[2]?arguments[2]:5,r=(0,i.getPath)();n.default.existsSync(r)||n.default.mkdirSync(r);var t=l.default.resolve(r+'/'+o);return new Promise(function(r,u){!n.default.existsSync(t)||s?function(){n.default.existsSync(t)&&m.default.sync(t);var c=l.default.resolve(t+'.crx');(0,i.downloadFile)('https://clients2.google.com/service/update2/crx?response=redirect&x=id%3D'+o+'%26uc&prodversion=32',c).then(function(){(0,a.default)(c,t,function(e){return e&&!n.default.existsSync(l.default.resolve(t,'manifest.json'))?u(e):void r(t)})}).catch(function(n){return console.log('Failed to fetch extension, trying '+(d-1)+' more times'),1>=d?u(n):void setTimeout(function(){e(o,s,d-1).then(r).catch(u)},200)})}():r(t)})}},"./node_modules/electron-devtools-installer/dist/index.js":function(e,o,s){'use strict';function d(e){return e&&e.__esModule?e:{default:e}}function r(e,o,s){return o in e?Object.defineProperty(e,o,{value:s,enumerable:!0,configurable:!0,writable:!0}):e[o]=s,e}Object.defineProperty(o,'__esModule',{value:!0}),o.CYCLEJS_DEVTOOL=o.REACT_PERF=o.REDUX_DEVTOOLS=o.VUEJS_DEVTOOLS=o.ANGULARJS_BATARANG=o.JQUERY_DEBUGGER=o.BACKBONE_DEBUGGER=o.REACT_DEVELOPER_TOOLS=o.EMBER_INSPECTOR=void 0;var n='function'==typeof Symbol&&'symbol'==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&'function'==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?'symbol':typeof e},t=s(2),l=d(t),u=s(1),m=d(u),c=s(0),a=d(c),i=s('./node_modules/semver/semver.js'),j=d(i),_=s('./node_modules/electron-devtools-installer/dist/downloadChromeExtension.js'),p=d(_),g=s('./node_modules/electron-devtools-installer/dist/utils.js'),h=t.remote||l.default,f=h.BrowserWindow,y={},b=a.default.resolve((0,g.getPath)(),'IDMap.json');m.default.existsSync(b)&&(y=JSON.parse(m.default.readFileSync(b,'utf8')));o.default=function e(o){var s=1<arguments.length&&void 0!==arguments[1]&&arguments[1];if(Array.isArray(o))return Promise.all(o.map(function(o){return e(o,s)}));var d;if('object'===('undefined'==typeof o?'undefined':n(o))&&o.id){if(d=o.id,!j.default.satisfies(process.versions.electron,o.electron))return Promise.reject(new Error('Version of Electron: '+process.versions.electron+' does not match required range '+o.electron+' for extension '+d));}else if('string'==typeof o)d=o;else return Promise.reject(new Error('Invalid extensionReference passed in: "'+o+'"'));var t=y[d],l=t&&f.getDevToolsExtensions&&f.getDevToolsExtensions()[t];return!s&&l?Promise.resolve(y[d]):(0,p.default)(d,s).then(function(e){l&&f.removeDevToolsExtension(t);var o=f.addDevToolsExtension(e);return m.default.writeFileSync(b,JSON.stringify(Object.assign(y,r({},d,o)))),Promise.resolve(o)})};var E=o.EMBER_INSPECTOR={id:'bmdblncegkenkacieihfhpjfppoconhi',electron:'^1.2.1'},x=o.REACT_DEVELOPER_TOOLS={id:'fmkadmapgofadopljbjfkapdkoienihi',electron:'^1.2.1'},S=o.BACKBONE_DEBUGGER={id:'bhljhndlimiafopmmhjlgfpnnchjjbhd',electron:'^1.2.1'},O=o.JQUERY_DEBUGGER={id:'dbhhnnnpaeobfddmlalhnehgclcmjimi',electron:'^1.2.1'},R=o.ANGULARJS_BATARANG={id:'ighdmehidhipcmcojjgiloacoafjmpfk',electron:'^1.2.1'},A=o.VUEJS_DEVTOOLS={id:'nhdogjmejiglipccpnnnanhbledajbpd',electron:'^1.2.1'},I=o.REDUX_DEVTOOLS={id:'lmhkpmbekcpmknklioeibfkpmmfibljd',electron:'^1.2.1'},T=o.REACT_PERF={id:'hacmcodfllhbnekmghgdlplbdnahmhmm',electron:'^1.2.6'},k=o.CYCLEJS_DEVTOOL={id:'dfgplfmhhmdekalbpejekgfegkonjpfp',electron:'^1.2.1'}},"./node_modules/electron-devtools-installer/dist/utils.js":function(e,o,s){'use strict';function d(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(o,'__esModule',{value:!0}),o.downloadFile=o.getPath=void 0;var r=s(2),n=d(r),t=s(1),l=d(t),u=s(0),m=d(u),c=s(9),a=d(c),i=o.getPath=function(){var e=(r.remote||n.default).app.getPath('userData');return m.default.resolve(e+'/extensions')},j=r.remote||n.default,_=j.net,p=_?_.request:a.default.get,g=o.downloadFile=function e(o,s){return new Promise(function(d,r){var n=p(o);n.on('response',function(o){return 300<=o.statusCode&&400>o.statusCode&&o.headers.location?e(o.headers.location,s).then(d).catch(r):void o.pipe(l.default.createWriteStream(s)).on('close',d)}),n.on('error',r),n.end()})}},"./node_modules/fs.realpath/index.js":function(e,o,s){function d(e){return e&&'realpath'===e.syscall&&('ELOOP'===e.code||'ENOMEM'===e.code||'ENAMETOOLONG'===e.code)}function r(e,o,s){return c?l(e,o,s):void('function'==typeof o&&(s=o,o=null),l(e,o,function(r,n){d(r)?a.realpath(e,o,s):s(r,n)}))}function n(e,o){if(c)return u(e,o);try{return u(e,o)}catch(s){if(d(s))return a.realpathSync(e,o);throw s}}e.exports=r,r.realpath=r,r.sync=n,r.realpathSync=n,r.monkeypatch=function(){t.realpath=r,t.realpathSync=n},r.unmonkeypatch=function(){t.realpath=l,t.realpathSync=u};var t=s(1),l=t.realpath,u=t.realpathSync,m=process.version,c=/^v[0-5]\./.test(m),a=s('./node_modules/fs.realpath/old.js')},"./node_modules/fs.realpath/old.js":function(e,o,s){function d(){function e(e){e&&(d.message=e.message,e=d,o(e))}function o(e){if(e)if(process.throwDeprecation)throw e;else if(!process.noDeprecation){var o='fs: missing callback '+(e.stack||e.message);process.traceDeprecation?console.trace(o):console.error(o)}}var s;if(u){var d=new Error;s=e}else s=o;return s}function r(e){return'function'==typeof e?e:d()}var n=s(0),t='win32'===process.platform,l=s(1),u=process.env.NODE_DEBUG&&/fs/.test(process.env.NODE_DEBUG),m=n.normalize;if(t)var c=/(.*?)(?:[\/\\]+|$)/g;else var c=/(.*?)(?:[\/]+|$)/g;if(t)var a=/^(?:[a-zA-Z]:|[\\\/]{2}[^\\\/]+[\\\/][^\\\/]+)?[\\\/]*/;else var a=/^[\/]*/;o.realpathSync=function(e,o){function s(){var o=a.exec(e);i=o[0].length,j=o[0],_=o[0],p='',t&&!u[_]&&(l.lstatSync(_),u[_]=!0)}if(e=n.resolve(e),o&&Object.prototype.hasOwnProperty.call(o,e))return o[e];var d=e,r={},u={},i,j,_,p;for(s();i<e.length;){c.lastIndex=i;var m=c.exec(e);if(p=j,j+=m[0],_=p+m[1],i=c.lastIndex,!(u[_]||o&&o[_]===_)){var g;if(o&&Object.prototype.hasOwnProperty.call(o,_))g=o[_];else{var h=l.lstatSync(_);if(!h.isSymbolicLink()){u[_]=!0,o&&(o[_]=_);continue}var f=null;if(!t){var y=h.dev.toString(32)+':'+h.ino.toString(32);r.hasOwnProperty(y)&&(f=r[y])}null===f&&(l.statSync(_),f=l.readlinkSync(_)),g=n.resolve(p,f),o&&(o[_]=g),t||(r[y]=f)}e=n.resolve(g,e.slice(i)),s()}}return o&&(o[d]=e),e},o.realpath=function(e,o,s){function d(){var o=a.exec(e);h=o[0].length,f=o[0],y=o[0],b='',t&&!g[y]?l.lstat(y,function(e){return e?s(e):void(g[y]=!0,u())}):process.nextTick(u)}function u(){if(h>=e.length)return o&&(o[_]=e),s(null,e);c.lastIndex=h;var d=c.exec(e);return b=f,f+=d[0],y=b+d[1],h=c.lastIndex,g[y]||o&&o[y]===y?process.nextTick(u):o&&Object.prototype.hasOwnProperty.call(o,y)?j(o[y]):l.lstat(y,m)}function m(e,d){if(e)return s(e);if(!d.isSymbolicLink())return g[y]=!0,o&&(o[y]=y),process.nextTick(u);if(!t){var r=d.dev.toString(32)+':'+d.ino.toString(32);if(p.hasOwnProperty(r))return i(null,p[r],y)}l.stat(y,function(e){return e?s(e):void l.readlink(y,function(e,o){t||(p[r]=o),i(e,o)})})}function i(e,d,r){if(e)return s(e);var t=n.resolve(b,d);o&&(o[r]=t),j(t)}function j(o){e=n.resolve(o,e.slice(h)),d()}if('function'!=typeof s&&(s=r(o),o=null),e=n.resolve(e),o&&Object.prototype.hasOwnProperty.call(o,e))return process.nextTick(s.bind(null,null,o[e]));var _=e,p={},g={},h,f,y,b;d()}},"./node_modules/glob/common.js":function(e,o,s){function d(e,o){return Object.prototype.hasOwnProperty.call(e,o)}function r(e,o){return e.toLowerCase().localeCompare(o.toLowerCase())}function n(e,o){return e.localeCompare(o)}function t(e,o){e.ignore=o.ignore||[],Array.isArray(e.ignore)||(e.ignore=[e.ignore]),e.ignore.length&&(e.ignore=e.ignore.map(l))}function l(e){var o=null;if('/**'===e.slice(-3)){var s=e.replace(/(\/\*\*)+$/,'');o=new j(s,{dot:!0})}return{matcher:new j(e,{dot:!0}),gmatcher:o}}function u(e,o){var s=o;return s='/'===o.charAt(0)?m.join(e.root,o):i(o)||''===o?o:e.changedCwd?m.resolve(e.cwd,o):m.resolve(o),'win32'===process.platform&&(s=s.replace(/\\/g,'/')),s}function c(e,o){return!!e.ignore.length&&e.ignore.some(function(e){return e.matcher.match(o)||!!(e.gmatcher&&e.gmatcher.match(o))})}o.alphasort=n,o.alphasorti=r,o.setopts=function(e,o,s){if(s||(s={}),s.matchBase&&-1===o.indexOf('/')){if(s.noglobstar)throw new Error('base matching requires globstar');o='**/'+o}e.silent=!!s.silent,e.pattern=o,e.strict=!1!==s.strict,e.realpath=!!s.realpath,e.realpathCache=s.realpathCache||Object.create(null),e.follow=!!s.follow,e.dot=!!s.dot,e.mark=!!s.mark,e.nodir=!!s.nodir,e.nodir&&(e.mark=!0),e.sync=!!s.sync,e.nounique=!!s.nounique,e.nonull=!!s.nonull,e.nosort=!!s.nosort,e.nocase=!!s.nocase,e.stat=!!s.stat,e.noprocess=!!s.noprocess,e.absolute=!!s.absolute,e.maxLength=s.maxLength||Infinity,e.cache=s.cache||Object.create(null),e.statCache=s.statCache||Object.create(null),e.symlinks=s.symlinks||Object.create(null),t(e,s),e.changedCwd=!1;var r=process.cwd();d(s,'cwd')?(e.cwd=m.resolve(s.cwd),e.changedCwd=e.cwd!==r):e.cwd=r,e.root=s.root||m.resolve(e.cwd,'/'),e.root=m.resolve(e.root),'win32'===process.platform&&(e.root=e.root.replace(/\\/g,'/')),e.cwdAbs=i(e.cwd)?e.cwd:u(e,e.cwd),'win32'===process.platform&&(e.cwdAbs=e.cwdAbs.replace(/\\/g,'/')),e.nomount=!!s.nomount,s.nonegate=!0,s.nocomment=!0,e.minimatch=new j(o,s),e.options=e.minimatch.options},o.ownProp=d,o.makeAbs=u,o.finish=function(o){for(var e=o.nounique,s=e?[]:Object.create(null),d=0,t=o.matches.length,l;d<t;d++)if(l=o.matches[d],l&&0!==Object.keys(l).length){var a=Object.keys(l);e?s.push.apply(s,a):a.forEach(function(e){s[e]=!0})}else if(o.nonull){var m=o.minimatch.globSet[d];e?s.push(m):s[m]=!0}if(e||(s=Object.keys(s)),o.nosort||(s=s.sort(o.nocase?r:n)),o.mark){for(var d=0;d<s.length;d++)s[d]=o._mark(s[d]);o.nodir&&(s=s.filter(function(s){var e=!/\/$/.test(s),d=o.cache[s]||o.cache[u(o,s)];return e&&d&&(e='DIR'!==d&&!Array.isArray(d)),e}))}o.ignore.length&&(s=s.filter(function(e){return!c(o,e)})),o.found=s},o.mark=function(e,o){var s=u(e,o),d=e.cache[s],r=o;if(d){var n='DIR'===d||Array.isArray(d),t='/'===o.slice(-1);if(n&&!t?r+='/':!n&&t&&(r=r.slice(0,-1)),r!==o){var l=u(e,r);e.statCache[l]=e.statCache[s],e.cache[l]=e.cache[s]}}return r},o.isIgnored=c,o.childrenIgnored=function(e,o){return!!e.ignore.length&&e.ignore.some(function(e){return!!(e.gmatcher&&e.gmatcher.match(o))})};var m=s(0),a=s('./node_modules/glob/node_modules/minimatch/minimatch.js'),i=s('./node_modules/path-is-absolute/index.js'),j=a.Minimatch},"./node_modules/glob/glob.js":function(e,o,s){function d(e,o,s){if('function'==typeof o&&(s=o,o={}),o||(o={}),o.sync){if(s)throw new TypeError('callback provided to sync glob');return g(e,o)}return new t(e,o,s)}function r(e,o){if(null===o||'object'!=typeof o)return e;for(var s=Object.keys(o),d=s.length;d--;)e[s[d]]=o[s[d]];return e}function t(e,o,s){function d(){--n._processing,0>=n._processing&&(l?process.nextTick(function(){n._finish()}):n._finish())}if('function'==typeof o&&(s=o,o=null),o&&o.sync){if(s)throw new TypeError('callback provided to sync glob');return new I(e,o)}if(!(this instanceof t))return new t(e,o,s);b(this,e,o),this._didRealPath=!1;var r=this.minimatch.set.length;this.matches=Array(r),'function'==typeof s&&(s=A(s),this.on('error',s),this.on('end',function(e){s(null,e)}));var n=this,r=this.minimatch.set.length;if(this._processing=0,this.matches=Array(r),this._emitQueue=[],this._processQueue=[],this.paused=!1,this.noprocess)return this;if(0===r)return d();for(var l=!0,u=0;u<r;u++)this._process(this.minimatch.set[u],u,!1,d);l=!1}function n(e,o,s){return function(d,r){d?e._readdirError(o,d,s):e._readdirEntries(o,r,s)}}e.exports=d;var l=s(1),u=s('./node_modules/fs.realpath/index.js'),m=s('./node_modules/glob/node_modules/minimatch/minimatch.js'),c=m.Minimatch,a=s('./node_modules/inherits/inherits.js'),i=s(7).EventEmitter,j=s(0),_=s(3),p=s('./node_modules/path-is-absolute/index.js'),g=s('./node_modules/glob/sync.js'),h=s('./node_modules/glob/common.js'),f=h.alphasort,y=h.alphasorti,b=h.setopts,E=h.ownProp,x=s('./node_modules/inflight/inflight.js'),S=s(4),O=h.childrenIgnored,R=h.isIgnored,A=s('./node_modules/once/once.js');d.sync=g;var I=d.GlobSync=g.GlobSync;d.glob=d,d.hasMagic=function(e,o){var s=r({},o);s.noprocess=!0;var d=new t(e,s),n=d.minimatch.set;if(!e)return!1;if(1<n.length)return!0;for(var l=0;l<n[0].length;l++)if('string'!=typeof n[0][l])return!0;return!1},d.Glob=t,a(t,i),t.prototype._finish=function(){return _(this instanceof t),this.aborted?void 0:this.realpath&&!this._didRealpath?this._realpath():void(h.finish(this),this.emit('end',this.found))},t.prototype._realpath=function(){function e(){0==--o&&s._finish()}if(!this._didRealpath){this._didRealpath=!0;var o=this.matches.length;if(0===o)return this._finish();for(var s=this,d=0;d<this.matches.length;d++)this._realpathSet(d,e)}},t.prototype._realpathSet=function(e,o){var s=this.matches[e];if(!s)return o();var d=Object.keys(s),r=this,t=d.length;if(0===t)return o();var n=this.matches[e]=Object.create(null);d.forEach(function(s){s=r._makeAbs(s),u.realpath(s,r.realpathCache,function(d,l){d?'stat'===d.syscall?n[s]=!0:r.emit('error',d):n[l]=!0,0==--t&&(r.matches[e]=n,o())})})},t.prototype._mark=function(e){return h.mark(this,e)},t.prototype._makeAbs=function(e){return h.makeAbs(this,e)},t.prototype.abort=function(){this.aborted=!0,this.emit('abort')},t.prototype.pause=function(){this.paused||(this.paused=!0,this.emit('pause'))},t.prototype.resume=function(){if(this.paused){if(this.emit('resume'),this.paused=!1,this._emitQueue.length){var o=this._emitQueue.slice(0);this._emitQueue.length=0;for(var s=0,d;s<o.length;s++)d=o[s],this._emitMatch(d[0],d[1])}if(this._processQueue.length){var e=this._processQueue.slice(0);this._processQueue.length=0;for(var s=0,r;s<e.length;s++)r=e[s],this._processing--,this._process(r[0],r[1],r[2],r[3])}}},t.prototype._process=function(e,o,s,d){if(_(this instanceof t),_('function'==typeof d),!this.aborted){if(this._processing++,this.paused)return void this._processQueue.push([e,o,s,d]);for(var r=0;'string'==typeof e[r];)r++;var n;switch(r){case e.length:return void this._processSimple(e.join('/'),o,d);case 0:n=null;break;default:n=e.slice(0,r).join('/');}var l=e.slice(r),u;null===n?u='.':p(n)||p(e.join('/'))?((!n||!p(n))&&(n='/'+n),u=n):u=n;var c=this._makeAbs(u);if(O(this,u))return d();var a=l[0]===m.GLOBSTAR;a?this._processGlobStar(n,u,c,l,o,s,d):this._processReaddir(n,u,c,l,o,s,d)}},t.prototype._processReaddir=function(e,o,s,d,r,n,t){var l=this;this._readdir(s,n,function(u,m){return l._processReaddir2(e,o,s,d,r,n,m,t)})},t.prototype._processReaddir2=function(o,s,d,r,n,t,l,u){if(!l)return u();for(var c=r[0],a=!!this.minimatch.negate,_=c._glob,p=this.dot||'.'===_.charAt(0),g=[],h=0,i;h<l.length;h++)if(i=l[h],'.'!==i.charAt(0)||p){var e;e=a&&!o?!i.match(c):i.match(c),e&&g.push(i)}var m=g.length;if(0===m)return u();if(1===r.length&&!this.mark&&!this.stat){this.matches[n]||(this.matches[n]=Object.create(null));for(var h=0,i;h<m;h++)i=g[h],o&&('/'===o?i=o+i:i=o+'/'+i),'/'!==i.charAt(0)||this.nomount||(i=j.join(this.root,i)),this._emitMatch(n,i);return u()}r.shift();for(var h=0;h<m;h++){var i=g[h];o&&('/'===o?i=o+i:i=o+'/'+i),this._process([i].concat(r),n,t,u)}u()},t.prototype._emitMatch=function(o,s){if(!this.aborted&&!R(this,s)){if(this.paused)return void this._emitQueue.push([o,s]);var e=p(s)?s:this._makeAbs(s);if(this.mark&&(s=this._mark(s)),this.absolute&&(s=e),!this.matches[o][s]){if(this.nodir){var d=this.cache[e];if('DIR'===d||Array.isArray(d))return}this.matches[o][s]=!0;var r=this.statCache[e];r&&this.emit('stat',s,r),this.emit('match',s)}}},t.prototype._readdirInGlobStar=function(e,o){function s(s,r){if(s&&'ENOENT'===s.code)return o();var n=r&&r.isSymbolicLink();d.symlinks[e]=n,n||!r||r.isDirectory()?d._readdir(e,!1,o):(d.cache[e]='FILE',o())}if(!this.aborted){if(this.follow)return this._readdir(e,!1,o);var d=this,r=x('lstat\0'+e,s);r&&l.lstat(e,r)}},t.prototype._readdir=function(e,o,s){if(!this.aborted&&(s=x('readdir\0'+e+'\0'+o,s),!!s)){if(o&&!E(this.symlinks,e))return this._readdirInGlobStar(e,s);if(E(this.cache,e)){var d=this.cache[e];if(!d||'FILE'===d)return s();if(Array.isArray(d))return s(null,d)}this;l.readdir(e,n(this,e,s))}},t.prototype._readdirEntries=function(o,s,d){if(!this.aborted){if(!this.mark&&!this.stat)for(var r=0,n;r<s.length;r++)n=s[r],n='/'===o?o+n:o+'/'+n,this.cache[n]=!0;return this.cache[o]=s,d(null,s)}},t.prototype._readdirError=function(e,o,s){if(!this.aborted){switch(o.code){case'ENOTSUP':case'ENOTDIR':var d=this._makeAbs(e);if(this.cache[d]='FILE',d===this.cwdAbs){var r=new Error(o.code+' invalid cwd '+this.cwd);r.path=this.cwd,r.code=o.code,this.emit('error',r),this.abort()}break;case'ENOENT':case'ELOOP':case'ENAMETOOLONG':case'UNKNOWN':this.cache[this._makeAbs(e)]=!1;break;default:this.cache[this._makeAbs(e)]=!1,this.strict&&(this.emit('error',o),this.abort()),this.silent||console.error('glob error',o);}return s()}},t.prototype._processGlobStar=function(e,o,s,d,r,n,t){var l=this;this._readdir(s,n,function(u,m){l._processGlobStar2(e,o,s,d,r,n,m,t)})},t.prototype._processGlobStar2=function(o,s,d,r,n,t,l,u){if(!l)return u();var m=r.slice(1),c=o?[o]:[],a=c.concat(m);this._process(a,n,!1,u);var j=this.symlinks[d],_=l.length;if(j&&t)return u();for(var p=0,i;p<_;p++)if(i=l[p],'.'!==i.charAt(0)||this.dot){var e=c.concat(l[p],m);this._process(e,n,!0,u);var g=c.concat(l[p],r);this._process(g,n,!0,u)}u()},t.prototype._processSimple=function(e,o,s){var d=this;this._stat(e,function(r,n){d._processSimple2(e,o,r,n,s)})},t.prototype._processSimple2=function(e,o,s,d,r){if(this.matches[o]||(this.matches[o]=Object.create(null)),!d)return r();if(e&&p(e)&&!this.nomount){var n=/[\/\\]$/.test(e);'/'===e.charAt(0)?e=j.join(this.root,e):(e=j.resolve(this.root,e),n&&(e+='/'))}'win32'===process.platform&&(e=e.replace(/\\/g,'/')),this._emitMatch(o,e),r()},t.prototype._stat=function(e,o){var s=this._makeAbs(e),d='/'===e.slice(-1);if(e.length>this.maxLength)return o();if(!this.stat&&E(this.cache,s)){var r=this.cache[s];if(Array.isArray(r)&&(r='DIR'),!d||'DIR'===r)return o(null,r);if(d&&'FILE'===r)return o()}var n=this.statCache[s];if(void 0!==n){if(!1===n)return o(null,n);var t=n.isDirectory()?'DIR':'FILE';return d&&'FILE'==t?o():o(null,t,n)}var u=this,m=x('stat\0'+s,function(d,r){return r&&r.isSymbolicLink()?l.stat(s,function(d,n){d?u._stat2(e,s,null,r,o):u._stat2(e,s,d,n,o)}):void u._stat2(e,s,d,r,o)});m&&l.lstat(s,m)},t.prototype._stat2=function(e,o,s,d,r){if(s&&('ENOENT'===s.code||'ENOTDIR'===s.code))return this.statCache[o]=!1,r();var n='/'===e.slice(-1);if(this.statCache[o]=d,'/'===o.slice(-1)&&d&&!d.isDirectory())return r(null,!1,d);var t=!0;return d&&(t=d.isDirectory()?'DIR':'FILE'),this.cache[o]=this.cache[o]||t,n&&'FILE'===t?r():r(null,t,d)}},"./node_modules/glob/node_modules/minimatch/minimatch.js":function(e,o,s){function d(e,o){e=e||{},o=o||{};var s={};return Object.keys(o).forEach(function(e){s[e]=o[e]}),Object.keys(e).forEach(function(o){s[o]=e[o]}),s}function r(e,o,s){if('string'!=typeof o)throw new TypeError('glob pattern string required');return s||(s={}),(s.nocomment||'#'!==o.charAt(0))&&(''===o.trim()?''===e:new n(o,s).match(e))}function n(e,o){if(!(this instanceof n))return new n(e,o);if('string'!=typeof e)throw new TypeError('glob pattern string required');o||(o={}),e=e.trim(),'/'!==m.sep&&(e=e.split(m.sep).join('/')),this.options=o,this.set=[],this.pattern=e,this.regexp=null,this.negate=!1,this.comment=!1,this.empty=!1,this.make()}function t(e,o){if(o||(this instanceof n?o=this.options:o={}),e='undefined'==typeof e?this.pattern:e,'undefined'==typeof e)throw new TypeError('undefined pattern');return o.nobrace||!e.match(/\{.*\}/)?[e]:c(e)}function l(e){return e.replace(/\\(.)/g,'$1')}function u(e){return e.replace(/[-[\]{}()*+?.,\\^$|#\s]/g,'\\$&')}e.exports=r,r.Minimatch=n;var m={sep:'/'};try{m=s(0)}catch(e){}var a=r.GLOBSTAR=n.GLOBSTAR={},c=s('./node_modules/brace-expansion/index.js'),j={"!":{open:'(?:(?!(?:',close:'))[^/]*?)'},"?":{open:'(?:',close:')?'},"+":{open:'(?:',close:')+'},"*":{open:'(?:',close:')*'},"@":{open:'(?:',close:')'}},i='[^/]',_=i+'*?',p=function(e){return e.split('').reduce(function(e,o){return e[o]=!0,e},{})}('().*{}+?[]^$\\!'),g=/\/+/;r.filter=function(e,o){return o=o||{},function(s){return r(s,e,o)}},r.defaults=function(e){if(!e||!Object.keys(e).length)return r;var o=r,s=function(s,r,n){return o.minimatch(s,r,d(e,n))};return s.Minimatch=function(s,r){return new o.Minimatch(s,d(e,r))},s},n.defaults=function(e){return e&&Object.keys(e).length?r.defaults(e).Minimatch:n},n.prototype.debug=function(){},n.prototype.make=function(){if(!this._made){var e=this.pattern,o=this.options;if(!o.nocomment&&'#'===e.charAt(0))return void(this.comment=!0);if(!e)return void(this.empty=!0);this.parseNegate();var s=this.globSet=this.braceExpand();o.debug&&(this.debug=console.error),this.debug(this.pattern,s),s=this.globParts=s.map(function(e){return e.split(g)}),this.debug(this.pattern,s),s=s.map(function(e){return e.map(this.parse,this)},this),this.debug(this.pattern,s),s=s.filter(function(e){return-1===e.indexOf(!1)}),this.debug(this.pattern,s),this.set=s}},n.prototype.parseNegate=function(){var e=this.pattern,o=!1,s=this.options,d=0;if(!s.nonegate){for(var r=0,n=e.length;r<n&&'!'===e.charAt(r);r++)o=!o,d++;d&&(this.pattern=e.substr(d)),this.negate=o}},r.braceExpand=function(e,o){return t(e,o)},n.prototype.braceExpand=t,n.prototype.parse=function(e,o){function s(){A&&('*'===A?(r+=_,u=!0):'?'===A?(r+=i,u=!0):r+='\\'+A,S.debug('clearStateChar %j %j',A,r),A=!1)}if(65536<e.length)throw new TypeError('pattern is too long');var d=this.options;if(!d.noglobstar&&'**'===e)return a;if(''===e)return'';for(var r='',u=!!d.nocase,m=!1,g=[],f=[],y=!1,b=-1,E=-1,x='.'===e.charAt(0)?'':d.dot?'(?!(?:^|\\/)\\.{1,2}(?:$|\\/))':'(?!\\.)',S=this,O=0,R=e.length,A,I;O<R&&(I=e.charAt(O));O++){if(this.debug('%s\t%s %s %j',e,O,r,I),m&&p[I]){r+='\\'+I,m=!1;continue}switch(I){case'/':return!1;case'\\':s(),m=!0;continue;case'?':case'*':case'+':case'@':case'!':if(this.debug('%s\t%s %s %j <-- stateChar',e,O,r,I),y){this.debug('  in class'),'!'===I&&O===E+1&&(I='^'),r+=I;continue}S.debug('call clearStateChar %j',A),s(),A=I,d.noext&&s();continue;case'(':if(y){r+='(';continue}if(!A){r+='\\(';continue}g.push({type:A,start:O-1,reStart:r.length,open:j[A].open,close:j[A].close}),r+='!'===A?'(?:(?!(?:':'(?:',this.debug('plType %j %j',A,r),A=!1;continue;case')':if(y||!g.length){r+='\\)';continue}s(),u=!0;var c=g.pop();r+=c.close,'!'===c.type&&f.push(c),c.reEnd=r.length;continue;case'|':if(y||!g.length||m){r+='\\|',m=!1;continue}s(),r+='|';continue;case'[':if(s(),y){r+='\\'+I;continue}y=!0,E=O,b=r.length,r+=I;continue;case']':if(O===E+1||!y){r+='\\'+I,m=!1;continue}if(y){var T=e.substring(E+1,O);try{RegExp('['+T+']')}catch(e){var k=this.parse(T,h);r=r.substr(0,b)+'\\['+k[0]+'\\]',u=u||k[1],y=!1;continue}}u=!0,y=!1,r+=I;continue;default:s(),m?m=!1:p[I]&&!('^'===I&&y)&&(r+='\\'),r+=I;}}for(y&&(T=e.substr(E+1),k=this.parse(T,h),r=r.substr(0,b)+'\\['+k[0],u=u||k[1]),c=g.pop();c;c=g.pop()){var v=r.slice(c.reStart+c.open.length);this.debug('setting tail',r,c),v=v.replace(/((?:\\{2}){0,64})(\\?)\|/g,function(e,o,s){return s||(s='\\'),o+o+s+'|'}),this.debug('tail=%j\n   %s',v,v,c,r);var N='*'===c.type?_:'?'===c.type?i:'\\'+c.type;u=!0,r=r.slice(0,c.reStart)+N+'\\('+v}s(),m&&(r+='\\\\');var t=!1;switch(r.charAt(0)){case'.':case'[':case'(':t=!0;}for(var L=f.length-1;-1<L;L--){var n=f[L],P=r.slice(0,n.reStart),C=r.slice(n.reStart,n.reEnd-8),w=r.slice(n.reEnd-8,n.reEnd),M=r.slice(n.reEnd);w+=M;var F=P.split('(').length-1,D=M;for(O=0;O<F;O++)D=D.replace(/\)[+*?]?/,'');M=D;var G='';''===M&&o!==h&&(G='$');var U=P+C+M+G+w;r=U}if(''!==r&&u&&(r='(?=.)'+r),t&&(r=x+r),o===h)return[r,u];if(!u)return l(e);var B=d.nocase?'i':'';try{var Y=new RegExp('^'+r+'$',B)}catch(e){return /$./}return Y._glob=e,Y._src=r,Y};var h={};r.makeRe=function(e,o){return new n(e,o||{}).makeRe()},n.prototype.makeRe=function(){if(this.regexp||!1===this.regexp)return this.regexp;var e=this.set;if(!e.length)return this.regexp=!1,this.regexp;var o=this.options,s=o.noglobstar?_:o.dot?'(?:(?!(?:\\/|^)(?:\\.{1,2})($|\\/)).)*?':'(?:(?!(?:\\/|^)\\.).)*?',d=o.nocase?'i':'',r=e.map(function(e){return e.map(function(e){return e===a?s:'string'==typeof e?u(e):e._src}).join('\\/')}).join('|');r='^(?:'+r+')$',this.negate&&(r='^(?!'+r+').*$');try{this.regexp=new RegExp(r,d)}catch(e){this.regexp=!1}return this.regexp},r.match=function(e,o,s){s=s||{};var d=new n(o,s);return e=e.filter(function(e){return d.match(e)}),d.options.nonull&&!e.length&&e.push(o),e},n.prototype.match=function(e,o){if(this.debug('match',e,this.pattern),this.comment)return!1;if(this.empty)return''===e;if('/'===e&&o)return!0;var s=this.options;'/'!==m.sep&&(e=e.split(m.sep).join('/')),e=e.split(g),this.debug(this.pattern,'split',e);var d=this.set;this.debug(this.pattern,'set',d);var r,n;for(n=e.length-1;0<=n&&(r=e[n],!r);n--);for(n=0;n<d.length;n++){var t=d[n],l=e;s.matchBase&&1===t.length&&(l=[r]);var u=this.matchOne(l,t,o);if(u)return!!s.flipNegate||!this.negate}return!s.flipNegate&&this.negate},n.prototype.matchOne=function(e,o,s){var d=this.options;this.debug('matchOne',{this:this,file:e,pattern:o}),this.debug('matchOne',e.length,o.length);for(var r=0,n=0,t=e.length,l=o.length;r<t&&n<l;r++,n++){this.debug('matchOne loop');var u=o[n],m=e[r];if(this.debug(o,u,m),!1===u)return!1;if(u===a){this.debug('GLOBSTAR',[o,u,m]);var c=r,i=n+1;if(i===l){for(this.debug('** at the end');r<t;r++)if('.'===e[r]||'..'===e[r]||!d.dot&&'.'===e[r].charAt(0))return!1;return!0}for(;c<t;){var j=e[c];if(this.debug('\nglobstar while',e,c,o,i,j),this.matchOne(e.slice(c),o.slice(i),s))return this.debug('globstar found match!',c,t,j),!0;if('.'===j||'..'===j||!d.dot&&'.'===j.charAt(0)){this.debug('dot detected!',e,c,o,i);break}this.debug('globstar swallow a segment, and continue'),c++}return s&&(this.debug('\n>>> no match, partial?',e,c,o,i),c===t)}var _;if('string'==typeof u?(_=d.nocase?m.toLowerCase()===u.toLowerCase():m===u,this.debug('string match',u,m,_)):(_=m.match(u),this.debug('pattern match',u,m,_)),!_)return!1}if(r===t&&n===l)return!0;if(r===t)return s;if(n===l){var g=r===t-1&&''===e[r];return g}throw new Error('wtf?')}},"./node_modules/glob/sync.js":function(e,o,s){function d(e,o){if('function'==typeof o||3===arguments.length)throw new TypeError('callback provided to sync glob\nSee: https://github.com/isaacs/node-glob/issues/167');return new r(e,o).found}function r(e,o){if(!e)throw new Error('must provide pattern');if('function'==typeof o||3===arguments.length)throw new TypeError('callback provided to sync glob\nSee: https://github.com/isaacs/node-glob/issues/167');if(!(this instanceof r))return new r(e,o);if(h(this,e,o),this.noprocess)return this;var s=this.minimatch.set.length;this.matches=Array(s);for(var d=0;d<s;d++)this._process(this.minimatch.set[d],d,!1);this._finish()}e.exports=d,d.GlobSync=r;var n=s(1),t=s('./node_modules/fs.realpath/index.js'),l=s('./node_modules/glob/node_modules/minimatch/minimatch.js'),u=l.Minimatch,m=s('./node_modules/glob/glob.js').Glob,c=s(4),a=s(0),i=s(3),j=s('./node_modules/path-is-absolute/index.js'),_=s('./node_modules/glob/common.js'),p=_.alphasort,g=_.alphasorti,h=_.setopts,y=_.ownProp,f=_.childrenIgnored,b=_.isIgnored;r.prototype._finish=function(){if(i(this instanceof r),this.realpath){var e=this;this.matches.forEach(function(o,s){var d=e.matches[s]=Object.create(null);for(var r in o)try{r=e._makeAbs(r);var n=t.realpathSync(r,e.realpathCache);d[n]=!0}catch(o){if('stat'===o.syscall)d[e._makeAbs(r)]=!0;else throw o}})}_.finish(this)},r.prototype._process=function(e,o,s){i(this instanceof r);for(var d=0;'string'==typeof e[d];)d++;var n;switch(d){case e.length:return void this._processSimple(e.join('/'),o);case 0:n=null;break;default:n=e.slice(0,d).join('/');}var t=e.slice(d),u;null===n?u='.':j(n)||j(e.join('/'))?((!n||!j(n))&&(n='/'+n),u=n):u=n;var m=this._makeAbs(u);if(!f(this,u)){var c=t[0]===l.GLOBSTAR;c?this._processGlobStar(n,u,m,t,o,s):this._processReaddir(n,u,m,t,o,s)}},r.prototype._processReaddir=function(o,s,d,r,n,t){var l=this._readdir(d,t);if(l){for(var u=r[0],c=!!this.minimatch.negate,j=u._glob,_=this.dot||'.'===j.charAt(0),p=[],g=0,i;g<l.length;g++)if(i=l[g],'.'!==i.charAt(0)||_){var e;e=c&&!o?!i.match(u):i.match(u),e&&p.push(i)}var m=p.length;if(0!==m){if(1===r.length&&!this.mark&&!this.stat){this.matches[n]||(this.matches[n]=Object.create(null));for(var g=0,i;g<m;g++)i=p[g],o&&('/'===o.slice(-1)?i=o+i:i=o+'/'+i),'/'!==i.charAt(0)||this.nomount||(i=a.join(this.root,i)),this._emitMatch(n,i);return}r.shift();for(var g=0;g<m;g++){var i=p[g],h;h=o?[o,i]:[i],this._process(h.concat(r),n,t)}}}},r.prototype._emitMatch=function(o,s){if(!b(this,s)){var e=this._makeAbs(s);if(this.mark&&(s=this._mark(s)),this.absolute&&(s=e),!this.matches[o][s]){if(this.nodir){var d=this.cache[e];if('DIR'===d||Array.isArray(d))return}this.matches[o][s]=!0,this.stat&&this._stat(s)}}},r.prototype._readdirInGlobStar=function(e){if(this.follow)return this._readdir(e,!1);var o,s;try{s=n.lstatSync(e)}catch(e){if('ENOENT'===e.code)return null}var d=s&&s.isSymbolicLink();return this.symlinks[e]=d,d||!s||s.isDirectory()?o=this._readdir(e,!1):this.cache[e]='FILE',o},r.prototype._readdir=function(e,o){if(o&&!y(this.symlinks,e))return this._readdirInGlobStar(e);if(y(this.cache,e)){var s=this.cache[e];if(!s||'FILE'===s)return null;if(Array.isArray(s))return s}try{return this._readdirEntries(e,n.readdirSync(e))}catch(o){return this._readdirError(e,o),null}},r.prototype._readdirEntries=function(o,s){if(!this.mark&&!this.stat)for(var d=0,r;d<s.length;d++)r=s[d],r='/'===o?o+r:o+'/'+r,this.cache[r]=!0;return this.cache[o]=s,s},r.prototype._readdirError=function(e,o){switch(o.code){case'ENOTSUP':case'ENOTDIR':var s=this._makeAbs(e);if(this.cache[s]='FILE',s===this.cwdAbs){var d=new Error(o.code+' invalid cwd '+this.cwd);throw d.path=this.cwd,d.code=o.code,d}break;case'ENOENT':case'ELOOP':case'ENAMETOOLONG':case'UNKNOWN':this.cache[this._makeAbs(e)]=!1;break;default:if(this.cache[this._makeAbs(e)]=!1,this.strict)throw o;this.silent||console.error('glob error',o);}},r.prototype._processGlobStar=function(o,s,d,r,n,t){var l=this._readdir(d,t);if(l){var u=r.slice(1),m=o?[o]:[],c=m.concat(u);this._process(c,n,!1);var a=l.length,j=this.symlinks[d];if(!(j&&t))for(var _=0,i;_<a;_++)if(i=l[_],'.'!==i.charAt(0)||this.dot){var e=m.concat(l[_],u);this._process(e,n,!0);var p=m.concat(l[_],r);this._process(p,n,!0)}}},r.prototype._processSimple=function(e,o){var s=this._stat(e);if(this.matches[o]||(this.matches[o]=Object.create(null)),!!s){if(e&&j(e)&&!this.nomount){var d=/[\/\\]$/.test(e);'/'===e.charAt(0)?e=a.join(this.root,e):(e=a.resolve(this.root,e),d&&(e+='/'))}'win32'===process.platform&&(e=e.replace(/\\/g,'/')),this._emitMatch(o,e)}},r.prototype._stat=function(e){var o=this._makeAbs(e),s='/'===e.slice(-1);if(e.length>this.maxLength)return!1;if(!this.stat&&y(this.cache,o)){var d=this.cache[o];if(Array.isArray(d)&&(d='DIR'),!s||'DIR'===d)return d;if(s&&'FILE'===d)return!1}var r=this.statCache[o];if(!r){var t;try{t=n.lstatSync(o)}catch(e){if(e&&('ENOENT'===e.code||'ENOTDIR'===e.code))return this.statCache[o]=!1,!1}if(t&&t.isSymbolicLink())try{r=n.statSync(o)}catch(e){r=t}else r=t}this.statCache[o]=r;var d=!0;return r&&(d=r.isDirectory()?'DIR':'FILE'),this.cache[o]=this.cache[o]||d,s&&'FILE'===d?!1:d},r.prototype._mark=function(e){return _.mark(this,e)},r.prototype._makeAbs=function(e){return _.makeAbs(this,e)}},"./node_modules/inflight/inflight.js":function(e,o,s){function d(e){return l(function o(){var s=t[e],d=s.length,n=r(arguments);try{for(var l=0;l<d;l++)s[l].apply(null,n)}finally{s.length>d?(s.splice(0,d),process.nextTick(function(){o.apply(null,n)})):delete t[e]}})}function r(e){for(var o=e.length,s=[],d=0;d<o;d++)s[d]=e[d];return s}var n=s('./node_modules/wrappy/wrappy.js'),t=Object.create(null),l=s('./node_modules/once/once.js');e.exports=n(function(e,o){return t[e]?(t[e].push(o),null):(t[e]=[o],d(e))})},"./node_modules/inherits/inherits.js":function(e,o,s){try{var d=s(4);if('function'!=typeof d.inherits)throw'';e.exports=d.inherits}catch(o){e.exports=s('./node_modules/inherits/inherits_browser.js')}},"./node_modules/inherits/inherits_browser.js":function(e){e.exports='function'==typeof Object.create?function(e,o){e.super_=o,e.prototype=Object.create(o.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}})}:function(e,o){e.super_=o;var s=function(){};s.prototype=o.prototype,e.prototype=new s,e.prototype.constructor=e}},"./node_modules/once/once.js":function(e,o,s){function d(e){var o=function(){return o.called?o.value:(o.called=!0,o.value=e.apply(this,arguments))};return o.called=!1,o}function r(e){var o=function(){if(o.called)throw new Error(o.onceError);return o.called=!0,o.value=e.apply(this,arguments)},s=e.name||'Function wrapped with `once`';return o.onceError=s+' shouldn\'t be called more than once',o.called=!1,o}var n=s('./node_modules/wrappy/wrappy.js');e.exports=n(d),e.exports.strict=n(r),d.proto=d(function(){Object.defineProperty(Function.prototype,'once',{value:function(){return d(this)},configurable:!0}),Object.defineProperty(Function.prototype,'onceStrict',{value:function(){return r(this)},configurable:!0})})},"./node_modules/path-is-absolute/index.js":function(e){'use strict';function o(e){return'/'===e.charAt(0)}function s(e){var o=/^([a-zA-Z]:|[\\\/]{2}[^\\\/]+[\\\/]+[^\\\/]+)?([\\\/])?([\s\S]*?)$/,s=o.exec(e),d=s[1]||'',r=!!(d&&':'!==d.charAt(1));return!!(s[2]||r)}e.exports='win32'===process.platform?s:o,e.exports.posix=o,e.exports.win32=s},"./node_modules/regenerator-runtime/runtime.js":function(e){!function(o){'use strict';function s(e,o,s,d){var n=o&&o.prototype instanceof r?o:r,t=Object.create(n.prototype),l=new i(d||[]);return t._invoke=m(e,s,l),t}function d(e,o,s){try{return{type:'normal',arg:e.call(o,s)}}catch(e){return{type:'throw',arg:e}}}function r(){}function n(){}function t(){}function l(e){['next','throw','return'].forEach(function(o){e[o]=function(e){return this._invoke(o,e)}})}function u(e){function o(s,r,n,t){var l=d(e[s],e,r);if('throw'===l.type)t(l.arg);else{var u=l.arg,m=u.value;return m&&'object'==typeof m&&h.call(m,'__await')?Promise.resolve(m.__await).then(function(e){o('next',e,n,t)},function(e){o('throw',e,n,t)}):Promise.resolve(m).then(function(e){u.value=e,n(u)},t)}}'object'==typeof process&&process.domain&&(o=process.domain.bind(o));var s;this._invoke=function(e,d){function r(){return new Promise(function(s,r){o(e,d,s,r)})}return s=s?s.then(r,r):r()}}function m(e,o,s){var r=S;return function(n,t){if(r==R)throw new Error('Generator is already running');if(r==A){if('throw'===n)throw t;return p()}for(s.method=n,s.arg=t;;){var l=s.delegate;if(l){var u=c(l,s);if(u){if(u===I)continue;return u}}if('next'===s.method)s.sent=s._sent=s.arg;else if('throw'===s.method){if(r==S)throw r=A,s.arg;s.dispatchException(s.arg)}else'return'===s.method&&s.abrupt('return',s.arg);r=R;var m=d(e,o,s);if('normal'===m.type){if(r=s.done?A:O,m.arg===I)continue;return{value:m.arg,done:s.done}}'throw'===m.type&&(r=A,s.method='throw',s.arg=m.arg)}}}function c(e,o){var s=e.iterator[o.method];if(void 0===s){if(o.delegate=null,'throw'===o.method){if(e.iterator.return&&(o.method='return',o.arg=void 0,c(e,o),'throw'===o.method))return I;o.method='throw',o.arg=new TypeError('The iterator does not provide a \'throw\' method')}return I}var r=d(s,e.iterator,o.arg);if('throw'===r.type)return o.method='throw',o.arg=r.arg,o.delegate=null,I;var n=r.arg;if(!n)return o.method='throw',o.arg=new TypeError('iterator result is not an object'),o.delegate=null,I;if(n.done)o[e.resultName]=n.value,o.next=e.nextLoc,'return'!==o.method&&(o.method='next',o.arg=void 0);else return n;return o.delegate=null,I}function a(e){var o={tryLoc:e[0]};1 in e&&(o.catchLoc=e[1]),2 in e&&(o.finallyLoc=e[2],o.afterLoc=e[3]),this.tryEntries.push(o)}function j(e){var o=e.completion||{};o.type='normal',delete o.arg,e.completion=o}function i(e){this.tryEntries=[{tryLoc:'root'}],e.forEach(a,this),this.reset(!0)}function _(e){if(e){var o=e[y];if(o)return o.call(e);if('function'==typeof e.next)return e;if(!isNaN(e.length)){var s=-1,d=function o(){for(;++s<e.length;)if(h.call(e,s))return o.value=e[s],o.done=!1,o;return o.value=void 0,o.done=!0,o};return d.next=d}}return{next:p}}function p(){return{value:void 0,done:!0}}var g=Object.prototype,h=g.hasOwnProperty,f='function'==typeof Symbol?Symbol:{},y=f.iterator||'@@iterator',b=f.toStringTag||'@@toStringTag',E='object'==typeof e,x=o.regeneratorRuntime;if(x)return void(E&&(e.exports=x));x=o.regeneratorRuntime=E?e.exports:{},x.wrap=s;var S='suspendedStart',O='suspendedYield',R='executing',A='completed',I={},T={};T[y]=function(){return this};var k=Object.getPrototypeOf,v=k&&k(k(_([])));v&&v!==g&&h.call(v,y)&&(T=v);var N=t.prototype=r.prototype=Object.create(T);n.prototype=N.constructor=t,t.constructor=n,t[b]=n.displayName='GeneratorFunction',x.isGeneratorFunction=function(e){var o='function'==typeof e&&e.constructor;return!!o&&(o===n||'GeneratorFunction'===(o.displayName||o.name))},x.mark=function(e){return Object.setPrototypeOf?Object.setPrototypeOf(e,t):(e.__proto__=t,!(b in e)&&(e[b]='GeneratorFunction')),e.prototype=Object.create(N),e},x.awrap=function(e){return{__await:e}},l(u.prototype),x.AsyncIterator=u,x.async=function(e,o,d,r){var n=new u(s(e,o,d,r));return x.isGeneratorFunction(o)?n:n.next().then(function(e){return e.done?e.value:n.next()})},l(N),N[b]='Generator',N.toString=function(){return'[object Generator]'},x.keys=function(e){var o=[];for(var s in e)o.push(s);return o.reverse(),function s(){for(;o.length;){var d=o.pop();if(d in e)return s.value=d,s.done=!1,s}return s.done=!0,s}},x.values=_,i.prototype={constructor:i,reset:function(e){if(this.prev=0,this.next=0,this.sent=this._sent=void 0,this.done=!1,this.delegate=null,this.method='next',this.arg=void 0,this.tryEntries.forEach(j),!e)for(var o in this)'t'===o.charAt(0)&&h.call(this,o)&&!isNaN(+o.slice(1))&&(this[o]=void 0)},stop:function(){this.done=!0;var e=this.tryEntries[0],o=e.completion;if('throw'===o.type)throw o.arg;return this.rval},dispatchException:function(e){function o(o,d){return n.type='throw',n.arg=e,s.next=o,d&&(s.method='next',s.arg=void 0),!!d}if(this.done)throw e;for(var s=this,d=this.tryEntries.length-1;0<=d;--d){var r=this.tryEntries[d],n=r.completion;if('root'===r.tryLoc)return o('end');if(r.tryLoc<=this.prev){var t=h.call(r,'catchLoc'),l=h.call(r,'finallyLoc');if(t&&l){if(this.prev<r.catchLoc)return o(r.catchLoc,!0);if(this.prev<r.finallyLoc)return o(r.finallyLoc)}else if(t){if(this.prev<r.catchLoc)return o(r.catchLoc,!0);}else if(!l)throw new Error('try statement without catch or finally');else if(this.prev<r.finallyLoc)return o(r.finallyLoc)}}},abrupt:function(e,o){for(var s=this.tryEntries.length-1,d;0<=s;--s)if(d=this.tryEntries[s],d.tryLoc<=this.prev&&h.call(d,'finallyLoc')&&this.prev<d.finallyLoc){var r=d;break}r&&('break'===e||'continue'===e)&&r.tryLoc<=o&&o<=r.finallyLoc&&(r=null);var n=r?r.completion:{};return n.type=e,n.arg=o,r?(this.method='next',this.next=r.finallyLoc,I):this.complete(n)},complete:function(e,o){if('throw'===e.type)throw e.arg;return'break'===e.type||'continue'===e.type?this.next=e.arg:'return'===e.type?(this.rval=this.arg=e.arg,this.method='return',this.next='end'):'normal'===e.type&&o&&(this.next=o),I},finish:function(e){for(var o=this.tryEntries.length-1,s;0<=o;--o)if(s=this.tryEntries[o],s.finallyLoc===e)return this.complete(s.completion,s.afterLoc),j(s),I},catch:function(e){for(var o=this.tryEntries.length-1,s;0<=o;--o)if(s=this.tryEntries[o],s.tryLoc===e){var d=s.completion;if('throw'===d.type){var r=d.arg;j(s)}return r}throw new Error('illegal catch attempt')},delegateYield:function(e,o,s){return this.delegate={iterator:_(e),resultName:o,nextLoc:s},'next'===this.method&&(this.arg=void 0),I}}}('object'==typeof global?global:'object'==typeof window?window:'object'==typeof self?self:this)},"./node_modules/rimraf/rimraf.js":function(e,o,s){function d(e){['unlink','chmod','stat','lstat','rmdir','readdir'].forEach(function(o){e[o]=e[o]||p[o],o+='Sync',e[o]=e[o]||p[o]}),e.maxBusyTries=e.maxBusyTries||3,e.emfileWait=e.emfileWait||1e3,!1===e.glob&&(e.disableGlob=!0),e.disableGlob=e.disableGlob||!1,e.glob=e.glob||h}function r(e,o,s){function r(e){u=u||e,0==--m&&s(u)}function t(e,d){return e?s(e):(m=d.length,0===m?s():void d.forEach(function(e){n(e,o,function s(d){if(d){if(('EBUSY'===d.code||'ENOTEMPTY'===d.code||'EPERM'===d.code)&&l<o.maxBusyTries){l++;var t=100*l;return setTimeout(function(){n(e,o,s)},t)}if('EMFILE'===d.code&&f<o.emfileWait)return setTimeout(function(){n(e,o,s)},f++);'ENOENT'===d.code&&(d=null)}f=0,r(d)})}))}'function'==typeof o&&(s=o,o={}),j(e,'rimraf: missing path'),j.equal(typeof e,'string','rimraf: path should be a string'),j.equal(typeof s,'function','rimraf: callback function required'),j(o,'rimraf: invalid options argument provided'),j.equal(typeof o,'object','rimraf: options should be object'),d(o);var l=0,u=null,m=0;return o.disableGlob||!g.hasMagic(e)?t(null,[e]):void o.lstat(e,function(s){return s?void g(e,o.glob,t):t(null,[e])})}function n(e,o,s){j(e),j(o),j('function'==typeof s),o.lstat(e,function(d,r){return d&&'ENOENT'===d.code?s(null):(d&&'EPERM'===d.code&&y&&t(e,o,d,s),r&&r.isDirectory()?u(e,o,d,s):void o.unlink(e,function(d){if(d){if('ENOENT'===d.code)return s(null);if('EPERM'===d.code)return y?t(e,o,d,s):u(e,o,d,s);if('EISDIR'===d.code)return u(e,o,d,s)}return s(d)}))})}function t(e,o,s,d){j(e),j(o),j('function'==typeof d),s&&j(s instanceof Error),o.chmod(e,666,function(r){r?d('ENOENT'===r.code?null:s):o.stat(e,function(r,n){r?d('ENOENT'===r.code?null:s):n.isDirectory()?u(e,o,s,d):o.unlink(e,d)})})}function l(e,o,s){j(e),j(o),s&&j(s instanceof Error);try{o.chmodSync(e,666)}catch(e){if('ENOENT'===e.code)return;throw s}try{var d=o.statSync(e)}catch(e){if('ENOENT'===e.code)return;throw s}d.isDirectory()?a(e,o,s):o.unlinkSync(e)}function u(e,o,s,d){j(e),j(o),s&&j(s instanceof Error),j('function'==typeof d),o.rmdir(e,function(r){r&&('ENOTEMPTY'===r.code||'EEXIST'===r.code||'EPERM'===r.code)?m(e,o,d):r&&'ENOTDIR'===r.code?d(s):d(r)})}function m(e,o,s){j(e),j(o),j('function'==typeof s),o.readdir(e,function(d,t){if(d)return s(d);var l=t.length;if(0===l)return o.rmdir(e,s);var n;t.forEach(function(d){r(_.join(e,d),o,function(d){return n?void 0:d?s(n=d):void(0==--l&&o.rmdir(e,s))})})})}function c(e,o){o=o||{},d(o),j(e,'rimraf: missing path'),j.equal(typeof e,'string','rimraf: path should be a string'),j(o,'rimraf: missing options'),j.equal(typeof o,'object','rimraf: options should be object');var s;if(o.disableGlob||!g.hasMagic(e))s=[e];else try{o.lstatSync(e),s=[e]}catch(d){s=g.sync(e,o.glob)}if(s.length)for(var r=0,e;r<s.length;r++){e=s[r];try{var n=o.lstatSync(e)}catch(s){if('ENOENT'===s.code)return;'EPERM'===s.code&&y&&l(e,o,s)}try{n&&n.isDirectory()?a(e,o,null):o.unlinkSync(e)}catch(s){if('ENOENT'===s.code)return;if('EPERM'===s.code)return y?l(e,o,s):a(e,o,s);if('EISDIR'!==s.code)throw s;a(e,o,s)}}}function a(e,o,s){j(e),j(o),s&&j(s instanceof Error);try{o.rmdirSync(e)}catch(d){if('ENOENT'===d.code)return;if('ENOTDIR'===d.code)throw s;('ENOTEMPTY'===d.code||'EEXIST'===d.code||'EPERM'===d.code)&&i(e,o)}}function i(e,o){j(e),j(o),o.readdirSync(e).forEach(function(s){c(_.join(e,s),o)});var s=y?100:1,d=0;do{var r=!0;try{var n=o.rmdirSync(e,o);return r=!1,n}finally{if(++d<s&&r)continue}}while(!0)}e.exports=r,r.sync=c;var j=s(3),_=s(0),p=s(1),g=s('./node_modules/glob/glob.js'),h={nosort:!0,silent:!0},f=0,y='win32'===process.platform},"./node_modules/semver/semver.js":function(e,o){function d(e,o){if(e instanceof s)return e;if('string'!=typeof e)return null;if(e.length>L)return null;var d=o?C[K]:C[$];if(!d.test(e))return null;try{return new s(e,o)}catch(e){return null}}function s(e,o){if(e instanceof s){if(e.loose===o)return e;e=e.version}else if('string'!=typeof e)throw new TypeError('Invalid Version: '+e);if(e.length>L)throw new TypeError('version is longer than '+L+' characters');if(!(this instanceof s))return new s(e,o);N('SemVer',e,o),this.loose=o;var d=e.trim().match(o?C[K]:C[$]);if(!d)throw new TypeError('Invalid Version: '+e);if(this.raw=e,this.major=+d[1],this.minor=+d[2],this.patch=+d[3],this.major>P||0>this.major)throw new TypeError('Invalid major version');if(this.minor>P||0>this.minor)throw new TypeError('Invalid minor version');if(this.patch>P||0>this.patch)throw new TypeError('Invalid patch version');this.prerelease=d[4]?d[4].split('.').map(function(e){if(/^[0-9]+$/.test(e)){var o=+e;if(0<=o&&o<P)return o}return e}):[],this.build=d[5]?d[5].split('.'):[],this.format()}function r(e,o){var s=i.test(e),d=i.test(o);return s&&d&&(e=+e,o=+o),s&&!d?-1:d&&!s?1:e<o?-1:e>o?1:0}function n(e,o,d){return new s(e,d).compare(o)}function t(e,o,s){return n(o,e,s)}function l(e,o,s){return 0<n(e,o,s)}function u(e,o,s){return 0>n(e,o,s)}function m(e,o,s){return 0===n(e,o,s)}function c(e,o,s){return 0!==n(e,o,s)}function j(e,o,s){return 0<=n(e,o,s)}function _(e,o,s){return 0>=n(e,o,s)}function a(e,o,s,d){var r;switch(o){case'===':'object'==typeof e&&(e=e.version),'object'==typeof s&&(s=s.version),r=e===s;break;case'!==':'object'==typeof e&&(e=e.version),'object'==typeof s&&(s=s.version),r=e!==s;break;case'':case'=':case'==':r=m(e,s,d);break;case'!=':r=c(e,s,d);break;case'>':r=l(e,s,d);break;case'>=':r=j(e,s,d);break;case'<':r=u(e,s,d);break;case'<=':r=_(e,s,d);break;default:throw new TypeError('Invalid operator: '+o);}return r}function p(e,o){if(e instanceof p){if(e.loose===o)return e;e=e.value}return this instanceof p?void(N('comparator',e,o),this.loose=o,this.parse(e),this.value=this.semver===ye?'':this.operator+this.semver.version,N('comp',this)):new p(e,o)}function g(e,o){if(e instanceof g&&e.loose===o)return e;if(!(this instanceof g))return new g(e,o);if(this.loose=o,this.raw=e,this.set=e.split(/\s*\|\|\s*/).map(function(e){return this.parseRange(e.trim())},this).filter(function(e){return e.length}),!this.set.length)throw new TypeError('Invalid SemVer Range: '+e);this.format()}function h(e,o){return N('comp',e),e=E(e,o),N('caret',e),e=y(e,o),N('tildes',e),e=S(e,o),N('xrange',e),e=A(e,o),N('stars',e),e}function f(e){return!e||'x'===e.toLowerCase()||'*'===e}function y(e,o){return e.trim().split(/\s+/).map(function(e){return b(e,o)}).join(' ')}function b(e,o){var s=o?C[le]:C[te];return e.replace(s,function(o,s,d,r,n){N('tilde',e,o,s,d,r,n);var t;return f(s)?t='':f(d)?t='>='+s+'.0.0 <'+(+s+1)+'.0.0':f(r)?t='>='+s+'.'+d+'.0 <'+s+'.'+(+d+1)+'.0':n?(N('replaceTilde pr',n),'-'!==n.charAt(0)&&(n='-'+n),t='>='+s+'.'+d+'.'+r+n+' <'+s+'.'+(+d+1)+'.0'):t='>='+s+'.'+d+'.'+r+' <'+s+'.'+(+d+1)+'.0',N('tilde return',t),t})}function E(e,o){return e.trim().split(/\s+/).map(function(e){return x(e,o)}).join(' ')}function x(e,o){N('caret',e,o);var s=o?C[ae]:C[ce];return e.replace(s,function(o,s,d,r,n){N('caret',e,o,s,d,r,n);var t;return f(s)?t='':f(d)?t='>='+s+'.0.0 <'+(+s+1)+'.0.0':f(r)?'0'===s?t='>='+s+'.'+d+'.0 <'+s+'.'+(+d+1)+'.0':t='>='+s+'.'+d+'.0 <'+(+s+1)+'.0.0':n?(N('replaceCaret pr',n),'-'!==n.charAt(0)&&(n='-'+n),t='0'===s?'0'===d?'>='+s+'.'+d+'.'+r+n+' <'+s+'.'+d+'.'+(+r+1):'>='+s+'.'+d+'.'+r+n+' <'+s+'.'+(+d+1)+'.0':'>='+s+'.'+d+'.'+r+n+' <'+(+s+1)+'.0.0'):(N('no pr'),t='0'===s?'0'===d?'>='+s+'.'+d+'.'+r+' <'+s+'.'+d+'.'+(+r+1):'>='+s+'.'+d+'.'+r+' <'+s+'.'+(+d+1)+'.0':'>='+s+'.'+d+'.'+r+' <'+(+s+1)+'.0.0'),N('caret return',t),t})}function S(e,o){return N('replaceXRanges',e,o),e.split(/\s+/).map(function(e){return O(e,o)}).join(' ')}function O(e,o){e=e.trim();var s=o?C[de]:C[se];return e.replace(s,function(o,s,d,r,n,t){N('xRange',e,o,s,d,r,n,t);var l=f(d),u=l||f(r),c=u||f(n),a=c;return'='===s&&a&&(s=''),l?'>'===s||'<'===s?o='<0.0.0':o='*':s&&a?(u&&(r=0),c&&(n=0),'>'===s?(s='>=',u?(d=+d+1,r=0,n=0):c&&(r=+r+1,n=0)):'<='===s&&(s='<',u?d=+d+1:r=+r+1),o=s+d+'.'+r+'.'+n):u?o='>='+d+'.0.0 <'+(+d+1)+'.0.0':c&&(o='>='+d+'.'+r+'.0 <'+d+'.'+(+r+1)+'.0'),N('xRange return',o),o})}function A(e,o){return N('replaceStars',e,o),e.trim().replace(C[he],'')}function I(e,o,s,d,r,n,t,l,u,m,c,a){return o=f(s)?'':f(d)?'>='+s+'.0.0':f(r)?'>='+s+'.'+d+'.0':'>='+o,l=f(u)?'':f(m)?'<'+(+u+1)+'.0.0':f(c)?'<'+u+'.'+(+m+1)+'.0':a?'<='+u+'.'+m+'.'+c+'-'+a:'<='+l,(o+' '+l).trim()}function T(e,o){for(var s=0;s<e.length;s++)if(!e[s].test(o))return!1;if(o.prerelease.length){for(var s=0;s<e.length;s++)if(N(e[s].semver),e[s].semver!==ye&&0<e[s].semver.prerelease.length){var d=e[s].semver;if(d.major===o.major&&d.minor===o.minor&&d.patch===o.patch)return!0}return!1}return!0}function k(e,o,s){try{o=new g(o,s)}catch(e){return!1}return o.test(e)}function v(e,o,d,r){e=new s(e,r),o=new g(o,r);var n,t,m,c,a;switch(d){case'>':n=l,t=_,m=u,c='>',a='>=';break;case'<':n=u,t=j,m=l,c='<',a='<=';break;default:throw new TypeError('Must provide a hilo val of "<" or ">"');}if(k(e,o,r))return!1;for(var h=0;h<o.set.length;++h){var i=o.set[h],f=null,y=null;if(i.forEach(function(e){e.semver===ye&&(e=new p('>=0.0.0')),f=f||e,y=y||e,n(e.semver,f.semver,r)?f=e:m(e.semver,y.semver,r)&&(y=e)}),f.operator===c||f.operator===a)return!1;if((!y.operator||y.operator===c)&&t(e,y.semver))return!1;if(y.operator===a&&m(e,y.semver))return!1}return!0}o=e.exports=s;var N;N='object'==typeof process&&process.env&&process.env.NODE_DEBUG&&/\bsemver\b/i.test(process.env.NODE_DEBUG)?function(){var e=Array.prototype.slice.call(arguments,0);e.unshift('SEMVER'),console.log.apply(console,e)}:function(){},o.SEMVER_SPEC_VERSION='2.0.0';var L=256,P=Number.MAX_SAFE_INTEGER||9007199254740991,C=o.re=[],w=o.src=[],M=0,R=M++;w[R]='0|[1-9]\\d*';var F=M++;w[F]='[0-9]+';var D=M++;w[D]='\\d*[a-zA-Z-][a-zA-Z0-9-]*';var G=M++;w[G]='('+w[R]+')\\.('+w[R]+')\\.('+w[R]+')';var U=M++;w[U]='('+w[F]+')\\.('+w[F]+')\\.('+w[F]+')';var B=M++;w[B]='(?:'+w[R]+'|'+w[D]+')';var Y=M++;w[Y]='(?:'+w[F]+'|'+w[D]+')';var W=M++;w[W]='(?:-('+w[B]+'(?:\\.'+w[B]+')*))';var V=M++;w[V]='(?:-?('+w[Y]+'(?:\\.'+w[Y]+')*))';var z=M++;w[z]='[0-9A-Za-z-]+';var H=M++;w[H]='(?:\\+('+w[z]+'(?:\\.'+w[z]+')*))';var $=M++,X='v?'+w[G]+w[W]+'?'+w[H]+'?';w[$]='^'+X+'$';var q='[v=\\s]*'+w[U]+w[V]+'?'+w[H]+'?',K=M++;w[K]='^'+q+'$';var J=M++;w[J]='((?:<|>)?=?)';var Q=M++;w[Q]=w[F]+'|x|X|\\*';var Z=M++;w[Z]=w[R]+'|x|X|\\*';var ee=M++;w[ee]='[v=\\s]*('+w[Z]+')(?:\\.('+w[Z]+')(?:\\.('+w[Z]+')(?:'+w[W]+')?'+w[H]+'?)?)?';var oe=M++;w[oe]='[v=\\s]*('+w[Q]+')(?:\\.('+w[Q]+')(?:\\.('+w[Q]+')(?:'+w[V]+')?'+w[H]+'?)?)?';var se=M++;w[se]='^'+w[J]+'\\s*'+w[ee]+'$';var de=M++;w[de]='^'+w[J]+'\\s*'+w[oe]+'$';var re=M++;w[re]='(?:~>?)';var ne=M++;w[ne]='(\\s*)'+w[re]+'\\s+',C[ne]=new RegExp(w[ne],'g');var te=M++;w[te]='^'+w[re]+w[ee]+'$';var le=M++;w[le]='^'+w[re]+w[oe]+'$';var ue=M++;w[ue]='(?:\\^)';var me=M++;w[me]='(\\s*)'+w[ue]+'\\s+',C[me]=new RegExp(w[me],'g');var ce=M++;w[ce]='^'+w[ue]+w[ee]+'$';var ae=M++;w[ae]='^'+w[ue]+w[oe]+'$';var ie=M++;w[ie]='^'+w[J]+'\\s*('+q+')$|^$';var je=M++;w[je]='^'+w[J]+'\\s*('+X+')$|^$';var _e=M++;w[_e]='(\\s*)'+w[J]+'\\s*('+q+'|'+w[ee]+')',C[_e]=new RegExp(w[_e],'g');var pe=M++;w[pe]='^\\s*('+w[ee]+')\\s+-\\s+('+w[ee]+')\\s*$';var ge=M++;w[ge]='^\\s*('+w[oe]+')\\s+-\\s+('+w[oe]+')\\s*$';var he=M++;w[he]='(<|>)?=?\\s*\\*';for(var fe=0;fe<M;fe++)N(fe,w[fe]),C[fe]||(C[fe]=new RegExp(w[fe]));o.parse=d,o.valid=function(e,o){var s=d(e,o);return s?s.version:null},o.clean=function(e,o){var r=d(e.trim().replace(/^[=v]+/,''),o);return r?r.version:null},o.SemVer=s,s.prototype.format=function(){return this.version=this.major+'.'+this.minor+'.'+this.patch,this.prerelease.length&&(this.version+='-'+this.prerelease.join('.')),this.version},s.prototype.toString=function(){return this.version},s.prototype.compare=function(e){return N('SemVer.compare',this.version,this.loose,e),e instanceof s||(e=new s(e,this.loose)),this.compareMain(e)||this.comparePre(e)},s.prototype.compareMain=function(e){return e instanceof s||(e=new s(e,this.loose)),r(this.major,e.major)||r(this.minor,e.minor)||r(this.patch,e.patch)},s.prototype.comparePre=function(e){if(e instanceof s||(e=new s(e,this.loose)),this.prerelease.length&&!e.prerelease.length)return-1;if(!this.prerelease.length&&e.prerelease.length)return 1;if(!this.prerelease.length&&!e.prerelease.length)return 0;var o=0;do{var d=this.prerelease[o],n=e.prerelease[o];if(N('prerelease compare',o,d,n),void 0===d&&void 0===n)return 0;if(void 0===n)return 1;if(void 0===d)return-1;if(d===n)continue;else return r(d,n)}while(++o)},s.prototype.inc=function(e,o){switch(e){case'premajor':this.prerelease.length=0,this.patch=0,this.minor=0,this.major++,this.inc('pre',o);break;case'preminor':this.prerelease.length=0,this.patch=0,this.minor++,this.inc('pre',o);break;case'prepatch':this.prerelease.length=0,this.inc('patch',o),this.inc('pre',o);break;case'prerelease':0===this.prerelease.length&&this.inc('patch',o),this.inc('pre',o);break;case'major':(0!==this.minor||0!==this.patch||0===this.prerelease.length)&&this.major++,this.minor=0,this.patch=0,this.prerelease=[];break;case'minor':(0!==this.patch||0===this.prerelease.length)&&this.minor++,this.patch=0,this.prerelease=[];break;case'patch':0===this.prerelease.length&&this.patch++,this.prerelease=[];break;case'pre':if(0===this.prerelease.length)this.prerelease=[0];else{for(var s=this.prerelease.length;0<=--s;)'number'==typeof this.prerelease[s]&&(this.prerelease[s]++,s=-2);-1===s&&this.prerelease.push(0)}o&&(this.prerelease[0]===o?isNaN(this.prerelease[1])&&(this.prerelease=[o,0]):this.prerelease=[o,0]);break;default:throw new Error('invalid increment argument: '+e);}return this.format(),this.raw=this.version,this},o.inc=function(e,o,d,r){'string'==typeof d&&(r=d,d=void 0);try{return new s(e,d).inc(o,r).version}catch(e){return null}},o.diff=function(e,o){if(m(e,o))return null;var s=d(e),r=d(o);if(s.prerelease.length||r.prerelease.length){for(var n in s)if(('major'==n||'minor'==n||'patch'==n)&&s[n]!==r[n])return'pre'+n;return'prerelease'}for(var n in s)if(('major'==n||'minor'==n||'patch'==n)&&s[n]!==r[n])return n},o.compareIdentifiers=r;var i=/^[0-9]+$/;o.rcompareIdentifiers=function(e,o){return r(o,e)},o.major=function(e,o){return new s(e,o).major},o.minor=function(e,o){return new s(e,o).minor},o.patch=function(e,o){return new s(e,o).patch},o.compare=n,o.compareLoose=function(e,o){return n(e,o,!0)},o.rcompare=t,o.sort=function(e,s){return e.sort(function(e,d){return o.compare(e,d,s)})},o.rsort=function(e,s){return e.sort(function(e,d){return o.rcompare(e,d,s)})},o.gt=l,o.lt=u,o.eq=m,o.neq=c,o.gte=j,o.lte=_,o.cmp=a,o.Comparator=p;var ye={};p.prototype.parse=function(e){var o=this.loose?C[ie]:C[je],d=e.match(o);if(!d)throw new TypeError('Invalid comparator: '+e);this.operator=d[1],'='===this.operator&&(this.operator=''),this.semver=d[2]?new s(d[2],this.loose):ye},p.prototype.toString=function(){return this.value},p.prototype.test=function(e){return(N('Comparator.test',e,this.loose),this.semver===ye)||('string'==typeof e&&(e=new s(e,this.loose)),a(e,this.operator,this.semver,this.loose))},o.Range=g,g.prototype.format=function(){return this.range=this.set.map(function(e){return e.join(' ').trim()}).join('||').trim(),this.range},g.prototype.toString=function(){return this.range},g.prototype.parseRange=function(e){var o=this.loose;e=e.trim(),N('range',e,o);var s=o?C[ge]:C[pe];e=e.replace(s,I),N('hyphen replace',e),e=e.replace(C[_e],'$1$2$3'),N('comparator trim',e,C[_e]),e=e.replace(C[ne],'$1~'),e=e.replace(C[me],'$1^'),e=e.split(/\s+/).join(' ');var d=o?C[ie]:C[je],r=e.split(' ').map(function(e){return h(e,o)}).join(' ').split(/\s+/);return this.loose&&(r=r.filter(function(e){return!!e.match(d)})),r=r.map(function(e){return new p(e,o)}),r},o.toComparators=function(e,o){return new g(e,o).set.map(function(e){return e.map(function(e){return e.value}).join(' ').trim().split(' ')})},g.prototype.test=function(e){if(!e)return!1;'string'==typeof e&&(e=new s(e,this.loose));for(var o=0;o<this.set.length;o++)if(T(this.set[o],e))return!0;return!1},o.satisfies=k,o.maxSatisfying=function(e,o,s){return e.filter(function(e){return k(e,o,s)}).sort(function(e,o){return t(e,o,s)})[0]||null},o.minSatisfying=function(e,o,s){return e.filter(function(e){return k(e,o,s)}).sort(function(e,o){return n(e,o,s)})[0]||null},o.validRange=function(e,o){try{return new g(e,o).range||'*'}catch(e){return null}},o.ltr=function(e,o,s){return v(e,o,'<',s)},o.gtr=function(e,o,s){return v(e,o,'>',s)},o.outside=v,o.prerelease=function(e,o){var s=d(e,o);return s&&s.prerelease.length?s.prerelease:null}},"./node_modules/source-map-support/source-map-support.js":function(e,o,s){function d(){return'browser'==S||'node'!=S&&'undefined'!=typeof window&&'function'==typeof XMLHttpRequest&&!(window.require&&window.module&&window.process&&'renderer'===window.process.type)}function r(){return'object'==typeof process&&null!==process&&'function'==typeof process.on}function n(e){return function(o){for(var s=0,d;s<e.length;s++)if(d=e[s](o),d)return d;return null}}function t(e,o){if(!e)return o;var s=f.dirname(e),d=/^\w+:\/\/[^\/]*/.exec(s),r=d?d[0]:'';return r+f.resolve(s.slice(r.length),o)}function l(e){var o;if(d())try{var s=new XMLHttpRequest;s.open('GET',e,!1),s.send(null),o=4===s.readyState?s.responseText:null;var r=s.getResponseHeader('SourceMap')||s.getResponseHeader('X-SourceMap');if(r)return r}catch(o){}o=k(e);for(var n=/(?:\/\/[@#][ \t]+sourceMappingURL=([^\s'"]+?)[ \t]*$)|(?:\/\*[@#][ \t]+sourceMappingURL=([^\*]+?)[ \t]*(?:\*\/)[ \t]*$)/mg,t,l;l=n.exec(o);)t=l;return t?t[1]:null}function u(e){var o=R[e.source];if(!o){var s=v(e.source);s?(o=R[e.source]={url:s.url,map:new h(s.map)},o.map.sourcesContent&&o.map.sources.forEach(function(e,s){var d=o.map.sourcesContent[s];if(d){var r=t(o.url,e);O[r]=d}})):o=R[e.source]={url:null,map:null}}if(o&&o.map){var d=o.map.originalPositionFor(e);if(null!==d.source)return d.source=t(o.url,d.source),d}return e}function m(e){var o=/^eval at ([^(]+) \((.+):(\d+):(\d+)\)$/.exec(e);if(o){var s=u({source:o[2],line:+o[3],column:o[4]-1});return'eval at '+o[1]+' ('+s.source+':'+s.line+':'+(s.column+1)+')'}return o=/^eval at ([^(]+) \((.+)\)$/.exec(e),o?'eval at '+o[1]+' ('+m(o[2])+')':e}function c(){var e='',o;if(this.isNative())e='native';else{o=this.getScriptNameOrSourceURL(),!o&&this.isEval()&&(e=this.getEvalOrigin(),e+=', '),e+=o?o:'<anonymous>';var s=this.getLineNumber();if(null!=s){e+=':'+s;var d=this.getColumnNumber();d&&(e+=':'+d)}}var r='',n=this.getFunctionName(),t=!0,l=this.isConstructor(),u=!(this.isToplevel()||l);if(u){var m=this.getTypeName();'[object Object]'===m&&(m='null');var c=this.getMethodName();n?(m&&0!=n.indexOf(m)&&(r+=m+'.'),r+=n,c&&n.indexOf('.'+c)!=n.length-c.length-1&&(r+=' [as '+c+']')):r+=m+'.'+(c||'<anonymous>')}else l?r+='new '+(n||'<anonymous>'):n?r+=n:(r+=e,t=!1);return t&&(r+=' ('+e+')'),r}function a(e){var o={};return Object.getOwnPropertyNames(Object.getPrototypeOf(e)).forEach(function(s){o[s]=/^(?:is|get)/.test(s)?function(){return e[s].call(e)}:e[s]}),o.toString=c,o}function i(e){if(e.isNative())return e;var o=e.getFileName()||e.getScriptNameOrSourceURL();if(o){var s=e.getLineNumber(),r=e.getColumnNumber()-1;1!==s||d()||e.isEval()||(r-=62);var n=u({source:o,line:s,column:r});return e=a(e),e.getFileName=function(){return n.source},e.getLineNumber=function(){return n.line},e.getColumnNumber=function(){return n.column+1},e.getScriptNameOrSourceURL=function(){return n.source},e}var t=e.isEval()&&e.getEvalOrigin();return t?(t=m(t),e=a(e),e.getEvalOrigin=function(){return t},e):e}function j(e,o){return x&&(O={},R={}),e+o.map(function(e){return'\n    at '+i(e)}).join('')}function _(e){var o=/\n    at [^(]+ \((.*):(\d+):(\d+)\)/.exec(e.stack);if(o){var s=o[1],d=+o[2],r=+o[3],n=O[s];if(!n&&y&&y.existsSync(s)&&(n=y.readFileSync(s,'utf8')),n){var t=n.split(/(?:\r\n|\r|\n)/)[d-1];if(t)return s+':'+d+'\n'+t+'\n'+Array(r).join(' ')+'^'}}return null}function p(e){var o=_(e);o&&(console.error(),console.error(o)),console.error(e.stack),process.exit(1)}function g(){var e=process.emit;process.emit=function(o){if('uncaughtException'===o){var s=arguments[1]&&arguments[1].stack,d=0<this.listeners(o).length;if(s&&!d)return p(arguments[1])}return e.apply(this,arguments)}}var h=s('./node_modules/source-map/source-map.js').SourceMapConsumer,f=s(0),y;try{y=s(1),y.existsSync&&y.readFileSync||(y=null)}catch(e){}var b=!1,E=!1,x=!1,S='auto',O={},R={},A=/^data:application\/json[^,]+base64,/,I=[],T=[],k=n(I);I.push(function(e){if(e=e.trim(),e in O)return O[e];var o=null;if(!y){var s=new XMLHttpRequest;s.open('GET',e,!1),s.send(null);var o=null;4===s.readyState&&200===s.status&&(o=s.responseText)}else y.existsSync(e)&&(o=y.readFileSync(e,'utf8'));return O[e]=o});var v=n(T);T.push(function(e){var o=l(e);if(!o)return null;var s;if(A.test(o)){var d=o.slice(o.indexOf(',')+1);s=new Buffer(d,'base64').toString(),o=e}else o=t(e,o),s=k(o);return s?{url:o,map:s}:null}),o.wrapCallSite=i,o.getErrorSource=_,o.mapSourcePosition=u,o.retrieveSourceMap=v,o.install=function(e){if(e=e||{},e.environment&&(S=e.environment,-1===['node','browser','auto'].indexOf(S)))throw new Error('environment '+S+' was unknown. Available options are {auto, browser, node}');if(e.retrieveFile&&(e.overrideRetrieveFile&&(I.length=0),I.unshift(e.retrieveFile)),e.retrieveSourceMap&&(e.overrideRetrieveSourceMap&&(T.length=0),T.unshift(e.retrieveSourceMap)),e.hookRequire&&!d()){var o;try{o=s(6)}catch(e){}var n=o.prototype._compile;n.__sourceMapSupport||(o.prototype._compile=function(e,o){return O[o]=e,R[o]=void 0,n.call(this,e,o)},o.prototype._compile.__sourceMapSupport=!0)}if(x||(x=!!('emptyCacheBetweenOperations'in e)&&e.emptyCacheBetweenOperations),b||(b=!0,Error.prepareStackTrace=j),!E){var t=!('handleUncaughtExceptions'in e)||e.handleUncaughtExceptions;t&&r()&&(E=!0,g())}}},"./node_modules/source-map/lib/array-set.js":function(e,o,s){function d(){this._array=[],this._set=Object.create(null)}var r=s('./node_modules/source-map/lib/util.js'),n=Object.prototype.hasOwnProperty;d.fromArray=function(e,o){for(var s=new d,r=0,n=e.length;r<n;r++)s.add(e[r],o);return s},d.prototype.size=function(){return Object.getOwnPropertyNames(this._set).length},d.prototype.add=function(e,o){var s=r.toSetString(e),d=n.call(this._set,s),t=this._array.length;(!d||o)&&this._array.push(e),d||(this._set[s]=t)},d.prototype.has=function(e){var o=r.toSetString(e);return n.call(this._set,o)},d.prototype.indexOf=function(e){var o=r.toSetString(e);if(n.call(this._set,o))return this._set[o];throw new Error('"'+e+'" is not in the set.')},d.prototype.at=function(e){if(0<=e&&e<this._array.length)return this._array[e];throw new Error('No element indexed by '+e)},d.prototype.toArray=function(){return this._array.slice()},o.ArraySet=d},"./node_modules/source-map/lib/base64-vlq.js":function(e,o,s){function d(e){return 0>e?(-e<<1)+1:(e<<1)+0}function r(e){var o=e>>1;return 1==(1&e)?-o:o}var n=s('./node_modules/source-map/lib/base64.js'),t=5,l=1<<t,u=l-1,m=l;o.encode=function(e){var o='',s=d(e),r;do r=s&u,s>>>=t,0<s&&(r|=m),o+=n.encode(r);while(0<s);return o},o.decode=function(e,o,s){var d=e.length,l=0,c=0,a,i;do{if(o>=d)throw new Error('Expected more digits in base 64 VLQ value.');if(i=n.decode(e.charCodeAt(o++)),-1===i)throw new Error('Invalid base64 digit: '+e.charAt(o-1));a=!!(i&m),i&=u,l+=i<<c,c+=t}while(a);s.value=r(l),s.rest=o}},"./node_modules/source-map/lib/base64.js":function(e,o){var s=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','0','1','2','3','4','5','6','7','8','9','+','/'];o.encode=function(e){if(0<=e&&e<s.length)return s[e];throw new TypeError('Must be between 0 and 63: '+e)},o.decode=function(e){var o=65,s=97,d=48;return o<=e&&e<=90?e-o:s<=e&&e<=122?e-s+26:d<=e&&e<=57?e-d+52:e==43?62:e==47?63:-1}},"./node_modules/source-map/lib/binary-search.js":function(e,o){function s(e,d,r,n,t,l){var u=Math.floor((d-e)/2)+e,m=t(r,n[u],!0);return 0===m?u:0<m?1<d-u?s(u,d,r,n,t,l):l==o.LEAST_UPPER_BOUND?d<n.length?d:-1:u:1<u-e?s(e,u,r,n,t,l):l==o.LEAST_UPPER_BOUND?u:0>e?-1:e}o.GREATEST_LOWER_BOUND=1,o.LEAST_UPPER_BOUND=2,o.search=function(e,d,r,n){if(0===d.length)return-1;var t=s(-1,d.length,e,d,r,n||o.GREATEST_LOWER_BOUND);if(0>t)return-1;for(;0<=t-1&&0===r(d[t],d[t-1],!0);)--t;return t}},"./node_modules/source-map/lib/mapping-list.js":function(e,o,s){function d(e,o){var s=e.generatedLine,d=o.generatedLine,r=e.generatedColumn,t=o.generatedColumn;return d>s||d==s&&t>=r||0>=n.compareByGeneratedPositionsInflated(e,o)}function r(){this._array=[],this._sorted=!0,this._last={generatedLine:-1,generatedColumn:0}}var n=s('./node_modules/source-map/lib/util.js');r.prototype.unsortedForEach=function(e,o){this._array.forEach(e,o)},r.prototype.add=function(e){d(this._last,e)?(this._last=e,this._array.push(e)):(this._sorted=!1,this._array.push(e))},r.prototype.toArray=function(){return this._sorted||(this._array.sort(n.compareByGeneratedPositionsInflated),this._sorted=!0),this._array},o.MappingList=r},"./node_modules/source-map/lib/quick-sort.js":function(e,o){function s(e,o,s){var d=e[o];e[o]=e[s],e[s]=d}function d(e,o){return Math.round(e+Math.random()*(o-e))}function n(e,o,t,l){if(t<l){var r=d(t,l),u=t-1;s(e,r,l);for(var m=e[l],c=t;c<l;c++)0>=o(e[c],m)&&(u+=1,s(e,u,c));s(e,u+1,c);var a=u+1;n(e,o,t,a-1),n(e,o,a+1,l)}}o.quickSort=function(e,o){n(e,o,0,e.length-1)}},"./node_modules/source-map/lib/source-map-consumer.js":function(e,o,s){function d(e){var o=e;return'string'==typeof e&&(o=JSON.parse(e.replace(/^\)\]\}'/,''))),null==o.sections?new r(o):new t(o)}function r(e){var o=e;'string'==typeof e&&(o=JSON.parse(e.replace(/^\)\]\}'/,'')));var s=l.getArg(o,'version'),d=l.getArg(o,'sources'),r=l.getArg(o,'names',[]),n=l.getArg(o,'sourceRoot',null),t=l.getArg(o,'sourcesContent',null),u=l.getArg(o,'mappings'),c=l.getArg(o,'file',null);if(s!=this._version)throw new Error('Unsupported version: '+s);d=d.map(String).map(l.normalize).map(function(e){return n&&l.isAbsolute(n)&&l.isAbsolute(e)?l.relative(n,e):e}),this._names=m.fromArray(r.map(String),!0),this._sources=m.fromArray(d,!0),this.sourceRoot=n,this.sourcesContent=t,this._mappings=u,this.file=c}function n(){this.generatedLine=0,this.generatedColumn=0,this.source=null,this.originalLine=null,this.originalColumn=null,this.name=null}function t(e){var o=e;'string'==typeof e&&(o=JSON.parse(e.replace(/^\)\]\}'/,'')));var s=l.getArg(o,'version'),r=l.getArg(o,'sections');if(s!=this._version)throw new Error('Unsupported version: '+s);this._sources=new m,this._names=new m;var n={line:-1,column:0};this._sections=r.map(function(e){if(e.url)throw new Error('Support for url field in sections not implemented.');var o=l.getArg(e,'offset'),s=l.getArg(o,'line'),r=l.getArg(o,'column');if(s<n.line||s===n.line&&r<n.column)throw new Error('Section offsets must be ordered and non-overlapping.');return n=o,{generatedOffset:{generatedLine:s+1,generatedColumn:r+1},consumer:new d(l.getArg(e,'map'))}})}var l=s('./node_modules/source-map/lib/util.js'),u=s('./node_modules/source-map/lib/binary-search.js'),m=s('./node_modules/source-map/lib/array-set.js').ArraySet,c=s('./node_modules/source-map/lib/base64-vlq.js'),a=s('./node_modules/source-map/lib/quick-sort.js').quickSort;d.fromSourceMap=function(e){return r.fromSourceMap(e)},d.prototype._version=3,d.prototype.__generatedMappings=null,Object.defineProperty(d.prototype,'_generatedMappings',{get:function(){return this.__generatedMappings||this._parseMappings(this._mappings,this.sourceRoot),this.__generatedMappings}}),d.prototype.__originalMappings=null,Object.defineProperty(d.prototype,'_originalMappings',{get:function(){return this.__originalMappings||this._parseMappings(this._mappings,this.sourceRoot),this.__originalMappings}}),d.prototype._charIsMappingSeparator=function(e,o){var s=e.charAt(o);return';'===s||','===s},d.prototype._parseMappings=function(){throw new Error('Subclasses must implement _parseMappings')},d.GENERATED_ORDER=1,d.ORIGINAL_ORDER=2,d.GREATEST_LOWER_BOUND=1,d.LEAST_UPPER_BOUND=2,d.prototype.eachMapping=function(e,o,s){var r=s||d.GENERATED_ORDER,n;switch(r){case d.GENERATED_ORDER:n=this._generatedMappings;break;case d.ORIGINAL_ORDER:n=this._originalMappings;break;default:throw new Error('Unknown order of iteration.');}var t=this.sourceRoot;n.map(function(e){var o=null===e.source?null:this._sources.at(e.source);return null!=o&&null!=t&&(o=l.join(t,o)),{source:o,generatedLine:e.generatedLine,generatedColumn:e.generatedColumn,originalLine:e.originalLine,originalColumn:e.originalColumn,name:null===e.name?null:this._names.at(e.name)}},this).forEach(e,o||null)},d.prototype.allGeneratedPositionsFor=function(e){var o=l.getArg(e,'line'),s={source:l.getArg(e,'source'),originalLine:o,originalColumn:l.getArg(e,'column',0)};if(null!=this.sourceRoot&&(s.source=l.relative(this.sourceRoot,s.source)),!this._sources.has(s.source))return[];s.source=this._sources.indexOf(s.source);var d=[],r=this._findMapping(s,this._originalMappings,'originalLine','originalColumn',l.compareByOriginalPositions,u.LEAST_UPPER_BOUND);if(0<=r){var n=this._originalMappings[r];if(void 0===e.column)for(var t=n.originalLine;n&&n.originalLine===t;)d.push({line:l.getArg(n,'generatedLine',null),column:l.getArg(n,'generatedColumn',null),lastColumn:l.getArg(n,'lastGeneratedColumn',null)}),n=this._originalMappings[++r];else for(var m=n.originalColumn;n&&n.originalLine===o&&n.originalColumn==m;)d.push({line:l.getArg(n,'generatedLine',null),column:l.getArg(n,'generatedColumn',null),lastColumn:l.getArg(n,'lastGeneratedColumn',null)}),n=this._originalMappings[++r]}return d},o.SourceMapConsumer=d,r.prototype=Object.create(d.prototype),r.prototype.consumer=d,r.fromSourceMap=function(e){var o=Object.create(r.prototype),s=o._names=m.fromArray(e._names.toArray(),!0),d=o._sources=m.fromArray(e._sources.toArray(),!0);o.sourceRoot=e._sourceRoot,o.sourcesContent=e._generateSourcesContent(o._sources.toArray(),o.sourceRoot),o.file=e._file;for(var t=e._mappings.toArray().slice(),u=o.__generatedMappings=[],c=o.__originalMappings=[],j=0,i=t.length;j<i;j++){var _=t[j],p=new n;p.generatedLine=_.generatedLine,p.generatedColumn=_.generatedColumn,_.source&&(p.source=d.indexOf(_.source),p.originalLine=_.originalLine,p.originalColumn=_.originalColumn,_.name&&(p.name=s.indexOf(_.name)),c.push(p)),u.push(p)}return a(o.__originalMappings,l.compareByOriginalPositions),o},r.prototype._version=3,Object.defineProperty(r.prototype,'sources',{get:function(){return this._sources.toArray().map(function(e){return null==this.sourceRoot?e:l.join(this.sourceRoot,e)},this)}}),r.prototype._parseMappings=function(e){for(var o=1,s=0,d=0,r=0,t=0,u=0,m=e.length,i=0,j={},_={},p=[],g=[],h,f,y,b,E;i<m;)if(';'===e.charAt(i))o++,i++,s=0;else if(','===e.charAt(i))i++;else{for(h=new n,h.generatedLine=o,b=i;b<m&&!this._charIsMappingSeparator(e,b);b++);if(f=e.slice(i,b),y=j[f],y)i+=f.length;else{for(y=[];i<b;)c.decode(e,i,_),E=_.value,i=_.rest,y.push(E);if(2===y.length)throw new Error('Found a source, but no line and column');if(3===y.length)throw new Error('Found a source and line, but no column');j[f]=y}h.generatedColumn=s+y[0],s=h.generatedColumn,1<y.length&&(h.source=t+y[1],t+=y[1],h.originalLine=d+y[2],d=h.originalLine,h.originalLine+=1,h.originalColumn=r+y[3],r=h.originalColumn,4<y.length&&(h.name=u+y[4],u+=y[4])),g.push(h),'number'==typeof h.originalLine&&p.push(h)}a(g,l.compareByGeneratedPositionsDeflated),this.__generatedMappings=g,a(p,l.compareByOriginalPositions),this.__originalMappings=p},r.prototype._findMapping=function(e,o,s,d,r,n){if(0>=e[s])throw new TypeError('Line must be greater than or equal to 1, got '+e[s]);if(0>e[d])throw new TypeError('Column must be greater than or equal to 0, got '+e[d]);return u.search(e,o,r,n)},r.prototype.computeColumnSpans=function(){for(var e=0,o;e<this._generatedMappings.length;++e){if(o=this._generatedMappings[e],e+1<this._generatedMappings.length){var s=this._generatedMappings[e+1];if(o.generatedLine===s.generatedLine){o.lastGeneratedColumn=s.generatedColumn-1;continue}}o.lastGeneratedColumn=Infinity}},r.prototype.originalPositionFor=function(e){var o={generatedLine:l.getArg(e,'line'),generatedColumn:l.getArg(e,'column')},s=this._findMapping(o,this._generatedMappings,'generatedLine','generatedColumn',l.compareByGeneratedPositionsDeflated,l.getArg(e,'bias',d.GREATEST_LOWER_BOUND));if(0<=s){var r=this._generatedMappings[s];if(r.generatedLine===o.generatedLine){var n=l.getArg(r,'source',null);null!==n&&(n=this._sources.at(n),null!=this.sourceRoot&&(n=l.join(this.sourceRoot,n)));var t=l.getArg(r,'name',null);return null!==t&&(t=this._names.at(t)),{source:n,line:l.getArg(r,'originalLine',null),column:l.getArg(r,'originalColumn',null),name:t}}}return{source:null,line:null,column:null,name:null}},r.prototype.hasContentsOfAllSources=function(){return!!this.sourcesContent&&this.sourcesContent.length>=this._sources.size()&&!this.sourcesContent.some(function(e){return null==e})},r.prototype.sourceContentFor=function(e,o){if(!this.sourcesContent)return null;if(null!=this.sourceRoot&&(e=l.relative(this.sourceRoot,e)),this._sources.has(e))return this.sourcesContent[this._sources.indexOf(e)];var s;if(null!=this.sourceRoot&&(s=l.urlParse(this.sourceRoot))){var d=e.replace(/^file:\/\//,'');if('file'==s.scheme&&this._sources.has(d))return this.sourcesContent[this._sources.indexOf(d)];if((!s.path||'/'==s.path)&&this._sources.has('/'+e))return this.sourcesContent[this._sources.indexOf('/'+e)]}if(o)return null;throw new Error('"'+e+'" is not in the SourceMap.')},r.prototype.generatedPositionFor=function(e){var o=l.getArg(e,'source');if(null!=this.sourceRoot&&(o=l.relative(this.sourceRoot,o)),!this._sources.has(o))return{line:null,column:null,lastColumn:null};o=this._sources.indexOf(o);var s={source:o,originalLine:l.getArg(e,'line'),originalColumn:l.getArg(e,'column')},r=this._findMapping(s,this._originalMappings,'originalLine','originalColumn',l.compareByOriginalPositions,l.getArg(e,'bias',d.GREATEST_LOWER_BOUND));if(0<=r){var n=this._originalMappings[r];if(n.source===s.source)return{line:l.getArg(n,'generatedLine',null),column:l.getArg(n,'generatedColumn',null),lastColumn:l.getArg(n,'lastGeneratedColumn',null)}}return{line:null,column:null,lastColumn:null}},o.BasicSourceMapConsumer=r,t.prototype=Object.create(d.prototype),t.prototype.constructor=d,t.prototype._version=3,Object.defineProperty(t.prototype,'sources',{get:function(){for(var e=[],o=0;o<this._sections.length;o++)for(var s=0;s<this._sections[o].consumer.sources.length;s++)e.push(this._sections[o].consumer.sources[s]);return e}}),t.prototype.originalPositionFor=function(e){var o={generatedLine:l.getArg(e,'line'),generatedColumn:l.getArg(e,'column')},s=u.search(o,this._sections,function(e,o){var s=e.generatedLine-o.generatedOffset.generatedLine;return s?s:e.generatedColumn-o.generatedOffset.generatedColumn}),d=this._sections[s];return d?d.consumer.originalPositionFor({line:o.generatedLine-(d.generatedOffset.generatedLine-1),column:o.generatedColumn-(d.generatedOffset.generatedLine===o.generatedLine?d.generatedOffset.generatedColumn-1:0),bias:e.bias}):{source:null,line:null,column:null,name:null}},t.prototype.hasContentsOfAllSources=function(){return this._sections.every(function(e){return e.consumer.hasContentsOfAllSources()})},t.prototype.sourceContentFor=function(e,o){for(var s=0;s<this._sections.length;s++){var d=this._sections[s],r=d.consumer.sourceContentFor(e,!0);if(r)return r}if(o)return null;throw new Error('"'+e+'" is not in the SourceMap.')},t.prototype.generatedPositionFor=function(e){for(var o=0,s;o<this._sections.length;o++)if(s=this._sections[o],-1!==s.consumer.sources.indexOf(l.getArg(e,'source'))){var d=s.consumer.generatedPositionFor(e);if(d){var r={line:d.line+(s.generatedOffset.generatedLine-1),column:d.column+(s.generatedOffset.generatedLine===d.line?s.generatedOffset.generatedColumn-1:0)};return r}}return{line:null,column:null}},t.prototype._parseMappings=function(){this.__generatedMappings=[],this.__originalMappings=[];for(var e=0;e<this._sections.length;e++)for(var o=this._sections[e],s=o.consumer._generatedMappings,d=0;d<s.length;d++){var r=s[d],n=o.consumer._sources.at(r.source);null!==o.consumer.sourceRoot&&(n=l.join(o.consumer.sourceRoot,n)),this._sources.add(n),n=this._sources.indexOf(n);var t=o.consumer._names.at(r.name);this._names.add(t),t=this._names.indexOf(t);var u={source:n,generatedLine:r.generatedLine+(o.generatedOffset.generatedLine-1),generatedColumn:r.generatedColumn+(o.generatedOffset.generatedLine===r.generatedLine?o.generatedOffset.generatedColumn-1:0),originalLine:r.originalLine,originalColumn:r.originalColumn,name:t};this.__generatedMappings.push(u),'number'==typeof u.originalLine&&this.__originalMappings.push(u)}a(this.__generatedMappings,l.compareByGeneratedPositionsDeflated),a(this.__originalMappings,l.compareByOriginalPositions)},o.IndexedSourceMapConsumer=t},"./node_modules/source-map/lib/source-map-generator.js":function(e,o,s){function d(e){e||(e={}),this._file=n.getArg(e,'file',null),this._sourceRoot=n.getArg(e,'sourceRoot',null),this._skipValidation=n.getArg(e,'skipValidation',!1),this._sources=new t,this._names=new t,this._mappings=new l,this._sourcesContents=null}var r=s('./node_modules/source-map/lib/base64-vlq.js'),n=s('./node_modules/source-map/lib/util.js'),t=s('./node_modules/source-map/lib/array-set.js').ArraySet,l=s('./node_modules/source-map/lib/mapping-list.js').MappingList;d.prototype._version=3,d.fromSourceMap=function(e){var o=e.sourceRoot,s=new d({file:e.file,sourceRoot:o});return e.eachMapping(function(e){var d={generated:{line:e.generatedLine,column:e.generatedColumn}};null!=e.source&&(d.source=e.source,null!=o&&(d.source=n.relative(o,d.source)),d.original={line:e.originalLine,column:e.originalColumn},null!=e.name&&(d.name=e.name)),s.addMapping(d)}),e.sources.forEach(function(o){var d=e.sourceContentFor(o);null!=d&&s.setSourceContent(o,d)}),s},d.prototype.addMapping=function(e){var o=n.getArg(e,'generated'),s=n.getArg(e,'original',null),d=n.getArg(e,'source',null),r=n.getArg(e,'name',null);this._skipValidation||this._validateMapping(o,s,d,r),null!=d&&(d+='',!this._sources.has(d)&&this._sources.add(d)),null!=r&&(r+='',!this._names.has(r)&&this._names.add(r)),this._mappings.add({generatedLine:o.line,generatedColumn:o.column,originalLine:null!=s&&s.line,originalColumn:null!=s&&s.column,source:d,name:r})},d.prototype.setSourceContent=function(e,o){var s=e;null!=this._sourceRoot&&(s=n.relative(this._sourceRoot,s)),null==o?this._sourcesContents&&(delete this._sourcesContents[n.toSetString(s)],0===Object.keys(this._sourcesContents).length&&(this._sourcesContents=null)):(!this._sourcesContents&&(this._sourcesContents=Object.create(null)),this._sourcesContents[n.toSetString(s)]=o)},d.prototype.applySourceMap=function(e,o,s){var d=o;if(null==o){if(null==e.file)throw new Error('SourceMapGenerator.prototype.applySourceMap requires either an explicit source file, or the source map\'s "file" property. Both were omitted.');d=e.file}var r=this._sourceRoot;null!=r&&(d=n.relative(r,d));var l=new t,u=new t;this._mappings.unsortedForEach(function(o){if(o.source===d&&null!=o.originalLine){var t=e.originalPositionFor({line:o.originalLine,column:o.originalColumn});null!=t.source&&(o.source=t.source,null!=s&&(o.source=n.join(s,o.source)),null!=r&&(o.source=n.relative(r,o.source)),o.originalLine=t.line,o.originalColumn=t.column,null!=t.name&&(o.name=t.name))}var m=o.source;null==m||l.has(m)||l.add(m);var c=o.name;null==c||u.has(c)||u.add(c)},this),this._sources=l,this._names=u,e.sources.forEach(function(o){var d=e.sourceContentFor(o);null!=d&&(null!=s&&(o=n.join(s,o)),null!=r&&(o=n.relative(r,o)),this.setSourceContent(o,d))},this)},d.prototype._validateMapping=function(e,o,s,d){if(!(e&&'line'in e&&'column'in e&&0<e.line&&0<=e.column&&!o&&!s&&!d)&&!(e&&'line'in e&&'column'in e&&o&&'line'in o&&'column'in o&&0<e.line&&0<=e.column&&0<o.line&&0<=o.column&&s))throw new Error('Invalid mapping: '+JSON.stringify({generated:e,source:s,original:o,name:d}))},d.prototype._serializeMappings=function(){for(var e=0,o=1,s=0,d=0,t=0,l=0,u='',m=this._mappings.toArray(),c=0,a=m.length,i,j,_,p;c<a;c++){if(j=m[c],i='',j.generatedLine!==o)for(e=0;j.generatedLine!==o;)i+=';',o++;else if(0<c){if(!n.compareByGeneratedPositionsInflated(j,m[c-1]))continue;i+=','}i+=r.encode(j.generatedColumn-e),e=j.generatedColumn,null!=j.source&&(p=this._sources.indexOf(j.source),i+=r.encode(p-l),l=p,i+=r.encode(j.originalLine-1-d),d=j.originalLine-1,i+=r.encode(j.originalColumn-s),s=j.originalColumn,null!=j.name&&(_=this._names.indexOf(j.name),i+=r.encode(_-t),t=_)),u+=i}return u},d.prototype._generateSourcesContent=function(e,o){return e.map(function(e){if(!this._sourcesContents)return null;null!=o&&(e=n.relative(o,e));var s=n.toSetString(e);return Object.prototype.hasOwnProperty.call(this._sourcesContents,s)?this._sourcesContents[s]:null},this)},d.prototype.toJSON=function(){var e={version:this._version,sources:this._sources.toArray(),names:this._names.toArray(),mappings:this._serializeMappings()};return null!=this._file&&(e.file=this._file),null!=this._sourceRoot&&(e.sourceRoot=this._sourceRoot),this._sourcesContents&&(e.sourcesContent=this._generateSourcesContent(e.sources,e.sourceRoot)),e},d.prototype.toString=function(){return JSON.stringify(this.toJSON())},o.SourceMapGenerator=d},"./node_modules/source-map/lib/source-node.js":function(e,o,s){function d(e,o,s,d,r){this.children=[],this.sourceContents={},this.line=null==e?null:e,this.column=null==o?null:o,this.source=null==s?null:s,this.name=null==r?null:r,this[l]=!0,null!=d&&this.add(d)}var r=s('./node_modules/source-map/lib/source-map-generator.js').SourceMapGenerator,n=s('./node_modules/source-map/lib/util.js'),t=/(\r?\n)/,l='$$$isSourceNode$$$';d.fromStringWithSourceMap=function(e,o,s){function r(e,o){if(null===e||void 0===e.source)l.add(o);else{var r=s?n.join(s,e.source):e.source;l.add(new d(e.originalLine,e.originalColumn,r,o,e.name))}}var l=new d,u=e.split(t),m=function(){var e=u.shift(),o=u.shift()||'';return e+o},c=1,a=0,i=null;return o.eachMapping(function(e){if(null!=i)if(c<e.generatedLine)r(i,m()),c++,a=0;else{var o=u[0],s=o.substr(0,e.generatedColumn-a);return u[0]=o.substr(e.generatedColumn-a),a=e.generatedColumn,r(i,s),void(i=e)}for(;c<e.generatedLine;)l.add(m()),c++;if(a<e.generatedColumn){var o=u[0];l.add(o.substr(0,e.generatedColumn)),u[0]=o.substr(e.generatedColumn),a=e.generatedColumn}i=e},this),0<u.length&&(i&&r(i,m()),l.add(u.join(''))),o.sources.forEach(function(e){var d=o.sourceContentFor(e);null!=d&&(null!=s&&(e=n.join(s,e)),l.setSourceContent(e,d))}),l},d.prototype.add=function(e){if(Array.isArray(e))e.forEach(function(e){this.add(e)},this);else if(e[l]||'string'==typeof e)e&&this.children.push(e);else throw new TypeError('Expected a SourceNode, string, or an array of SourceNodes and strings. Got '+e);return this},d.prototype.prepend=function(e){if(Array.isArray(e))for(var o=e.length-1;0<=o;o--)this.prepend(e[o]);else if(e[l]||'string'==typeof e)this.children.unshift(e);else throw new TypeError('Expected a SourceNode, string, or an array of SourceNodes and strings. Got '+e);return this},d.prototype.walk=function(e){for(var o=0,s=this.children.length,d;o<s;o++)d=this.children[o],d[l]?d.walk(e):''!==d&&e(d,{source:this.source,line:this.line,column:this.column,name:this.name})},d.prototype.join=function(e){var o=this.children.length,s,d;if(0<o){for(s=[],d=0;d<o-1;d++)s.push(this.children[d]),s.push(e);s.push(this.children[d]),this.children=s}return this},d.prototype.replaceRight=function(e,o){var s=this.children[this.children.length-1];return s[l]?s.replaceRight(e,o):'string'==typeof s?this.children[this.children.length-1]=s.replace(e,o):this.children.push(''.replace(e,o)),this},d.prototype.setSourceContent=function(e,o){this.sourceContents[n.toSetString(e)]=o},d.prototype.walkSourceContents=function(e){for(var o=0,s=this.children.length;o<s;o++)this.children[o][l]&&this.children[o].walkSourceContents(e);for(var d=Object.keys(this.sourceContents),o=0,s=d.length;o<s;o++)e(n.fromSetString(d[o]),this.sourceContents[d[o]])},d.prototype.toString=function(){var e='';return this.walk(function(o){e+=o}),e},d.prototype.toStringWithSourceMap=function(e){var o={code:'',line:1,column:0},s=new r(e),d=!1,n=null,t=null,l=null,u=null;return this.walk(function(e,r){o.code+=e,null!==r.source&&null!==r.line&&null!==r.column?((n!==r.source||t!==r.line||l!==r.column||u!==r.name)&&s.addMapping({source:r.source,original:{line:r.line,column:r.column},generated:{line:o.line,column:o.column},name:r.name}),n=r.source,t=r.line,l=r.column,u=r.name,d=!0):d&&(s.addMapping({generated:{line:o.line,column:o.column}}),n=null,d=!1);for(var m=0,c=e.length;m<c;m++)e.charCodeAt(m)===10?(o.line++,o.column=0,m+1===c?(n=null,d=!1):d&&s.addMapping({source:r.source,original:{line:r.line,column:r.column},generated:{line:o.line,column:o.column},name:r.name})):o.column++}),this.walkSourceContents(function(e,o){s.setSourceContent(e,o)}),{code:o.code,map:s}},o.SourceNode=d},"./node_modules/source-map/lib/util.js":function(e,o){function s(e){var o=e.match(u);return o?{scheme:o[1],auth:o[2],host:o[3],port:o[4],path:o[5]}:null}function d(e){var o='';return e.scheme&&(o+=e.scheme+':'),o+='//',e.auth&&(o+=e.auth+'@'),e.host&&(o+=e.host),e.port&&(o+=':'+e.port),e.path&&(o+=e.path),o}function r(e){var r=e,n=s(e);if(n){if(!n.path)return e;r=n.path}for(var t=o.isAbsolute(r),l=r.split(/\/+/),u=0,m=l.length-1,c;0<=m;m--)c=l[m],'.'===c?l.splice(m,1):'..'===c?u++:0<u&&(''===c?(l.splice(m+1,u),u=0):(l.splice(m,2),u--));return r=l.join('/'),''===r&&(r=t?'/':'.'),n?(n.path=r,d(n)):r}function n(e){return e}function t(e){if(!e)return!1;var o=e.length;if(9>o)return!1;if(95!==e.charCodeAt(o-1)||95!==e.charCodeAt(o-2)||111!==e.charCodeAt(o-3)||116!==e.charCodeAt(o-4)||111!==e.charCodeAt(o-5)||114!==e.charCodeAt(o-6)||112!==e.charCodeAt(o-7)||95!==e.charCodeAt(o-8)||95!==e.charCodeAt(o-9))return!1;for(var d=o-10;0<=d;d--)if(36!==e.charCodeAt(d))return!1;return!0}function l(e,o){return e===o?0:e>o?1:-1}o.getArg=function(e,o,s){if(o in e)return e[o];if(3===arguments.length)return s;throw new Error('"'+o+'" is a required argument.')};var u=/^(?:([\w+\-.]+):)?\/\/(?:(\w+:\w+)@)?([\w.]*)(?::(\d+))?(\S*)$/,m=/^data:.+\,.+$/;o.urlParse=s,o.urlGenerate=d,o.normalize=r,o.join=function(e,o){''===e&&(e='.'),''===o&&(o='.');var n=s(o),t=s(e);if(t&&(e=t.path||'/'),n&&!n.scheme)return t&&(n.scheme=t.scheme),d(n);if(n||o.match(m))return o;if(t&&!t.host&&!t.path)return t.host=o,d(t);var l='/'===o.charAt(0)?o:r(e.replace(/\/+$/,'')+'/'+o);return t?(t.path=l,d(t)):l},o.isAbsolute=function(e){return'/'===e.charAt(0)||!!e.match(u)},o.relative=function(e,o){''===e&&(e='.'),e=e.replace(/\/$/,'');for(var s=0,d;0!==o.indexOf(e+'/');){if(d=e.lastIndexOf('/'),0>d)return o;if(e=e.slice(0,d),e.match(/^([^\/]+:\/)?\/*$/))return o;++s}return Array(s+1).join('../')+o.substr(e.length+1)};var c=function(){var e=Object.create(null);return!('__proto__'in e)}();o.toSetString=c?n:function(e){return t(e)?'$'+e:e},o.fromSetString=c?n:function(e){return t(e)?e.slice(1):e},o.compareByOriginalPositions=function(e,o,s){var d=e.source-o.source;return 0==d?(d=e.originalLine-o.originalLine,0!=d)?d:(d=e.originalColumn-o.originalColumn,0!=d||s)?d:(d=e.generatedColumn-o.generatedColumn,0!=d)?d:(d=e.generatedLine-o.generatedLine,0==d?e.name-o.name:d):d},o.compareByGeneratedPositionsDeflated=function(e,o,s){var d=e.generatedLine-o.generatedLine;return 0==d?(d=e.generatedColumn-o.generatedColumn,0!=d||s)?d:(d=e.source-o.source,0!=d)?d:(d=e.originalLine-o.originalLine,0!=d)?d:(d=e.originalColumn-o.originalColumn,0==d?e.name-o.name:d):d},o.compareByGeneratedPositionsInflated=function(e,o){var s=e.generatedLine-o.generatedLine;return 0==s?(s=e.generatedColumn-o.generatedColumn,0!=s)?s:(s=l(e.source,o.source),0!==s)?s:(s=e.originalLine-o.originalLine,0!==s)?s:(s=e.originalColumn-o.originalColumn,0===s?l(e.name,o.name):s):s}},"./node_modules/source-map/source-map.js":function(e,o,s){o.SourceMapGenerator=s('./node_modules/source-map/lib/source-map-generator.js').SourceMapGenerator,o.SourceMapConsumer=s('./node_modules/source-map/lib/source-map-consumer.js').SourceMapConsumer,o.SourceNode=s('./node_modules/source-map/lib/source-node.js').SourceNode},"./node_modules/wrappy/wrappy.js":function(e){function o(e,s){function d(){for(var o=Array(arguments.length),s=0;s<o.length;s++)o[s]=arguments[s];var d=e.apply(this,o),r=o[o.length-1];return'function'==typeof d&&d!==r&&Object.keys(r).forEach(function(e){d[e]=r[e]}),d}if(e&&s)return o(e)(s);if('function'!=typeof e)throw new TypeError('need wrapper function');return Object.keys(e).forEach(function(o){d[o]=e[o]}),d}e.exports=o},0:function(e){e.exports=require('path')},1:function(e){e.exports=require('fs')},2:function(e){e.exports=require('electron')},3:function(e){e.exports=require('assert')},4:function(e){e.exports=require('util')},5:function(e,o,s){s('./node_modules/babel-polyfill/lib/index.js'),e.exports=s('./app/main.dev.js')},6:function(e){e.exports=require('module')},7:function(e){e.exports=require('events')},8:function(e){e.exports=require('child_process')},9:function(e){e.exports=require('https')}});
+module.exports =
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./app/main.dev.js");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./app/main.dev.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _electron = __webpack_require__(2);
+
+var _menu = __webpack_require__("./app/menu.js");
+
+var _menu2 = _interopRequireDefault(_menu);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; } /* eslint global-require: 1, flowtype-errors/show-errors: 0 */
+
+/**
+ * This module executes inside of electron's main process. You can start
+ * electron renderer process from here and communicate with the other processes
+ * through IPC.
+ *
+ * When running `npm run build` or `npm run build-main`, this file is compiled to
+ * `./app/main.prod.js` using webpack. This gives us some performance wins.
+ *
+ * 
+ */
+
+
+let mainWindow = null;
+
+if (true) {
+  const sourceMapSupport = __webpack_require__("./node_modules/source-map-support/source-map-support.js");
+  sourceMapSupport.install();
+}
+
+if (true) {
+  __webpack_require__("./node_modules/electron-debug/index.js")();
+  const path = __webpack_require__(0);
+  const p = path.join(__dirname, '..', 'app', 'node_modules');
+  __webpack_require__(5).globalPaths.push(p);
+}
+
+const installExtensions = (() => {
+  var _ref = _asyncToGenerator(function* () {
+    const installer = __webpack_require__("./node_modules/electron-devtools-installer/dist/index.js");
+    const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
+    const extensions = ['REACT_DEVELOPER_TOOLS', 'REDUX_DEVTOOLS'];
+
+    return Promise.all(extensions.map(function (name) {
+      return installer.default(installer[name], forceDownload);
+    })).catch(console.log);
+  });
+
+  return function installExtensions() {
+    return _ref.apply(this, arguments);
+  };
+})();
+
+/**
+ * Add event listeners...
+ */
+
+_electron.app.on('window-all-closed', () => {
+  // Respect the OSX convention of having the application in memory even
+  // after all windows have been closed
+  if (process.platform !== 'darwin') {
+    _electron.app.quit();
+  }
+});
+
+_electron.app.on('ready', _asyncToGenerator(function* () {
+  if (true) {
+    yield installExtensions();
+  }
+
+  mainWindow = new _electron.BrowserWindow({
+    show: false,
+    icon: __dirname + '/img/robot-ico.png'
+  });
+  mainWindow.maximize();
+  mainWindow.loadURL(`file://${__dirname}/app.html`);
+
+  // @TODO: Use 'ready-to-show' event
+  //        https://github.com/electron/electron/blob/master/docs/api/browser-window.md#using-ready-to-show-event
+  mainWindow.webContents.on('did-finish-load', function () {
+    if (!mainWindow) {
+      throw new Error('"mainWindow" is not defined');
+    }
+    mainWindow.show();
+    mainWindow.focus();
+  });
+
+  mainWindow.on('closed', function () {
+    mainWindow = null;
+  });
+
+  const menuBuilder = new _menu2.default(mainWindow);
+  menuBuilder.buildMenu();
+}));
+
+/***/ }),
+
+/***/ "./app/menu.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _electron = __webpack_require__(2);
+
+class MenuBuilder {
+
+  constructor(mainWindow) {
+    this.mainWindow = mainWindow;
+  }
+
+  buildMenu() {
+    if (true) {
+      this.setupDevelopmentEnvironment();
+    }
+
+    let template;
+
+    if (process.platform === 'darwin') {
+      template = this.buildDarwinTemplate();
+    } else {
+      template = this.buildDefaultTemplate();
+    }
+
+    const menu = _electron.Menu.buildFromTemplate(template);
+    _electron.Menu.setApplicationMenu(menu);
+
+    return menu;
+  }
+
+  setupDevelopmentEnvironment() {
+    this.mainWindow.openDevTools();
+    this.mainWindow.webContents.on('context-menu', (e, props) => {
+      const { x, y } = props;
+
+      _electron.Menu.buildFromTemplate([{
+        label: 'Inspect element',
+        click: () => {
+          this.mainWindow.inspectElement(x, y);
+        }
+      }]).popup(this.mainWindow);
+    });
+  }
+
+  buildDarwinTemplate() {
+    const subMenuAbout = {
+      label: 'Electron',
+      submenu: [{ label: 'About ElectronReact', selector: 'orderFrontStandardAboutPanel:' }, { type: 'separator' }, { label: 'Services', submenu: [] }, { type: 'separator' }, { label: 'Hide ElectronReact', accelerator: 'Command+H', selector: 'hide:' }, { label: 'Hide Others', accelerator: 'Command+Shift+H', selector: 'hideOtherApplications:' }, { label: 'Show All', selector: 'unhideAllApplications:' }, { type: 'separator' }, { label: 'Quit', accelerator: 'Command+Q', click: () => {
+          _electron.app.quit();
+        } }]
+    };
+    const subMenuEdit = {
+      label: 'Edit',
+      submenu: [{ label: 'Undo', accelerator: 'Command+Z', selector: 'undo:' }, { label: 'Redo', accelerator: 'Shift+Command+Z', selector: 'redo:' }, { type: 'separator' }, { label: 'Cut', accelerator: 'Command+X', selector: 'cut:' }, { label: 'Copy', accelerator: 'Command+C', selector: 'copy:' }, { label: 'Paste', accelerator: 'Command+V', selector: 'paste:' }, { label: 'Select All', accelerator: 'Command+A', selector: 'selectAll:' }]
+    };
+    const subMenuViewDev = {
+      label: 'View',
+      submenu: [{ label: 'Reload', accelerator: 'Command+R', click: () => {
+          this.mainWindow.webContents.reload();
+        } }, { label: 'Toggle Full Screen', accelerator: 'Ctrl+Command+F', click: () => {
+          this.mainWindow.setFullScreen(!this.mainWindow.isFullScreen());
+        } }, { label: 'Toggle Developer Tools', accelerator: 'Alt+Command+I', click: () => {
+          this.mainWindow.toggleDevTools();
+        } }]
+    };
+    const subMenuViewProd = {
+      label: 'View',
+      submenu: [{ label: 'Toggle Full Screen', accelerator: 'Ctrl+Command+F', click: () => {
+          this.mainWindow.setFullScreen(!this.mainWindow.isFullScreen());
+        } }]
+    };
+    const subMenuWindow = {
+      label: 'Window',
+      submenu: [{ label: 'Minimize', accelerator: 'Command+M', selector: 'performMiniaturize:' }, { label: 'Close', accelerator: 'Command+W', selector: 'performClose:' }, { type: 'separator' }, { label: 'Bring All to Front', selector: 'arrangeInFront:' }]
+    };
+    const subMenuHelp = {
+      label: 'Help',
+      submenu: [{ label: 'Learn More', click() {
+          _electron.shell.openExternal('http://electron.atom.io');
+        } }, { label: 'Documentation', click() {
+          _electron.shell.openExternal('https://github.com/atom/electron/tree/master/docs#readme');
+        } }, { label: 'Community Discussions', click() {
+          _electron.shell.openExternal('https://discuss.atom.io/c/electron');
+        } }, { label: 'Search Issues', click() {
+          _electron.shell.openExternal('https://github.com/atom/electron/issues');
+        } }]
+    };
+
+    const subMenuView =  false ? subMenuViewDev : subMenuViewProd;
+
+    return [subMenuAbout, subMenuEdit, subMenuView, subMenuWindow, subMenuHelp];
+  }
+
+  buildDefaultTemplate() {
+    const templateDefault = [{
+      label: '&File',
+      submenu: [{
+        label: '&Open',
+        accelerator: 'Ctrl+O'
+      }, {
+        label: '&Close',
+        accelerator: 'Ctrl+W',
+        click: () => {
+          this.mainWindow.close();
+        }
+      }]
+    }, {
+      label: '&View',
+      submenu:  false ? [{
+        label: '&Reload',
+        accelerator: 'Ctrl+R',
+        click: () => {
+          this.mainWindow.webContents.reload();
+        }
+      }, {
+        label: 'Toggle &Full Screen',
+        accelerator: 'F11',
+        click: () => {
+          this.mainWindow.setFullScreen(!this.mainWindow.isFullScreen());
+        }
+      }, {
+        label: 'Toggle &Developer Tools',
+        accelerator: 'Alt+Ctrl+I',
+        click: () => {
+          this.mainWindow.toggleDevTools();
+        }
+      }] : [{
+        label: 'Toggle &Full Screen',
+        accelerator: 'F11',
+        click: () => {
+          this.mainWindow.setFullScreen(!this.mainWindow.isFullScreen());
+        }
+      }]
+    }, {
+      label: 'Help',
+      submenu: [{
+        label: 'Learn More',
+        click() {
+          _electron.shell.openExternal('http://electron.atom.io');
+        }
+      }, {
+        label: 'Documentation',
+        click() {
+          _electron.shell.openExternal('https://github.com/atom/electron/tree/master/docs#readme');
+        }
+      }, {
+        label: 'Community Discussions',
+        click() {
+          _electron.shell.openExternal('https://discuss.atom.io/c/electron');
+        }
+      }, {
+        label: 'Search Issues',
+        click() {
+          _electron.shell.openExternal('https://github.com/atom/electron/issues');
+        }
+      }]
+    }];
+
+    return templateDefault;
+  }
+}
+exports.default = MenuBuilder;
+module.exports = exports['default'];
+
+/***/ }),
+
+/***/ "./node_modules/7zip/index.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+var resolve = __webpack_require__(0).resolve
+var bin = __webpack_require__("./node_modules/7zip/package.json").bin
+
+module.exports = map_obj(bin, function(v){
+  return resolve(__dirname, v)
+})
+
+function map_obj(obj, fn){
+  return Object.keys(obj).reduce(function(m, k){
+    m[k] = fn(obj[k])
+    return m
+  }, {})
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/7zip/package.json":
+/***/ (function(module, exports) {
+
+module.exports = {
+	"name": "7zip",
+	"version": "0.0.6",
+	"description": "7zip Windows Package via Node.js",
+	"keywords": [
+		"7z",
+		"7zip",
+		"7-zip",
+		"windows",
+		"install"
+	],
+	"repository": "git@github.com:fritx/win-7zip.git",
+	"bin": {
+		"7z": "7zip-lite/7z.exe"
+	},
+	"main": "index.js",
+	"scripts": {
+		"test": "mocha"
+	},
+	"license": "GNU LGPL"
+};
+
+/***/ }),
+
+/***/ "./node_modules/brace-expansion/index.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+var concatMap = __webpack_require__("./node_modules/concat-map/index.js");
+var balanced = __webpack_require__("./node_modules/brace-expansion/node_modules/balanced-match/index.js");
+
+module.exports = expandTop;
+
+var escSlash = '\0SLASH'+Math.random()+'\0';
+var escOpen = '\0OPEN'+Math.random()+'\0';
+var escClose = '\0CLOSE'+Math.random()+'\0';
+var escComma = '\0COMMA'+Math.random()+'\0';
+var escPeriod = '\0PERIOD'+Math.random()+'\0';
+
+function numeric(str) {
+  return parseInt(str, 10) == str
+    ? parseInt(str, 10)
+    : str.charCodeAt(0);
+}
+
+function escapeBraces(str) {
+  return str.split('\\\\').join(escSlash)
+            .split('\\{').join(escOpen)
+            .split('\\}').join(escClose)
+            .split('\\,').join(escComma)
+            .split('\\.').join(escPeriod);
+}
+
+function unescapeBraces(str) {
+  return str.split(escSlash).join('\\')
+            .split(escOpen).join('{')
+            .split(escClose).join('}')
+            .split(escComma).join(',')
+            .split(escPeriod).join('.');
+}
+
+
+// Basically just str.split(","), but handling cases
+// where we have nested braced sections, which should be
+// treated as individual members, like {a,{b,c},d}
+function parseCommaParts(str) {
+  if (!str)
+    return [''];
+
+  var parts = [];
+  var m = balanced('{', '}', str);
+
+  if (!m)
+    return str.split(',');
+
+  var pre = m.pre;
+  var body = m.body;
+  var post = m.post;
+  var p = pre.split(',');
+
+  p[p.length-1] += '{' + body + '}';
+  var postParts = parseCommaParts(post);
+  if (post.length) {
+    p[p.length-1] += postParts.shift();
+    p.push.apply(p, postParts);
+  }
+
+  parts.push.apply(parts, p);
+
+  return parts;
+}
+
+function expandTop(str) {
+  if (!str)
+    return [];
+
+  // I don't know why Bash 4.3 does this, but it does.
+  // Anything starting with {} will have the first two bytes preserved
+  // but *only* at the top level, so {},a}b will not expand to anything,
+  // but a{},b}c will be expanded to [a}c,abc].
+  // One could argue that this is a bug in Bash, but since the goal of
+  // this module is to match Bash's rules, we escape a leading {}
+  if (str.substr(0, 2) === '{}') {
+    str = '\\{\\}' + str.substr(2);
+  }
+
+  return expand(escapeBraces(str), true).map(unescapeBraces);
+}
+
+function identity(e) {
+  return e;
+}
+
+function embrace(str) {
+  return '{' + str + '}';
+}
+function isPadded(el) {
+  return /^-?0\d/.test(el);
+}
+
+function lte(i, y) {
+  return i <= y;
+}
+function gte(i, y) {
+  return i >= y;
+}
+
+function expand(str, isTop) {
+  var expansions = [];
+
+  var m = balanced('{', '}', str);
+  if (!m || /\$$/.test(m.pre)) return [str];
+
+  var isNumericSequence = /^-?\d+\.\.-?\d+(?:\.\.-?\d+)?$/.test(m.body);
+  var isAlphaSequence = /^[a-zA-Z]\.\.[a-zA-Z](?:\.\.-?\d+)?$/.test(m.body);
+  var isSequence = isNumericSequence || isAlphaSequence;
+  var isOptions = m.body.indexOf(',') >= 0;
+  if (!isSequence && !isOptions) {
+    // {a},b}
+    if (m.post.match(/,.*\}/)) {
+      str = m.pre + '{' + m.body + escClose + m.post;
+      return expand(str);
+    }
+    return [str];
+  }
+
+  var n;
+  if (isSequence) {
+    n = m.body.split(/\.\./);
+  } else {
+    n = parseCommaParts(m.body);
+    if (n.length === 1) {
+      // x{{a,b}}y ==> x{a}y x{b}y
+      n = expand(n[0], false).map(embrace);
+      if (n.length === 1) {
+        var post = m.post.length
+          ? expand(m.post, false)
+          : [''];
+        return post.map(function(p) {
+          return m.pre + n[0] + p;
+        });
+      }
+    }
+  }
+
+  // at this point, n is the parts, and we know it's not a comma set
+  // with a single entry.
+
+  // no need to expand pre, since it is guaranteed to be free of brace-sets
+  var pre = m.pre;
+  var post = m.post.length
+    ? expand(m.post, false)
+    : [''];
+
+  var N;
+
+  if (isSequence) {
+    var x = numeric(n[0]);
+    var y = numeric(n[1]);
+    var width = Math.max(n[0].length, n[1].length)
+    var incr = n.length == 3
+      ? Math.abs(numeric(n[2]))
+      : 1;
+    var test = lte;
+    var reverse = y < x;
+    if (reverse) {
+      incr *= -1;
+      test = gte;
+    }
+    var pad = n.some(isPadded);
+
+    N = [];
+
+    for (var i = x; test(i, y); i += incr) {
+      var c;
+      if (isAlphaSequence) {
+        c = String.fromCharCode(i);
+        if (c === '\\')
+          c = '';
+      } else {
+        c = String(i);
+        if (pad) {
+          var need = width - c.length;
+          if (need > 0) {
+            var z = new Array(need + 1).join('0');
+            if (i < 0)
+              c = '-' + z + c.slice(1);
+            else
+              c = z + c;
+          }
+        }
+      }
+      N.push(c);
+    }
+  } else {
+    N = concatMap(n, function(el) { return expand(el, false) });
+  }
+
+  for (var j = 0; j < N.length; j++) {
+    for (var k = 0; k < post.length; k++) {
+      var expansion = pre + N[j] + post[k];
+      if (!isTop || isSequence || expansion)
+        expansions.push(expansion);
+    }
+  }
+
+  return expansions;
+}
+
+
+
+/***/ }),
+
+/***/ "./node_modules/brace-expansion/node_modules/balanced-match/index.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = balanced;
+function balanced(a, b, str) {
+  if (a instanceof RegExp) a = maybeMatch(a, str);
+  if (b instanceof RegExp) b = maybeMatch(b, str);
+
+  var r = range(a, b, str);
+
+  return r && {
+    start: r[0],
+    end: r[1],
+    pre: str.slice(0, r[0]),
+    body: str.slice(r[0] + a.length, r[1]),
+    post: str.slice(r[1] + b.length)
+  };
+}
+
+function maybeMatch(reg, str) {
+  var m = str.match(reg);
+  return m ? m[0] : null;
+}
+
+balanced.range = range;
+function range(a, b, str) {
+  var begs, beg, left, right, result;
+  var ai = str.indexOf(a);
+  var bi = str.indexOf(b, ai + 1);
+  var i = ai;
+
+  if (ai >= 0 && bi > 0) {
+    begs = [];
+    left = str.length;
+
+    while (i >= 0 && !result) {
+      if (i == ai) {
+        begs.push(i);
+        ai = str.indexOf(a, i + 1);
+      } else if (begs.length == 1) {
+        result = [ begs.pop(), bi ];
+      } else {
+        beg = begs.pop();
+        if (beg < left) {
+          left = beg;
+          right = bi;
+        }
+
+        bi = str.indexOf(b, i + 1);
+      }
+
+      i = ai < bi && ai >= 0 ? ai : bi;
+    }
+
+    if (begs.length) {
+      result = [ left, right ];
+    }
+  }
+
+  return result;
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/concat-map/index.js":
+/***/ (function(module, exports) {
+
+module.exports = function (xs, fn) {
+    var res = [];
+    for (var i = 0; i < xs.length; i++) {
+        var x = fn(xs[i], i);
+        if (isArray(x)) res.push.apply(res, x);
+        else res.push(x);
+    }
+    return res;
+};
+
+var isArray = Array.isArray || function (xs) {
+    return Object.prototype.toString.call(xs) === '[object Array]';
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/cross-unzip/index.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var spawn = __webpack_require__(9).spawn
+var slice = Array.prototype.slice
+
+var unzip = process.platform === 'win32' ? forWin32 : forUnix
+unzip.unzip = unzip
+module.exports = unzip
+
+// todo: progress feedback
+
+// https://github.com/fritx/win-7zip
+function forWin32 (inPath, outPath, callback) {
+  var _7z = __webpack_require__("./node_modules/7zip/index.js")['7z']
+
+  // very 奇葩
+  // eg. 7z x archive.zip -oc:\Doc
+  run(_7z, ['x', inPath, '-y', '-o' + outPath], callback)
+}
+
+function forUnix (inPath, outPath, callback) {
+  run('unzip', ['-o', inPath, '-d', outPath], callback)
+}
+
+// https://nodejs.org/api/child_process.html#child_process_event_error
+// Note that the 'exit' event may or may not fire after an error has occurred.
+// If you are listening to both the 'exit' and 'error' events,
+// it is important to guard against accidentally invoking handler functions multiple times.
+function run (bin, args, callback) {
+  callback = onceify(callback)
+
+  var prc = spawn(bin, args, {
+    stdio: 'ignore'
+  })
+  prc.on('error', function (err) {
+    callback(err)
+  })
+  prc.on('exit', function (code) {
+    callback(code ? new Error('Exited with code ' + code) : null)
+  })
+}
+
+// http://stackoverflow.com/questions/30234908/javascript-v8-optimisation-and-leaking-arguments
+// javascript V8 optimisation and “leaking arguments”
+// making callback to be invoked only once
+function onceify (fn) {
+  var called = false
+  return function () {
+    if (called) return
+    called = true
+    fn.apply(this, slice.call(arguments)) // slice arguments
+  }
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/debug/src/browser.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * This is the web browser implementation of `debug()`.
+ *
+ * Expose `debug()` as the module.
+ */
+
+exports = module.exports = __webpack_require__("./node_modules/debug/src/debug.js");
+exports.log = log;
+exports.formatArgs = formatArgs;
+exports.save = save;
+exports.load = load;
+exports.useColors = useColors;
+exports.storage = 'undefined' != typeof chrome
+               && 'undefined' != typeof chrome.storage
+                  ? chrome.storage.local
+                  : localstorage();
+
+/**
+ * Colors.
+ */
+
+exports.colors = [
+  'lightseagreen',
+  'forestgreen',
+  'goldenrod',
+  'dodgerblue',
+  'darkorchid',
+  'crimson'
+];
+
+/**
+ * Currently only WebKit-based Web Inspectors, Firefox >= v31,
+ * and the Firebug extension (any Firefox version) are known
+ * to support "%c" CSS customizations.
+ *
+ * TODO: add a `localStorage` variable to explicitly enable/disable colors
+ */
+
+function useColors() {
+  // NB: In an Electron preload script, document will be defined but not fully
+  // initialized. Since we know we're in Chrome, we'll just detect this case
+  // explicitly
+  if (typeof window !== 'undefined' && window.process && window.process.type === 'renderer') {
+    return true;
+  }
+
+  // is webkit? http://stackoverflow.com/a/16459606/376773
+  // document is undefined in react-native: https://github.com/facebook/react-native/pull/1632
+  return (typeof document !== 'undefined' && document.documentElement && document.documentElement.style && document.documentElement.style.WebkitAppearance) ||
+    // is firebug? http://stackoverflow.com/a/398120/376773
+    (typeof window !== 'undefined' && window.console && (window.console.firebug || (window.console.exception && window.console.table))) ||
+    // is firefox >= v31?
+    // https://developer.mozilla.org/en-US/docs/Tools/Web_Console#Styling_messages
+    (typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/firefox\/(\d+)/) && parseInt(RegExp.$1, 10) >= 31) ||
+    // double check webkit in userAgent just in case we are in a worker
+    (typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/applewebkit\/(\d+)/));
+}
+
+/**
+ * Map %j to `JSON.stringify()`, since no Web Inspectors do that by default.
+ */
+
+exports.formatters.j = function(v) {
+  try {
+    return JSON.stringify(v);
+  } catch (err) {
+    return '[UnexpectedJSONParseError]: ' + err.message;
+  }
+};
+
+
+/**
+ * Colorize log arguments if enabled.
+ *
+ * @api public
+ */
+
+function formatArgs(args) {
+  var useColors = this.useColors;
+
+  args[0] = (useColors ? '%c' : '')
+    + this.namespace
+    + (useColors ? ' %c' : ' ')
+    + args[0]
+    + (useColors ? '%c ' : ' ')
+    + '+' + exports.humanize(this.diff);
+
+  if (!useColors) return;
+
+  var c = 'color: ' + this.color;
+  args.splice(1, 0, c, 'color: inherit')
+
+  // the final "%c" is somewhat tricky, because there could be other
+  // arguments passed either before or after the %c, so we need to
+  // figure out the correct index to insert the CSS into
+  var index = 0;
+  var lastC = 0;
+  args[0].replace(/%[a-zA-Z%]/g, function(match) {
+    if ('%%' === match) return;
+    index++;
+    if ('%c' === match) {
+      // we only are interested in the *last* %c
+      // (the user may have provided their own)
+      lastC = index;
+    }
+  });
+
+  args.splice(lastC, 0, c);
+}
+
+/**
+ * Invokes `console.log()` when available.
+ * No-op when `console.log` is not a "function".
+ *
+ * @api public
+ */
+
+function log() {
+  // this hackery is required for IE8/9, where
+  // the `console.log` function doesn't have 'apply'
+  return 'object' === typeof console
+    && console.log
+    && Function.prototype.apply.call(console.log, console, arguments);
+}
+
+/**
+ * Save `namespaces`.
+ *
+ * @param {String} namespaces
+ * @api private
+ */
+
+function save(namespaces) {
+  try {
+    if (null == namespaces) {
+      exports.storage.removeItem('debug');
+    } else {
+      exports.storage.debug = namespaces;
+    }
+  } catch(e) {}
+}
+
+/**
+ * Load `namespaces`.
+ *
+ * @return {String} returns the previously persisted debug modes
+ * @api private
+ */
+
+function load() {
+  var r;
+  try {
+    r = exports.storage.debug;
+  } catch(e) {}
+
+  // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
+  if (!r && typeof process !== 'undefined' && 'env' in process) {
+    r = process.env.DEBUG;
+  }
+
+  return r;
+}
+
+/**
+ * Enable namespaces listed in `localStorage.debug` initially.
+ */
+
+exports.enable(load());
+
+/**
+ * Localstorage attempts to return the localstorage.
+ *
+ * This is necessary because safari throws
+ * when a user disables cookies/localstorage
+ * and you attempt to access it.
+ *
+ * @return {LocalStorage}
+ * @api private
+ */
+
+function localstorage() {
+  try {
+    return window.localStorage;
+  } catch (e) {}
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/debug/src/debug.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/**
+ * This is the common logic for both the Node.js and web browser
+ * implementations of `debug()`.
+ *
+ * Expose `debug()` as the module.
+ */
+
+exports = module.exports = createDebug.debug = createDebug['default'] = createDebug;
+exports.coerce = coerce;
+exports.disable = disable;
+exports.enable = enable;
+exports.enabled = enabled;
+exports.humanize = __webpack_require__("./node_modules/ms/index.js");
+
+/**
+ * The currently active debug mode names, and names to skip.
+ */
+
+exports.names = [];
+exports.skips = [];
+
+/**
+ * Map of special "%n" handling functions, for the debug "format" argument.
+ *
+ * Valid key names are a single, lower or upper-case letter, i.e. "n" and "N".
+ */
+
+exports.formatters = {};
+
+/**
+ * Previous log timestamp.
+ */
+
+var prevTime;
+
+/**
+ * Select a color.
+ * @param {String} namespace
+ * @return {Number}
+ * @api private
+ */
+
+function selectColor(namespace) {
+  var hash = 0, i;
+
+  for (i in namespace) {
+    hash  = ((hash << 5) - hash) + namespace.charCodeAt(i);
+    hash |= 0; // Convert to 32bit integer
+  }
+
+  return exports.colors[Math.abs(hash) % exports.colors.length];
+}
+
+/**
+ * Create a debugger with the given `namespace`.
+ *
+ * @param {String} namespace
+ * @return {Function}
+ * @api public
+ */
+
+function createDebug(namespace) {
+
+  function debug() {
+    // disabled?
+    if (!debug.enabled) return;
+
+    var self = debug;
+
+    // set `diff` timestamp
+    var curr = +new Date();
+    var ms = curr - (prevTime || curr);
+    self.diff = ms;
+    self.prev = prevTime;
+    self.curr = curr;
+    prevTime = curr;
+
+    // turn the `arguments` into a proper Array
+    var args = new Array(arguments.length);
+    for (var i = 0; i < args.length; i++) {
+      args[i] = arguments[i];
+    }
+
+    args[0] = exports.coerce(args[0]);
+
+    if ('string' !== typeof args[0]) {
+      // anything else let's inspect with %O
+      args.unshift('%O');
+    }
+
+    // apply any `formatters` transformations
+    var index = 0;
+    args[0] = args[0].replace(/%([a-zA-Z%])/g, function(match, format) {
+      // if we encounter an escaped % then don't increase the array index
+      if (match === '%%') return match;
+      index++;
+      var formatter = exports.formatters[format];
+      if ('function' === typeof formatter) {
+        var val = args[index];
+        match = formatter.call(self, val);
+
+        // now we need to remove `args[index]` since it's inlined in the `format`
+        args.splice(index, 1);
+        index--;
+      }
+      return match;
+    });
+
+    // apply env-specific formatting (colors, etc.)
+    exports.formatArgs.call(self, args);
+
+    var logFn = debug.log || exports.log || console.log.bind(console);
+    logFn.apply(self, args);
+  }
+
+  debug.namespace = namespace;
+  debug.enabled = exports.enabled(namespace);
+  debug.useColors = exports.useColors();
+  debug.color = selectColor(namespace);
+
+  // env-specific initialization logic for debug instances
+  if ('function' === typeof exports.init) {
+    exports.init(debug);
+  }
+
+  return debug;
+}
+
+/**
+ * Enables a debug mode by namespaces. This can include modes
+ * separated by a colon and wildcards.
+ *
+ * @param {String} namespaces
+ * @api public
+ */
+
+function enable(namespaces) {
+  exports.save(namespaces);
+
+  exports.names = [];
+  exports.skips = [];
+
+  var split = (typeof namespaces === 'string' ? namespaces : '').split(/[\s,]+/);
+  var len = split.length;
+
+  for (var i = 0; i < len; i++) {
+    if (!split[i]) continue; // ignore empty strings
+    namespaces = split[i].replace(/\*/g, '.*?');
+    if (namespaces[0] === '-') {
+      exports.skips.push(new RegExp('^' + namespaces.substr(1) + '$'));
+    } else {
+      exports.names.push(new RegExp('^' + namespaces + '$'));
+    }
+  }
+}
+
+/**
+ * Disable debug output.
+ *
+ * @api public
+ */
+
+function disable() {
+  exports.enable('');
+}
+
+/**
+ * Returns true if the given mode name is enabled, false otherwise.
+ *
+ * @param {String} name
+ * @return {Boolean}
+ * @api public
+ */
+
+function enabled(name) {
+  var i, len;
+  for (i = 0, len = exports.skips.length; i < len; i++) {
+    if (exports.skips[i].test(name)) {
+      return false;
+    }
+  }
+  for (i = 0, len = exports.names.length; i < len; i++) {
+    if (exports.names[i].test(name)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/**
+ * Coerce `val`.
+ *
+ * @param {Mixed} val
+ * @return {Mixed}
+ * @api private
+ */
+
+function coerce(val) {
+  if (val instanceof Error) return val.stack || val.message;
+  return val;
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/debug/src/index.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Detect Electron renderer process, which is node, but we should
+ * treat as a browser.
+ */
+
+if (typeof process !== 'undefined' && process.type === 'renderer') {
+  module.exports = __webpack_require__("./node_modules/debug/src/browser.js");
+} else {
+  module.exports = __webpack_require__("./node_modules/debug/src/node.js");
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/debug/src/node.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Module dependencies.
+ */
+
+var tty = __webpack_require__(6);
+var util = __webpack_require__(3);
+
+/**
+ * This is the Node.js implementation of `debug()`.
+ *
+ * Expose `debug()` as the module.
+ */
+
+exports = module.exports = __webpack_require__("./node_modules/debug/src/debug.js");
+exports.init = init;
+exports.log = log;
+exports.formatArgs = formatArgs;
+exports.save = save;
+exports.load = load;
+exports.useColors = useColors;
+
+/**
+ * Colors.
+ */
+
+exports.colors = [6, 2, 3, 4, 5, 1];
+
+/**
+ * Build up the default `inspectOpts` object from the environment variables.
+ *
+ *   $ DEBUG_COLORS=no DEBUG_DEPTH=10 DEBUG_SHOW_HIDDEN=enabled node script.js
+ */
+
+exports.inspectOpts = Object.keys(process.env).filter(function (key) {
+  return /^debug_/i.test(key);
+}).reduce(function (obj, key) {
+  // camel-case
+  var prop = key
+    .substring(6)
+    .toLowerCase()
+    .replace(/_([a-z])/g, function (_, k) { return k.toUpperCase() });
+
+  // coerce string value into JS value
+  var val = process.env[key];
+  if (/^(yes|on|true|enabled)$/i.test(val)) val = true;
+  else if (/^(no|off|false|disabled)$/i.test(val)) val = false;
+  else if (val === 'null') val = null;
+  else val = Number(val);
+
+  obj[prop] = val;
+  return obj;
+}, {});
+
+/**
+ * The file descriptor to write the `debug()` calls to.
+ * Set the `DEBUG_FD` env variable to override with another value. i.e.:
+ *
+ *   $ DEBUG_FD=3 node script.js 3>debug.log
+ */
+
+var fd = parseInt(process.env.DEBUG_FD, 10) || 2;
+
+if (1 !== fd && 2 !== fd) {
+  util.deprecate(function(){}, 'except for stderr(2) and stdout(1), any other usage of DEBUG_FD is deprecated. Override debug.log if you want to use a different log function (https://git.io/debug_fd)')()
+}
+
+var stream = 1 === fd ? process.stdout :
+             2 === fd ? process.stderr :
+             createWritableStdioStream(fd);
+
+/**
+ * Is stdout a TTY? Colored output is enabled when `true`.
+ */
+
+function useColors() {
+  return 'colors' in exports.inspectOpts
+    ? Boolean(exports.inspectOpts.colors)
+    : tty.isatty(fd);
+}
+
+/**
+ * Map %o to `util.inspect()`, all on a single line.
+ */
+
+exports.formatters.o = function(v) {
+  this.inspectOpts.colors = this.useColors;
+  return util.inspect(v, this.inspectOpts)
+    .replace(/\s*\n\s*/g, ' ');
+};
+
+/**
+ * Map %o to `util.inspect()`, allowing multiple lines if needed.
+ */
+
+exports.formatters.O = function(v) {
+  this.inspectOpts.colors = this.useColors;
+  return util.inspect(v, this.inspectOpts);
+};
+
+/**
+ * Adds ANSI color escape codes if enabled.
+ *
+ * @api public
+ */
+
+function formatArgs(args) {
+  var name = this.namespace;
+  var useColors = this.useColors;
+
+  if (useColors) {
+    var c = this.color;
+    var prefix = '  \u001b[3' + c + ';1m' + name + ' ' + '\u001b[0m';
+
+    args[0] = prefix + args[0].split('\n').join('\n' + prefix);
+    args.push('\u001b[3' + c + 'm+' + exports.humanize(this.diff) + '\u001b[0m');
+  } else {
+    args[0] = new Date().toUTCString()
+      + ' ' + name + ' ' + args[0];
+  }
+}
+
+/**
+ * Invokes `util.format()` with the specified arguments and writes to `stream`.
+ */
+
+function log() {
+  return stream.write(util.format.apply(util, arguments) + '\n');
+}
+
+/**
+ * Save `namespaces`.
+ *
+ * @param {String} namespaces
+ * @api private
+ */
+
+function save(namespaces) {
+  if (null == namespaces) {
+    // If you set a process.env field to null or undefined, it gets cast to the
+    // string 'null' or 'undefined'. Just delete instead.
+    delete process.env.DEBUG;
+  } else {
+    process.env.DEBUG = namespaces;
+  }
+}
+
+/**
+ * Load `namespaces`.
+ *
+ * @return {String} returns the previously persisted debug modes
+ * @api private
+ */
+
+function load() {
+  return process.env.DEBUG;
+}
+
+/**
+ * Copied from `node/src/node.js`.
+ *
+ * XXX: It's lame that node doesn't expose this API out-of-the-box. It also
+ * relies on the undocumented `tty_wrap.guessHandleType()` which is also lame.
+ */
+
+function createWritableStdioStream (fd) {
+  var stream;
+  var tty_wrap = process.binding('tty_wrap');
+
+  // Note stream._type is used for test-module-load-list.js
+
+  switch (tty_wrap.guessHandleType(fd)) {
+    case 'TTY':
+      stream = new tty.WriteStream(fd);
+      stream._type = 'tty';
+
+      // Hack to have stream not keep the event loop alive.
+      // See https://github.com/joyent/node/issues/1726
+      if (stream._handle && stream._handle.unref) {
+        stream._handle.unref();
+      }
+      break;
+
+    case 'FILE':
+      var fs = __webpack_require__(1);
+      stream = new fs.SyncWriteStream(fd, { autoClose: false });
+      stream._type = 'fs';
+      break;
+
+    case 'PIPE':
+    case 'TCP':
+      var net = __webpack_require__(7);
+      stream = new net.Socket({
+        fd: fd,
+        readable: false,
+        writable: true
+      });
+
+      // FIXME Should probably have an option in net.Socket to create a
+      // stream from an existing fd which is writable only. But for now
+      // we'll just add this hack and set the `readable` member to false.
+      // Test: ./node test/fixtures/echo.js < /etc/passwd
+      stream.readable = false;
+      stream.read = null;
+      stream._type = 'pipe';
+
+      // FIXME Hack to have stream not keep the event loop alive.
+      // See https://github.com/joyent/node/issues/1726
+      if (stream._handle && stream._handle.unref) {
+        stream._handle.unref();
+      }
+      break;
+
+    default:
+      // Probably an error on in uv_guess_handle()
+      throw new Error('Implement me. Unknown stream file type!');
+  }
+
+  // For supporting legacy API we put the FD here.
+  stream.fd = fd;
+
+  stream._isStdio = true;
+
+  return stream;
+}
+
+/**
+ * Init logic for `debug` instances.
+ *
+ * Create a new `inspectOpts` object in case `useColors` is set
+ * differently for a particular `debug` instance.
+ */
+
+function init (debug) {
+  debug.inspectOpts = {};
+
+  var keys = Object.keys(exports.inspectOpts);
+  for (var i = 0; i < keys.length; i++) {
+    debug.inspectOpts[keys[i]] = exports.inspectOpts[keys[i]];
+  }
+}
+
+/**
+ * Enable namespaces listed in `process.env.DEBUG` initially.
+ */
+
+exports.enable(load());
+
+
+/***/ }),
+
+/***/ "./node_modules/devtron/api.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+const electron = __webpack_require__(2)
+
+exports.install = () => {
+  if (process.type === 'renderer') {
+    console.log(`Installing Devtron from ${__dirname}`)
+    if (electron.remote.BrowserWindow.getDevToolsExtensions &&
+        electron.remote.BrowserWindow.getDevToolsExtensions().devtron) return true
+    return electron.remote.BrowserWindow.addDevToolsExtension(__dirname)
+  } else if (process.type === 'browser') {
+    console.log(`Installing Devtron from ${__dirname}`)
+    if (electron.BrowserWindow.getDevToolsExtensions &&
+        electron.BrowserWindow.getDevToolsExtensions().devtron) return true
+    return electron.BrowserWindow.addDevToolsExtension(__dirname)
+  } else {
+    throw new Error('Devtron can only be installed from an Electron process.')
+  }
+}
+
+exports.uninstall = () => {
+  if (process.type === 'renderer') {
+    console.log(`Uninstalling Devtron from ${__dirname}`)
+    return electron.remote.BrowserWindow.removeDevToolsExtension('devtron')
+  } else if (process.type === 'browser') {
+    console.log(`Uninstalling Devtron from ${__dirname}`)
+    return electron.BrowserWindow.removeDevToolsExtension('devtron')
+  } else {
+    throw new Error('Devtron can only be uninstalled from an Electron process.')
+  }
+}
+
+exports.path = __dirname
+
+
+/***/ }),
+
+/***/ "./node_modules/electron-debug/index.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+const electron = __webpack_require__(2);
+const localShortcut = __webpack_require__("./node_modules/electron-localshortcut/index.js");
+const isDev = __webpack_require__("./node_modules/electron-is-dev/index.js");
+
+const app = electron.app;
+const BrowserWindow = electron.BrowserWindow;
+const isMacOS = process.platform === 'darwin';
+
+function devTools(win) {
+	win = win || BrowserWindow.getFocusedWindow();
+
+	if (win) {
+		win.toggleDevTools();
+	}
+}
+
+function openDevTools(win, showDevTools) {
+	win = win || BrowserWindow.getFocusedWindow();
+
+	if (win) {
+		const mode = showDevTools === true ? undefined : showDevTools;
+		win.webContents.openDevTools({mode});
+	}
+}
+
+function refresh(win) {
+	win = win || BrowserWindow.getFocusedWindow();
+
+	if (win) {
+		win.webContents.reloadIgnoringCache();
+	}
+}
+
+function inspectElements() {
+	const win = BrowserWindow.getFocusedWindow();
+	const inspect = () => {
+		win.devToolsWebContents.executeJavaScript('DevToolsAPI.enterInspectElementMode()');
+	};
+
+	if (win) {
+		if (win.webContents.isDevToolsOpened()) {
+			inspect();
+		} else {
+			win.webContents.on('devtools-opened', inspect);
+			win.openDevTools();
+		}
+	}
+}
+
+module.exports = opts => {
+	opts = Object.assign({
+		enabled: null,
+		showDevTools: false
+	}, opts);
+
+	if (opts.enabled === false || (opts.enabled === null && !isDev)) {
+		return;
+	}
+
+	app.on('browser-window-created', (e, win) => {
+		if (opts.showDevTools) {
+			openDevTools(win, opts.showDevTools);
+		}
+	});
+
+	app.on('ready', () => {
+		// Activate devtron for the user if they have it installed and it's not already added
+		try {
+			const devtronAlreadyAdded = BrowserWindow.getDevToolsExtensions &&
+				{}.hasOwnProperty.call(BrowserWindow.getDevToolsExtensions(), 'devtron');
+
+			if (!devtronAlreadyAdded) {
+				BrowserWindow.addDevToolsExtension(__webpack_require__("./node_modules/devtron/api.js").path);
+			}
+		} catch (err) {}
+
+		localShortcut.register('CmdOrCtrl+Shift+C', inspectElements);
+		localShortcut.register(isMacOS ? 'Cmd+Alt+I' : 'Ctrl+Shift+I', devTools);
+		localShortcut.register('F12', devTools);
+
+		localShortcut.register('CmdOrCtrl+R', refresh);
+		localShortcut.register('F5', refresh);
+	});
+};
+
+module.exports.refresh = refresh;
+module.exports.devTools = devTools;
+module.exports.openDevTools = openDevTools;
+
+
+/***/ }),
+
+/***/ "./node_modules/electron-devtools-installer/dist/downloadChromeExtension.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _fs = __webpack_require__(1);
+
+var _fs2 = _interopRequireDefault(_fs);
+
+var _path = __webpack_require__(0);
+
+var _path2 = _interopRequireDefault(_path);
+
+var _rimraf = __webpack_require__("./node_modules/rimraf/rimraf.js");
+
+var _rimraf2 = _interopRequireDefault(_rimraf);
+
+var _crossUnzip = __webpack_require__("./node_modules/cross-unzip/index.js");
+
+var _crossUnzip2 = _interopRequireDefault(_crossUnzip);
+
+var _utils = __webpack_require__("./node_modules/electron-devtools-installer/dist/utils.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var downloadChromeExtension = function downloadChromeExtension(chromeStoreID, forceDownload) {
+  var attempts = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 5;
+
+  var extensionsStore = (0, _utils.getPath)();
+  if (!_fs2.default.existsSync(extensionsStore)) {
+    _fs2.default.mkdirSync(extensionsStore);
+  }
+  var extensionFolder = _path2.default.resolve(extensionsStore + '/' + chromeStoreID);
+  return new Promise(function (resolve, reject) {
+    if (!_fs2.default.existsSync(extensionFolder) || forceDownload) {
+      (function () {
+        if (_fs2.default.existsSync(extensionFolder)) {
+          _rimraf2.default.sync(extensionFolder);
+        }
+        var fileURL = 'https://clients2.google.com/service/update2/crx?response=redirect&x=id%3D' + chromeStoreID + '%26uc&prodversion=32'; // eslint-disable-line
+        var filePath = _path2.default.resolve(extensionFolder + '.crx');
+        (0, _utils.downloadFile)(fileURL, filePath).then(function () {
+          (0, _crossUnzip2.default)(filePath, extensionFolder, function (err) {
+            if (err && !_fs2.default.existsSync(_path2.default.resolve(extensionFolder, 'manifest.json'))) {
+              return reject(err);
+            }
+            resolve(extensionFolder);
+          });
+        }).catch(function (err) {
+          console.log('Failed to fetch extension, trying ' + (attempts - 1) + ' more times'); // eslint-disable-line
+          if (attempts <= 1) {
+            return reject(err);
+          }
+          setTimeout(function () {
+            downloadChromeExtension(chromeStoreID, forceDownload, attempts - 1).then(resolve).catch(reject);
+          }, 200);
+        });
+      })();
+    } else {
+      resolve(extensionFolder);
+    }
+  });
+};
+
+exports.default = downloadChromeExtension;
+
+/***/ }),
+
+/***/ "./node_modules/electron-devtools-installer/dist/index.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.CYCLEJS_DEVTOOL = exports.REACT_PERF = exports.REDUX_DEVTOOLS = exports.VUEJS_DEVTOOLS = exports.ANGULARJS_BATARANG = exports.JQUERY_DEBUGGER = exports.BACKBONE_DEBUGGER = exports.REACT_DEVELOPER_TOOLS = exports.EMBER_INSPECTOR = undefined;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _electron = __webpack_require__(2);
+
+var _electron2 = _interopRequireDefault(_electron);
+
+var _fs = __webpack_require__(1);
+
+var _fs2 = _interopRequireDefault(_fs);
+
+var _path = __webpack_require__(0);
+
+var _path2 = _interopRequireDefault(_path);
+
+var _semver = __webpack_require__("./node_modules/semver/semver.js");
+
+var _semver2 = _interopRequireDefault(_semver);
+
+var _downloadChromeExtension = __webpack_require__("./node_modules/electron-devtools-installer/dist/downloadChromeExtension.js");
+
+var _downloadChromeExtension2 = _interopRequireDefault(_downloadChromeExtension);
+
+var _utils = __webpack_require__("./node_modules/electron-devtools-installer/dist/utils.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var _ref = _electron.remote || _electron2.default,
+    BrowserWindow = _ref.BrowserWindow;
+
+var IDMap = {};
+var IDMapPath = _path2.default.resolve((0, _utils.getPath)(), 'IDMap.json');
+if (_fs2.default.existsSync(IDMapPath)) {
+  IDMap = JSON.parse(_fs2.default.readFileSync(IDMapPath, 'utf8'));
+}
+
+var install = function install(extensionReference) {
+  var forceDownload = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+  if (Array.isArray(extensionReference)) {
+    return Promise.all(extensionReference.map(function (extension) {
+      return install(extension, forceDownload);
+    }));
+  }
+  var chromeStoreID = void 0;
+  if ((typeof extensionReference === 'undefined' ? 'undefined' : _typeof(extensionReference)) === 'object' && extensionReference.id) {
+    chromeStoreID = extensionReference.id;
+    if (!_semver2.default.satisfies(process.versions.electron, extensionReference.electron)) {
+      return Promise.reject(new Error('Version of Electron: ' + process.versions.electron + ' does not match required range ' + extensionReference.electron + ' for extension ' + chromeStoreID));
+    }
+  } else if (typeof extensionReference === 'string') {
+    chromeStoreID = extensionReference;
+  } else {
+    return Promise.reject(new Error('Invalid extensionReference passed in: "' + extensionReference + '"'));
+  }
+  var extensionName = IDMap[chromeStoreID];
+  var extensionInstalled = extensionName && BrowserWindow.getDevToolsExtensions && BrowserWindow.getDevToolsExtensions()[extensionName];
+  if (!forceDownload && extensionInstalled) {
+    return Promise.resolve(IDMap[chromeStoreID]);
+  }
+  return (0, _downloadChromeExtension2.default)(chromeStoreID, forceDownload).then(function (extensionFolder) {
+    // Use forceDownload, but already installed
+    if (extensionInstalled) {
+      BrowserWindow.removeDevToolsExtension(extensionName);
+    }
+    var name = BrowserWindow.addDevToolsExtension(extensionFolder); // eslint-disable-line
+    _fs2.default.writeFileSync(IDMapPath, JSON.stringify(Object.assign(IDMap, _defineProperty({}, chromeStoreID, name))));
+    return Promise.resolve(name);
+  });
+};
+
+exports.default = install;
+var EMBER_INSPECTOR = exports.EMBER_INSPECTOR = {
+  id: 'bmdblncegkenkacieihfhpjfppoconhi',
+  electron: '^1.2.1'
+};
+var REACT_DEVELOPER_TOOLS = exports.REACT_DEVELOPER_TOOLS = {
+  id: 'fmkadmapgofadopljbjfkapdkoienihi',
+  electron: '^1.2.1'
+};
+var BACKBONE_DEBUGGER = exports.BACKBONE_DEBUGGER = {
+  id: 'bhljhndlimiafopmmhjlgfpnnchjjbhd',
+  electron: '^1.2.1'
+};
+var JQUERY_DEBUGGER = exports.JQUERY_DEBUGGER = {
+  id: 'dbhhnnnpaeobfddmlalhnehgclcmjimi',
+  electron: '^1.2.1'
+};
+var ANGULARJS_BATARANG = exports.ANGULARJS_BATARANG = {
+  id: 'ighdmehidhipcmcojjgiloacoafjmpfk',
+  electron: '^1.2.1'
+};
+var VUEJS_DEVTOOLS = exports.VUEJS_DEVTOOLS = {
+  id: 'nhdogjmejiglipccpnnnanhbledajbpd',
+  electron: '^1.2.1'
+};
+var REDUX_DEVTOOLS = exports.REDUX_DEVTOOLS = {
+  id: 'lmhkpmbekcpmknklioeibfkpmmfibljd',
+  electron: '^1.2.1'
+};
+var REACT_PERF = exports.REACT_PERF = {
+  id: 'hacmcodfllhbnekmghgdlplbdnahmhmm',
+  electron: '^1.2.6'
+};
+var CYCLEJS_DEVTOOL = exports.CYCLEJS_DEVTOOL = {
+  id: 'dfgplfmhhmdekalbpejekgfegkonjpfp',
+  electron: '^1.2.1'
+};
+
+/***/ }),
+
+/***/ "./node_modules/electron-devtools-installer/dist/utils.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.downloadFile = exports.getPath = undefined;
+
+var _electron = __webpack_require__(2);
+
+var _electron2 = _interopRequireDefault(_electron);
+
+var _fs = __webpack_require__(1);
+
+var _fs2 = _interopRequireDefault(_fs);
+
+var _path = __webpack_require__(0);
+
+var _path2 = _interopRequireDefault(_path);
+
+var _https = __webpack_require__(10);
+
+var _https2 = _interopRequireDefault(_https);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var getPath = exports.getPath = function getPath() {
+  var savePath = (_electron.remote || _electron2.default).app.getPath('userData');
+  return _path2.default.resolve(savePath + '/extensions');
+};
+
+// Use https.get fallback for Electron < 1.4.5
+
+var _ref = _electron.remote || _electron2.default,
+    net = _ref.net;
+
+var request = net ? net.request : _https2.default.get;
+
+var downloadFile = exports.downloadFile = function downloadFile(from, to) {
+  return new Promise(function (resolve, reject) {
+    var req = request(from);
+    req.on('response', function (res) {
+      // Shouldn't handle redirect with `electron.net`, this is for https.get fallback
+      if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
+        return downloadFile(res.headers.location, to).then(resolve).catch(reject);
+      }
+      res.pipe(_fs2.default.createWriteStream(to)).on('close', resolve);
+    });
+    req.on('error', reject);
+    req.end();
+  });
+};
+
+/***/ }),
+
+/***/ "./node_modules/electron-is-accelerator/index.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+const modifiers = /^(Command|Cmd|Control|Ctrl|CommandOrControl|CmdOrCtrl|Alt|Option|AltGr|Shift|Super)$/;
+const keyCodes = /^([0-9A-Z)!@#$%^&*(:+<_>?~{|}";=,\-./`[\\\]']|F1*[1-9]|F10|F2[0-4]|Plus|Space|Tab|Backspace|Delete|Insert|Return|Enter|Up|Down|Left|Right|Home|End|PageUp|PageDown|Escape|Esc|VolumeUp|VolumeDown|VolumeMute|MediaNextTrack|MediaPreviousTrack|MediaStop|MediaPlayPause|PrintScreen)$/;
+
+module.exports = function (str) {
+	let parts = str.split("+");
+	let keyFound = false;
+    return parts.every((val, index) => {
+		const isKey = keyCodes.test(val);
+		const isModifier = modifiers.test(val);
+		if (isKey) {
+			// Key must be unique
+			if (keyFound) return false;
+			keyFound = true;
+		}
+		// Key is required
+		if (index === parts.length - 1 && !keyFound) return false;
+        return isKey || isModifier;
+    });
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/electron-is-dev/index.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = process.defaultApp || /[\\/]electron-prebuilt[\\/]/.test(process.execPath) || /[\\/]electron[\\/]/.test(process.execPath);
+
+
+/***/ }),
+
+/***/ "./node_modules/electron-localshortcut/index.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+const {globalShortcut, BrowserWindow, app} = __webpack_require__(2);
+const isAccelerator = __webpack_require__("./node_modules/electron-is-accelerator/index.js");
+const _debug = __webpack_require__("./node_modules/debug/src/index.js");
+
+const debug = _debug('electron-localshortcut');
+const windowsWithShortcuts = new WeakMap();
+
+// A placeholder to register shortcuts
+// on any window of the app.
+const ANY_WINDOW = {};
+
+let _enableShortcut = shortcut => {
+	debug(`Calling globalShortcut.register(${shortcut.accelerator}, ${shortcut.callback.name})`);
+	globalShortcut.register(shortcut.accelerator, shortcut.callback);
+	shortcut.registered = true;
+};
+
+let _disableShortcut = shortcut => {
+	debug(`Calling globalShortcut.unregister(${shortcut.accelerator})`);
+	globalShortcut.unregister(shortcut.accelerator);
+	shortcut.registered = false;
+};
+
+function __mockup(enableShortcut, disableShortcut) {
+	_enableShortcut = enableShortcut;
+	_disableShortcut = disableShortcut;
+}
+
+function _enableWindowAndApp(win) {
+	debug(`_enableWindowAndApp ${win.getTitle && win.getTitle()}`);
+	if (windowsWithShortcuts.has(ANY_WINDOW)) {
+		enableAll(ANY_WINDOW);
+	}
+
+	if (!windowsWithShortcuts.has(win)) {
+		return;
+	}
+
+	enableAll(win);
+}
+
+function _disableWindowAndApp(win) {
+	debug(`_disableWindowAndApp ${win.getTitle && win.getTitle()}`);
+	if (windowsWithShortcuts.has(ANY_WINDOW)) {
+		disableAll(ANY_WINDOW);
+	}
+
+	if (!windowsWithShortcuts.has(win)) {
+		return;
+	}
+
+	disableAll(win);
+}
+
+function _indexOfShortcut(win, accelerator) {
+	if (!windowsWithShortcuts.has(win)) {
+		return -1;
+	}
+	_checkAccelerator(accelerator);
+
+	const shortcuts = windowsWithShortcuts.get(win);
+	let shortcutToUnregisterIdx = -1;
+	shortcuts.some((s, idx) => {
+		if (s.accelerator === accelerator) {
+			shortcutToUnregisterIdx = idx;
+			return true;
+		}
+		return false;
+	});
+	return shortcutToUnregisterIdx;
+}
+
+function _checkAccelerator(accelerator) {
+	if (!isAccelerator(accelerator)) {
+		const w = {};
+		Error.captureStackTrace(w);
+		const msg = `
+WARNING: ${accelerator} is not a valid accelerator.
+
+${w.stack.split('\n').slice(4).join('\n')}
+`;
+		console.error(msg);
+	}
+}
+
+/**
+ * Disable all of the shortcuts registered on the BrowserWindow instance.
+Registered shortcuts no more works on the `window` instance, but the module keep a reference on them. You can reactivate them later by calling `enableAll` method on the same window instance.
+ * @param  {BrowserWindow} win BrowserWindow instance
+ * @return {Undefined}
+ */
+function disableAll(win) {
+	const shortcuts = windowsWithShortcuts.get(win);
+	if (shortcuts) {
+		shortcuts.forEach(_disableShortcut);
+	}
+}
+
+/**
+ * Enable all of the shortcuts registered on the BrowserWindow instance that you had previously disabled calling `disableAll` method.
+ * @param  {BrowserWindow} win BrowserWindow instance
+ * @return {Undefined}
+ */
+function enableAll(win) {
+	const shortcuts = windowsWithShortcuts.get(win);
+	if (shortcuts) {
+		shortcuts.forEach(_enableShortcut);
+	}
+}
+
+/**
+ * Unregisters all of the shortcuts registered on any focused BrowserWindow instance. This method does not unregister any shortcut you registered on a particular window instance.
+ * @param  {BrowserWindow} win BrowserWindow instance
+ * @return {Undefined}
+ */
+function unregisterAll(win) {
+	if (win === undefined) {
+		// Unregister shortcuts for any window in the app
+		unregisterAll(ANY_WINDOW);
+		return;
+	}
+
+	if (!windowsWithShortcuts.has(win)) {
+		return;
+	}
+
+	disableAll(win);
+	windowsWithShortcuts.delete(win);
+}
+
+/**
+* Registers the shortcut `accelerator`on the BrowserWindow instance.
+ * @param  {BrowserWindow} win - BrowserWindow instance to register. This argument could be omitted, in this case the function register the shortcut on all app windows.
+ * @param  {String} accelerator - the shortcut to register
+ * @param  {Function} callback    This function is called when the shortcut is pressed and the window is focused and not minimized.
+ * @return {Undefined}
+ */
+function register(win, accelerator, callback) {
+	if (arguments.length === 2 && typeof win === 'string') {
+		// Register shortcut for any window in the app
+		// win = accelerator, accelerator = callback
+		register(ANY_WINDOW, win, accelerator);
+		return;
+	}
+
+	_checkAccelerator(accelerator);
+
+	const newShortcut = {accelerator, callback, registered: false};
+
+	const _unregister = because => () => {
+		debug(`Disabling shortcuts for app and for window '${(win.getTitle && win.getTitle()) || 'No name'}' because ${because}.`);
+		_disableWindowAndApp(win);
+	};
+
+	const _register = because => () => {
+		debug(`Enabling shortcuts for app and for window '${(win.getTitle && win.getTitle()) || 'No name'}' because ${because}.`);
+		_enableWindowAndApp(win);
+	};
+
+	if (windowsWithShortcuts.has(win)) {
+		const shortcuts = windowsWithShortcuts.get(win);
+		shortcuts.push(newShortcut);
+	} else {
+		windowsWithShortcuts.set(win, [newShortcut]);
+
+		if (win !== ANY_WINDOW) {
+			win.on('close', _unregister('the window was closed.'));
+
+			win.on('hide', _unregister('the window was hidden.'));
+
+			win.on('minimize', _unregister('the window was minimized.'));
+
+			win.on('restore', _register('the window was restored from minimized state.'));
+
+			win.on('show', _register('the window was showed.'));
+		}
+	}
+
+	const focusedWin = BrowserWindow.getFocusedWindow();
+	const registeringAppShortcut = win === ANY_WINDOW;
+	const appHasFocus = focusedWin !== null && focusedWin.isVisible();
+	const registeringWindowHasFocus = focusedWin === win;
+	const registeringWindowIsMinimized = () => focusedWin.isMinimized();
+
+	if ((registeringAppShortcut && appHasFocus) ||
+		(registeringWindowHasFocus && !registeringWindowIsMinimized())) {
+		_register('the window was focused at shortcut registration.');
+	}
+}
+
+/**
+ * Unregisters the shortcut of `accelerator` registered on the BrowserWindow instance.
+ * @param  {BrowserWindow} win - BrowserWindow instance to unregister. This argument could be omitted, in this case the function unregister the shortcut on all app windows. If you registered the shortcut on a particular window instance, it will do nothing.
+ * @param  {String} accelerator - the shortcut to unregister
+ * @return {Undefined}
+ */
+function unregister(win, accelerator) {
+	if (arguments.length === 1 && typeof win === 'string') {
+		// Unregister shortcut for any window in the app
+		// win === accelerator
+		unregister(ANY_WINDOW, win);
+		return;
+	}
+
+	_checkAccelerator(accelerator);
+
+	const shortcutToUnregisterIdx = _indexOfShortcut(win, accelerator);
+
+	if (shortcutToUnregisterIdx !== -1) {
+		_disableShortcut(accelerator);
+		const shortcuts = windowsWithShortcuts.get(win);
+		shortcuts.splice(shortcutToUnregisterIdx, 1);
+	}
+}
+
+/**
+ * Returns `true` or `false` depending on whether the shortcut `accelerator` is
+registered on `window`.
+ * @param  {BrowserWindow} win - BrowserWindow instance to check. This argument could be omitted, in this case the function returns whether the shortcut `accelerator` is registered on all app windows. If you registered the shortcut on a particular window instance, it return false.
+ * @param  {String} accelerator - the shortcut to check
+ * @return {Boolean} - if the shortcut `accelerator` is registered on `window`.
+ */
+function isRegistered(win, accelerator) {
+	if (arguments.length === 1 && typeof win === 'string') {
+		// Check shortcut for any window in the app
+		// win = accelerator
+		return isRegistered(ANY_WINDOW, win);
+	}
+
+	_checkAccelerator(accelerator);
+
+	return _indexOfShortcut(win, accelerator) !== -1;
+}
+
+const windowBlur = because => (_, win) => {
+	debug(`Disabling shortcuts for app and for window '${(win.getTitle && win.getTitle()) || 'No name'}' because ${because}.`);
+	_disableWindowAndApp(win);
+};
+
+const windowFocus = because => (_, win) => {
+	debug(`Enabling shortcuts for app and for window '${(win.getTitle && win.getTitle()) || 'No name'}' because ${because}.`);
+	_enableWindowAndApp(win);
+};
+
+app.on('browser-window-focus', windowFocus('the window gained focus'));
+app.on('browser-window-blur', windowBlur('the window loose focus'));
+
+// All shortcuts should be unregistered by closing the window.
+// just for double check
+app.on('window-all-closed', unregisterAll);
+
+module.exports = {
+	register,
+	unregister,
+	isRegistered,
+	unregisterAll,
+	enableAll,
+	disableAll,
+	__mockup
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/fs.realpath/index.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = realpath
+realpath.realpath = realpath
+realpath.sync = realpathSync
+realpath.realpathSync = realpathSync
+realpath.monkeypatch = monkeypatch
+realpath.unmonkeypatch = unmonkeypatch
+
+var fs = __webpack_require__(1)
+var origRealpath = fs.realpath
+var origRealpathSync = fs.realpathSync
+
+var version = process.version
+var ok = /^v[0-5]\./.test(version)
+var old = __webpack_require__("./node_modules/fs.realpath/old.js")
+
+function newError (er) {
+  return er && er.syscall === 'realpath' && (
+    er.code === 'ELOOP' ||
+    er.code === 'ENOMEM' ||
+    er.code === 'ENAMETOOLONG'
+  )
+}
+
+function realpath (p, cache, cb) {
+  if (ok) {
+    return origRealpath(p, cache, cb)
+  }
+
+  if (typeof cache === 'function') {
+    cb = cache
+    cache = null
+  }
+  origRealpath(p, cache, function (er, result) {
+    if (newError(er)) {
+      old.realpath(p, cache, cb)
+    } else {
+      cb(er, result)
+    }
+  })
+}
+
+function realpathSync (p, cache) {
+  if (ok) {
+    return origRealpathSync(p, cache)
+  }
+
+  try {
+    return origRealpathSync(p, cache)
+  } catch (er) {
+    if (newError(er)) {
+      return old.realpathSync(p, cache)
+    } else {
+      throw er
+    }
+  }
+}
+
+function monkeypatch () {
+  fs.realpath = realpath
+  fs.realpathSync = realpathSync
+}
+
+function unmonkeypatch () {
+  fs.realpath = origRealpath
+  fs.realpathSync = origRealpathSync
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/fs.realpath/old.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+var pathModule = __webpack_require__(0);
+var isWindows = process.platform === 'win32';
+var fs = __webpack_require__(1);
+
+// JavaScript implementation of realpath, ported from node pre-v6
+
+var DEBUG = process.env.NODE_DEBUG && /fs/.test(process.env.NODE_DEBUG);
+
+function rethrow() {
+  // Only enable in debug mode. A backtrace uses ~1000 bytes of heap space and
+  // is fairly slow to generate.
+  var callback;
+  if (DEBUG) {
+    var backtrace = new Error;
+    callback = debugCallback;
+  } else
+    callback = missingCallback;
+
+  return callback;
+
+  function debugCallback(err) {
+    if (err) {
+      backtrace.message = err.message;
+      err = backtrace;
+      missingCallback(err);
+    }
+  }
+
+  function missingCallback(err) {
+    if (err) {
+      if (process.throwDeprecation)
+        throw err;  // Forgot a callback but don't know where? Use NODE_DEBUG=fs
+      else if (!process.noDeprecation) {
+        var msg = 'fs: missing callback ' + (err.stack || err.message);
+        if (process.traceDeprecation)
+          console.trace(msg);
+        else
+          console.error(msg);
+      }
+    }
+  }
+}
+
+function maybeCallback(cb) {
+  return typeof cb === 'function' ? cb : rethrow();
+}
+
+var normalize = pathModule.normalize;
+
+// Regexp that finds the next partion of a (partial) path
+// result is [base_with_slash, base], e.g. ['somedir/', 'somedir']
+if (isWindows) {
+  var nextPartRe = /(.*?)(?:[\/\\]+|$)/g;
+} else {
+  var nextPartRe = /(.*?)(?:[\/]+|$)/g;
+}
+
+// Regex to find the device root, including trailing slash. E.g. 'c:\\'.
+if (isWindows) {
+  var splitRootRe = /^(?:[a-zA-Z]:|[\\\/]{2}[^\\\/]+[\\\/][^\\\/]+)?[\\\/]*/;
+} else {
+  var splitRootRe = /^[\/]*/;
+}
+
+exports.realpathSync = function realpathSync(p, cache) {
+  // make p is absolute
+  p = pathModule.resolve(p);
+
+  if (cache && Object.prototype.hasOwnProperty.call(cache, p)) {
+    return cache[p];
+  }
+
+  var original = p,
+      seenLinks = {},
+      knownHard = {};
+
+  // current character position in p
+  var pos;
+  // the partial path so far, including a trailing slash if any
+  var current;
+  // the partial path without a trailing slash (except when pointing at a root)
+  var base;
+  // the partial path scanned in the previous round, with slash
+  var previous;
+
+  start();
+
+  function start() {
+    // Skip over roots
+    var m = splitRootRe.exec(p);
+    pos = m[0].length;
+    current = m[0];
+    base = m[0];
+    previous = '';
+
+    // On windows, check that the root exists. On unix there is no need.
+    if (isWindows && !knownHard[base]) {
+      fs.lstatSync(base);
+      knownHard[base] = true;
+    }
+  }
+
+  // walk down the path, swapping out linked pathparts for their real
+  // values
+  // NB: p.length changes.
+  while (pos < p.length) {
+    // find the next part
+    nextPartRe.lastIndex = pos;
+    var result = nextPartRe.exec(p);
+    previous = current;
+    current += result[0];
+    base = previous + result[1];
+    pos = nextPartRe.lastIndex;
+
+    // continue if not a symlink
+    if (knownHard[base] || (cache && cache[base] === base)) {
+      continue;
+    }
+
+    var resolvedLink;
+    if (cache && Object.prototype.hasOwnProperty.call(cache, base)) {
+      // some known symbolic link.  no need to stat again.
+      resolvedLink = cache[base];
+    } else {
+      var stat = fs.lstatSync(base);
+      if (!stat.isSymbolicLink()) {
+        knownHard[base] = true;
+        if (cache) cache[base] = base;
+        continue;
+      }
+
+      // read the link if it wasn't read before
+      // dev/ino always return 0 on windows, so skip the check.
+      var linkTarget = null;
+      if (!isWindows) {
+        var id = stat.dev.toString(32) + ':' + stat.ino.toString(32);
+        if (seenLinks.hasOwnProperty(id)) {
+          linkTarget = seenLinks[id];
+        }
+      }
+      if (linkTarget === null) {
+        fs.statSync(base);
+        linkTarget = fs.readlinkSync(base);
+      }
+      resolvedLink = pathModule.resolve(previous, linkTarget);
+      // track this, if given a cache.
+      if (cache) cache[base] = resolvedLink;
+      if (!isWindows) seenLinks[id] = linkTarget;
+    }
+
+    // resolve the link, then start over
+    p = pathModule.resolve(resolvedLink, p.slice(pos));
+    start();
+  }
+
+  if (cache) cache[original] = p;
+
+  return p;
+};
+
+
+exports.realpath = function realpath(p, cache, cb) {
+  if (typeof cb !== 'function') {
+    cb = maybeCallback(cache);
+    cache = null;
+  }
+
+  // make p is absolute
+  p = pathModule.resolve(p);
+
+  if (cache && Object.prototype.hasOwnProperty.call(cache, p)) {
+    return process.nextTick(cb.bind(null, null, cache[p]));
+  }
+
+  var original = p,
+      seenLinks = {},
+      knownHard = {};
+
+  // current character position in p
+  var pos;
+  // the partial path so far, including a trailing slash if any
+  var current;
+  // the partial path without a trailing slash (except when pointing at a root)
+  var base;
+  // the partial path scanned in the previous round, with slash
+  var previous;
+
+  start();
+
+  function start() {
+    // Skip over roots
+    var m = splitRootRe.exec(p);
+    pos = m[0].length;
+    current = m[0];
+    base = m[0];
+    previous = '';
+
+    // On windows, check that the root exists. On unix there is no need.
+    if (isWindows && !knownHard[base]) {
+      fs.lstat(base, function(err) {
+        if (err) return cb(err);
+        knownHard[base] = true;
+        LOOP();
+      });
+    } else {
+      process.nextTick(LOOP);
+    }
+  }
+
+  // walk down the path, swapping out linked pathparts for their real
+  // values
+  function LOOP() {
+    // stop if scanned past end of path
+    if (pos >= p.length) {
+      if (cache) cache[original] = p;
+      return cb(null, p);
+    }
+
+    // find the next part
+    nextPartRe.lastIndex = pos;
+    var result = nextPartRe.exec(p);
+    previous = current;
+    current += result[0];
+    base = previous + result[1];
+    pos = nextPartRe.lastIndex;
+
+    // continue if not a symlink
+    if (knownHard[base] || (cache && cache[base] === base)) {
+      return process.nextTick(LOOP);
+    }
+
+    if (cache && Object.prototype.hasOwnProperty.call(cache, base)) {
+      // known symbolic link.  no need to stat again.
+      return gotResolvedLink(cache[base]);
+    }
+
+    return fs.lstat(base, gotStat);
+  }
+
+  function gotStat(err, stat) {
+    if (err) return cb(err);
+
+    // if not a symlink, skip to the next path part
+    if (!stat.isSymbolicLink()) {
+      knownHard[base] = true;
+      if (cache) cache[base] = base;
+      return process.nextTick(LOOP);
+    }
+
+    // stat & read the link if not read before
+    // call gotTarget as soon as the link target is known
+    // dev/ino always return 0 on windows, so skip the check.
+    if (!isWindows) {
+      var id = stat.dev.toString(32) + ':' + stat.ino.toString(32);
+      if (seenLinks.hasOwnProperty(id)) {
+        return gotTarget(null, seenLinks[id], base);
+      }
+    }
+    fs.stat(base, function(err) {
+      if (err) return cb(err);
+
+      fs.readlink(base, function(err, target) {
+        if (!isWindows) seenLinks[id] = target;
+        gotTarget(err, target);
+      });
+    });
+  }
+
+  function gotTarget(err, target, base) {
+    if (err) return cb(err);
+
+    var resolvedLink = pathModule.resolve(previous, target);
+    if (cache) cache[base] = resolvedLink;
+    gotResolvedLink(resolvedLink);
+  }
+
+  function gotResolvedLink(resolvedLink) {
+    // resolve the link, then start over
+    p = pathModule.resolve(resolvedLink, p.slice(pos));
+    start();
+  }
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/glob/common.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports.alphasort = alphasort
+exports.alphasorti = alphasorti
+exports.setopts = setopts
+exports.ownProp = ownProp
+exports.makeAbs = makeAbs
+exports.finish = finish
+exports.mark = mark
+exports.isIgnored = isIgnored
+exports.childrenIgnored = childrenIgnored
+
+function ownProp (obj, field) {
+  return Object.prototype.hasOwnProperty.call(obj, field)
+}
+
+var path = __webpack_require__(0)
+var minimatch = __webpack_require__("./node_modules/minimatch/minimatch.js")
+var isAbsolute = __webpack_require__("./node_modules/path-is-absolute/index.js")
+var Minimatch = minimatch.Minimatch
+
+function alphasorti (a, b) {
+  return a.toLowerCase().localeCompare(b.toLowerCase())
+}
+
+function alphasort (a, b) {
+  return a.localeCompare(b)
+}
+
+function setupIgnores (self, options) {
+  self.ignore = options.ignore || []
+
+  if (!Array.isArray(self.ignore))
+    self.ignore = [self.ignore]
+
+  if (self.ignore.length) {
+    self.ignore = self.ignore.map(ignoreMap)
+  }
+}
+
+// ignore patterns are always in dot:true mode.
+function ignoreMap (pattern) {
+  var gmatcher = null
+  if (pattern.slice(-3) === '/**') {
+    var gpattern = pattern.replace(/(\/\*\*)+$/, '')
+    gmatcher = new Minimatch(gpattern, { dot: true })
+  }
+
+  return {
+    matcher: new Minimatch(pattern, { dot: true }),
+    gmatcher: gmatcher
+  }
+}
+
+function setopts (self, pattern, options) {
+  if (!options)
+    options = {}
+
+  // base-matching: just use globstar for that.
+  if (options.matchBase && -1 === pattern.indexOf("/")) {
+    if (options.noglobstar) {
+      throw new Error("base matching requires globstar")
+    }
+    pattern = "**/" + pattern
+  }
+
+  self.silent = !!options.silent
+  self.pattern = pattern
+  self.strict = options.strict !== false
+  self.realpath = !!options.realpath
+  self.realpathCache = options.realpathCache || Object.create(null)
+  self.follow = !!options.follow
+  self.dot = !!options.dot
+  self.mark = !!options.mark
+  self.nodir = !!options.nodir
+  if (self.nodir)
+    self.mark = true
+  self.sync = !!options.sync
+  self.nounique = !!options.nounique
+  self.nonull = !!options.nonull
+  self.nosort = !!options.nosort
+  self.nocase = !!options.nocase
+  self.stat = !!options.stat
+  self.noprocess = !!options.noprocess
+  self.absolute = !!options.absolute
+
+  self.maxLength = options.maxLength || Infinity
+  self.cache = options.cache || Object.create(null)
+  self.statCache = options.statCache || Object.create(null)
+  self.symlinks = options.symlinks || Object.create(null)
+
+  setupIgnores(self, options)
+
+  self.changedCwd = false
+  var cwd = process.cwd()
+  if (!ownProp(options, "cwd"))
+    self.cwd = cwd
+  else {
+    self.cwd = path.resolve(options.cwd)
+    self.changedCwd = self.cwd !== cwd
+  }
+
+  self.root = options.root || path.resolve(self.cwd, "/")
+  self.root = path.resolve(self.root)
+  if (process.platform === "win32")
+    self.root = self.root.replace(/\\/g, "/")
+
+  // TODO: is an absolute `cwd` supposed to be resolved against `root`?
+  // e.g. { cwd: '/test', root: __dirname } === path.join(__dirname, '/test')
+  self.cwdAbs = isAbsolute(self.cwd) ? self.cwd : makeAbs(self, self.cwd)
+  if (process.platform === "win32")
+    self.cwdAbs = self.cwdAbs.replace(/\\/g, "/")
+  self.nomount = !!options.nomount
+
+  // disable comments and negation in Minimatch.
+  // Note that they are not supported in Glob itself anyway.
+  options.nonegate = true
+  options.nocomment = true
+
+  self.minimatch = new Minimatch(pattern, options)
+  self.options = self.minimatch.options
+}
+
+function finish (self) {
+  var nou = self.nounique
+  var all = nou ? [] : Object.create(null)
+
+  for (var i = 0, l = self.matches.length; i < l; i ++) {
+    var matches = self.matches[i]
+    if (!matches || Object.keys(matches).length === 0) {
+      if (self.nonull) {
+        // do like the shell, and spit out the literal glob
+        var literal = self.minimatch.globSet[i]
+        if (nou)
+          all.push(literal)
+        else
+          all[literal] = true
+      }
+    } else {
+      // had matches
+      var m = Object.keys(matches)
+      if (nou)
+        all.push.apply(all, m)
+      else
+        m.forEach(function (m) {
+          all[m] = true
+        })
+    }
+  }
+
+  if (!nou)
+    all = Object.keys(all)
+
+  if (!self.nosort)
+    all = all.sort(self.nocase ? alphasorti : alphasort)
+
+  // at *some* point we statted all of these
+  if (self.mark) {
+    for (var i = 0; i < all.length; i++) {
+      all[i] = self._mark(all[i])
+    }
+    if (self.nodir) {
+      all = all.filter(function (e) {
+        var notDir = !(/\/$/.test(e))
+        var c = self.cache[e] || self.cache[makeAbs(self, e)]
+        if (notDir && c)
+          notDir = c !== 'DIR' && !Array.isArray(c)
+        return notDir
+      })
+    }
+  }
+
+  if (self.ignore.length)
+    all = all.filter(function(m) {
+      return !isIgnored(self, m)
+    })
+
+  self.found = all
+}
+
+function mark (self, p) {
+  var abs = makeAbs(self, p)
+  var c = self.cache[abs]
+  var m = p
+  if (c) {
+    var isDir = c === 'DIR' || Array.isArray(c)
+    var slash = p.slice(-1) === '/'
+
+    if (isDir && !slash)
+      m += '/'
+    else if (!isDir && slash)
+      m = m.slice(0, -1)
+
+    if (m !== p) {
+      var mabs = makeAbs(self, m)
+      self.statCache[mabs] = self.statCache[abs]
+      self.cache[mabs] = self.cache[abs]
+    }
+  }
+
+  return m
+}
+
+// lotta situps...
+function makeAbs (self, f) {
+  var abs = f
+  if (f.charAt(0) === '/') {
+    abs = path.join(self.root, f)
+  } else if (isAbsolute(f) || f === '') {
+    abs = f
+  } else if (self.changedCwd) {
+    abs = path.resolve(self.cwd, f)
+  } else {
+    abs = path.resolve(f)
+  }
+
+  if (process.platform === 'win32')
+    abs = abs.replace(/\\/g, '/')
+
+  return abs
+}
+
+
+// Return true, if pattern ends with globstar '**', for the accompanying parent directory.
+// Ex:- If node_modules/** is the pattern, add 'node_modules' to ignore list along with it's contents
+function isIgnored (self, path) {
+  if (!self.ignore.length)
+    return false
+
+  return self.ignore.some(function(item) {
+    return item.matcher.match(path) || !!(item.gmatcher && item.gmatcher.match(path))
+  })
+}
+
+function childrenIgnored (self, path) {
+  if (!self.ignore.length)
+    return false
+
+  return self.ignore.some(function(item) {
+    return !!(item.gmatcher && item.gmatcher.match(path))
+  })
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/glob/glob.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+// Approach:
+//
+// 1. Get the minimatch set
+// 2. For each pattern in the set, PROCESS(pattern, false)
+// 3. Store matches per-set, then uniq them
+//
+// PROCESS(pattern, inGlobStar)
+// Get the first [n] items from pattern that are all strings
+// Join these together.  This is PREFIX.
+//   If there is no more remaining, then stat(PREFIX) and
+//   add to matches if it succeeds.  END.
+//
+// If inGlobStar and PREFIX is symlink and points to dir
+//   set ENTRIES = []
+// else readdir(PREFIX) as ENTRIES
+//   If fail, END
+//
+// with ENTRIES
+//   If pattern[n] is GLOBSTAR
+//     // handle the case where the globstar match is empty
+//     // by pruning it out, and testing the resulting pattern
+//     PROCESS(pattern[0..n] + pattern[n+1 .. $], false)
+//     // handle other cases.
+//     for ENTRY in ENTRIES (not dotfiles)
+//       // attach globstar + tail onto the entry
+//       // Mark that this entry is a globstar match
+//       PROCESS(pattern[0..n] + ENTRY + pattern[n .. $], true)
+//
+//   else // not globstar
+//     for ENTRY in ENTRIES (not dotfiles, unless pattern[n] is dot)
+//       Test ENTRY against pattern[n]
+//       If fails, continue
+//       If passes, PROCESS(pattern[0..n] + item + pattern[n+1 .. $])
+//
+// Caveat:
+//   Cache all stats and readdirs results to minimize syscall.  Since all
+//   we ever care about is existence and directory-ness, we can just keep
+//   `true` for files, and [children,...] for directories, or `false` for
+//   things that don't exist.
+
+module.exports = glob
+
+var fs = __webpack_require__(1)
+var rp = __webpack_require__("./node_modules/fs.realpath/index.js")
+var minimatch = __webpack_require__("./node_modules/minimatch/minimatch.js")
+var Minimatch = minimatch.Minimatch
+var inherits = __webpack_require__("./node_modules/inherits/inherits.js")
+var EE = __webpack_require__(8).EventEmitter
+var path = __webpack_require__(0)
+var assert = __webpack_require__(4)
+var isAbsolute = __webpack_require__("./node_modules/path-is-absolute/index.js")
+var globSync = __webpack_require__("./node_modules/glob/sync.js")
+var common = __webpack_require__("./node_modules/glob/common.js")
+var alphasort = common.alphasort
+var alphasorti = common.alphasorti
+var setopts = common.setopts
+var ownProp = common.ownProp
+var inflight = __webpack_require__("./node_modules/inflight/inflight.js")
+var util = __webpack_require__(3)
+var childrenIgnored = common.childrenIgnored
+var isIgnored = common.isIgnored
+
+var once = __webpack_require__("./node_modules/once/once.js")
+
+function glob (pattern, options, cb) {
+  if (typeof options === 'function') cb = options, options = {}
+  if (!options) options = {}
+
+  if (options.sync) {
+    if (cb)
+      throw new TypeError('callback provided to sync glob')
+    return globSync(pattern, options)
+  }
+
+  return new Glob(pattern, options, cb)
+}
+
+glob.sync = globSync
+var GlobSync = glob.GlobSync = globSync.GlobSync
+
+// old api surface
+glob.glob = glob
+
+function extend (origin, add) {
+  if (add === null || typeof add !== 'object') {
+    return origin
+  }
+
+  var keys = Object.keys(add)
+  var i = keys.length
+  while (i--) {
+    origin[keys[i]] = add[keys[i]]
+  }
+  return origin
+}
+
+glob.hasMagic = function (pattern, options_) {
+  var options = extend({}, options_)
+  options.noprocess = true
+
+  var g = new Glob(pattern, options)
+  var set = g.minimatch.set
+
+  if (!pattern)
+    return false
+
+  if (set.length > 1)
+    return true
+
+  for (var j = 0; j < set[0].length; j++) {
+    if (typeof set[0][j] !== 'string')
+      return true
+  }
+
+  return false
+}
+
+glob.Glob = Glob
+inherits(Glob, EE)
+function Glob (pattern, options, cb) {
+  if (typeof options === 'function') {
+    cb = options
+    options = null
+  }
+
+  if (options && options.sync) {
+    if (cb)
+      throw new TypeError('callback provided to sync glob')
+    return new GlobSync(pattern, options)
+  }
+
+  if (!(this instanceof Glob))
+    return new Glob(pattern, options, cb)
+
+  setopts(this, pattern, options)
+  this._didRealPath = false
+
+  // process each pattern in the minimatch set
+  var n = this.minimatch.set.length
+
+  // The matches are stored as {<filename>: true,...} so that
+  // duplicates are automagically pruned.
+  // Later, we do an Object.keys() on these.
+  // Keep them as a list so we can fill in when nonull is set.
+  this.matches = new Array(n)
+
+  if (typeof cb === 'function') {
+    cb = once(cb)
+    this.on('error', cb)
+    this.on('end', function (matches) {
+      cb(null, matches)
+    })
+  }
+
+  var self = this
+  this._processing = 0
+
+  this._emitQueue = []
+  this._processQueue = []
+  this.paused = false
+
+  if (this.noprocess)
+    return this
+
+  if (n === 0)
+    return done()
+
+  var sync = true
+  for (var i = 0; i < n; i ++) {
+    this._process(this.minimatch.set[i], i, false, done)
+  }
+  sync = false
+
+  function done () {
+    --self._processing
+    if (self._processing <= 0) {
+      if (sync) {
+        process.nextTick(function () {
+          self._finish()
+        })
+      } else {
+        self._finish()
+      }
+    }
+  }
+}
+
+Glob.prototype._finish = function () {
+  assert(this instanceof Glob)
+  if (this.aborted)
+    return
+
+  if (this.realpath && !this._didRealpath)
+    return this._realpath()
+
+  common.finish(this)
+  this.emit('end', this.found)
+}
+
+Glob.prototype._realpath = function () {
+  if (this._didRealpath)
+    return
+
+  this._didRealpath = true
+
+  var n = this.matches.length
+  if (n === 0)
+    return this._finish()
+
+  var self = this
+  for (var i = 0; i < this.matches.length; i++)
+    this._realpathSet(i, next)
+
+  function next () {
+    if (--n === 0)
+      self._finish()
+  }
+}
+
+Glob.prototype._realpathSet = function (index, cb) {
+  var matchset = this.matches[index]
+  if (!matchset)
+    return cb()
+
+  var found = Object.keys(matchset)
+  var self = this
+  var n = found.length
+
+  if (n === 0)
+    return cb()
+
+  var set = this.matches[index] = Object.create(null)
+  found.forEach(function (p, i) {
+    // If there's a problem with the stat, then it means that
+    // one or more of the links in the realpath couldn't be
+    // resolved.  just return the abs value in that case.
+    p = self._makeAbs(p)
+    rp.realpath(p, self.realpathCache, function (er, real) {
+      if (!er)
+        set[real] = true
+      else if (er.syscall === 'stat')
+        set[p] = true
+      else
+        self.emit('error', er) // srsly wtf right here
+
+      if (--n === 0) {
+        self.matches[index] = set
+        cb()
+      }
+    })
+  })
+}
+
+Glob.prototype._mark = function (p) {
+  return common.mark(this, p)
+}
+
+Glob.prototype._makeAbs = function (f) {
+  return common.makeAbs(this, f)
+}
+
+Glob.prototype.abort = function () {
+  this.aborted = true
+  this.emit('abort')
+}
+
+Glob.prototype.pause = function () {
+  if (!this.paused) {
+    this.paused = true
+    this.emit('pause')
+  }
+}
+
+Glob.prototype.resume = function () {
+  if (this.paused) {
+    this.emit('resume')
+    this.paused = false
+    if (this._emitQueue.length) {
+      var eq = this._emitQueue.slice(0)
+      this._emitQueue.length = 0
+      for (var i = 0; i < eq.length; i ++) {
+        var e = eq[i]
+        this._emitMatch(e[0], e[1])
+      }
+    }
+    if (this._processQueue.length) {
+      var pq = this._processQueue.slice(0)
+      this._processQueue.length = 0
+      for (var i = 0; i < pq.length; i ++) {
+        var p = pq[i]
+        this._processing--
+        this._process(p[0], p[1], p[2], p[3])
+      }
+    }
+  }
+}
+
+Glob.prototype._process = function (pattern, index, inGlobStar, cb) {
+  assert(this instanceof Glob)
+  assert(typeof cb === 'function')
+
+  if (this.aborted)
+    return
+
+  this._processing++
+  if (this.paused) {
+    this._processQueue.push([pattern, index, inGlobStar, cb])
+    return
+  }
+
+  //console.error('PROCESS %d', this._processing, pattern)
+
+  // Get the first [n] parts of pattern that are all strings.
+  var n = 0
+  while (typeof pattern[n] === 'string') {
+    n ++
+  }
+  // now n is the index of the first one that is *not* a string.
+
+  // see if there's anything else
+  var prefix
+  switch (n) {
+    // if not, then this is rather simple
+    case pattern.length:
+      this._processSimple(pattern.join('/'), index, cb)
+      return
+
+    case 0:
+      // pattern *starts* with some non-trivial item.
+      // going to readdir(cwd), but not include the prefix in matches.
+      prefix = null
+      break
+
+    default:
+      // pattern has some string bits in the front.
+      // whatever it starts with, whether that's 'absolute' like /foo/bar,
+      // or 'relative' like '../baz'
+      prefix = pattern.slice(0, n).join('/')
+      break
+  }
+
+  var remain = pattern.slice(n)
+
+  // get the list of entries.
+  var read
+  if (prefix === null)
+    read = '.'
+  else if (isAbsolute(prefix) || isAbsolute(pattern.join('/'))) {
+    if (!prefix || !isAbsolute(prefix))
+      prefix = '/' + prefix
+    read = prefix
+  } else
+    read = prefix
+
+  var abs = this._makeAbs(read)
+
+  //if ignored, skip _processing
+  if (childrenIgnored(this, read))
+    return cb()
+
+  var isGlobStar = remain[0] === minimatch.GLOBSTAR
+  if (isGlobStar)
+    this._processGlobStar(prefix, read, abs, remain, index, inGlobStar, cb)
+  else
+    this._processReaddir(prefix, read, abs, remain, index, inGlobStar, cb)
+}
+
+Glob.prototype._processReaddir = function (prefix, read, abs, remain, index, inGlobStar, cb) {
+  var self = this
+  this._readdir(abs, inGlobStar, function (er, entries) {
+    return self._processReaddir2(prefix, read, abs, remain, index, inGlobStar, entries, cb)
+  })
+}
+
+Glob.prototype._processReaddir2 = function (prefix, read, abs, remain, index, inGlobStar, entries, cb) {
+
+  // if the abs isn't a dir, then nothing can match!
+  if (!entries)
+    return cb()
+
+  // It will only match dot entries if it starts with a dot, or if
+  // dot is set.  Stuff like @(.foo|.bar) isn't allowed.
+  var pn = remain[0]
+  var negate = !!this.minimatch.negate
+  var rawGlob = pn._glob
+  var dotOk = this.dot || rawGlob.charAt(0) === '.'
+
+  var matchedEntries = []
+  for (var i = 0; i < entries.length; i++) {
+    var e = entries[i]
+    if (e.charAt(0) !== '.' || dotOk) {
+      var m
+      if (negate && !prefix) {
+        m = !e.match(pn)
+      } else {
+        m = e.match(pn)
+      }
+      if (m)
+        matchedEntries.push(e)
+    }
+  }
+
+  //console.error('prd2', prefix, entries, remain[0]._glob, matchedEntries)
+
+  var len = matchedEntries.length
+  // If there are no matched entries, then nothing matches.
+  if (len === 0)
+    return cb()
+
+  // if this is the last remaining pattern bit, then no need for
+  // an additional stat *unless* the user has specified mark or
+  // stat explicitly.  We know they exist, since readdir returned
+  // them.
+
+  if (remain.length === 1 && !this.mark && !this.stat) {
+    if (!this.matches[index])
+      this.matches[index] = Object.create(null)
+
+    for (var i = 0; i < len; i ++) {
+      var e = matchedEntries[i]
+      if (prefix) {
+        if (prefix !== '/')
+          e = prefix + '/' + e
+        else
+          e = prefix + e
+      }
+
+      if (e.charAt(0) === '/' && !this.nomount) {
+        e = path.join(this.root, e)
+      }
+      this._emitMatch(index, e)
+    }
+    // This was the last one, and no stats were needed
+    return cb()
+  }
+
+  // now test all matched entries as stand-ins for that part
+  // of the pattern.
+  remain.shift()
+  for (var i = 0; i < len; i ++) {
+    var e = matchedEntries[i]
+    var newPattern
+    if (prefix) {
+      if (prefix !== '/')
+        e = prefix + '/' + e
+      else
+        e = prefix + e
+    }
+    this._process([e].concat(remain), index, inGlobStar, cb)
+  }
+  cb()
+}
+
+Glob.prototype._emitMatch = function (index, e) {
+  if (this.aborted)
+    return
+
+  if (isIgnored(this, e))
+    return
+
+  if (this.paused) {
+    this._emitQueue.push([index, e])
+    return
+  }
+
+  var abs = isAbsolute(e) ? e : this._makeAbs(e)
+
+  if (this.mark)
+    e = this._mark(e)
+
+  if (this.absolute)
+    e = abs
+
+  if (this.matches[index][e])
+    return
+
+  if (this.nodir) {
+    var c = this.cache[abs]
+    if (c === 'DIR' || Array.isArray(c))
+      return
+  }
+
+  this.matches[index][e] = true
+
+  var st = this.statCache[abs]
+  if (st)
+    this.emit('stat', e, st)
+
+  this.emit('match', e)
+}
+
+Glob.prototype._readdirInGlobStar = function (abs, cb) {
+  if (this.aborted)
+    return
+
+  // follow all symlinked directories forever
+  // just proceed as if this is a non-globstar situation
+  if (this.follow)
+    return this._readdir(abs, false, cb)
+
+  var lstatkey = 'lstat\0' + abs
+  var self = this
+  var lstatcb = inflight(lstatkey, lstatcb_)
+
+  if (lstatcb)
+    fs.lstat(abs, lstatcb)
+
+  function lstatcb_ (er, lstat) {
+    if (er && er.code === 'ENOENT')
+      return cb()
+
+    var isSym = lstat && lstat.isSymbolicLink()
+    self.symlinks[abs] = isSym
+
+    // If it's not a symlink or a dir, then it's definitely a regular file.
+    // don't bother doing a readdir in that case.
+    if (!isSym && lstat && !lstat.isDirectory()) {
+      self.cache[abs] = 'FILE'
+      cb()
+    } else
+      self._readdir(abs, false, cb)
+  }
+}
+
+Glob.prototype._readdir = function (abs, inGlobStar, cb) {
+  if (this.aborted)
+    return
+
+  cb = inflight('readdir\0'+abs+'\0'+inGlobStar, cb)
+  if (!cb)
+    return
+
+  //console.error('RD %j %j', +inGlobStar, abs)
+  if (inGlobStar && !ownProp(this.symlinks, abs))
+    return this._readdirInGlobStar(abs, cb)
+
+  if (ownProp(this.cache, abs)) {
+    var c = this.cache[abs]
+    if (!c || c === 'FILE')
+      return cb()
+
+    if (Array.isArray(c))
+      return cb(null, c)
+  }
+
+  var self = this
+  fs.readdir(abs, readdirCb(this, abs, cb))
+}
+
+function readdirCb (self, abs, cb) {
+  return function (er, entries) {
+    if (er)
+      self._readdirError(abs, er, cb)
+    else
+      self._readdirEntries(abs, entries, cb)
+  }
+}
+
+Glob.prototype._readdirEntries = function (abs, entries, cb) {
+  if (this.aborted)
+    return
+
+  // if we haven't asked to stat everything, then just
+  // assume that everything in there exists, so we can avoid
+  // having to stat it a second time.
+  if (!this.mark && !this.stat) {
+    for (var i = 0; i < entries.length; i ++) {
+      var e = entries[i]
+      if (abs === '/')
+        e = abs + e
+      else
+        e = abs + '/' + e
+      this.cache[e] = true
+    }
+  }
+
+  this.cache[abs] = entries
+  return cb(null, entries)
+}
+
+Glob.prototype._readdirError = function (f, er, cb) {
+  if (this.aborted)
+    return
+
+  // handle errors, and cache the information
+  switch (er.code) {
+    case 'ENOTSUP': // https://github.com/isaacs/node-glob/issues/205
+    case 'ENOTDIR': // totally normal. means it *does* exist.
+      var abs = this._makeAbs(f)
+      this.cache[abs] = 'FILE'
+      if (abs === this.cwdAbs) {
+        var error = new Error(er.code + ' invalid cwd ' + this.cwd)
+        error.path = this.cwd
+        error.code = er.code
+        this.emit('error', error)
+        this.abort()
+      }
+      break
+
+    case 'ENOENT': // not terribly unusual
+    case 'ELOOP':
+    case 'ENAMETOOLONG':
+    case 'UNKNOWN':
+      this.cache[this._makeAbs(f)] = false
+      break
+
+    default: // some unusual error.  Treat as failure.
+      this.cache[this._makeAbs(f)] = false
+      if (this.strict) {
+        this.emit('error', er)
+        // If the error is handled, then we abort
+        // if not, we threw out of here
+        this.abort()
+      }
+      if (!this.silent)
+        console.error('glob error', er)
+      break
+  }
+
+  return cb()
+}
+
+Glob.prototype._processGlobStar = function (prefix, read, abs, remain, index, inGlobStar, cb) {
+  var self = this
+  this._readdir(abs, inGlobStar, function (er, entries) {
+    self._processGlobStar2(prefix, read, abs, remain, index, inGlobStar, entries, cb)
+  })
+}
+
+
+Glob.prototype._processGlobStar2 = function (prefix, read, abs, remain, index, inGlobStar, entries, cb) {
+  //console.error('pgs2', prefix, remain[0], entries)
+
+  // no entries means not a dir, so it can never have matches
+  // foo.txt/** doesn't match foo.txt
+  if (!entries)
+    return cb()
+
+  // test without the globstar, and with every child both below
+  // and replacing the globstar.
+  var remainWithoutGlobStar = remain.slice(1)
+  var gspref = prefix ? [ prefix ] : []
+  var noGlobStar = gspref.concat(remainWithoutGlobStar)
+
+  // the noGlobStar pattern exits the inGlobStar state
+  this._process(noGlobStar, index, false, cb)
+
+  var isSym = this.symlinks[abs]
+  var len = entries.length
+
+  // If it's a symlink, and we're in a globstar, then stop
+  if (isSym && inGlobStar)
+    return cb()
+
+  for (var i = 0; i < len; i++) {
+    var e = entries[i]
+    if (e.charAt(0) === '.' && !this.dot)
+      continue
+
+    // these two cases enter the inGlobStar state
+    var instead = gspref.concat(entries[i], remainWithoutGlobStar)
+    this._process(instead, index, true, cb)
+
+    var below = gspref.concat(entries[i], remain)
+    this._process(below, index, true, cb)
+  }
+
+  cb()
+}
+
+Glob.prototype._processSimple = function (prefix, index, cb) {
+  // XXX review this.  Shouldn't it be doing the mounting etc
+  // before doing stat?  kinda weird?
+  var self = this
+  this._stat(prefix, function (er, exists) {
+    self._processSimple2(prefix, index, er, exists, cb)
+  })
+}
+Glob.prototype._processSimple2 = function (prefix, index, er, exists, cb) {
+
+  //console.error('ps2', prefix, exists)
+
+  if (!this.matches[index])
+    this.matches[index] = Object.create(null)
+
+  // If it doesn't exist, then just mark the lack of results
+  if (!exists)
+    return cb()
+
+  if (prefix && isAbsolute(prefix) && !this.nomount) {
+    var trail = /[\/\\]$/.test(prefix)
+    if (prefix.charAt(0) === '/') {
+      prefix = path.join(this.root, prefix)
+    } else {
+      prefix = path.resolve(this.root, prefix)
+      if (trail)
+        prefix += '/'
+    }
+  }
+
+  if (process.platform === 'win32')
+    prefix = prefix.replace(/\\/g, '/')
+
+  // Mark this as a match
+  this._emitMatch(index, prefix)
+  cb()
+}
+
+// Returns either 'DIR', 'FILE', or false
+Glob.prototype._stat = function (f, cb) {
+  var abs = this._makeAbs(f)
+  var needDir = f.slice(-1) === '/'
+
+  if (f.length > this.maxLength)
+    return cb()
+
+  if (!this.stat && ownProp(this.cache, abs)) {
+    var c = this.cache[abs]
+
+    if (Array.isArray(c))
+      c = 'DIR'
+
+    // It exists, but maybe not how we need it
+    if (!needDir || c === 'DIR')
+      return cb(null, c)
+
+    if (needDir && c === 'FILE')
+      return cb()
+
+    // otherwise we have to stat, because maybe c=true
+    // if we know it exists, but not what it is.
+  }
+
+  var exists
+  var stat = this.statCache[abs]
+  if (stat !== undefined) {
+    if (stat === false)
+      return cb(null, stat)
+    else {
+      var type = stat.isDirectory() ? 'DIR' : 'FILE'
+      if (needDir && type === 'FILE')
+        return cb()
+      else
+        return cb(null, type, stat)
+    }
+  }
+
+  var self = this
+  var statcb = inflight('stat\0' + abs, lstatcb_)
+  if (statcb)
+    fs.lstat(abs, statcb)
+
+  function lstatcb_ (er, lstat) {
+    if (lstat && lstat.isSymbolicLink()) {
+      // If it's a symlink, then treat it as the target, unless
+      // the target does not exist, then treat it as a file.
+      return fs.stat(abs, function (er, stat) {
+        if (er)
+          self._stat2(f, abs, null, lstat, cb)
+        else
+          self._stat2(f, abs, er, stat, cb)
+      })
+    } else {
+      self._stat2(f, abs, er, lstat, cb)
+    }
+  }
+}
+
+Glob.prototype._stat2 = function (f, abs, er, stat, cb) {
+  if (er && (er.code === 'ENOENT' || er.code === 'ENOTDIR')) {
+    this.statCache[abs] = false
+    return cb()
+  }
+
+  var needDir = f.slice(-1) === '/'
+  this.statCache[abs] = stat
+
+  if (abs.slice(-1) === '/' && stat && !stat.isDirectory())
+    return cb(null, false, stat)
+
+  var c = true
+  if (stat)
+    c = stat.isDirectory() ? 'DIR' : 'FILE'
+  this.cache[abs] = this.cache[abs] || c
+
+  if (needDir && c === 'FILE')
+    return cb()
+
+  return cb(null, c, stat)
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/glob/sync.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = globSync
+globSync.GlobSync = GlobSync
+
+var fs = __webpack_require__(1)
+var rp = __webpack_require__("./node_modules/fs.realpath/index.js")
+var minimatch = __webpack_require__("./node_modules/minimatch/minimatch.js")
+var Minimatch = minimatch.Minimatch
+var Glob = __webpack_require__("./node_modules/glob/glob.js").Glob
+var util = __webpack_require__(3)
+var path = __webpack_require__(0)
+var assert = __webpack_require__(4)
+var isAbsolute = __webpack_require__("./node_modules/path-is-absolute/index.js")
+var common = __webpack_require__("./node_modules/glob/common.js")
+var alphasort = common.alphasort
+var alphasorti = common.alphasorti
+var setopts = common.setopts
+var ownProp = common.ownProp
+var childrenIgnored = common.childrenIgnored
+var isIgnored = common.isIgnored
+
+function globSync (pattern, options) {
+  if (typeof options === 'function' || arguments.length === 3)
+    throw new TypeError('callback provided to sync glob\n'+
+                        'See: https://github.com/isaacs/node-glob/issues/167')
+
+  return new GlobSync(pattern, options).found
+}
+
+function GlobSync (pattern, options) {
+  if (!pattern)
+    throw new Error('must provide pattern')
+
+  if (typeof options === 'function' || arguments.length === 3)
+    throw new TypeError('callback provided to sync glob\n'+
+                        'See: https://github.com/isaacs/node-glob/issues/167')
+
+  if (!(this instanceof GlobSync))
+    return new GlobSync(pattern, options)
+
+  setopts(this, pattern, options)
+
+  if (this.noprocess)
+    return this
+
+  var n = this.minimatch.set.length
+  this.matches = new Array(n)
+  for (var i = 0; i < n; i ++) {
+    this._process(this.minimatch.set[i], i, false)
+  }
+  this._finish()
+}
+
+GlobSync.prototype._finish = function () {
+  assert(this instanceof GlobSync)
+  if (this.realpath) {
+    var self = this
+    this.matches.forEach(function (matchset, index) {
+      var set = self.matches[index] = Object.create(null)
+      for (var p in matchset) {
+        try {
+          p = self._makeAbs(p)
+          var real = rp.realpathSync(p, self.realpathCache)
+          set[real] = true
+        } catch (er) {
+          if (er.syscall === 'stat')
+            set[self._makeAbs(p)] = true
+          else
+            throw er
+        }
+      }
+    })
+  }
+  common.finish(this)
+}
+
+
+GlobSync.prototype._process = function (pattern, index, inGlobStar) {
+  assert(this instanceof GlobSync)
+
+  // Get the first [n] parts of pattern that are all strings.
+  var n = 0
+  while (typeof pattern[n] === 'string') {
+    n ++
+  }
+  // now n is the index of the first one that is *not* a string.
+
+  // See if there's anything else
+  var prefix
+  switch (n) {
+    // if not, then this is rather simple
+    case pattern.length:
+      this._processSimple(pattern.join('/'), index)
+      return
+
+    case 0:
+      // pattern *starts* with some non-trivial item.
+      // going to readdir(cwd), but not include the prefix in matches.
+      prefix = null
+      break
+
+    default:
+      // pattern has some string bits in the front.
+      // whatever it starts with, whether that's 'absolute' like /foo/bar,
+      // or 'relative' like '../baz'
+      prefix = pattern.slice(0, n).join('/')
+      break
+  }
+
+  var remain = pattern.slice(n)
+
+  // get the list of entries.
+  var read
+  if (prefix === null)
+    read = '.'
+  else if (isAbsolute(prefix) || isAbsolute(pattern.join('/'))) {
+    if (!prefix || !isAbsolute(prefix))
+      prefix = '/' + prefix
+    read = prefix
+  } else
+    read = prefix
+
+  var abs = this._makeAbs(read)
+
+  //if ignored, skip processing
+  if (childrenIgnored(this, read))
+    return
+
+  var isGlobStar = remain[0] === minimatch.GLOBSTAR
+  if (isGlobStar)
+    this._processGlobStar(prefix, read, abs, remain, index, inGlobStar)
+  else
+    this._processReaddir(prefix, read, abs, remain, index, inGlobStar)
+}
+
+
+GlobSync.prototype._processReaddir = function (prefix, read, abs, remain, index, inGlobStar) {
+  var entries = this._readdir(abs, inGlobStar)
+
+  // if the abs isn't a dir, then nothing can match!
+  if (!entries)
+    return
+
+  // It will only match dot entries if it starts with a dot, or if
+  // dot is set.  Stuff like @(.foo|.bar) isn't allowed.
+  var pn = remain[0]
+  var negate = !!this.minimatch.negate
+  var rawGlob = pn._glob
+  var dotOk = this.dot || rawGlob.charAt(0) === '.'
+
+  var matchedEntries = []
+  for (var i = 0; i < entries.length; i++) {
+    var e = entries[i]
+    if (e.charAt(0) !== '.' || dotOk) {
+      var m
+      if (negate && !prefix) {
+        m = !e.match(pn)
+      } else {
+        m = e.match(pn)
+      }
+      if (m)
+        matchedEntries.push(e)
+    }
+  }
+
+  var len = matchedEntries.length
+  // If there are no matched entries, then nothing matches.
+  if (len === 0)
+    return
+
+  // if this is the last remaining pattern bit, then no need for
+  // an additional stat *unless* the user has specified mark or
+  // stat explicitly.  We know they exist, since readdir returned
+  // them.
+
+  if (remain.length === 1 && !this.mark && !this.stat) {
+    if (!this.matches[index])
+      this.matches[index] = Object.create(null)
+
+    for (var i = 0; i < len; i ++) {
+      var e = matchedEntries[i]
+      if (prefix) {
+        if (prefix.slice(-1) !== '/')
+          e = prefix + '/' + e
+        else
+          e = prefix + e
+      }
+
+      if (e.charAt(0) === '/' && !this.nomount) {
+        e = path.join(this.root, e)
+      }
+      this._emitMatch(index, e)
+    }
+    // This was the last one, and no stats were needed
+    return
+  }
+
+  // now test all matched entries as stand-ins for that part
+  // of the pattern.
+  remain.shift()
+  for (var i = 0; i < len; i ++) {
+    var e = matchedEntries[i]
+    var newPattern
+    if (prefix)
+      newPattern = [prefix, e]
+    else
+      newPattern = [e]
+    this._process(newPattern.concat(remain), index, inGlobStar)
+  }
+}
+
+
+GlobSync.prototype._emitMatch = function (index, e) {
+  if (isIgnored(this, e))
+    return
+
+  var abs = this._makeAbs(e)
+
+  if (this.mark)
+    e = this._mark(e)
+
+  if (this.absolute) {
+    e = abs
+  }
+
+  if (this.matches[index][e])
+    return
+
+  if (this.nodir) {
+    var c = this.cache[abs]
+    if (c === 'DIR' || Array.isArray(c))
+      return
+  }
+
+  this.matches[index][e] = true
+
+  if (this.stat)
+    this._stat(e)
+}
+
+
+GlobSync.prototype._readdirInGlobStar = function (abs) {
+  // follow all symlinked directories forever
+  // just proceed as if this is a non-globstar situation
+  if (this.follow)
+    return this._readdir(abs, false)
+
+  var entries
+  var lstat
+  var stat
+  try {
+    lstat = fs.lstatSync(abs)
+  } catch (er) {
+    if (er.code === 'ENOENT') {
+      // lstat failed, doesn't exist
+      return null
+    }
+  }
+
+  var isSym = lstat && lstat.isSymbolicLink()
+  this.symlinks[abs] = isSym
+
+  // If it's not a symlink or a dir, then it's definitely a regular file.
+  // don't bother doing a readdir in that case.
+  if (!isSym && lstat && !lstat.isDirectory())
+    this.cache[abs] = 'FILE'
+  else
+    entries = this._readdir(abs, false)
+
+  return entries
+}
+
+GlobSync.prototype._readdir = function (abs, inGlobStar) {
+  var entries
+
+  if (inGlobStar && !ownProp(this.symlinks, abs))
+    return this._readdirInGlobStar(abs)
+
+  if (ownProp(this.cache, abs)) {
+    var c = this.cache[abs]
+    if (!c || c === 'FILE')
+      return null
+
+    if (Array.isArray(c))
+      return c
+  }
+
+  try {
+    return this._readdirEntries(abs, fs.readdirSync(abs))
+  } catch (er) {
+    this._readdirError(abs, er)
+    return null
+  }
+}
+
+GlobSync.prototype._readdirEntries = function (abs, entries) {
+  // if we haven't asked to stat everything, then just
+  // assume that everything in there exists, so we can avoid
+  // having to stat it a second time.
+  if (!this.mark && !this.stat) {
+    for (var i = 0; i < entries.length; i ++) {
+      var e = entries[i]
+      if (abs === '/')
+        e = abs + e
+      else
+        e = abs + '/' + e
+      this.cache[e] = true
+    }
+  }
+
+  this.cache[abs] = entries
+
+  // mark and cache dir-ness
+  return entries
+}
+
+GlobSync.prototype._readdirError = function (f, er) {
+  // handle errors, and cache the information
+  switch (er.code) {
+    case 'ENOTSUP': // https://github.com/isaacs/node-glob/issues/205
+    case 'ENOTDIR': // totally normal. means it *does* exist.
+      var abs = this._makeAbs(f)
+      this.cache[abs] = 'FILE'
+      if (abs === this.cwdAbs) {
+        var error = new Error(er.code + ' invalid cwd ' + this.cwd)
+        error.path = this.cwd
+        error.code = er.code
+        throw error
+      }
+      break
+
+    case 'ENOENT': // not terribly unusual
+    case 'ELOOP':
+    case 'ENAMETOOLONG':
+    case 'UNKNOWN':
+      this.cache[this._makeAbs(f)] = false
+      break
+
+    default: // some unusual error.  Treat as failure.
+      this.cache[this._makeAbs(f)] = false
+      if (this.strict)
+        throw er
+      if (!this.silent)
+        console.error('glob error', er)
+      break
+  }
+}
+
+GlobSync.prototype._processGlobStar = function (prefix, read, abs, remain, index, inGlobStar) {
+
+  var entries = this._readdir(abs, inGlobStar)
+
+  // no entries means not a dir, so it can never have matches
+  // foo.txt/** doesn't match foo.txt
+  if (!entries)
+    return
+
+  // test without the globstar, and with every child both below
+  // and replacing the globstar.
+  var remainWithoutGlobStar = remain.slice(1)
+  var gspref = prefix ? [ prefix ] : []
+  var noGlobStar = gspref.concat(remainWithoutGlobStar)
+
+  // the noGlobStar pattern exits the inGlobStar state
+  this._process(noGlobStar, index, false)
+
+  var len = entries.length
+  var isSym = this.symlinks[abs]
+
+  // If it's a symlink, and we're in a globstar, then stop
+  if (isSym && inGlobStar)
+    return
+
+  for (var i = 0; i < len; i++) {
+    var e = entries[i]
+    if (e.charAt(0) === '.' && !this.dot)
+      continue
+
+    // these two cases enter the inGlobStar state
+    var instead = gspref.concat(entries[i], remainWithoutGlobStar)
+    this._process(instead, index, true)
+
+    var below = gspref.concat(entries[i], remain)
+    this._process(below, index, true)
+  }
+}
+
+GlobSync.prototype._processSimple = function (prefix, index) {
+  // XXX review this.  Shouldn't it be doing the mounting etc
+  // before doing stat?  kinda weird?
+  var exists = this._stat(prefix)
+
+  if (!this.matches[index])
+    this.matches[index] = Object.create(null)
+
+  // If it doesn't exist, then just mark the lack of results
+  if (!exists)
+    return
+
+  if (prefix && isAbsolute(prefix) && !this.nomount) {
+    var trail = /[\/\\]$/.test(prefix)
+    if (prefix.charAt(0) === '/') {
+      prefix = path.join(this.root, prefix)
+    } else {
+      prefix = path.resolve(this.root, prefix)
+      if (trail)
+        prefix += '/'
+    }
+  }
+
+  if (process.platform === 'win32')
+    prefix = prefix.replace(/\\/g, '/')
+
+  // Mark this as a match
+  this._emitMatch(index, prefix)
+}
+
+// Returns either 'DIR', 'FILE', or false
+GlobSync.prototype._stat = function (f) {
+  var abs = this._makeAbs(f)
+  var needDir = f.slice(-1) === '/'
+
+  if (f.length > this.maxLength)
+    return false
+
+  if (!this.stat && ownProp(this.cache, abs)) {
+    var c = this.cache[abs]
+
+    if (Array.isArray(c))
+      c = 'DIR'
+
+    // It exists, but maybe not how we need it
+    if (!needDir || c === 'DIR')
+      return c
+
+    if (needDir && c === 'FILE')
+      return false
+
+    // otherwise we have to stat, because maybe c=true
+    // if we know it exists, but not what it is.
+  }
+
+  var exists
+  var stat = this.statCache[abs]
+  if (!stat) {
+    var lstat
+    try {
+      lstat = fs.lstatSync(abs)
+    } catch (er) {
+      if (er && (er.code === 'ENOENT' || er.code === 'ENOTDIR')) {
+        this.statCache[abs] = false
+        return false
+      }
+    }
+
+    if (lstat && lstat.isSymbolicLink()) {
+      try {
+        stat = fs.statSync(abs)
+      } catch (er) {
+        stat = lstat
+      }
+    } else {
+      stat = lstat
+    }
+  }
+
+  this.statCache[abs] = stat
+
+  var c = true
+  if (stat)
+    c = stat.isDirectory() ? 'DIR' : 'FILE'
+
+  this.cache[abs] = this.cache[abs] || c
+
+  if (needDir && c === 'FILE')
+    return false
+
+  return c
+}
+
+GlobSync.prototype._mark = function (p) {
+  return common.mark(this, p)
+}
+
+GlobSync.prototype._makeAbs = function (f) {
+  return common.makeAbs(this, f)
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/inflight/inflight.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+var wrappy = __webpack_require__("./node_modules/wrappy/wrappy.js")
+var reqs = Object.create(null)
+var once = __webpack_require__("./node_modules/once/once.js")
+
+module.exports = wrappy(inflight)
+
+function inflight (key, cb) {
+  if (reqs[key]) {
+    reqs[key].push(cb)
+    return null
+  } else {
+    reqs[key] = [cb]
+    return makeres(key)
+  }
+}
+
+function makeres (key) {
+  return once(function RES () {
+    var cbs = reqs[key]
+    var len = cbs.length
+    var args = slice(arguments)
+
+    // XXX It's somewhat ambiguous whether a new callback added in this
+    // pass should be queued for later execution if something in the
+    // list of callbacks throws, or if it should just be discarded.
+    // However, it's such an edge case that it hardly matters, and either
+    // choice is likely as surprising as the other.
+    // As it happens, we do go ahead and schedule it for later execution.
+    try {
+      for (var i = 0; i < len; i++) {
+        cbs[i].apply(null, args)
+      }
+    } finally {
+      if (cbs.length > len) {
+        // added more in the interim.
+        // de-zalgo, just in case, but don't call again.
+        cbs.splice(0, len)
+        process.nextTick(function () {
+          RES.apply(null, args)
+        })
+      } else {
+        delete reqs[key]
+      }
+    }
+  })
+}
+
+function slice (args) {
+  var length = args.length
+  var array = []
+
+  for (var i = 0; i < length; i++) array[i] = args[i]
+  return array
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/inherits/inherits.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+try {
+  var util = __webpack_require__(3);
+  if (typeof util.inherits !== 'function') throw '';
+  module.exports = util.inherits;
+} catch (e) {
+  module.exports = __webpack_require__("./node_modules/inherits/inherits_browser.js");
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/inherits/inherits_browser.js":
+/***/ (function(module, exports) {
+
+if (typeof Object.create === 'function') {
+  // implementation from standard node.js 'util' module
+  module.exports = function inherits(ctor, superCtor) {
+    ctor.super_ = superCtor
+    ctor.prototype = Object.create(superCtor.prototype, {
+      constructor: {
+        value: ctor,
+        enumerable: false,
+        writable: true,
+        configurable: true
+      }
+    });
+  };
+} else {
+  // old school shim for old browsers
+  module.exports = function inherits(ctor, superCtor) {
+    ctor.super_ = superCtor
+    var TempCtor = function () {}
+    TempCtor.prototype = superCtor.prototype
+    ctor.prototype = new TempCtor()
+    ctor.prototype.constructor = ctor
+  }
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/minimatch/minimatch.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = minimatch
+minimatch.Minimatch = Minimatch
+
+var path = { sep: '/' }
+try {
+  path = __webpack_require__(0)
+} catch (er) {}
+
+var GLOBSTAR = minimatch.GLOBSTAR = Minimatch.GLOBSTAR = {}
+var expand = __webpack_require__("./node_modules/brace-expansion/index.js")
+
+var plTypes = {
+  '!': { open: '(?:(?!(?:', close: '))[^/]*?)'},
+  '?': { open: '(?:', close: ')?' },
+  '+': { open: '(?:', close: ')+' },
+  '*': { open: '(?:', close: ')*' },
+  '@': { open: '(?:', close: ')' }
+}
+
+// any single thing other than /
+// don't need to escape / when using new RegExp()
+var qmark = '[^/]'
+
+// * => any number of characters
+var star = qmark + '*?'
+
+// ** when dots are allowed.  Anything goes, except .. and .
+// not (^ or / followed by one or two dots followed by $ or /),
+// followed by anything, any number of times.
+var twoStarDot = '(?:(?!(?:\\\/|^)(?:\\.{1,2})($|\\\/)).)*?'
+
+// not a ^ or / followed by a dot,
+// followed by anything, any number of times.
+var twoStarNoDot = '(?:(?!(?:\\\/|^)\\.).)*?'
+
+// characters that need to be escaped in RegExp.
+var reSpecials = charSet('().*{}+?[]^$\\!')
+
+// "abc" -> { a:true, b:true, c:true }
+function charSet (s) {
+  return s.split('').reduce(function (set, c) {
+    set[c] = true
+    return set
+  }, {})
+}
+
+// normalizes slashes.
+var slashSplit = /\/+/
+
+minimatch.filter = filter
+function filter (pattern, options) {
+  options = options || {}
+  return function (p, i, list) {
+    return minimatch(p, pattern, options)
+  }
+}
+
+function ext (a, b) {
+  a = a || {}
+  b = b || {}
+  var t = {}
+  Object.keys(b).forEach(function (k) {
+    t[k] = b[k]
+  })
+  Object.keys(a).forEach(function (k) {
+    t[k] = a[k]
+  })
+  return t
+}
+
+minimatch.defaults = function (def) {
+  if (!def || !Object.keys(def).length) return minimatch
+
+  var orig = minimatch
+
+  var m = function minimatch (p, pattern, options) {
+    return orig.minimatch(p, pattern, ext(def, options))
+  }
+
+  m.Minimatch = function Minimatch (pattern, options) {
+    return new orig.Minimatch(pattern, ext(def, options))
+  }
+
+  return m
+}
+
+Minimatch.defaults = function (def) {
+  if (!def || !Object.keys(def).length) return Minimatch
+  return minimatch.defaults(def).Minimatch
+}
+
+function minimatch (p, pattern, options) {
+  if (typeof pattern !== 'string') {
+    throw new TypeError('glob pattern string required')
+  }
+
+  if (!options) options = {}
+
+  // shortcut: comments match nothing.
+  if (!options.nocomment && pattern.charAt(0) === '#') {
+    return false
+  }
+
+  // "" only matches ""
+  if (pattern.trim() === '') return p === ''
+
+  return new Minimatch(pattern, options).match(p)
+}
+
+function Minimatch (pattern, options) {
+  if (!(this instanceof Minimatch)) {
+    return new Minimatch(pattern, options)
+  }
+
+  if (typeof pattern !== 'string') {
+    throw new TypeError('glob pattern string required')
+  }
+
+  if (!options) options = {}
+  pattern = pattern.trim()
+
+  // windows support: need to use /, not \
+  if (path.sep !== '/') {
+    pattern = pattern.split(path.sep).join('/')
+  }
+
+  this.options = options
+  this.set = []
+  this.pattern = pattern
+  this.regexp = null
+  this.negate = false
+  this.comment = false
+  this.empty = false
+
+  // make the set of regexps etc.
+  this.make()
+}
+
+Minimatch.prototype.debug = function () {}
+
+Minimatch.prototype.make = make
+function make () {
+  // don't do it more than once.
+  if (this._made) return
+
+  var pattern = this.pattern
+  var options = this.options
+
+  // empty patterns and comments match nothing.
+  if (!options.nocomment && pattern.charAt(0) === '#') {
+    this.comment = true
+    return
+  }
+  if (!pattern) {
+    this.empty = true
+    return
+  }
+
+  // step 1: figure out negation, etc.
+  this.parseNegate()
+
+  // step 2: expand braces
+  var set = this.globSet = this.braceExpand()
+
+  if (options.debug) this.debug = console.error
+
+  this.debug(this.pattern, set)
+
+  // step 3: now we have a set, so turn each one into a series of path-portion
+  // matching patterns.
+  // These will be regexps, except in the case of "**", which is
+  // set to the GLOBSTAR object for globstar behavior,
+  // and will not contain any / characters
+  set = this.globParts = set.map(function (s) {
+    return s.split(slashSplit)
+  })
+
+  this.debug(this.pattern, set)
+
+  // glob --> regexps
+  set = set.map(function (s, si, set) {
+    return s.map(this.parse, this)
+  }, this)
+
+  this.debug(this.pattern, set)
+
+  // filter out everything that didn't compile properly.
+  set = set.filter(function (s) {
+    return s.indexOf(false) === -1
+  })
+
+  this.debug(this.pattern, set)
+
+  this.set = set
+}
+
+Minimatch.prototype.parseNegate = parseNegate
+function parseNegate () {
+  var pattern = this.pattern
+  var negate = false
+  var options = this.options
+  var negateOffset = 0
+
+  if (options.nonegate) return
+
+  for (var i = 0, l = pattern.length
+    ; i < l && pattern.charAt(i) === '!'
+    ; i++) {
+    negate = !negate
+    negateOffset++
+  }
+
+  if (negateOffset) this.pattern = pattern.substr(negateOffset)
+  this.negate = negate
+}
+
+// Brace expansion:
+// a{b,c}d -> abd acd
+// a{b,}c -> abc ac
+// a{0..3}d -> a0d a1d a2d a3d
+// a{b,c{d,e}f}g -> abg acdfg acefg
+// a{b,c}d{e,f}g -> abdeg acdeg abdeg abdfg
+//
+// Invalid sets are not expanded.
+// a{2..}b -> a{2..}b
+// a{b}c -> a{b}c
+minimatch.braceExpand = function (pattern, options) {
+  return braceExpand(pattern, options)
+}
+
+Minimatch.prototype.braceExpand = braceExpand
+
+function braceExpand (pattern, options) {
+  if (!options) {
+    if (this instanceof Minimatch) {
+      options = this.options
+    } else {
+      options = {}
+    }
+  }
+
+  pattern = typeof pattern === 'undefined'
+    ? this.pattern : pattern
+
+  if (typeof pattern === 'undefined') {
+    throw new TypeError('undefined pattern')
+  }
+
+  if (options.nobrace ||
+    !pattern.match(/\{.*\}/)) {
+    // shortcut. no need to expand.
+    return [pattern]
+  }
+
+  return expand(pattern)
+}
+
+// parse a component of the expanded set.
+// At this point, no pattern may contain "/" in it
+// so we're going to return a 2d array, where each entry is the full
+// pattern, split on '/', and then turned into a regular expression.
+// A regexp is made at the end which joins each array with an
+// escaped /, and another full one which joins each regexp with |.
+//
+// Following the lead of Bash 4.1, note that "**" only has special meaning
+// when it is the *only* thing in a path portion.  Otherwise, any series
+// of * is equivalent to a single *.  Globstar behavior is enabled by
+// default, and can be disabled by setting options.noglobstar.
+Minimatch.prototype.parse = parse
+var SUBPARSE = {}
+function parse (pattern, isSub) {
+  if (pattern.length > 1024 * 64) {
+    throw new TypeError('pattern is too long')
+  }
+
+  var options = this.options
+
+  // shortcuts
+  if (!options.noglobstar && pattern === '**') return GLOBSTAR
+  if (pattern === '') return ''
+
+  var re = ''
+  var hasMagic = !!options.nocase
+  var escaping = false
+  // ? => one single character
+  var patternListStack = []
+  var negativeLists = []
+  var stateChar
+  var inClass = false
+  var reClassStart = -1
+  var classStart = -1
+  // . and .. never match anything that doesn't start with .,
+  // even when options.dot is set.
+  var patternStart = pattern.charAt(0) === '.' ? '' // anything
+  // not (start or / followed by . or .. followed by / or end)
+  : options.dot ? '(?!(?:^|\\\/)\\.{1,2}(?:$|\\\/))'
+  : '(?!\\.)'
+  var self = this
+
+  function clearStateChar () {
+    if (stateChar) {
+      // we had some state-tracking character
+      // that wasn't consumed by this pass.
+      switch (stateChar) {
+        case '*':
+          re += star
+          hasMagic = true
+        break
+        case '?':
+          re += qmark
+          hasMagic = true
+        break
+        default:
+          re += '\\' + stateChar
+        break
+      }
+      self.debug('clearStateChar %j %j', stateChar, re)
+      stateChar = false
+    }
+  }
+
+  for (var i = 0, len = pattern.length, c
+    ; (i < len) && (c = pattern.charAt(i))
+    ; i++) {
+    this.debug('%s\t%s %s %j', pattern, i, re, c)
+
+    // skip over any that are escaped.
+    if (escaping && reSpecials[c]) {
+      re += '\\' + c
+      escaping = false
+      continue
+    }
+
+    switch (c) {
+      case '/':
+        // completely not allowed, even escaped.
+        // Should already be path-split by now.
+        return false
+
+      case '\\':
+        clearStateChar()
+        escaping = true
+      continue
+
+      // the various stateChar values
+      // for the "extglob" stuff.
+      case '?':
+      case '*':
+      case '+':
+      case '@':
+      case '!':
+        this.debug('%s\t%s %s %j <-- stateChar', pattern, i, re, c)
+
+        // all of those are literals inside a class, except that
+        // the glob [!a] means [^a] in regexp
+        if (inClass) {
+          this.debug('  in class')
+          if (c === '!' && i === classStart + 1) c = '^'
+          re += c
+          continue
+        }
+
+        // if we already have a stateChar, then it means
+        // that there was something like ** or +? in there.
+        // Handle the stateChar, then proceed with this one.
+        self.debug('call clearStateChar %j', stateChar)
+        clearStateChar()
+        stateChar = c
+        // if extglob is disabled, then +(asdf|foo) isn't a thing.
+        // just clear the statechar *now*, rather than even diving into
+        // the patternList stuff.
+        if (options.noext) clearStateChar()
+      continue
+
+      case '(':
+        if (inClass) {
+          re += '('
+          continue
+        }
+
+        if (!stateChar) {
+          re += '\\('
+          continue
+        }
+
+        patternListStack.push({
+          type: stateChar,
+          start: i - 1,
+          reStart: re.length,
+          open: plTypes[stateChar].open,
+          close: plTypes[stateChar].close
+        })
+        // negation is (?:(?!js)[^/]*)
+        re += stateChar === '!' ? '(?:(?!(?:' : '(?:'
+        this.debug('plType %j %j', stateChar, re)
+        stateChar = false
+      continue
+
+      case ')':
+        if (inClass || !patternListStack.length) {
+          re += '\\)'
+          continue
+        }
+
+        clearStateChar()
+        hasMagic = true
+        var pl = patternListStack.pop()
+        // negation is (?:(?!js)[^/]*)
+        // The others are (?:<pattern>)<type>
+        re += pl.close
+        if (pl.type === '!') {
+          negativeLists.push(pl)
+        }
+        pl.reEnd = re.length
+      continue
+
+      case '|':
+        if (inClass || !patternListStack.length || escaping) {
+          re += '\\|'
+          escaping = false
+          continue
+        }
+
+        clearStateChar()
+        re += '|'
+      continue
+
+      // these are mostly the same in regexp and glob
+      case '[':
+        // swallow any state-tracking char before the [
+        clearStateChar()
+
+        if (inClass) {
+          re += '\\' + c
+          continue
+        }
+
+        inClass = true
+        classStart = i
+        reClassStart = re.length
+        re += c
+      continue
+
+      case ']':
+        //  a right bracket shall lose its special
+        //  meaning and represent itself in
+        //  a bracket expression if it occurs
+        //  first in the list.  -- POSIX.2 2.8.3.2
+        if (i === classStart + 1 || !inClass) {
+          re += '\\' + c
+          escaping = false
+          continue
+        }
+
+        // handle the case where we left a class open.
+        // "[z-a]" is valid, equivalent to "\[z-a\]"
+        if (inClass) {
+          // split where the last [ was, make sure we don't have
+          // an invalid re. if so, re-walk the contents of the
+          // would-be class to re-translate any characters that
+          // were passed through as-is
+          // TODO: It would probably be faster to determine this
+          // without a try/catch and a new RegExp, but it's tricky
+          // to do safely.  For now, this is safe and works.
+          var cs = pattern.substring(classStart + 1, i)
+          try {
+            RegExp('[' + cs + ']')
+          } catch (er) {
+            // not a valid class!
+            var sp = this.parse(cs, SUBPARSE)
+            re = re.substr(0, reClassStart) + '\\[' + sp[0] + '\\]'
+            hasMagic = hasMagic || sp[1]
+            inClass = false
+            continue
+          }
+        }
+
+        // finish up the class.
+        hasMagic = true
+        inClass = false
+        re += c
+      continue
+
+      default:
+        // swallow any state char that wasn't consumed
+        clearStateChar()
+
+        if (escaping) {
+          // no need
+          escaping = false
+        } else if (reSpecials[c]
+          && !(c === '^' && inClass)) {
+          re += '\\'
+        }
+
+        re += c
+
+    } // switch
+  } // for
+
+  // handle the case where we left a class open.
+  // "[abc" is valid, equivalent to "\[abc"
+  if (inClass) {
+    // split where the last [ was, and escape it
+    // this is a huge pita.  We now have to re-walk
+    // the contents of the would-be class to re-translate
+    // any characters that were passed through as-is
+    cs = pattern.substr(classStart + 1)
+    sp = this.parse(cs, SUBPARSE)
+    re = re.substr(0, reClassStart) + '\\[' + sp[0]
+    hasMagic = hasMagic || sp[1]
+  }
+
+  // handle the case where we had a +( thing at the *end*
+  // of the pattern.
+  // each pattern list stack adds 3 chars, and we need to go through
+  // and escape any | chars that were passed through as-is for the regexp.
+  // Go through and escape them, taking care not to double-escape any
+  // | chars that were already escaped.
+  for (pl = patternListStack.pop(); pl; pl = patternListStack.pop()) {
+    var tail = re.slice(pl.reStart + pl.open.length)
+    this.debug('setting tail', re, pl)
+    // maybe some even number of \, then maybe 1 \, followed by a |
+    tail = tail.replace(/((?:\\{2}){0,64})(\\?)\|/g, function (_, $1, $2) {
+      if (!$2) {
+        // the | isn't already escaped, so escape it.
+        $2 = '\\'
+      }
+
+      // need to escape all those slashes *again*, without escaping the
+      // one that we need for escaping the | character.  As it works out,
+      // escaping an even number of slashes can be done by simply repeating
+      // it exactly after itself.  That's why this trick works.
+      //
+      // I am sorry that you have to see this.
+      return $1 + $1 + $2 + '|'
+    })
+
+    this.debug('tail=%j\n   %s', tail, tail, pl, re)
+    var t = pl.type === '*' ? star
+      : pl.type === '?' ? qmark
+      : '\\' + pl.type
+
+    hasMagic = true
+    re = re.slice(0, pl.reStart) + t + '\\(' + tail
+  }
+
+  // handle trailing things that only matter at the very end.
+  clearStateChar()
+  if (escaping) {
+    // trailing \\
+    re += '\\\\'
+  }
+
+  // only need to apply the nodot start if the re starts with
+  // something that could conceivably capture a dot
+  var addPatternStart = false
+  switch (re.charAt(0)) {
+    case '.':
+    case '[':
+    case '(': addPatternStart = true
+  }
+
+  // Hack to work around lack of negative lookbehind in JS
+  // A pattern like: *.!(x).!(y|z) needs to ensure that a name
+  // like 'a.xyz.yz' doesn't match.  So, the first negative
+  // lookahead, has to look ALL the way ahead, to the end of
+  // the pattern.
+  for (var n = negativeLists.length - 1; n > -1; n--) {
+    var nl = negativeLists[n]
+
+    var nlBefore = re.slice(0, nl.reStart)
+    var nlFirst = re.slice(nl.reStart, nl.reEnd - 8)
+    var nlLast = re.slice(nl.reEnd - 8, nl.reEnd)
+    var nlAfter = re.slice(nl.reEnd)
+
+    nlLast += nlAfter
+
+    // Handle nested stuff like *(*.js|!(*.json)), where open parens
+    // mean that we should *not* include the ) in the bit that is considered
+    // "after" the negated section.
+    var openParensBefore = nlBefore.split('(').length - 1
+    var cleanAfter = nlAfter
+    for (i = 0; i < openParensBefore; i++) {
+      cleanAfter = cleanAfter.replace(/\)[+*?]?/, '')
+    }
+    nlAfter = cleanAfter
+
+    var dollar = ''
+    if (nlAfter === '' && isSub !== SUBPARSE) {
+      dollar = '$'
+    }
+    var newRe = nlBefore + nlFirst + nlAfter + dollar + nlLast
+    re = newRe
+  }
+
+  // if the re is not "" at this point, then we need to make sure
+  // it doesn't match against an empty path part.
+  // Otherwise a/* will match a/, which it should not.
+  if (re !== '' && hasMagic) {
+    re = '(?=.)' + re
+  }
+
+  if (addPatternStart) {
+    re = patternStart + re
+  }
+
+  // parsing just a piece of a larger pattern.
+  if (isSub === SUBPARSE) {
+    return [re, hasMagic]
+  }
+
+  // skip the regexp for non-magical patterns
+  // unescape anything in it, though, so that it'll be
+  // an exact match against a file etc.
+  if (!hasMagic) {
+    return globUnescape(pattern)
+  }
+
+  var flags = options.nocase ? 'i' : ''
+  try {
+    var regExp = new RegExp('^' + re + '$', flags)
+  } catch (er) {
+    // If it was an invalid regular expression, then it can't match
+    // anything.  This trick looks for a character after the end of
+    // the string, which is of course impossible, except in multi-line
+    // mode, but it's not a /m regex.
+    return new RegExp('$.')
+  }
+
+  regExp._glob = pattern
+  regExp._src = re
+
+  return regExp
+}
+
+minimatch.makeRe = function (pattern, options) {
+  return new Minimatch(pattern, options || {}).makeRe()
+}
+
+Minimatch.prototype.makeRe = makeRe
+function makeRe () {
+  if (this.regexp || this.regexp === false) return this.regexp
+
+  // at this point, this.set is a 2d array of partial
+  // pattern strings, or "**".
+  //
+  // It's better to use .match().  This function shouldn't
+  // be used, really, but it's pretty convenient sometimes,
+  // when you just want to work with a regex.
+  var set = this.set
+
+  if (!set.length) {
+    this.regexp = false
+    return this.regexp
+  }
+  var options = this.options
+
+  var twoStar = options.noglobstar ? star
+    : options.dot ? twoStarDot
+    : twoStarNoDot
+  var flags = options.nocase ? 'i' : ''
+
+  var re = set.map(function (pattern) {
+    return pattern.map(function (p) {
+      return (p === GLOBSTAR) ? twoStar
+      : (typeof p === 'string') ? regExpEscape(p)
+      : p._src
+    }).join('\\\/')
+  }).join('|')
+
+  // must match entire pattern
+  // ending in a * or ** will make it less strict.
+  re = '^(?:' + re + ')$'
+
+  // can match anything, as long as it's not this.
+  if (this.negate) re = '^(?!' + re + ').*$'
+
+  try {
+    this.regexp = new RegExp(re, flags)
+  } catch (ex) {
+    this.regexp = false
+  }
+  return this.regexp
+}
+
+minimatch.match = function (list, pattern, options) {
+  options = options || {}
+  var mm = new Minimatch(pattern, options)
+  list = list.filter(function (f) {
+    return mm.match(f)
+  })
+  if (mm.options.nonull && !list.length) {
+    list.push(pattern)
+  }
+  return list
+}
+
+Minimatch.prototype.match = match
+function match (f, partial) {
+  this.debug('match', f, this.pattern)
+  // short-circuit in the case of busted things.
+  // comments, etc.
+  if (this.comment) return false
+  if (this.empty) return f === ''
+
+  if (f === '/' && partial) return true
+
+  var options = this.options
+
+  // windows: need to use /, not \
+  if (path.sep !== '/') {
+    f = f.split(path.sep).join('/')
+  }
+
+  // treat the test path as a set of pathparts.
+  f = f.split(slashSplit)
+  this.debug(this.pattern, 'split', f)
+
+  // just ONE of the pattern sets in this.set needs to match
+  // in order for it to be valid.  If negating, then just one
+  // match means that we have failed.
+  // Either way, return on the first hit.
+
+  var set = this.set
+  this.debug(this.pattern, 'set', set)
+
+  // Find the basename of the path by looking for the last non-empty segment
+  var filename
+  var i
+  for (i = f.length - 1; i >= 0; i--) {
+    filename = f[i]
+    if (filename) break
+  }
+
+  for (i = 0; i < set.length; i++) {
+    var pattern = set[i]
+    var file = f
+    if (options.matchBase && pattern.length === 1) {
+      file = [filename]
+    }
+    var hit = this.matchOne(file, pattern, partial)
+    if (hit) {
+      if (options.flipNegate) return true
+      return !this.negate
+    }
+  }
+
+  // didn't get any hits.  this is success if it's a negative
+  // pattern, failure otherwise.
+  if (options.flipNegate) return false
+  return this.negate
+}
+
+// set partial to true to test if, for example,
+// "/a/b" matches the start of "/*/b/*/d"
+// Partial means, if you run out of file before you run
+// out of pattern, then that's fine, as long as all
+// the parts match.
+Minimatch.prototype.matchOne = function (file, pattern, partial) {
+  var options = this.options
+
+  this.debug('matchOne',
+    { 'this': this, file: file, pattern: pattern })
+
+  this.debug('matchOne', file.length, pattern.length)
+
+  for (var fi = 0,
+      pi = 0,
+      fl = file.length,
+      pl = pattern.length
+      ; (fi < fl) && (pi < pl)
+      ; fi++, pi++) {
+    this.debug('matchOne loop')
+    var p = pattern[pi]
+    var f = file[fi]
+
+    this.debug(pattern, p, f)
+
+    // should be impossible.
+    // some invalid regexp stuff in the set.
+    if (p === false) return false
+
+    if (p === GLOBSTAR) {
+      this.debug('GLOBSTAR', [pattern, p, f])
+
+      // "**"
+      // a/**/b/**/c would match the following:
+      // a/b/x/y/z/c
+      // a/x/y/z/b/c
+      // a/b/x/b/x/c
+      // a/b/c
+      // To do this, take the rest of the pattern after
+      // the **, and see if it would match the file remainder.
+      // If so, return success.
+      // If not, the ** "swallows" a segment, and try again.
+      // This is recursively awful.
+      //
+      // a/**/b/**/c matching a/b/x/y/z/c
+      // - a matches a
+      // - doublestar
+      //   - matchOne(b/x/y/z/c, b/**/c)
+      //     - b matches b
+      //     - doublestar
+      //       - matchOne(x/y/z/c, c) -> no
+      //       - matchOne(y/z/c, c) -> no
+      //       - matchOne(z/c, c) -> no
+      //       - matchOne(c, c) yes, hit
+      var fr = fi
+      var pr = pi + 1
+      if (pr === pl) {
+        this.debug('** at the end')
+        // a ** at the end will just swallow the rest.
+        // We have found a match.
+        // however, it will not swallow /.x, unless
+        // options.dot is set.
+        // . and .. are *never* matched by **, for explosively
+        // exponential reasons.
+        for (; fi < fl; fi++) {
+          if (file[fi] === '.' || file[fi] === '..' ||
+            (!options.dot && file[fi].charAt(0) === '.')) return false
+        }
+        return true
+      }
+
+      // ok, let's see if we can swallow whatever we can.
+      while (fr < fl) {
+        var swallowee = file[fr]
+
+        this.debug('\nglobstar while', file, fr, pattern, pr, swallowee)
+
+        // XXX remove this slice.  Just pass the start index.
+        if (this.matchOne(file.slice(fr), pattern.slice(pr), partial)) {
+          this.debug('globstar found match!', fr, fl, swallowee)
+          // found a match.
+          return true
+        } else {
+          // can't swallow "." or ".." ever.
+          // can only swallow ".foo" when explicitly asked.
+          if (swallowee === '.' || swallowee === '..' ||
+            (!options.dot && swallowee.charAt(0) === '.')) {
+            this.debug('dot detected!', file, fr, pattern, pr)
+            break
+          }
+
+          // ** swallows a segment, and continue.
+          this.debug('globstar swallow a segment, and continue')
+          fr++
+        }
+      }
+
+      // no match was found.
+      // However, in partial mode, we can't say this is necessarily over.
+      // If there's more *pattern* left, then
+      if (partial) {
+        // ran out of file
+        this.debug('\n>>> no match, partial?', file, fr, pattern, pr)
+        if (fr === fl) return true
+      }
+      return false
+    }
+
+    // something other than **
+    // non-magic patterns just have to match exactly
+    // patterns with magic have been turned into regexps.
+    var hit
+    if (typeof p === 'string') {
+      if (options.nocase) {
+        hit = f.toLowerCase() === p.toLowerCase()
+      } else {
+        hit = f === p
+      }
+      this.debug('string match', p, f, hit)
+    } else {
+      hit = f.match(p)
+      this.debug('pattern match', p, f, hit)
+    }
+
+    if (!hit) return false
+  }
+
+  // Note: ending in / means that we'll get a final ""
+  // at the end of the pattern.  This can only match a
+  // corresponding "" at the end of the file.
+  // If the file ends in /, then it can only match a
+  // a pattern that ends in /, unless the pattern just
+  // doesn't have any more for it. But, a/b/ should *not*
+  // match "a/b/*", even though "" matches against the
+  // [^/]*? pattern, except in partial mode, where it might
+  // simply not be reached yet.
+  // However, a/b/ should still satisfy a/*
+
+  // now either we fell off the end of the pattern, or we're done.
+  if (fi === fl && pi === pl) {
+    // ran out of pattern and filename at the same time.
+    // an exact hit!
+    return true
+  } else if (fi === fl) {
+    // ran out of file, but still had pattern left.
+    // this is ok if we're doing the match as part of
+    // a glob fs traversal.
+    return partial
+  } else if (pi === pl) {
+    // ran out of pattern, still have file left.
+    // this is only acceptable if we're on the very last
+    // empty segment of a file with a trailing slash.
+    // a/* should match a/b/
+    var emptyFileEnd = (fi === fl - 1) && (file[fi] === '')
+    return emptyFileEnd
+  }
+
+  // should be unreachable.
+  throw new Error('wtf?')
+}
+
+// replace stuff like \* with *
+function globUnescape (s) {
+  return s.replace(/\\(.)/g, '$1')
+}
+
+function regExpEscape (s) {
+  return s.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/ms/index.js":
+/***/ (function(module, exports) {
+
+/**
+ * Helpers.
+ */
+
+var s = 1000;
+var m = s * 60;
+var h = m * 60;
+var d = h * 24;
+var y = d * 365.25;
+
+/**
+ * Parse or format the given `val`.
+ *
+ * Options:
+ *
+ *  - `long` verbose formatting [false]
+ *
+ * @param {String|Number} val
+ * @param {Object} [options]
+ * @throws {Error} throw an error if val is not a non-empty string or a number
+ * @return {String|Number}
+ * @api public
+ */
+
+module.exports = function(val, options) {
+  options = options || {};
+  var type = typeof val;
+  if (type === 'string' && val.length > 0) {
+    return parse(val);
+  } else if (type === 'number' && isNaN(val) === false) {
+    return options.long ? fmtLong(val) : fmtShort(val);
+  }
+  throw new Error(
+    'val is not a non-empty string or a valid number. val=' +
+      JSON.stringify(val)
+  );
+};
+
+/**
+ * Parse the given `str` and return milliseconds.
+ *
+ * @param {String} str
+ * @return {Number}
+ * @api private
+ */
+
+function parse(str) {
+  str = String(str);
+  if (str.length > 100) {
+    return;
+  }
+  var match = /^((?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|years?|yrs?|y)?$/i.exec(
+    str
+  );
+  if (!match) {
+    return;
+  }
+  var n = parseFloat(match[1]);
+  var type = (match[2] || 'ms').toLowerCase();
+  switch (type) {
+    case 'years':
+    case 'year':
+    case 'yrs':
+    case 'yr':
+    case 'y':
+      return n * y;
+    case 'days':
+    case 'day':
+    case 'd':
+      return n * d;
+    case 'hours':
+    case 'hour':
+    case 'hrs':
+    case 'hr':
+    case 'h':
+      return n * h;
+    case 'minutes':
+    case 'minute':
+    case 'mins':
+    case 'min':
+    case 'm':
+      return n * m;
+    case 'seconds':
+    case 'second':
+    case 'secs':
+    case 'sec':
+    case 's':
+      return n * s;
+    case 'milliseconds':
+    case 'millisecond':
+    case 'msecs':
+    case 'msec':
+    case 'ms':
+      return n;
+    default:
+      return undefined;
+  }
+}
+
+/**
+ * Short format for `ms`.
+ *
+ * @param {Number} ms
+ * @return {String}
+ * @api private
+ */
+
+function fmtShort(ms) {
+  if (ms >= d) {
+    return Math.round(ms / d) + 'd';
+  }
+  if (ms >= h) {
+    return Math.round(ms / h) + 'h';
+  }
+  if (ms >= m) {
+    return Math.round(ms / m) + 'm';
+  }
+  if (ms >= s) {
+    return Math.round(ms / s) + 's';
+  }
+  return ms + 'ms';
+}
+
+/**
+ * Long format for `ms`.
+ *
+ * @param {Number} ms
+ * @return {String}
+ * @api private
+ */
+
+function fmtLong(ms) {
+  return plural(ms, d, 'day') ||
+    plural(ms, h, 'hour') ||
+    plural(ms, m, 'minute') ||
+    plural(ms, s, 'second') ||
+    ms + ' ms';
+}
+
+/**
+ * Pluralization helper.
+ */
+
+function plural(ms, n, name) {
+  if (ms < n) {
+    return;
+  }
+  if (ms < n * 1.5) {
+    return Math.floor(ms / n) + ' ' + name;
+  }
+  return Math.ceil(ms / n) + ' ' + name + 's';
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/once/once.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+var wrappy = __webpack_require__("./node_modules/wrappy/wrappy.js")
+module.exports = wrappy(once)
+module.exports.strict = wrappy(onceStrict)
+
+once.proto = once(function () {
+  Object.defineProperty(Function.prototype, 'once', {
+    value: function () {
+      return once(this)
+    },
+    configurable: true
+  })
+
+  Object.defineProperty(Function.prototype, 'onceStrict', {
+    value: function () {
+      return onceStrict(this)
+    },
+    configurable: true
+  })
+})
+
+function once (fn) {
+  var f = function () {
+    if (f.called) return f.value
+    f.called = true
+    return f.value = fn.apply(this, arguments)
+  }
+  f.called = false
+  return f
+}
+
+function onceStrict (fn) {
+  var f = function () {
+    if (f.called)
+      throw new Error(f.onceError)
+    f.called = true
+    return f.value = fn.apply(this, arguments)
+  }
+  var name = fn.name || 'Function wrapped with `once`'
+  f.onceError = name + " shouldn't be called more than once"
+  f.called = false
+  return f
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/path-is-absolute/index.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function posix(path) {
+	return path.charAt(0) === '/';
+}
+
+function win32(path) {
+	// https://github.com/nodejs/node/blob/b3fcc245fb25539909ef1d5eaa01dbf92e168633/lib/path.js#L56
+	var splitDeviceRe = /^([a-zA-Z]:|[\\\/]{2}[^\\\/]+[\\\/]+[^\\\/]+)?([\\\/])?([\s\S]*?)$/;
+	var result = splitDeviceRe.exec(path);
+	var device = result[1] || '';
+	var isUnc = Boolean(device && device.charAt(1) !== ':');
+
+	// UNC paths are always absolute
+	return Boolean(result[2] || isUnc);
+}
+
+module.exports = process.platform === 'win32' ? win32 : posix;
+module.exports.posix = posix;
+module.exports.win32 = win32;
+
+
+/***/ }),
+
+/***/ "./node_modules/rimraf/rimraf.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = rimraf
+rimraf.sync = rimrafSync
+
+var assert = __webpack_require__(4)
+var path = __webpack_require__(0)
+var fs = __webpack_require__(1)
+var glob = __webpack_require__("./node_modules/glob/glob.js")
+
+var defaultGlobOpts = {
+  nosort: true,
+  silent: true
+}
+
+// for EMFILE handling
+var timeout = 0
+
+var isWindows = (process.platform === "win32")
+
+function defaults (options) {
+  var methods = [
+    'unlink',
+    'chmod',
+    'stat',
+    'lstat',
+    'rmdir',
+    'readdir'
+  ]
+  methods.forEach(function(m) {
+    options[m] = options[m] || fs[m]
+    m = m + 'Sync'
+    options[m] = options[m] || fs[m]
+  })
+
+  options.maxBusyTries = options.maxBusyTries || 3
+  options.emfileWait = options.emfileWait || 1000
+  if (options.glob === false) {
+    options.disableGlob = true
+  }
+  options.disableGlob = options.disableGlob || false
+  options.glob = options.glob || defaultGlobOpts
+}
+
+function rimraf (p, options, cb) {
+  if (typeof options === 'function') {
+    cb = options
+    options = {}
+  }
+
+  assert(p, 'rimraf: missing path')
+  assert.equal(typeof p, 'string', 'rimraf: path should be a string')
+  assert.equal(typeof cb, 'function', 'rimraf: callback function required')
+  assert(options, 'rimraf: invalid options argument provided')
+  assert.equal(typeof options, 'object', 'rimraf: options should be object')
+
+  defaults(options)
+
+  var busyTries = 0
+  var errState = null
+  var n = 0
+
+  if (options.disableGlob || !glob.hasMagic(p))
+    return afterGlob(null, [p])
+
+  options.lstat(p, function (er, stat) {
+    if (!er)
+      return afterGlob(null, [p])
+
+    glob(p, options.glob, afterGlob)
+  })
+
+  function next (er) {
+    errState = errState || er
+    if (--n === 0)
+      cb(errState)
+  }
+
+  function afterGlob (er, results) {
+    if (er)
+      return cb(er)
+
+    n = results.length
+    if (n === 0)
+      return cb()
+
+    results.forEach(function (p) {
+      rimraf_(p, options, function CB (er) {
+        if (er) {
+          if ((er.code === "EBUSY" || er.code === "ENOTEMPTY" || er.code === "EPERM") &&
+              busyTries < options.maxBusyTries) {
+            busyTries ++
+            var time = busyTries * 100
+            // try again, with the same exact callback as this one.
+            return setTimeout(function () {
+              rimraf_(p, options, CB)
+            }, time)
+          }
+
+          // this one won't happen if graceful-fs is used.
+          if (er.code === "EMFILE" && timeout < options.emfileWait) {
+            return setTimeout(function () {
+              rimraf_(p, options, CB)
+            }, timeout ++)
+          }
+
+          // already gone
+          if (er.code === "ENOENT") er = null
+        }
+
+        timeout = 0
+        next(er)
+      })
+    })
+  }
+}
+
+// Two possible strategies.
+// 1. Assume it's a file.  unlink it, then do the dir stuff on EPERM or EISDIR
+// 2. Assume it's a directory.  readdir, then do the file stuff on ENOTDIR
+//
+// Both result in an extra syscall when you guess wrong.  However, there
+// are likely far more normal files in the world than directories.  This
+// is based on the assumption that a the average number of files per
+// directory is >= 1.
+//
+// If anyone ever complains about this, then I guess the strategy could
+// be made configurable somehow.  But until then, YAGNI.
+function rimraf_ (p, options, cb) {
+  assert(p)
+  assert(options)
+  assert(typeof cb === 'function')
+
+  // sunos lets the root user unlink directories, which is... weird.
+  // so we have to lstat here and make sure it's not a dir.
+  options.lstat(p, function (er, st) {
+    if (er && er.code === "ENOENT")
+      return cb(null)
+
+    // Windows can EPERM on stat.  Life is suffering.
+    if (er && er.code === "EPERM" && isWindows)
+      fixWinEPERM(p, options, er, cb)
+
+    if (st && st.isDirectory())
+      return rmdir(p, options, er, cb)
+
+    options.unlink(p, function (er) {
+      if (er) {
+        if (er.code === "ENOENT")
+          return cb(null)
+        if (er.code === "EPERM")
+          return (isWindows)
+            ? fixWinEPERM(p, options, er, cb)
+            : rmdir(p, options, er, cb)
+        if (er.code === "EISDIR")
+          return rmdir(p, options, er, cb)
+      }
+      return cb(er)
+    })
+  })
+}
+
+function fixWinEPERM (p, options, er, cb) {
+  assert(p)
+  assert(options)
+  assert(typeof cb === 'function')
+  if (er)
+    assert(er instanceof Error)
+
+  options.chmod(p, 666, function (er2) {
+    if (er2)
+      cb(er2.code === "ENOENT" ? null : er)
+    else
+      options.stat(p, function(er3, stats) {
+        if (er3)
+          cb(er3.code === "ENOENT" ? null : er)
+        else if (stats.isDirectory())
+          rmdir(p, options, er, cb)
+        else
+          options.unlink(p, cb)
+      })
+  })
+}
+
+function fixWinEPERMSync (p, options, er) {
+  assert(p)
+  assert(options)
+  if (er)
+    assert(er instanceof Error)
+
+  try {
+    options.chmodSync(p, 666)
+  } catch (er2) {
+    if (er2.code === "ENOENT")
+      return
+    else
+      throw er
+  }
+
+  try {
+    var stats = options.statSync(p)
+  } catch (er3) {
+    if (er3.code === "ENOENT")
+      return
+    else
+      throw er
+  }
+
+  if (stats.isDirectory())
+    rmdirSync(p, options, er)
+  else
+    options.unlinkSync(p)
+}
+
+function rmdir (p, options, originalEr, cb) {
+  assert(p)
+  assert(options)
+  if (originalEr)
+    assert(originalEr instanceof Error)
+  assert(typeof cb === 'function')
+
+  // try to rmdir first, and only readdir on ENOTEMPTY or EEXIST (SunOS)
+  // if we guessed wrong, and it's not a directory, then
+  // raise the original error.
+  options.rmdir(p, function (er) {
+    if (er && (er.code === "ENOTEMPTY" || er.code === "EEXIST" || er.code === "EPERM"))
+      rmkids(p, options, cb)
+    else if (er && er.code === "ENOTDIR")
+      cb(originalEr)
+    else
+      cb(er)
+  })
+}
+
+function rmkids(p, options, cb) {
+  assert(p)
+  assert(options)
+  assert(typeof cb === 'function')
+
+  options.readdir(p, function (er, files) {
+    if (er)
+      return cb(er)
+    var n = files.length
+    if (n === 0)
+      return options.rmdir(p, cb)
+    var errState
+    files.forEach(function (f) {
+      rimraf(path.join(p, f), options, function (er) {
+        if (errState)
+          return
+        if (er)
+          return cb(errState = er)
+        if (--n === 0)
+          options.rmdir(p, cb)
+      })
+    })
+  })
+}
+
+// this looks simpler, and is strictly *faster*, but will
+// tie up the JavaScript thread and fail on excessively
+// deep directory trees.
+function rimrafSync (p, options) {
+  options = options || {}
+  defaults(options)
+
+  assert(p, 'rimraf: missing path')
+  assert.equal(typeof p, 'string', 'rimraf: path should be a string')
+  assert(options, 'rimraf: missing options')
+  assert.equal(typeof options, 'object', 'rimraf: options should be object')
+
+  var results
+
+  if (options.disableGlob || !glob.hasMagic(p)) {
+    results = [p]
+  } else {
+    try {
+      options.lstatSync(p)
+      results = [p]
+    } catch (er) {
+      results = glob.sync(p, options.glob)
+    }
+  }
+
+  if (!results.length)
+    return
+
+  for (var i = 0; i < results.length; i++) {
+    var p = results[i]
+
+    try {
+      var st = options.lstatSync(p)
+    } catch (er) {
+      if (er.code === "ENOENT")
+        return
+
+      // Windows can EPERM on stat.  Life is suffering.
+      if (er.code === "EPERM" && isWindows)
+        fixWinEPERMSync(p, options, er)
+    }
+
+    try {
+      // sunos lets the root user unlink directories, which is... weird.
+      if (st && st.isDirectory())
+        rmdirSync(p, options, null)
+      else
+        options.unlinkSync(p)
+    } catch (er) {
+      if (er.code === "ENOENT")
+        return
+      if (er.code === "EPERM")
+        return isWindows ? fixWinEPERMSync(p, options, er) : rmdirSync(p, options, er)
+      if (er.code !== "EISDIR")
+        throw er
+
+      rmdirSync(p, options, er)
+    }
+  }
+}
+
+function rmdirSync (p, options, originalEr) {
+  assert(p)
+  assert(options)
+  if (originalEr)
+    assert(originalEr instanceof Error)
+
+  try {
+    options.rmdirSync(p)
+  } catch (er) {
+    if (er.code === "ENOENT")
+      return
+    if (er.code === "ENOTDIR")
+      throw originalEr
+    if (er.code === "ENOTEMPTY" || er.code === "EEXIST" || er.code === "EPERM")
+      rmkidsSync(p, options)
+  }
+}
+
+function rmkidsSync (p, options) {
+  assert(p)
+  assert(options)
+  options.readdirSync(p).forEach(function (f) {
+    rimrafSync(path.join(p, f), options)
+  })
+
+  // We only end up here once we got ENOTEMPTY at least once, and
+  // at this point, we are guaranteed to have removed all the kids.
+  // So, we know that it won't be ENOENT or ENOTDIR or anything else.
+  // try really hard to delete stuff on windows, because it has a
+  // PROFOUNDLY annoying habit of not closing handles promptly when
+  // files are deleted, resulting in spurious ENOTEMPTY errors.
+  var retries = isWindows ? 100 : 1
+  var i = 0
+  do {
+    var threw = true
+    try {
+      var ret = options.rmdirSync(p, options)
+      threw = false
+      return ret
+    } finally {
+      if (++i < retries && threw)
+        continue
+    }
+  } while (true)
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/semver/semver.js":
+/***/ (function(module, exports) {
+
+exports = module.exports = SemVer;
+
+// The debug function is excluded entirely from the minified version.
+/* nomin */ var debug;
+/* nomin */ if (typeof process === 'object' &&
+    /* nomin */ process.env &&
+    /* nomin */ process.env.NODE_DEBUG &&
+    /* nomin */ /\bsemver\b/i.test(process.env.NODE_DEBUG))
+  /* nomin */ debug = function() {
+    /* nomin */ var args = Array.prototype.slice.call(arguments, 0);
+    /* nomin */ args.unshift('SEMVER');
+    /* nomin */ console.log.apply(console, args);
+    /* nomin */ };
+/* nomin */ else
+  /* nomin */ debug = function() {};
+
+// Note: this is the semver.org version of the spec that it implements
+// Not necessarily the package version of this code.
+exports.SEMVER_SPEC_VERSION = '2.0.0';
+
+var MAX_LENGTH = 256;
+var MAX_SAFE_INTEGER = Number.MAX_SAFE_INTEGER || 9007199254740991;
+
+// The actual regexps go on exports.re
+var re = exports.re = [];
+var src = exports.src = [];
+var R = 0;
+
+// The following Regular Expressions can be used for tokenizing,
+// validating, and parsing SemVer version strings.
+
+// ## Numeric Identifier
+// A single `0`, or a non-zero digit followed by zero or more digits.
+
+var NUMERICIDENTIFIER = R++;
+src[NUMERICIDENTIFIER] = '0|[1-9]\\d*';
+var NUMERICIDENTIFIERLOOSE = R++;
+src[NUMERICIDENTIFIERLOOSE] = '[0-9]+';
+
+
+// ## Non-numeric Identifier
+// Zero or more digits, followed by a letter or hyphen, and then zero or
+// more letters, digits, or hyphens.
+
+var NONNUMERICIDENTIFIER = R++;
+src[NONNUMERICIDENTIFIER] = '\\d*[a-zA-Z-][a-zA-Z0-9-]*';
+
+
+// ## Main Version
+// Three dot-separated numeric identifiers.
+
+var MAINVERSION = R++;
+src[MAINVERSION] = '(' + src[NUMERICIDENTIFIER] + ')\\.' +
+                   '(' + src[NUMERICIDENTIFIER] + ')\\.' +
+                   '(' + src[NUMERICIDENTIFIER] + ')';
+
+var MAINVERSIONLOOSE = R++;
+src[MAINVERSIONLOOSE] = '(' + src[NUMERICIDENTIFIERLOOSE] + ')\\.' +
+                        '(' + src[NUMERICIDENTIFIERLOOSE] + ')\\.' +
+                        '(' + src[NUMERICIDENTIFIERLOOSE] + ')';
+
+// ## Pre-release Version Identifier
+// A numeric identifier, or a non-numeric identifier.
+
+var PRERELEASEIDENTIFIER = R++;
+src[PRERELEASEIDENTIFIER] = '(?:' + src[NUMERICIDENTIFIER] +
+                            '|' + src[NONNUMERICIDENTIFIER] + ')';
+
+var PRERELEASEIDENTIFIERLOOSE = R++;
+src[PRERELEASEIDENTIFIERLOOSE] = '(?:' + src[NUMERICIDENTIFIERLOOSE] +
+                                 '|' + src[NONNUMERICIDENTIFIER] + ')';
+
+
+// ## Pre-release Version
+// Hyphen, followed by one or more dot-separated pre-release version
+// identifiers.
+
+var PRERELEASE = R++;
+src[PRERELEASE] = '(?:-(' + src[PRERELEASEIDENTIFIER] +
+                  '(?:\\.' + src[PRERELEASEIDENTIFIER] + ')*))';
+
+var PRERELEASELOOSE = R++;
+src[PRERELEASELOOSE] = '(?:-?(' + src[PRERELEASEIDENTIFIERLOOSE] +
+                       '(?:\\.' + src[PRERELEASEIDENTIFIERLOOSE] + ')*))';
+
+// ## Build Metadata Identifier
+// Any combination of digits, letters, or hyphens.
+
+var BUILDIDENTIFIER = R++;
+src[BUILDIDENTIFIER] = '[0-9A-Za-z-]+';
+
+// ## Build Metadata
+// Plus sign, followed by one or more period-separated build metadata
+// identifiers.
+
+var BUILD = R++;
+src[BUILD] = '(?:\\+(' + src[BUILDIDENTIFIER] +
+             '(?:\\.' + src[BUILDIDENTIFIER] + ')*))';
+
+
+// ## Full Version String
+// A main version, followed optionally by a pre-release version and
+// build metadata.
+
+// Note that the only major, minor, patch, and pre-release sections of
+// the version string are capturing groups.  The build metadata is not a
+// capturing group, because it should not ever be used in version
+// comparison.
+
+var FULL = R++;
+var FULLPLAIN = 'v?' + src[MAINVERSION] +
+                src[PRERELEASE] + '?' +
+                src[BUILD] + '?';
+
+src[FULL] = '^' + FULLPLAIN + '$';
+
+// like full, but allows v1.2.3 and =1.2.3, which people do sometimes.
+// also, 1.0.0alpha1 (prerelease without the hyphen) which is pretty
+// common in the npm registry.
+var LOOSEPLAIN = '[v=\\s]*' + src[MAINVERSIONLOOSE] +
+                 src[PRERELEASELOOSE] + '?' +
+                 src[BUILD] + '?';
+
+var LOOSE = R++;
+src[LOOSE] = '^' + LOOSEPLAIN + '$';
+
+var GTLT = R++;
+src[GTLT] = '((?:<|>)?=?)';
+
+// Something like "2.*" or "1.2.x".
+// Note that "x.x" is a valid xRange identifer, meaning "any version"
+// Only the first item is strictly required.
+var XRANGEIDENTIFIERLOOSE = R++;
+src[XRANGEIDENTIFIERLOOSE] = src[NUMERICIDENTIFIERLOOSE] + '|x|X|\\*';
+var XRANGEIDENTIFIER = R++;
+src[XRANGEIDENTIFIER] = src[NUMERICIDENTIFIER] + '|x|X|\\*';
+
+var XRANGEPLAIN = R++;
+src[XRANGEPLAIN] = '[v=\\s]*(' + src[XRANGEIDENTIFIER] + ')' +
+                   '(?:\\.(' + src[XRANGEIDENTIFIER] + ')' +
+                   '(?:\\.(' + src[XRANGEIDENTIFIER] + ')' +
+                   '(?:' + src[PRERELEASE] + ')?' +
+                   src[BUILD] + '?' +
+                   ')?)?';
+
+var XRANGEPLAINLOOSE = R++;
+src[XRANGEPLAINLOOSE] = '[v=\\s]*(' + src[XRANGEIDENTIFIERLOOSE] + ')' +
+                        '(?:\\.(' + src[XRANGEIDENTIFIERLOOSE] + ')' +
+                        '(?:\\.(' + src[XRANGEIDENTIFIERLOOSE] + ')' +
+                        '(?:' + src[PRERELEASELOOSE] + ')?' +
+                        src[BUILD] + '?' +
+                        ')?)?';
+
+var XRANGE = R++;
+src[XRANGE] = '^' + src[GTLT] + '\\s*' + src[XRANGEPLAIN] + '$';
+var XRANGELOOSE = R++;
+src[XRANGELOOSE] = '^' + src[GTLT] + '\\s*' + src[XRANGEPLAINLOOSE] + '$';
+
+// Tilde ranges.
+// Meaning is "reasonably at or greater than"
+var LONETILDE = R++;
+src[LONETILDE] = '(?:~>?)';
+
+var TILDETRIM = R++;
+src[TILDETRIM] = '(\\s*)' + src[LONETILDE] + '\\s+';
+re[TILDETRIM] = new RegExp(src[TILDETRIM], 'g');
+var tildeTrimReplace = '$1~';
+
+var TILDE = R++;
+src[TILDE] = '^' + src[LONETILDE] + src[XRANGEPLAIN] + '$';
+var TILDELOOSE = R++;
+src[TILDELOOSE] = '^' + src[LONETILDE] + src[XRANGEPLAINLOOSE] + '$';
+
+// Caret ranges.
+// Meaning is "at least and backwards compatible with"
+var LONECARET = R++;
+src[LONECARET] = '(?:\\^)';
+
+var CARETTRIM = R++;
+src[CARETTRIM] = '(\\s*)' + src[LONECARET] + '\\s+';
+re[CARETTRIM] = new RegExp(src[CARETTRIM], 'g');
+var caretTrimReplace = '$1^';
+
+var CARET = R++;
+src[CARET] = '^' + src[LONECARET] + src[XRANGEPLAIN] + '$';
+var CARETLOOSE = R++;
+src[CARETLOOSE] = '^' + src[LONECARET] + src[XRANGEPLAINLOOSE] + '$';
+
+// A simple gt/lt/eq thing, or just "" to indicate "any version"
+var COMPARATORLOOSE = R++;
+src[COMPARATORLOOSE] = '^' + src[GTLT] + '\\s*(' + LOOSEPLAIN + ')$|^$';
+var COMPARATOR = R++;
+src[COMPARATOR] = '^' + src[GTLT] + '\\s*(' + FULLPLAIN + ')$|^$';
+
+
+// An expression to strip any whitespace between the gtlt and the thing
+// it modifies, so that `> 1.2.3` ==> `>1.2.3`
+var COMPARATORTRIM = R++;
+src[COMPARATORTRIM] = '(\\s*)' + src[GTLT] +
+                      '\\s*(' + LOOSEPLAIN + '|' + src[XRANGEPLAIN] + ')';
+
+// this one has to use the /g flag
+re[COMPARATORTRIM] = new RegExp(src[COMPARATORTRIM], 'g');
+var comparatorTrimReplace = '$1$2$3';
+
+
+// Something like `1.2.3 - 1.2.4`
+// Note that these all use the loose form, because they'll be
+// checked against either the strict or loose comparator form
+// later.
+var HYPHENRANGE = R++;
+src[HYPHENRANGE] = '^\\s*(' + src[XRANGEPLAIN] + ')' +
+                   '\\s+-\\s+' +
+                   '(' + src[XRANGEPLAIN] + ')' +
+                   '\\s*$';
+
+var HYPHENRANGELOOSE = R++;
+src[HYPHENRANGELOOSE] = '^\\s*(' + src[XRANGEPLAINLOOSE] + ')' +
+                        '\\s+-\\s+' +
+                        '(' + src[XRANGEPLAINLOOSE] + ')' +
+                        '\\s*$';
+
+// Star ranges basically just allow anything at all.
+var STAR = R++;
+src[STAR] = '(<|>)?=?\\s*\\*';
+
+// Compile to actual regexp objects.
+// All are flag-free, unless they were created above with a flag.
+for (var i = 0; i < R; i++) {
+  debug(i, src[i]);
+  if (!re[i])
+    re[i] = new RegExp(src[i]);
+}
+
+exports.parse = parse;
+function parse(version, loose) {
+  if (version instanceof SemVer)
+    return version;
+
+  if (typeof version !== 'string')
+    return null;
+
+  if (version.length > MAX_LENGTH)
+    return null;
+
+  var r = loose ? re[LOOSE] : re[FULL];
+  if (!r.test(version))
+    return null;
+
+  try {
+    return new SemVer(version, loose);
+  } catch (er) {
+    return null;
+  }
+}
+
+exports.valid = valid;
+function valid(version, loose) {
+  var v = parse(version, loose);
+  return v ? v.version : null;
+}
+
+
+exports.clean = clean;
+function clean(version, loose) {
+  var s = parse(version.trim().replace(/^[=v]+/, ''), loose);
+  return s ? s.version : null;
+}
+
+exports.SemVer = SemVer;
+
+function SemVer(version, loose) {
+  if (version instanceof SemVer) {
+    if (version.loose === loose)
+      return version;
+    else
+      version = version.version;
+  } else if (typeof version !== 'string') {
+    throw new TypeError('Invalid Version: ' + version);
+  }
+
+  if (version.length > MAX_LENGTH)
+    throw new TypeError('version is longer than ' + MAX_LENGTH + ' characters')
+
+  if (!(this instanceof SemVer))
+    return new SemVer(version, loose);
+
+  debug('SemVer', version, loose);
+  this.loose = loose;
+  var m = version.trim().match(loose ? re[LOOSE] : re[FULL]);
+
+  if (!m)
+    throw new TypeError('Invalid Version: ' + version);
+
+  this.raw = version;
+
+  // these are actually numbers
+  this.major = +m[1];
+  this.minor = +m[2];
+  this.patch = +m[3];
+
+  if (this.major > MAX_SAFE_INTEGER || this.major < 0)
+    throw new TypeError('Invalid major version')
+
+  if (this.minor > MAX_SAFE_INTEGER || this.minor < 0)
+    throw new TypeError('Invalid minor version')
+
+  if (this.patch > MAX_SAFE_INTEGER || this.patch < 0)
+    throw new TypeError('Invalid patch version')
+
+  // numberify any prerelease numeric ids
+  if (!m[4])
+    this.prerelease = [];
+  else
+    this.prerelease = m[4].split('.').map(function(id) {
+      if (/^[0-9]+$/.test(id)) {
+        var num = +id;
+        if (num >= 0 && num < MAX_SAFE_INTEGER)
+          return num;
+      }
+      return id;
+    });
+
+  this.build = m[5] ? m[5].split('.') : [];
+  this.format();
+}
+
+SemVer.prototype.format = function() {
+  this.version = this.major + '.' + this.minor + '.' + this.patch;
+  if (this.prerelease.length)
+    this.version += '-' + this.prerelease.join('.');
+  return this.version;
+};
+
+SemVer.prototype.toString = function() {
+  return this.version;
+};
+
+SemVer.prototype.compare = function(other) {
+  debug('SemVer.compare', this.version, this.loose, other);
+  if (!(other instanceof SemVer))
+    other = new SemVer(other, this.loose);
+
+  return this.compareMain(other) || this.comparePre(other);
+};
+
+SemVer.prototype.compareMain = function(other) {
+  if (!(other instanceof SemVer))
+    other = new SemVer(other, this.loose);
+
+  return compareIdentifiers(this.major, other.major) ||
+         compareIdentifiers(this.minor, other.minor) ||
+         compareIdentifiers(this.patch, other.patch);
+};
+
+SemVer.prototype.comparePre = function(other) {
+  if (!(other instanceof SemVer))
+    other = new SemVer(other, this.loose);
+
+  // NOT having a prerelease is > having one
+  if (this.prerelease.length && !other.prerelease.length)
+    return -1;
+  else if (!this.prerelease.length && other.prerelease.length)
+    return 1;
+  else if (!this.prerelease.length && !other.prerelease.length)
+    return 0;
+
+  var i = 0;
+  do {
+    var a = this.prerelease[i];
+    var b = other.prerelease[i];
+    debug('prerelease compare', i, a, b);
+    if (a === undefined && b === undefined)
+      return 0;
+    else if (b === undefined)
+      return 1;
+    else if (a === undefined)
+      return -1;
+    else if (a === b)
+      continue;
+    else
+      return compareIdentifiers(a, b);
+  } while (++i);
+};
+
+// preminor will bump the version up to the next minor release, and immediately
+// down to pre-release. premajor and prepatch work the same way.
+SemVer.prototype.inc = function(release, identifier) {
+  switch (release) {
+    case 'premajor':
+      this.prerelease.length = 0;
+      this.patch = 0;
+      this.minor = 0;
+      this.major++;
+      this.inc('pre', identifier);
+      break;
+    case 'preminor':
+      this.prerelease.length = 0;
+      this.patch = 0;
+      this.minor++;
+      this.inc('pre', identifier);
+      break;
+    case 'prepatch':
+      // If this is already a prerelease, it will bump to the next version
+      // drop any prereleases that might already exist, since they are not
+      // relevant at this point.
+      this.prerelease.length = 0;
+      this.inc('patch', identifier);
+      this.inc('pre', identifier);
+      break;
+    // If the input is a non-prerelease version, this acts the same as
+    // prepatch.
+    case 'prerelease':
+      if (this.prerelease.length === 0)
+        this.inc('patch', identifier);
+      this.inc('pre', identifier);
+      break;
+
+    case 'major':
+      // If this is a pre-major version, bump up to the same major version.
+      // Otherwise increment major.
+      // 1.0.0-5 bumps to 1.0.0
+      // 1.1.0 bumps to 2.0.0
+      if (this.minor !== 0 || this.patch !== 0 || this.prerelease.length === 0)
+        this.major++;
+      this.minor = 0;
+      this.patch = 0;
+      this.prerelease = [];
+      break;
+    case 'minor':
+      // If this is a pre-minor version, bump up to the same minor version.
+      // Otherwise increment minor.
+      // 1.2.0-5 bumps to 1.2.0
+      // 1.2.1 bumps to 1.3.0
+      if (this.patch !== 0 || this.prerelease.length === 0)
+        this.minor++;
+      this.patch = 0;
+      this.prerelease = [];
+      break;
+    case 'patch':
+      // If this is not a pre-release version, it will increment the patch.
+      // If it is a pre-release it will bump up to the same patch version.
+      // 1.2.0-5 patches to 1.2.0
+      // 1.2.0 patches to 1.2.1
+      if (this.prerelease.length === 0)
+        this.patch++;
+      this.prerelease = [];
+      break;
+    // This probably shouldn't be used publicly.
+    // 1.0.0 "pre" would become 1.0.0-0 which is the wrong direction.
+    case 'pre':
+      if (this.prerelease.length === 0)
+        this.prerelease = [0];
+      else {
+        var i = this.prerelease.length;
+        while (--i >= 0) {
+          if (typeof this.prerelease[i] === 'number') {
+            this.prerelease[i]++;
+            i = -2;
+          }
+        }
+        if (i === -1) // didn't increment anything
+          this.prerelease.push(0);
+      }
+      if (identifier) {
+        // 1.2.0-beta.1 bumps to 1.2.0-beta.2,
+        // 1.2.0-beta.fooblz or 1.2.0-beta bumps to 1.2.0-beta.0
+        if (this.prerelease[0] === identifier) {
+          if (isNaN(this.prerelease[1]))
+            this.prerelease = [identifier, 0];
+        } else
+          this.prerelease = [identifier, 0];
+      }
+      break;
+
+    default:
+      throw new Error('invalid increment argument: ' + release);
+  }
+  this.format();
+  this.raw = this.version;
+  return this;
+};
+
+exports.inc = inc;
+function inc(version, release, loose, identifier) {
+  if (typeof(loose) === 'string') {
+    identifier = loose;
+    loose = undefined;
+  }
+
+  try {
+    return new SemVer(version, loose).inc(release, identifier).version;
+  } catch (er) {
+    return null;
+  }
+}
+
+exports.diff = diff;
+function diff(version1, version2) {
+  if (eq(version1, version2)) {
+    return null;
+  } else {
+    var v1 = parse(version1);
+    var v2 = parse(version2);
+    if (v1.prerelease.length || v2.prerelease.length) {
+      for (var key in v1) {
+        if (key === 'major' || key === 'minor' || key === 'patch') {
+          if (v1[key] !== v2[key]) {
+            return 'pre'+key;
+          }
+        }
+      }
+      return 'prerelease';
+    }
+    for (var key in v1) {
+      if (key === 'major' || key === 'minor' || key === 'patch') {
+        if (v1[key] !== v2[key]) {
+          return key;
+        }
+      }
+    }
+  }
+}
+
+exports.compareIdentifiers = compareIdentifiers;
+
+var numeric = /^[0-9]+$/;
+function compareIdentifiers(a, b) {
+  var anum = numeric.test(a);
+  var bnum = numeric.test(b);
+
+  if (anum && bnum) {
+    a = +a;
+    b = +b;
+  }
+
+  return (anum && !bnum) ? -1 :
+         (bnum && !anum) ? 1 :
+         a < b ? -1 :
+         a > b ? 1 :
+         0;
+}
+
+exports.rcompareIdentifiers = rcompareIdentifiers;
+function rcompareIdentifiers(a, b) {
+  return compareIdentifiers(b, a);
+}
+
+exports.major = major;
+function major(a, loose) {
+  return new SemVer(a, loose).major;
+}
+
+exports.minor = minor;
+function minor(a, loose) {
+  return new SemVer(a, loose).minor;
+}
+
+exports.patch = patch;
+function patch(a, loose) {
+  return new SemVer(a, loose).patch;
+}
+
+exports.compare = compare;
+function compare(a, b, loose) {
+  return new SemVer(a, loose).compare(b);
+}
+
+exports.compareLoose = compareLoose;
+function compareLoose(a, b) {
+  return compare(a, b, true);
+}
+
+exports.rcompare = rcompare;
+function rcompare(a, b, loose) {
+  return compare(b, a, loose);
+}
+
+exports.sort = sort;
+function sort(list, loose) {
+  return list.sort(function(a, b) {
+    return exports.compare(a, b, loose);
+  });
+}
+
+exports.rsort = rsort;
+function rsort(list, loose) {
+  return list.sort(function(a, b) {
+    return exports.rcompare(a, b, loose);
+  });
+}
+
+exports.gt = gt;
+function gt(a, b, loose) {
+  return compare(a, b, loose) > 0;
+}
+
+exports.lt = lt;
+function lt(a, b, loose) {
+  return compare(a, b, loose) < 0;
+}
+
+exports.eq = eq;
+function eq(a, b, loose) {
+  return compare(a, b, loose) === 0;
+}
+
+exports.neq = neq;
+function neq(a, b, loose) {
+  return compare(a, b, loose) !== 0;
+}
+
+exports.gte = gte;
+function gte(a, b, loose) {
+  return compare(a, b, loose) >= 0;
+}
+
+exports.lte = lte;
+function lte(a, b, loose) {
+  return compare(a, b, loose) <= 0;
+}
+
+exports.cmp = cmp;
+function cmp(a, op, b, loose) {
+  var ret;
+  switch (op) {
+    case '===':
+      if (typeof a === 'object') a = a.version;
+      if (typeof b === 'object') b = b.version;
+      ret = a === b;
+      break;
+    case '!==':
+      if (typeof a === 'object') a = a.version;
+      if (typeof b === 'object') b = b.version;
+      ret = a !== b;
+      break;
+    case '': case '=': case '==': ret = eq(a, b, loose); break;
+    case '!=': ret = neq(a, b, loose); break;
+    case '>': ret = gt(a, b, loose); break;
+    case '>=': ret = gte(a, b, loose); break;
+    case '<': ret = lt(a, b, loose); break;
+    case '<=': ret = lte(a, b, loose); break;
+    default: throw new TypeError('Invalid operator: ' + op);
+  }
+  return ret;
+}
+
+exports.Comparator = Comparator;
+function Comparator(comp, loose) {
+  if (comp instanceof Comparator) {
+    if (comp.loose === loose)
+      return comp;
+    else
+      comp = comp.value;
+  }
+
+  if (!(this instanceof Comparator))
+    return new Comparator(comp, loose);
+
+  debug('comparator', comp, loose);
+  this.loose = loose;
+  this.parse(comp);
+
+  if (this.semver === ANY)
+    this.value = '';
+  else
+    this.value = this.operator + this.semver.version;
+
+  debug('comp', this);
+}
+
+var ANY = {};
+Comparator.prototype.parse = function(comp) {
+  var r = this.loose ? re[COMPARATORLOOSE] : re[COMPARATOR];
+  var m = comp.match(r);
+
+  if (!m)
+    throw new TypeError('Invalid comparator: ' + comp);
+
+  this.operator = m[1];
+  if (this.operator === '=')
+    this.operator = '';
+
+  // if it literally is just '>' or '' then allow anything.
+  if (!m[2])
+    this.semver = ANY;
+  else
+    this.semver = new SemVer(m[2], this.loose);
+};
+
+Comparator.prototype.toString = function() {
+  return this.value;
+};
+
+Comparator.prototype.test = function(version) {
+  debug('Comparator.test', version, this.loose);
+
+  if (this.semver === ANY)
+    return true;
+
+  if (typeof version === 'string')
+    version = new SemVer(version, this.loose);
+
+  return cmp(version, this.operator, this.semver, this.loose);
+};
+
+
+exports.Range = Range;
+function Range(range, loose) {
+  if ((range instanceof Range) && range.loose === loose)
+    return range;
+
+  if (!(this instanceof Range))
+    return new Range(range, loose);
+
+  this.loose = loose;
+
+  // First, split based on boolean or ||
+  this.raw = range;
+  this.set = range.split(/\s*\|\|\s*/).map(function(range) {
+    return this.parseRange(range.trim());
+  }, this).filter(function(c) {
+    // throw out any that are not relevant for whatever reason
+    return c.length;
+  });
+
+  if (!this.set.length) {
+    throw new TypeError('Invalid SemVer Range: ' + range);
+  }
+
+  this.format();
+}
+
+Range.prototype.format = function() {
+  this.range = this.set.map(function(comps) {
+    return comps.join(' ').trim();
+  }).join('||').trim();
+  return this.range;
+};
+
+Range.prototype.toString = function() {
+  return this.range;
+};
+
+Range.prototype.parseRange = function(range) {
+  var loose = this.loose;
+  range = range.trim();
+  debug('range', range, loose);
+  // `1.2.3 - 1.2.4` => `>=1.2.3 <=1.2.4`
+  var hr = loose ? re[HYPHENRANGELOOSE] : re[HYPHENRANGE];
+  range = range.replace(hr, hyphenReplace);
+  debug('hyphen replace', range);
+  // `> 1.2.3 < 1.2.5` => `>1.2.3 <1.2.5`
+  range = range.replace(re[COMPARATORTRIM], comparatorTrimReplace);
+  debug('comparator trim', range, re[COMPARATORTRIM]);
+
+  // `~ 1.2.3` => `~1.2.3`
+  range = range.replace(re[TILDETRIM], tildeTrimReplace);
+
+  // `^ 1.2.3` => `^1.2.3`
+  range = range.replace(re[CARETTRIM], caretTrimReplace);
+
+  // normalize spaces
+  range = range.split(/\s+/).join(' ');
+
+  // At this point, the range is completely trimmed and
+  // ready to be split into comparators.
+
+  var compRe = loose ? re[COMPARATORLOOSE] : re[COMPARATOR];
+  var set = range.split(' ').map(function(comp) {
+    return parseComparator(comp, loose);
+  }).join(' ').split(/\s+/);
+  if (this.loose) {
+    // in loose mode, throw out any that are not valid comparators
+    set = set.filter(function(comp) {
+      return !!comp.match(compRe);
+    });
+  }
+  set = set.map(function(comp) {
+    return new Comparator(comp, loose);
+  });
+
+  return set;
+};
+
+// Mostly just for testing and legacy API reasons
+exports.toComparators = toComparators;
+function toComparators(range, loose) {
+  return new Range(range, loose).set.map(function(comp) {
+    return comp.map(function(c) {
+      return c.value;
+    }).join(' ').trim().split(' ');
+  });
+}
+
+// comprised of xranges, tildes, stars, and gtlt's at this point.
+// already replaced the hyphen ranges
+// turn into a set of JUST comparators.
+function parseComparator(comp, loose) {
+  debug('comp', comp);
+  comp = replaceCarets(comp, loose);
+  debug('caret', comp);
+  comp = replaceTildes(comp, loose);
+  debug('tildes', comp);
+  comp = replaceXRanges(comp, loose);
+  debug('xrange', comp);
+  comp = replaceStars(comp, loose);
+  debug('stars', comp);
+  return comp;
+}
+
+function isX(id) {
+  return !id || id.toLowerCase() === 'x' || id === '*';
+}
+
+// ~, ~> --> * (any, kinda silly)
+// ~2, ~2.x, ~2.x.x, ~>2, ~>2.x ~>2.x.x --> >=2.0.0 <3.0.0
+// ~2.0, ~2.0.x, ~>2.0, ~>2.0.x --> >=2.0.0 <2.1.0
+// ~1.2, ~1.2.x, ~>1.2, ~>1.2.x --> >=1.2.0 <1.3.0
+// ~1.2.3, ~>1.2.3 --> >=1.2.3 <1.3.0
+// ~1.2.0, ~>1.2.0 --> >=1.2.0 <1.3.0
+function replaceTildes(comp, loose) {
+  return comp.trim().split(/\s+/).map(function(comp) {
+    return replaceTilde(comp, loose);
+  }).join(' ');
+}
+
+function replaceTilde(comp, loose) {
+  var r = loose ? re[TILDELOOSE] : re[TILDE];
+  return comp.replace(r, function(_, M, m, p, pr) {
+    debug('tilde', comp, _, M, m, p, pr);
+    var ret;
+
+    if (isX(M))
+      ret = '';
+    else if (isX(m))
+      ret = '>=' + M + '.0.0 <' + (+M + 1) + '.0.0';
+    else if (isX(p))
+      // ~1.2 == >=1.2.0 <1.3.0
+      ret = '>=' + M + '.' + m + '.0 <' + M + '.' + (+m + 1) + '.0';
+    else if (pr) {
+      debug('replaceTilde pr', pr);
+      if (pr.charAt(0) !== '-')
+        pr = '-' + pr;
+      ret = '>=' + M + '.' + m + '.' + p + pr +
+            ' <' + M + '.' + (+m + 1) + '.0';
+    } else
+      // ~1.2.3 == >=1.2.3 <1.3.0
+      ret = '>=' + M + '.' + m + '.' + p +
+            ' <' + M + '.' + (+m + 1) + '.0';
+
+    debug('tilde return', ret);
+    return ret;
+  });
+}
+
+// ^ --> * (any, kinda silly)
+// ^2, ^2.x, ^2.x.x --> >=2.0.0 <3.0.0
+// ^2.0, ^2.0.x --> >=2.0.0 <3.0.0
+// ^1.2, ^1.2.x --> >=1.2.0 <2.0.0
+// ^1.2.3 --> >=1.2.3 <2.0.0
+// ^1.2.0 --> >=1.2.0 <2.0.0
+function replaceCarets(comp, loose) {
+  return comp.trim().split(/\s+/).map(function(comp) {
+    return replaceCaret(comp, loose);
+  }).join(' ');
+}
+
+function replaceCaret(comp, loose) {
+  debug('caret', comp, loose);
+  var r = loose ? re[CARETLOOSE] : re[CARET];
+  return comp.replace(r, function(_, M, m, p, pr) {
+    debug('caret', comp, _, M, m, p, pr);
+    var ret;
+
+    if (isX(M))
+      ret = '';
+    else if (isX(m))
+      ret = '>=' + M + '.0.0 <' + (+M + 1) + '.0.0';
+    else if (isX(p)) {
+      if (M === '0')
+        ret = '>=' + M + '.' + m + '.0 <' + M + '.' + (+m + 1) + '.0';
+      else
+        ret = '>=' + M + '.' + m + '.0 <' + (+M + 1) + '.0.0';
+    } else if (pr) {
+      debug('replaceCaret pr', pr);
+      if (pr.charAt(0) !== '-')
+        pr = '-' + pr;
+      if (M === '0') {
+        if (m === '0')
+          ret = '>=' + M + '.' + m + '.' + p + pr +
+                ' <' + M + '.' + m + '.' + (+p + 1);
+        else
+          ret = '>=' + M + '.' + m + '.' + p + pr +
+                ' <' + M + '.' + (+m + 1) + '.0';
+      } else
+        ret = '>=' + M + '.' + m + '.' + p + pr +
+              ' <' + (+M + 1) + '.0.0';
+    } else {
+      debug('no pr');
+      if (M === '0') {
+        if (m === '0')
+          ret = '>=' + M + '.' + m + '.' + p +
+                ' <' + M + '.' + m + '.' + (+p + 1);
+        else
+          ret = '>=' + M + '.' + m + '.' + p +
+                ' <' + M + '.' + (+m + 1) + '.0';
+      } else
+        ret = '>=' + M + '.' + m + '.' + p +
+              ' <' + (+M + 1) + '.0.0';
+    }
+
+    debug('caret return', ret);
+    return ret;
+  });
+}
+
+function replaceXRanges(comp, loose) {
+  debug('replaceXRanges', comp, loose);
+  return comp.split(/\s+/).map(function(comp) {
+    return replaceXRange(comp, loose);
+  }).join(' ');
+}
+
+function replaceXRange(comp, loose) {
+  comp = comp.trim();
+  var r = loose ? re[XRANGELOOSE] : re[XRANGE];
+  return comp.replace(r, function(ret, gtlt, M, m, p, pr) {
+    debug('xRange', comp, ret, gtlt, M, m, p, pr);
+    var xM = isX(M);
+    var xm = xM || isX(m);
+    var xp = xm || isX(p);
+    var anyX = xp;
+
+    if (gtlt === '=' && anyX)
+      gtlt = '';
+
+    if (xM) {
+      if (gtlt === '>' || gtlt === '<') {
+        // nothing is allowed
+        ret = '<0.0.0';
+      } else {
+        // nothing is forbidden
+        ret = '*';
+      }
+    } else if (gtlt && anyX) {
+      // replace X with 0
+      if (xm)
+        m = 0;
+      if (xp)
+        p = 0;
+
+      if (gtlt === '>') {
+        // >1 => >=2.0.0
+        // >1.2 => >=1.3.0
+        // >1.2.3 => >= 1.2.4
+        gtlt = '>=';
+        if (xm) {
+          M = +M + 1;
+          m = 0;
+          p = 0;
+        } else if (xp) {
+          m = +m + 1;
+          p = 0;
+        }
+      } else if (gtlt === '<=') {
+        // <=0.7.x is actually <0.8.0, since any 0.7.x should
+        // pass.  Similarly, <=7.x is actually <8.0.0, etc.
+        gtlt = '<';
+        if (xm)
+          M = +M + 1;
+        else
+          m = +m + 1;
+      }
+
+      ret = gtlt + M + '.' + m + '.' + p;
+    } else if (xm) {
+      ret = '>=' + M + '.0.0 <' + (+M + 1) + '.0.0';
+    } else if (xp) {
+      ret = '>=' + M + '.' + m + '.0 <' + M + '.' + (+m + 1) + '.0';
+    }
+
+    debug('xRange return', ret);
+
+    return ret;
+  });
+}
+
+// Because * is AND-ed with everything else in the comparator,
+// and '' means "any version", just remove the *s entirely.
+function replaceStars(comp, loose) {
+  debug('replaceStars', comp, loose);
+  // Looseness is ignored here.  star is always as loose as it gets!
+  return comp.trim().replace(re[STAR], '');
+}
+
+// This function is passed to string.replace(re[HYPHENRANGE])
+// M, m, patch, prerelease, build
+// 1.2 - 3.4.5 => >=1.2.0 <=3.4.5
+// 1.2.3 - 3.4 => >=1.2.0 <3.5.0 Any 3.4.x will do
+// 1.2 - 3.4 => >=1.2.0 <3.5.0
+function hyphenReplace($0,
+                       from, fM, fm, fp, fpr, fb,
+                       to, tM, tm, tp, tpr, tb) {
+
+  if (isX(fM))
+    from = '';
+  else if (isX(fm))
+    from = '>=' + fM + '.0.0';
+  else if (isX(fp))
+    from = '>=' + fM + '.' + fm + '.0';
+  else
+    from = '>=' + from;
+
+  if (isX(tM))
+    to = '';
+  else if (isX(tm))
+    to = '<' + (+tM + 1) + '.0.0';
+  else if (isX(tp))
+    to = '<' + tM + '.' + (+tm + 1) + '.0';
+  else if (tpr)
+    to = '<=' + tM + '.' + tm + '.' + tp + '-' + tpr;
+  else
+    to = '<=' + to;
+
+  return (from + ' ' + to).trim();
+}
+
+
+// if ANY of the sets match ALL of its comparators, then pass
+Range.prototype.test = function(version) {
+  if (!version)
+    return false;
+
+  if (typeof version === 'string')
+    version = new SemVer(version, this.loose);
+
+  for (var i = 0; i < this.set.length; i++) {
+    if (testSet(this.set[i], version))
+      return true;
+  }
+  return false;
+};
+
+function testSet(set, version) {
+  for (var i = 0; i < set.length; i++) {
+    if (!set[i].test(version))
+      return false;
+  }
+
+  if (version.prerelease.length) {
+    // Find the set of versions that are allowed to have prereleases
+    // For example, ^1.2.3-pr.1 desugars to >=1.2.3-pr.1 <2.0.0
+    // That should allow `1.2.3-pr.2` to pass.
+    // However, `1.2.4-alpha.notready` should NOT be allowed,
+    // even though it's within the range set by the comparators.
+    for (var i = 0; i < set.length; i++) {
+      debug(set[i].semver);
+      if (set[i].semver === ANY)
+        continue;
+
+      if (set[i].semver.prerelease.length > 0) {
+        var allowed = set[i].semver;
+        if (allowed.major === version.major &&
+            allowed.minor === version.minor &&
+            allowed.patch === version.patch)
+          return true;
+      }
+    }
+
+    // Version has a -pre, but it's not one of the ones we like.
+    return false;
+  }
+
+  return true;
+}
+
+exports.satisfies = satisfies;
+function satisfies(version, range, loose) {
+  try {
+    range = new Range(range, loose);
+  } catch (er) {
+    return false;
+  }
+  return range.test(version);
+}
+
+exports.maxSatisfying = maxSatisfying;
+function maxSatisfying(versions, range, loose) {
+  return versions.filter(function(version) {
+    return satisfies(version, range, loose);
+  }).sort(function(a, b) {
+    return rcompare(a, b, loose);
+  })[0] || null;
+}
+
+exports.minSatisfying = minSatisfying;
+function minSatisfying(versions, range, loose) {
+  return versions.filter(function(version) {
+    return satisfies(version, range, loose);
+  }).sort(function(a, b) {
+    return compare(a, b, loose);
+  })[0] || null;
+}
+
+exports.validRange = validRange;
+function validRange(range, loose) {
+  try {
+    // Return '*' instead of '' so that truthiness works.
+    // This will throw if it's invalid anyway
+    return new Range(range, loose).range || '*';
+  } catch (er) {
+    return null;
+  }
+}
+
+// Determine if version is less than all the versions possible in the range
+exports.ltr = ltr;
+function ltr(version, range, loose) {
+  return outside(version, range, '<', loose);
+}
+
+// Determine if version is greater than all the versions possible in the range.
+exports.gtr = gtr;
+function gtr(version, range, loose) {
+  return outside(version, range, '>', loose);
+}
+
+exports.outside = outside;
+function outside(version, range, hilo, loose) {
+  version = new SemVer(version, loose);
+  range = new Range(range, loose);
+
+  var gtfn, ltefn, ltfn, comp, ecomp;
+  switch (hilo) {
+    case '>':
+      gtfn = gt;
+      ltefn = lte;
+      ltfn = lt;
+      comp = '>';
+      ecomp = '>=';
+      break;
+    case '<':
+      gtfn = lt;
+      ltefn = gte;
+      ltfn = gt;
+      comp = '<';
+      ecomp = '<=';
+      break;
+    default:
+      throw new TypeError('Must provide a hilo val of "<" or ">"');
+  }
+
+  // If it satisifes the range it is not outside
+  if (satisfies(version, range, loose)) {
+    return false;
+  }
+
+  // From now on, variable terms are as if we're in "gtr" mode.
+  // but note that everything is flipped for the "ltr" function.
+
+  for (var i = 0; i < range.set.length; ++i) {
+    var comparators = range.set[i];
+
+    var high = null;
+    var low = null;
+
+    comparators.forEach(function(comparator) {
+      if (comparator.semver === ANY) {
+        comparator = new Comparator('>=0.0.0')
+      }
+      high = high || comparator;
+      low = low || comparator;
+      if (gtfn(comparator.semver, high.semver, loose)) {
+        high = comparator;
+      } else if (ltfn(comparator.semver, low.semver, loose)) {
+        low = comparator;
+      }
+    });
+
+    // If the edge version comparator has a operator then our version
+    // isn't outside it
+    if (high.operator === comp || high.operator === ecomp) {
+      return false;
+    }
+
+    // If the lowest version comparator has an operator and our version
+    // is less than it then it isn't higher than the range
+    if ((!low.operator || low.operator === comp) &&
+        ltefn(version, low.semver)) {
+      return false;
+    } else if (low.operator === ecomp && ltfn(version, low.semver)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+exports.prerelease = prerelease;
+function prerelease(version, loose) {
+  var parsed = parse(version, loose);
+  return (parsed && parsed.prerelease.length) ? parsed.prerelease : null;
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/source-map-support/source-map-support.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+var SourceMapConsumer = __webpack_require__("./node_modules/source-map/source-map.js").SourceMapConsumer;
+var path = __webpack_require__(0);
+
+var fs;
+try {
+  fs = __webpack_require__(1);
+  if (!fs.existsSync || !fs.readFileSync) {
+    // fs doesn't have all methods we need
+    fs = null;
+  }
+} catch (err) {
+  /* nop */
+}
+
+// Only install once if called multiple times
+var errorFormatterInstalled = false;
+var uncaughtShimInstalled = false;
+
+// If true, the caches are reset before a stack trace formatting operation
+var emptyCacheBetweenOperations = false;
+
+// Supports {browser, node, auto}
+var environment = "auto";
+
+// Maps a file path to a string containing the file contents
+var fileContentsCache = {};
+
+// Maps a file path to a source map for that file
+var sourceMapCache = {};
+
+// Regex for detecting source maps
+var reSourceMap = /^data:application\/json[^,]+base64,/;
+
+// Priority list of retrieve handlers
+var retrieveFileHandlers = [];
+var retrieveMapHandlers = [];
+
+function isInBrowser() {
+  if (environment === "browser")
+    return true;
+  if (environment === "node")
+    return false;
+  return ((typeof window !== 'undefined') && (typeof XMLHttpRequest === 'function') && !(window.require && window.module && window.process && window.process.type === "renderer"));
+}
+
+function hasGlobalProcessEventEmitter() {
+  return ((typeof process === 'object') && (process !== null) && (typeof process.on === 'function'));
+}
+
+function handlerExec(list) {
+  return function(arg) {
+    for (var i = 0; i < list.length; i++) {
+      var ret = list[i](arg);
+      if (ret) {
+        return ret;
+      }
+    }
+    return null;
+  };
+}
+
+var retrieveFile = handlerExec(retrieveFileHandlers);
+
+retrieveFileHandlers.push(function(path) {
+  // Trim the path to make sure there is no extra whitespace.
+  path = path.trim();
+  if (path in fileContentsCache) {
+    return fileContentsCache[path];
+  }
+
+  var contents = null;
+  if (!fs) {
+    // Use SJAX if we are in the browser
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', path, false);
+    xhr.send(null);
+    var contents = null
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      contents = xhr.responseText
+    }
+  } else if (fs.existsSync(path)) {
+    // Otherwise, use the filesystem
+    contents = fs.readFileSync(path, 'utf8');
+  }
+
+  return fileContentsCache[path] = contents;
+});
+
+// Support URLs relative to a directory, but be careful about a protocol prefix
+// in case we are in the browser (i.e. directories may start with "http://")
+function supportRelativeURL(file, url) {
+  if (!file) return url;
+  var dir = path.dirname(file);
+  var match = /^\w+:\/\/[^\/]*/.exec(dir);
+  var protocol = match ? match[0] : '';
+  return protocol + path.resolve(dir.slice(protocol.length), url);
+}
+
+function retrieveSourceMapURL(source) {
+  var fileData;
+
+  if (isInBrowser()) {
+     try {
+       var xhr = new XMLHttpRequest();
+       xhr.open('GET', source, false);
+       xhr.send(null);
+       fileData = xhr.readyState === 4 ? xhr.responseText : null;
+
+       // Support providing a sourceMappingURL via the SourceMap header
+       var sourceMapHeader = xhr.getResponseHeader("SourceMap") ||
+                             xhr.getResponseHeader("X-SourceMap");
+       if (sourceMapHeader) {
+         return sourceMapHeader;
+       }
+     } catch (e) {
+     }
+  }
+
+  // Get the URL of the source map
+  fileData = retrieveFile(source);
+  var re = /(?:\/\/[@#][ \t]+sourceMappingURL=([^\s'"]+?)[ \t]*$)|(?:\/\*[@#][ \t]+sourceMappingURL=([^\*]+?)[ \t]*(?:\*\/)[ \t]*$)/mg;
+  // Keep executing the search to find the *last* sourceMappingURL to avoid
+  // picking up sourceMappingURLs from comments, strings, etc.
+  var lastMatch, match;
+  while (match = re.exec(fileData)) lastMatch = match;
+  if (!lastMatch) return null;
+  return lastMatch[1];
+};
+
+// Can be overridden by the retrieveSourceMap option to install. Takes a
+// generated source filename; returns a {map, optional url} object, or null if
+// there is no source map.  The map field may be either a string or the parsed
+// JSON object (ie, it must be a valid argument to the SourceMapConsumer
+// constructor).
+var retrieveSourceMap = handlerExec(retrieveMapHandlers);
+retrieveMapHandlers.push(function(source) {
+  var sourceMappingURL = retrieveSourceMapURL(source);
+  if (!sourceMappingURL) return null;
+
+  // Read the contents of the source map
+  var sourceMapData;
+  if (reSourceMap.test(sourceMappingURL)) {
+    // Support source map URL as a data url
+    var rawData = sourceMappingURL.slice(sourceMappingURL.indexOf(',') + 1);
+    sourceMapData = new Buffer(rawData, "base64").toString();
+    sourceMappingURL = source;
+  } else {
+    // Support source map URLs relative to the source URL
+    sourceMappingURL = supportRelativeURL(source, sourceMappingURL);
+    sourceMapData = retrieveFile(sourceMappingURL);
+  }
+
+  if (!sourceMapData) {
+    return null;
+  }
+
+  return {
+    url: sourceMappingURL,
+    map: sourceMapData
+  };
+});
+
+function mapSourcePosition(position) {
+  var sourceMap = sourceMapCache[position.source];
+  if (!sourceMap) {
+    // Call the (overrideable) retrieveSourceMap function to get the source map.
+    var urlAndMap = retrieveSourceMap(position.source);
+    if (urlAndMap) {
+      sourceMap = sourceMapCache[position.source] = {
+        url: urlAndMap.url,
+        map: new SourceMapConsumer(urlAndMap.map)
+      };
+
+      // Load all sources stored inline with the source map into the file cache
+      // to pretend like they are already loaded. They may not exist on disk.
+      if (sourceMap.map.sourcesContent) {
+        sourceMap.map.sources.forEach(function(source, i) {
+          var contents = sourceMap.map.sourcesContent[i];
+          if (contents) {
+            var url = supportRelativeURL(sourceMap.url, source);
+            fileContentsCache[url] = contents;
+          }
+        });
+      }
+    } else {
+      sourceMap = sourceMapCache[position.source] = {
+        url: null,
+        map: null
+      };
+    }
+  }
+
+  // Resolve the source URL relative to the URL of the source map
+  if (sourceMap && sourceMap.map) {
+    var originalPosition = sourceMap.map.originalPositionFor(position);
+
+    // Only return the original position if a matching line was found. If no
+    // matching line is found then we return position instead, which will cause
+    // the stack trace to print the path and line for the compiled file. It is
+    // better to give a precise location in the compiled file than a vague
+    // location in the original file.
+    if (originalPosition.source !== null) {
+      originalPosition.source = supportRelativeURL(
+        sourceMap.url, originalPosition.source);
+      return originalPosition;
+    }
+  }
+
+  return position;
+}
+
+// Parses code generated by FormatEvalOrigin(), a function inside V8:
+// https://code.google.com/p/v8/source/browse/trunk/src/messages.js
+function mapEvalOrigin(origin) {
+  // Most eval() calls are in this format
+  var match = /^eval at ([^(]+) \((.+):(\d+):(\d+)\)$/.exec(origin);
+  if (match) {
+    var position = mapSourcePosition({
+      source: match[2],
+      line: +match[3],
+      column: match[4] - 1
+    });
+    return 'eval at ' + match[1] + ' (' + position.source + ':' +
+      position.line + ':' + (position.column + 1) + ')';
+  }
+
+  // Parse nested eval() calls using recursion
+  match = /^eval at ([^(]+) \((.+)\)$/.exec(origin);
+  if (match) {
+    return 'eval at ' + match[1] + ' (' + mapEvalOrigin(match[2]) + ')';
+  }
+
+  // Make sure we still return useful information if we didn't find anything
+  return origin;
+}
+
+// This is copied almost verbatim from the V8 source code at
+// https://code.google.com/p/v8/source/browse/trunk/src/messages.js. The
+// implementation of wrapCallSite() used to just forward to the actual source
+// code of CallSite.prototype.toString but unfortunately a new release of V8
+// did something to the prototype chain and broke the shim. The only fix I
+// could find was copy/paste.
+function CallSiteToString() {
+  var fileName;
+  var fileLocation = "";
+  if (this.isNative()) {
+    fileLocation = "native";
+  } else {
+    fileName = this.getScriptNameOrSourceURL();
+    if (!fileName && this.isEval()) {
+      fileLocation = this.getEvalOrigin();
+      fileLocation += ", ";  // Expecting source position to follow.
+    }
+
+    if (fileName) {
+      fileLocation += fileName;
+    } else {
+      // Source code does not originate from a file and is not native, but we
+      // can still get the source position inside the source string, e.g. in
+      // an eval string.
+      fileLocation += "<anonymous>";
+    }
+    var lineNumber = this.getLineNumber();
+    if (lineNumber != null) {
+      fileLocation += ":" + lineNumber;
+      var columnNumber = this.getColumnNumber();
+      if (columnNumber) {
+        fileLocation += ":" + columnNumber;
+      }
+    }
+  }
+
+  var line = "";
+  var functionName = this.getFunctionName();
+  var addSuffix = true;
+  var isConstructor = this.isConstructor();
+  var isMethodCall = !(this.isToplevel() || isConstructor);
+  if (isMethodCall) {
+    var typeName = this.getTypeName();
+    // Fixes shim to be backward compatable with Node v0 to v4
+    if (typeName === "[object Object]") {
+      typeName = "null";
+    }
+    var methodName = this.getMethodName();
+    if (functionName) {
+      if (typeName && functionName.indexOf(typeName) != 0) {
+        line += typeName + ".";
+      }
+      line += functionName;
+      if (methodName && functionName.indexOf("." + methodName) != functionName.length - methodName.length - 1) {
+        line += " [as " + methodName + "]";
+      }
+    } else {
+      line += typeName + "." + (methodName || "<anonymous>");
+    }
+  } else if (isConstructor) {
+    line += "new " + (functionName || "<anonymous>");
+  } else if (functionName) {
+    line += functionName;
+  } else {
+    line += fileLocation;
+    addSuffix = false;
+  }
+  if (addSuffix) {
+    line += " (" + fileLocation + ")";
+  }
+  return line;
+}
+
+function cloneCallSite(frame) {
+  var object = {};
+  Object.getOwnPropertyNames(Object.getPrototypeOf(frame)).forEach(function(name) {
+    object[name] = /^(?:is|get)/.test(name) ? function() { return frame[name].call(frame); } : frame[name];
+  });
+  object.toString = CallSiteToString;
+  return object;
+}
+
+function wrapCallSite(frame) {
+  if(frame.isNative()) {
+    return frame;
+  }
+
+  // Most call sites will return the source file from getFileName(), but code
+  // passed to eval() ending in "//# sourceURL=..." will return the source file
+  // from getScriptNameOrSourceURL() instead
+  var source = frame.getFileName() || frame.getScriptNameOrSourceURL();
+  if (source) {
+    var line = frame.getLineNumber();
+    var column = frame.getColumnNumber() - 1;
+
+    // Fix position in Node where some (internal) code is prepended.
+    // See https://github.com/evanw/node-source-map-support/issues/36
+    if (line === 1 && !isInBrowser() && !frame.isEval()) {
+      column -= 62;
+    }
+
+    var position = mapSourcePosition({
+      source: source,
+      line: line,
+      column: column
+    });
+    frame = cloneCallSite(frame);
+    frame.getFileName = function() { return position.source; };
+    frame.getLineNumber = function() { return position.line; };
+    frame.getColumnNumber = function() { return position.column + 1; };
+    frame.getScriptNameOrSourceURL = function() { return position.source; };
+    return frame;
+  }
+
+  // Code called using eval() needs special handling
+  var origin = frame.isEval() && frame.getEvalOrigin();
+  if (origin) {
+    origin = mapEvalOrigin(origin);
+    frame = cloneCallSite(frame);
+    frame.getEvalOrigin = function() { return origin; };
+    return frame;
+  }
+
+  // If we get here then we were unable to change the source position
+  return frame;
+}
+
+// This function is part of the V8 stack trace API, for more info see:
+// http://code.google.com/p/v8/wiki/JavaScriptStackTraceApi
+function prepareStackTrace(error, stack) {
+  if (emptyCacheBetweenOperations) {
+    fileContentsCache = {};
+    sourceMapCache = {};
+  }
+
+  return error + stack.map(function(frame) {
+    return '\n    at ' + wrapCallSite(frame);
+  }).join('');
+}
+
+// Generate position and snippet of original source with pointer
+function getErrorSource(error) {
+  var match = /\n    at [^(]+ \((.*):(\d+):(\d+)\)/.exec(error.stack);
+  if (match) {
+    var source = match[1];
+    var line = +match[2];
+    var column = +match[3];
+
+    // Support the inline sourceContents inside the source map
+    var contents = fileContentsCache[source];
+
+    // Support files on disk
+    if (!contents && fs && fs.existsSync(source)) {
+      contents = fs.readFileSync(source, 'utf8');
+    }
+
+    // Format the line from the original source code like node does
+    if (contents) {
+      var code = contents.split(/(?:\r\n|\r|\n)/)[line - 1];
+      if (code) {
+        return source + ':' + line + '\n' + code + '\n' +
+          new Array(column).join(' ') + '^';
+      }
+    }
+  }
+  return null;
+}
+
+function printErrorAndExit (error) {
+  var source = getErrorSource(error);
+
+  if (source) {
+    console.error();
+    console.error(source);
+  }
+
+  console.error(error.stack);
+  process.exit(1);
+}
+
+function shimEmitUncaughtException () {
+  var origEmit = process.emit;
+
+  process.emit = function (type) {
+    if (type === 'uncaughtException') {
+      var hasStack = (arguments[1] && arguments[1].stack);
+      var hasListeners = (this.listeners(type).length > 0);
+
+      if (hasStack && !hasListeners) {
+        return printErrorAndExit(arguments[1]);
+      }
+    }
+
+    return origEmit.apply(this, arguments);
+  };
+}
+
+exports.wrapCallSite = wrapCallSite;
+exports.getErrorSource = getErrorSource;
+exports.mapSourcePosition = mapSourcePosition;
+exports.retrieveSourceMap = retrieveSourceMap;
+
+exports.install = function(options) {
+  options = options || {};
+
+  if (options.environment) {
+    environment = options.environment;
+    if (["node", "browser", "auto"].indexOf(environment) === -1) {
+      throw new Error("environment " + environment + " was unknown. Available options are {auto, browser, node}")
+    }
+  }
+
+  // Allow sources to be found by methods other than reading the files
+  // directly from disk.
+  if (options.retrieveFile) {
+    if (options.overrideRetrieveFile) {
+      retrieveFileHandlers.length = 0;
+    }
+
+    retrieveFileHandlers.unshift(options.retrieveFile);
+  }
+
+  // Allow source maps to be found by methods other than reading the files
+  // directly from disk.
+  if (options.retrieveSourceMap) {
+    if (options.overrideRetrieveSourceMap) {
+      retrieveMapHandlers.length = 0;
+    }
+
+    retrieveMapHandlers.unshift(options.retrieveSourceMap);
+  }
+
+  // Support runtime transpilers that include inline source maps
+  if (options.hookRequire && !isInBrowser()) {
+    var Module;
+    try {
+      Module = __webpack_require__(5);
+    } catch (err) {
+      // NOP: Loading in catch block to convert webpack error to warning.
+    }
+    var $compile = Module.prototype._compile;
+
+    if (!$compile.__sourceMapSupport) {
+      Module.prototype._compile = function(content, filename) {
+        fileContentsCache[filename] = content;
+        sourceMapCache[filename] = undefined;
+        return $compile.call(this, content, filename);
+      };
+
+      Module.prototype._compile.__sourceMapSupport = true;
+    }
+  }
+
+  // Configure options
+  if (!emptyCacheBetweenOperations) {
+    emptyCacheBetweenOperations = 'emptyCacheBetweenOperations' in options ?
+      options.emptyCacheBetweenOperations : false;
+  }
+
+  // Install the error reformatter
+  if (!errorFormatterInstalled) {
+    errorFormatterInstalled = true;
+    Error.prepareStackTrace = prepareStackTrace;
+  }
+
+  if (!uncaughtShimInstalled) {
+    var installHandler = 'handleUncaughtExceptions' in options ?
+      options.handleUncaughtExceptions : true;
+
+    // Provide the option to not install the uncaught exception handler. This is
+    // to support other uncaught exception handlers (in test frameworks, for
+    // example). If this handler is not installed and there are no other uncaught
+    // exception handlers, uncaught exceptions will be caught by node's built-in
+    // exception handler and the process will still be terminated. However, the
+    // generated JavaScript code will be shown above the stack trace instead of
+    // the original source code.
+    if (installHandler && hasGlobalProcessEventEmitter()) {
+      uncaughtShimInstalled = true;
+      shimEmitUncaughtException();
+    }
+  }
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/source-map/lib/array-set.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+/* -*- Mode: js; js-indent-level: 2; -*- */
+/*
+ * Copyright 2011 Mozilla Foundation and contributors
+ * Licensed under the New BSD license. See LICENSE or:
+ * http://opensource.org/licenses/BSD-3-Clause
+ */
+
+var util = __webpack_require__("./node_modules/source-map/lib/util.js");
+var has = Object.prototype.hasOwnProperty;
+
+/**
+ * A data structure which is a combination of an array and a set. Adding a new
+ * member is O(1), testing for membership is O(1), and finding the index of an
+ * element is O(1). Removing elements from the set is not supported. Only
+ * strings are supported for membership.
+ */
+function ArraySet() {
+  this._array = [];
+  this._set = Object.create(null);
+}
+
+/**
+ * Static method for creating ArraySet instances from an existing array.
+ */
+ArraySet.fromArray = function ArraySet_fromArray(aArray, aAllowDuplicates) {
+  var set = new ArraySet();
+  for (var i = 0, len = aArray.length; i < len; i++) {
+    set.add(aArray[i], aAllowDuplicates);
+  }
+  return set;
+};
+
+/**
+ * Return how many unique items are in this ArraySet. If duplicates have been
+ * added, than those do not count towards the size.
+ *
+ * @returns Number
+ */
+ArraySet.prototype.size = function ArraySet_size() {
+  return Object.getOwnPropertyNames(this._set).length;
+};
+
+/**
+ * Add the given string to this set.
+ *
+ * @param String aStr
+ */
+ArraySet.prototype.add = function ArraySet_add(aStr, aAllowDuplicates) {
+  var sStr = util.toSetString(aStr);
+  var isDuplicate = has.call(this._set, sStr);
+  var idx = this._array.length;
+  if (!isDuplicate || aAllowDuplicates) {
+    this._array.push(aStr);
+  }
+  if (!isDuplicate) {
+    this._set[sStr] = idx;
+  }
+};
+
+/**
+ * Is the given string a member of this set?
+ *
+ * @param String aStr
+ */
+ArraySet.prototype.has = function ArraySet_has(aStr) {
+  var sStr = util.toSetString(aStr);
+  return has.call(this._set, sStr);
+};
+
+/**
+ * What is the index of the given string in the array?
+ *
+ * @param String aStr
+ */
+ArraySet.prototype.indexOf = function ArraySet_indexOf(aStr) {
+  var sStr = util.toSetString(aStr);
+  if (has.call(this._set, sStr)) {
+    return this._set[sStr];
+  }
+  throw new Error('"' + aStr + '" is not in the set.');
+};
+
+/**
+ * What is the element at the given index?
+ *
+ * @param Number aIdx
+ */
+ArraySet.prototype.at = function ArraySet_at(aIdx) {
+  if (aIdx >= 0 && aIdx < this._array.length) {
+    return this._array[aIdx];
+  }
+  throw new Error('No element indexed by ' + aIdx);
+};
+
+/**
+ * Returns the array representation of this set (which has the proper indices
+ * indicated by indexOf). Note that this is a copy of the internal array used
+ * for storing the members so that no one can mess with internal state.
+ */
+ArraySet.prototype.toArray = function ArraySet_toArray() {
+  return this._array.slice();
+};
+
+exports.ArraySet = ArraySet;
+
+
+/***/ }),
+
+/***/ "./node_modules/source-map/lib/base64-vlq.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+/* -*- Mode: js; js-indent-level: 2; -*- */
+/*
+ * Copyright 2011 Mozilla Foundation and contributors
+ * Licensed under the New BSD license. See LICENSE or:
+ * http://opensource.org/licenses/BSD-3-Clause
+ *
+ * Based on the Base 64 VLQ implementation in Closure Compiler:
+ * https://code.google.com/p/closure-compiler/source/browse/trunk/src/com/google/debugging/sourcemap/Base64VLQ.java
+ *
+ * Copyright 2011 The Closure Compiler Authors. All rights reserved.
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are
+ * met:
+ *
+ *  * Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *  * Redistributions in binary form must reproduce the above
+ *    copyright notice, this list of conditions and the following
+ *    disclaimer in the documentation and/or other materials provided
+ *    with the distribution.
+ *  * Neither the name of Google Inc. nor the names of its
+ *    contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+var base64 = __webpack_require__("./node_modules/source-map/lib/base64.js");
+
+// A single base 64 digit can contain 6 bits of data. For the base 64 variable
+// length quantities we use in the source map spec, the first bit is the sign,
+// the next four bits are the actual value, and the 6th bit is the
+// continuation bit. The continuation bit tells us whether there are more
+// digits in this value following this digit.
+//
+//   Continuation
+//   |    Sign
+//   |    |
+//   V    V
+//   101011
+
+var VLQ_BASE_SHIFT = 5;
+
+// binary: 100000
+var VLQ_BASE = 1 << VLQ_BASE_SHIFT;
+
+// binary: 011111
+var VLQ_BASE_MASK = VLQ_BASE - 1;
+
+// binary: 100000
+var VLQ_CONTINUATION_BIT = VLQ_BASE;
+
+/**
+ * Converts from a two-complement value to a value where the sign bit is
+ * placed in the least significant bit.  For example, as decimals:
+ *   1 becomes 2 (10 binary), -1 becomes 3 (11 binary)
+ *   2 becomes 4 (100 binary), -2 becomes 5 (101 binary)
+ */
+function toVLQSigned(aValue) {
+  return aValue < 0
+    ? ((-aValue) << 1) + 1
+    : (aValue << 1) + 0;
+}
+
+/**
+ * Converts to a two-complement value from a value where the sign bit is
+ * placed in the least significant bit.  For example, as decimals:
+ *   2 (10 binary) becomes 1, 3 (11 binary) becomes -1
+ *   4 (100 binary) becomes 2, 5 (101 binary) becomes -2
+ */
+function fromVLQSigned(aValue) {
+  var isNegative = (aValue & 1) === 1;
+  var shifted = aValue >> 1;
+  return isNegative
+    ? -shifted
+    : shifted;
+}
+
+/**
+ * Returns the base 64 VLQ encoded value.
+ */
+exports.encode = function base64VLQ_encode(aValue) {
+  var encoded = "";
+  var digit;
+
+  var vlq = toVLQSigned(aValue);
+
+  do {
+    digit = vlq & VLQ_BASE_MASK;
+    vlq >>>= VLQ_BASE_SHIFT;
+    if (vlq > 0) {
+      // There are still more digits in this value, so we must make sure the
+      // continuation bit is marked.
+      digit |= VLQ_CONTINUATION_BIT;
+    }
+    encoded += base64.encode(digit);
+  } while (vlq > 0);
+
+  return encoded;
+};
+
+/**
+ * Decodes the next base 64 VLQ value from the given string and returns the
+ * value and the rest of the string via the out parameter.
+ */
+exports.decode = function base64VLQ_decode(aStr, aIndex, aOutParam) {
+  var strLen = aStr.length;
+  var result = 0;
+  var shift = 0;
+  var continuation, digit;
+
+  do {
+    if (aIndex >= strLen) {
+      throw new Error("Expected more digits in base 64 VLQ value.");
+    }
+
+    digit = base64.decode(aStr.charCodeAt(aIndex++));
+    if (digit === -1) {
+      throw new Error("Invalid base64 digit: " + aStr.charAt(aIndex - 1));
+    }
+
+    continuation = !!(digit & VLQ_CONTINUATION_BIT);
+    digit &= VLQ_BASE_MASK;
+    result = result + (digit << shift);
+    shift += VLQ_BASE_SHIFT;
+  } while (continuation);
+
+  aOutParam.value = fromVLQSigned(result);
+  aOutParam.rest = aIndex;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/source-map/lib/base64.js":
+/***/ (function(module, exports) {
+
+/* -*- Mode: js; js-indent-level: 2; -*- */
+/*
+ * Copyright 2011 Mozilla Foundation and contributors
+ * Licensed under the New BSD license. See LICENSE or:
+ * http://opensource.org/licenses/BSD-3-Clause
+ */
+
+var intToCharMap = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'.split('');
+
+/**
+ * Encode an integer in the range of 0 to 63 to a single base 64 digit.
+ */
+exports.encode = function (number) {
+  if (0 <= number && number < intToCharMap.length) {
+    return intToCharMap[number];
+  }
+  throw new TypeError("Must be between 0 and 63: " + number);
+};
+
+/**
+ * Decode a single base 64 character code digit to an integer. Returns -1 on
+ * failure.
+ */
+exports.decode = function (charCode) {
+  var bigA = 65;     // 'A'
+  var bigZ = 90;     // 'Z'
+
+  var littleA = 97;  // 'a'
+  var littleZ = 122; // 'z'
+
+  var zero = 48;     // '0'
+  var nine = 57;     // '9'
+
+  var plus = 43;     // '+'
+  var slash = 47;    // '/'
+
+  var littleOffset = 26;
+  var numberOffset = 52;
+
+  // 0 - 25: ABCDEFGHIJKLMNOPQRSTUVWXYZ
+  if (bigA <= charCode && charCode <= bigZ) {
+    return (charCode - bigA);
+  }
+
+  // 26 - 51: abcdefghijklmnopqrstuvwxyz
+  if (littleA <= charCode && charCode <= littleZ) {
+    return (charCode - littleA + littleOffset);
+  }
+
+  // 52 - 61: 0123456789
+  if (zero <= charCode && charCode <= nine) {
+    return (charCode - zero + numberOffset);
+  }
+
+  // 62: +
+  if (charCode == plus) {
+    return 62;
+  }
+
+  // 63: /
+  if (charCode == slash) {
+    return 63;
+  }
+
+  // Invalid base64 digit.
+  return -1;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/source-map/lib/binary-search.js":
+/***/ (function(module, exports) {
+
+/* -*- Mode: js; js-indent-level: 2; -*- */
+/*
+ * Copyright 2011 Mozilla Foundation and contributors
+ * Licensed under the New BSD license. See LICENSE or:
+ * http://opensource.org/licenses/BSD-3-Clause
+ */
+
+exports.GREATEST_LOWER_BOUND = 1;
+exports.LEAST_UPPER_BOUND = 2;
+
+/**
+ * Recursive implementation of binary search.
+ *
+ * @param aLow Indices here and lower do not contain the needle.
+ * @param aHigh Indices here and higher do not contain the needle.
+ * @param aNeedle The element being searched for.
+ * @param aHaystack The non-empty array being searched.
+ * @param aCompare Function which takes two elements and returns -1, 0, or 1.
+ * @param aBias Either 'binarySearch.GREATEST_LOWER_BOUND' or
+ *     'binarySearch.LEAST_UPPER_BOUND'. Specifies whether to return the
+ *     closest element that is smaller than or greater than the one we are
+ *     searching for, respectively, if the exact element cannot be found.
+ */
+function recursiveSearch(aLow, aHigh, aNeedle, aHaystack, aCompare, aBias) {
+  // This function terminates when one of the following is true:
+  //
+  //   1. We find the exact element we are looking for.
+  //
+  //   2. We did not find the exact element, but we can return the index of
+  //      the next-closest element.
+  //
+  //   3. We did not find the exact element, and there is no next-closest
+  //      element than the one we are searching for, so we return -1.
+  var mid = Math.floor((aHigh - aLow) / 2) + aLow;
+  var cmp = aCompare(aNeedle, aHaystack[mid], true);
+  if (cmp === 0) {
+    // Found the element we are looking for.
+    return mid;
+  }
+  else if (cmp > 0) {
+    // Our needle is greater than aHaystack[mid].
+    if (aHigh - mid > 1) {
+      // The element is in the upper half.
+      return recursiveSearch(mid, aHigh, aNeedle, aHaystack, aCompare, aBias);
+    }
+
+    // The exact needle element was not found in this haystack. Determine if
+    // we are in termination case (3) or (2) and return the appropriate thing.
+    if (aBias == exports.LEAST_UPPER_BOUND) {
+      return aHigh < aHaystack.length ? aHigh : -1;
+    } else {
+      return mid;
+    }
+  }
+  else {
+    // Our needle is less than aHaystack[mid].
+    if (mid - aLow > 1) {
+      // The element is in the lower half.
+      return recursiveSearch(aLow, mid, aNeedle, aHaystack, aCompare, aBias);
+    }
+
+    // we are in termination case (3) or (2) and return the appropriate thing.
+    if (aBias == exports.LEAST_UPPER_BOUND) {
+      return mid;
+    } else {
+      return aLow < 0 ? -1 : aLow;
+    }
+  }
+}
+
+/**
+ * This is an implementation of binary search which will always try and return
+ * the index of the closest element if there is no exact hit. This is because
+ * mappings between original and generated line/col pairs are single points,
+ * and there is an implicit region between each of them, so a miss just means
+ * that you aren't on the very start of a region.
+ *
+ * @param aNeedle The element you are looking for.
+ * @param aHaystack The array that is being searched.
+ * @param aCompare A function which takes the needle and an element in the
+ *     array and returns -1, 0, or 1 depending on whether the needle is less
+ *     than, equal to, or greater than the element, respectively.
+ * @param aBias Either 'binarySearch.GREATEST_LOWER_BOUND' or
+ *     'binarySearch.LEAST_UPPER_BOUND'. Specifies whether to return the
+ *     closest element that is smaller than or greater than the one we are
+ *     searching for, respectively, if the exact element cannot be found.
+ *     Defaults to 'binarySearch.GREATEST_LOWER_BOUND'.
+ */
+exports.search = function search(aNeedle, aHaystack, aCompare, aBias) {
+  if (aHaystack.length === 0) {
+    return -1;
+  }
+
+  var index = recursiveSearch(-1, aHaystack.length, aNeedle, aHaystack,
+                              aCompare, aBias || exports.GREATEST_LOWER_BOUND);
+  if (index < 0) {
+    return -1;
+  }
+
+  // We have found either the exact element, or the next-closest element than
+  // the one we are searching for. However, there may be more than one such
+  // element. Make sure we always return the smallest of these.
+  while (index - 1 >= 0) {
+    if (aCompare(aHaystack[index], aHaystack[index - 1], true) !== 0) {
+      break;
+    }
+    --index;
+  }
+
+  return index;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/source-map/lib/mapping-list.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+/* -*- Mode: js; js-indent-level: 2; -*- */
+/*
+ * Copyright 2014 Mozilla Foundation and contributors
+ * Licensed under the New BSD license. See LICENSE or:
+ * http://opensource.org/licenses/BSD-3-Clause
+ */
+
+var util = __webpack_require__("./node_modules/source-map/lib/util.js");
+
+/**
+ * Determine whether mappingB is after mappingA with respect to generated
+ * position.
+ */
+function generatedPositionAfter(mappingA, mappingB) {
+  // Optimized for most common case
+  var lineA = mappingA.generatedLine;
+  var lineB = mappingB.generatedLine;
+  var columnA = mappingA.generatedColumn;
+  var columnB = mappingB.generatedColumn;
+  return lineB > lineA || lineB == lineA && columnB >= columnA ||
+         util.compareByGeneratedPositionsInflated(mappingA, mappingB) <= 0;
+}
+
+/**
+ * A data structure to provide a sorted view of accumulated mappings in a
+ * performance conscious manner. It trades a neglibable overhead in general
+ * case for a large speedup in case of mappings being added in order.
+ */
+function MappingList() {
+  this._array = [];
+  this._sorted = true;
+  // Serves as infimum
+  this._last = {generatedLine: -1, generatedColumn: 0};
+}
+
+/**
+ * Iterate through internal items. This method takes the same arguments that
+ * `Array.prototype.forEach` takes.
+ *
+ * NOTE: The order of the mappings is NOT guaranteed.
+ */
+MappingList.prototype.unsortedForEach =
+  function MappingList_forEach(aCallback, aThisArg) {
+    this._array.forEach(aCallback, aThisArg);
+  };
+
+/**
+ * Add the given source mapping.
+ *
+ * @param Object aMapping
+ */
+MappingList.prototype.add = function MappingList_add(aMapping) {
+  if (generatedPositionAfter(this._last, aMapping)) {
+    this._last = aMapping;
+    this._array.push(aMapping);
+  } else {
+    this._sorted = false;
+    this._array.push(aMapping);
+  }
+};
+
+/**
+ * Returns the flat, sorted array of mappings. The mappings are sorted by
+ * generated position.
+ *
+ * WARNING: This method returns internal data without copying, for
+ * performance. The return value must NOT be mutated, and should be treated as
+ * an immutable borrow. If you want to take ownership, you must make your own
+ * copy.
+ */
+MappingList.prototype.toArray = function MappingList_toArray() {
+  if (!this._sorted) {
+    this._array.sort(util.compareByGeneratedPositionsInflated);
+    this._sorted = true;
+  }
+  return this._array;
+};
+
+exports.MappingList = MappingList;
+
+
+/***/ }),
+
+/***/ "./node_modules/source-map/lib/quick-sort.js":
+/***/ (function(module, exports) {
+
+/* -*- Mode: js; js-indent-level: 2; -*- */
+/*
+ * Copyright 2011 Mozilla Foundation and contributors
+ * Licensed under the New BSD license. See LICENSE or:
+ * http://opensource.org/licenses/BSD-3-Clause
+ */
+
+// It turns out that some (most?) JavaScript engines don't self-host
+// `Array.prototype.sort`. This makes sense because C++ will likely remain
+// faster than JS when doing raw CPU-intensive sorting. However, when using a
+// custom comparator function, calling back and forth between the VM's C++ and
+// JIT'd JS is rather slow *and* loses JIT type information, resulting in
+// worse generated code for the comparator function than would be optimal. In
+// fact, when sorting with a comparator, these costs outweigh the benefits of
+// sorting in C++. By using our own JS-implemented Quick Sort (below), we get
+// a ~3500ms mean speed-up in `bench/bench.html`.
+
+/**
+ * Swap the elements indexed by `x` and `y` in the array `ary`.
+ *
+ * @param {Array} ary
+ *        The array.
+ * @param {Number} x
+ *        The index of the first item.
+ * @param {Number} y
+ *        The index of the second item.
+ */
+function swap(ary, x, y) {
+  var temp = ary[x];
+  ary[x] = ary[y];
+  ary[y] = temp;
+}
+
+/**
+ * Returns a random integer within the range `low .. high` inclusive.
+ *
+ * @param {Number} low
+ *        The lower bound on the range.
+ * @param {Number} high
+ *        The upper bound on the range.
+ */
+function randomIntInRange(low, high) {
+  return Math.round(low + (Math.random() * (high - low)));
+}
+
+/**
+ * The Quick Sort algorithm.
+ *
+ * @param {Array} ary
+ *        An array to sort.
+ * @param {function} comparator
+ *        Function to use to compare two items.
+ * @param {Number} p
+ *        Start index of the array
+ * @param {Number} r
+ *        End index of the array
+ */
+function doQuickSort(ary, comparator, p, r) {
+  // If our lower bound is less than our upper bound, we (1) partition the
+  // array into two pieces and (2) recurse on each half. If it is not, this is
+  // the empty array and our base case.
+
+  if (p < r) {
+    // (1) Partitioning.
+    //
+    // The partitioning chooses a pivot between `p` and `r` and moves all
+    // elements that are less than or equal to the pivot to the before it, and
+    // all the elements that are greater than it after it. The effect is that
+    // once partition is done, the pivot is in the exact place it will be when
+    // the array is put in sorted order, and it will not need to be moved
+    // again. This runs in O(n) time.
+
+    // Always choose a random pivot so that an input array which is reverse
+    // sorted does not cause O(n^2) running time.
+    var pivotIndex = randomIntInRange(p, r);
+    var i = p - 1;
+
+    swap(ary, pivotIndex, r);
+    var pivot = ary[r];
+
+    // Immediately after `j` is incremented in this loop, the following hold
+    // true:
+    //
+    //   * Every element in `ary[p .. i]` is less than or equal to the pivot.
+    //
+    //   * Every element in `ary[i+1 .. j-1]` is greater than the pivot.
+    for (var j = p; j < r; j++) {
+      if (comparator(ary[j], pivot) <= 0) {
+        i += 1;
+        swap(ary, i, j);
+      }
+    }
+
+    swap(ary, i + 1, j);
+    var q = i + 1;
+
+    // (2) Recurse on each half.
+
+    doQuickSort(ary, comparator, p, q - 1);
+    doQuickSort(ary, comparator, q + 1, r);
+  }
+}
+
+/**
+ * Sort the given array in-place with the given comparator function.
+ *
+ * @param {Array} ary
+ *        An array to sort.
+ * @param {function} comparator
+ *        Function to use to compare two items.
+ */
+exports.quickSort = function (ary, comparator) {
+  doQuickSort(ary, comparator, 0, ary.length - 1);
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/source-map/lib/source-map-consumer.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+/* -*- Mode: js; js-indent-level: 2; -*- */
+/*
+ * Copyright 2011 Mozilla Foundation and contributors
+ * Licensed under the New BSD license. See LICENSE or:
+ * http://opensource.org/licenses/BSD-3-Clause
+ */
+
+var util = __webpack_require__("./node_modules/source-map/lib/util.js");
+var binarySearch = __webpack_require__("./node_modules/source-map/lib/binary-search.js");
+var ArraySet = __webpack_require__("./node_modules/source-map/lib/array-set.js").ArraySet;
+var base64VLQ = __webpack_require__("./node_modules/source-map/lib/base64-vlq.js");
+var quickSort = __webpack_require__("./node_modules/source-map/lib/quick-sort.js").quickSort;
+
+function SourceMapConsumer(aSourceMap) {
+  var sourceMap = aSourceMap;
+  if (typeof aSourceMap === 'string') {
+    sourceMap = JSON.parse(aSourceMap.replace(/^\)\]\}'/, ''));
+  }
+
+  return sourceMap.sections != null
+    ? new IndexedSourceMapConsumer(sourceMap)
+    : new BasicSourceMapConsumer(sourceMap);
+}
+
+SourceMapConsumer.fromSourceMap = function(aSourceMap) {
+  return BasicSourceMapConsumer.fromSourceMap(aSourceMap);
+}
+
+/**
+ * The version of the source mapping spec that we are consuming.
+ */
+SourceMapConsumer.prototype._version = 3;
+
+// `__generatedMappings` and `__originalMappings` are arrays that hold the
+// parsed mapping coordinates from the source map's "mappings" attribute. They
+// are lazily instantiated, accessed via the `_generatedMappings` and
+// `_originalMappings` getters respectively, and we only parse the mappings
+// and create these arrays once queried for a source location. We jump through
+// these hoops because there can be many thousands of mappings, and parsing
+// them is expensive, so we only want to do it if we must.
+//
+// Each object in the arrays is of the form:
+//
+//     {
+//       generatedLine: The line number in the generated code,
+//       generatedColumn: The column number in the generated code,
+//       source: The path to the original source file that generated this
+//               chunk of code,
+//       originalLine: The line number in the original source that
+//                     corresponds to this chunk of generated code,
+//       originalColumn: The column number in the original source that
+//                       corresponds to this chunk of generated code,
+//       name: The name of the original symbol which generated this chunk of
+//             code.
+//     }
+//
+// All properties except for `generatedLine` and `generatedColumn` can be
+// `null`.
+//
+// `_generatedMappings` is ordered by the generated positions.
+//
+// `_originalMappings` is ordered by the original positions.
+
+SourceMapConsumer.prototype.__generatedMappings = null;
+Object.defineProperty(SourceMapConsumer.prototype, '_generatedMappings', {
+  get: function () {
+    if (!this.__generatedMappings) {
+      this._parseMappings(this._mappings, this.sourceRoot);
+    }
+
+    return this.__generatedMappings;
+  }
+});
+
+SourceMapConsumer.prototype.__originalMappings = null;
+Object.defineProperty(SourceMapConsumer.prototype, '_originalMappings', {
+  get: function () {
+    if (!this.__originalMappings) {
+      this._parseMappings(this._mappings, this.sourceRoot);
+    }
+
+    return this.__originalMappings;
+  }
+});
+
+SourceMapConsumer.prototype._charIsMappingSeparator =
+  function SourceMapConsumer_charIsMappingSeparator(aStr, index) {
+    var c = aStr.charAt(index);
+    return c === ";" || c === ",";
+  };
+
+/**
+ * Parse the mappings in a string in to a data structure which we can easily
+ * query (the ordered arrays in the `this.__generatedMappings` and
+ * `this.__originalMappings` properties).
+ */
+SourceMapConsumer.prototype._parseMappings =
+  function SourceMapConsumer_parseMappings(aStr, aSourceRoot) {
+    throw new Error("Subclasses must implement _parseMappings");
+  };
+
+SourceMapConsumer.GENERATED_ORDER = 1;
+SourceMapConsumer.ORIGINAL_ORDER = 2;
+
+SourceMapConsumer.GREATEST_LOWER_BOUND = 1;
+SourceMapConsumer.LEAST_UPPER_BOUND = 2;
+
+/**
+ * Iterate over each mapping between an original source/line/column and a
+ * generated line/column in this source map.
+ *
+ * @param Function aCallback
+ *        The function that is called with each mapping.
+ * @param Object aContext
+ *        Optional. If specified, this object will be the value of `this` every
+ *        time that `aCallback` is called.
+ * @param aOrder
+ *        Either `SourceMapConsumer.GENERATED_ORDER` or
+ *        `SourceMapConsumer.ORIGINAL_ORDER`. Specifies whether you want to
+ *        iterate over the mappings sorted by the generated file's line/column
+ *        order or the original's source/line/column order, respectively. Defaults to
+ *        `SourceMapConsumer.GENERATED_ORDER`.
+ */
+SourceMapConsumer.prototype.eachMapping =
+  function SourceMapConsumer_eachMapping(aCallback, aContext, aOrder) {
+    var context = aContext || null;
+    var order = aOrder || SourceMapConsumer.GENERATED_ORDER;
+
+    var mappings;
+    switch (order) {
+    case SourceMapConsumer.GENERATED_ORDER:
+      mappings = this._generatedMappings;
+      break;
+    case SourceMapConsumer.ORIGINAL_ORDER:
+      mappings = this._originalMappings;
+      break;
+    default:
+      throw new Error("Unknown order of iteration.");
+    }
+
+    var sourceRoot = this.sourceRoot;
+    mappings.map(function (mapping) {
+      var source = mapping.source === null ? null : this._sources.at(mapping.source);
+      if (source != null && sourceRoot != null) {
+        source = util.join(sourceRoot, source);
+      }
+      return {
+        source: source,
+        generatedLine: mapping.generatedLine,
+        generatedColumn: mapping.generatedColumn,
+        originalLine: mapping.originalLine,
+        originalColumn: mapping.originalColumn,
+        name: mapping.name === null ? null : this._names.at(mapping.name)
+      };
+    }, this).forEach(aCallback, context);
+  };
+
+/**
+ * Returns all generated line and column information for the original source,
+ * line, and column provided. If no column is provided, returns all mappings
+ * corresponding to a either the line we are searching for or the next
+ * closest line that has any mappings. Otherwise, returns all mappings
+ * corresponding to the given line and either the column we are searching for
+ * or the next closest column that has any offsets.
+ *
+ * The only argument is an object with the following properties:
+ *
+ *   - source: The filename of the original source.
+ *   - line: The line number in the original source.
+ *   - column: Optional. the column number in the original source.
+ *
+ * and an array of objects is returned, each with the following properties:
+ *
+ *   - line: The line number in the generated source, or null.
+ *   - column: The column number in the generated source, or null.
+ */
+SourceMapConsumer.prototype.allGeneratedPositionsFor =
+  function SourceMapConsumer_allGeneratedPositionsFor(aArgs) {
+    var line = util.getArg(aArgs, 'line');
+
+    // When there is no exact match, BasicSourceMapConsumer.prototype._findMapping
+    // returns the index of the closest mapping less than the needle. By
+    // setting needle.originalColumn to 0, we thus find the last mapping for
+    // the given line, provided such a mapping exists.
+    var needle = {
+      source: util.getArg(aArgs, 'source'),
+      originalLine: line,
+      originalColumn: util.getArg(aArgs, 'column', 0)
+    };
+
+    if (this.sourceRoot != null) {
+      needle.source = util.relative(this.sourceRoot, needle.source);
+    }
+    if (!this._sources.has(needle.source)) {
+      return [];
+    }
+    needle.source = this._sources.indexOf(needle.source);
+
+    var mappings = [];
+
+    var index = this._findMapping(needle,
+                                  this._originalMappings,
+                                  "originalLine",
+                                  "originalColumn",
+                                  util.compareByOriginalPositions,
+                                  binarySearch.LEAST_UPPER_BOUND);
+    if (index >= 0) {
+      var mapping = this._originalMappings[index];
+
+      if (aArgs.column === undefined) {
+        var originalLine = mapping.originalLine;
+
+        // Iterate until either we run out of mappings, or we run into
+        // a mapping for a different line than the one we found. Since
+        // mappings are sorted, this is guaranteed to find all mappings for
+        // the line we found.
+        while (mapping && mapping.originalLine === originalLine) {
+          mappings.push({
+            line: util.getArg(mapping, 'generatedLine', null),
+            column: util.getArg(mapping, 'generatedColumn', null),
+            lastColumn: util.getArg(mapping, 'lastGeneratedColumn', null)
+          });
+
+          mapping = this._originalMappings[++index];
+        }
+      } else {
+        var originalColumn = mapping.originalColumn;
+
+        // Iterate until either we run out of mappings, or we run into
+        // a mapping for a different line than the one we were searching for.
+        // Since mappings are sorted, this is guaranteed to find all mappings for
+        // the line we are searching for.
+        while (mapping &&
+               mapping.originalLine === line &&
+               mapping.originalColumn == originalColumn) {
+          mappings.push({
+            line: util.getArg(mapping, 'generatedLine', null),
+            column: util.getArg(mapping, 'generatedColumn', null),
+            lastColumn: util.getArg(mapping, 'lastGeneratedColumn', null)
+          });
+
+          mapping = this._originalMappings[++index];
+        }
+      }
+    }
+
+    return mappings;
+  };
+
+exports.SourceMapConsumer = SourceMapConsumer;
+
+/**
+ * A BasicSourceMapConsumer instance represents a parsed source map which we can
+ * query for information about the original file positions by giving it a file
+ * position in the generated source.
+ *
+ * The only parameter is the raw source map (either as a JSON string, or
+ * already parsed to an object). According to the spec, source maps have the
+ * following attributes:
+ *
+ *   - version: Which version of the source map spec this map is following.
+ *   - sources: An array of URLs to the original source files.
+ *   - names: An array of identifiers which can be referrenced by individual mappings.
+ *   - sourceRoot: Optional. The URL root from which all sources are relative.
+ *   - sourcesContent: Optional. An array of contents of the original source files.
+ *   - mappings: A string of base64 VLQs which contain the actual mappings.
+ *   - file: Optional. The generated file this source map is associated with.
+ *
+ * Here is an example source map, taken from the source map spec[0]:
+ *
+ *     {
+ *       version : 3,
+ *       file: "out.js",
+ *       sourceRoot : "",
+ *       sources: ["foo.js", "bar.js"],
+ *       names: ["src", "maps", "are", "fun"],
+ *       mappings: "AA,AB;;ABCDE;"
+ *     }
+ *
+ * [0]: https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k/edit?pli=1#
+ */
+function BasicSourceMapConsumer(aSourceMap) {
+  var sourceMap = aSourceMap;
+  if (typeof aSourceMap === 'string') {
+    sourceMap = JSON.parse(aSourceMap.replace(/^\)\]\}'/, ''));
+  }
+
+  var version = util.getArg(sourceMap, 'version');
+  var sources = util.getArg(sourceMap, 'sources');
+  // Sass 3.3 leaves out the 'names' array, so we deviate from the spec (which
+  // requires the array) to play nice here.
+  var names = util.getArg(sourceMap, 'names', []);
+  var sourceRoot = util.getArg(sourceMap, 'sourceRoot', null);
+  var sourcesContent = util.getArg(sourceMap, 'sourcesContent', null);
+  var mappings = util.getArg(sourceMap, 'mappings');
+  var file = util.getArg(sourceMap, 'file', null);
+
+  // Once again, Sass deviates from the spec and supplies the version as a
+  // string rather than a number, so we use loose equality checking here.
+  if (version != this._version) {
+    throw new Error('Unsupported version: ' + version);
+  }
+
+  sources = sources
+    .map(String)
+    // Some source maps produce relative source paths like "./foo.js" instead of
+    // "foo.js".  Normalize these first so that future comparisons will succeed.
+    // See bugzil.la/1090768.
+    .map(util.normalize)
+    // Always ensure that absolute sources are internally stored relative to
+    // the source root, if the source root is absolute. Not doing this would
+    // be particularly problematic when the source root is a prefix of the
+    // source (valid, but why??). See github issue #199 and bugzil.la/1188982.
+    .map(function (source) {
+      return sourceRoot && util.isAbsolute(sourceRoot) && util.isAbsolute(source)
+        ? util.relative(sourceRoot, source)
+        : source;
+    });
+
+  // Pass `true` below to allow duplicate names and sources. While source maps
+  // are intended to be compressed and deduplicated, the TypeScript compiler
+  // sometimes generates source maps with duplicates in them. See Github issue
+  // #72 and bugzil.la/889492.
+  this._names = ArraySet.fromArray(names.map(String), true);
+  this._sources = ArraySet.fromArray(sources, true);
+
+  this.sourceRoot = sourceRoot;
+  this.sourcesContent = sourcesContent;
+  this._mappings = mappings;
+  this.file = file;
+}
+
+BasicSourceMapConsumer.prototype = Object.create(SourceMapConsumer.prototype);
+BasicSourceMapConsumer.prototype.consumer = SourceMapConsumer;
+
+/**
+ * Create a BasicSourceMapConsumer from a SourceMapGenerator.
+ *
+ * @param SourceMapGenerator aSourceMap
+ *        The source map that will be consumed.
+ * @returns BasicSourceMapConsumer
+ */
+BasicSourceMapConsumer.fromSourceMap =
+  function SourceMapConsumer_fromSourceMap(aSourceMap) {
+    var smc = Object.create(BasicSourceMapConsumer.prototype);
+
+    var names = smc._names = ArraySet.fromArray(aSourceMap._names.toArray(), true);
+    var sources = smc._sources = ArraySet.fromArray(aSourceMap._sources.toArray(), true);
+    smc.sourceRoot = aSourceMap._sourceRoot;
+    smc.sourcesContent = aSourceMap._generateSourcesContent(smc._sources.toArray(),
+                                                            smc.sourceRoot);
+    smc.file = aSourceMap._file;
+
+    // Because we are modifying the entries (by converting string sources and
+    // names to indices into the sources and names ArraySets), we have to make
+    // a copy of the entry or else bad things happen. Shared mutable state
+    // strikes again! See github issue #191.
+
+    var generatedMappings = aSourceMap._mappings.toArray().slice();
+    var destGeneratedMappings = smc.__generatedMappings = [];
+    var destOriginalMappings = smc.__originalMappings = [];
+
+    for (var i = 0, length = generatedMappings.length; i < length; i++) {
+      var srcMapping = generatedMappings[i];
+      var destMapping = new Mapping;
+      destMapping.generatedLine = srcMapping.generatedLine;
+      destMapping.generatedColumn = srcMapping.generatedColumn;
+
+      if (srcMapping.source) {
+        destMapping.source = sources.indexOf(srcMapping.source);
+        destMapping.originalLine = srcMapping.originalLine;
+        destMapping.originalColumn = srcMapping.originalColumn;
+
+        if (srcMapping.name) {
+          destMapping.name = names.indexOf(srcMapping.name);
+        }
+
+        destOriginalMappings.push(destMapping);
+      }
+
+      destGeneratedMappings.push(destMapping);
+    }
+
+    quickSort(smc.__originalMappings, util.compareByOriginalPositions);
+
+    return smc;
+  };
+
+/**
+ * The version of the source mapping spec that we are consuming.
+ */
+BasicSourceMapConsumer.prototype._version = 3;
+
+/**
+ * The list of original sources.
+ */
+Object.defineProperty(BasicSourceMapConsumer.prototype, 'sources', {
+  get: function () {
+    return this._sources.toArray().map(function (s) {
+      return this.sourceRoot != null ? util.join(this.sourceRoot, s) : s;
+    }, this);
+  }
+});
+
+/**
+ * Provide the JIT with a nice shape / hidden class.
+ */
+function Mapping() {
+  this.generatedLine = 0;
+  this.generatedColumn = 0;
+  this.source = null;
+  this.originalLine = null;
+  this.originalColumn = null;
+  this.name = null;
+}
+
+/**
+ * Parse the mappings in a string in to a data structure which we can easily
+ * query (the ordered arrays in the `this.__generatedMappings` and
+ * `this.__originalMappings` properties).
+ */
+BasicSourceMapConsumer.prototype._parseMappings =
+  function SourceMapConsumer_parseMappings(aStr, aSourceRoot) {
+    var generatedLine = 1;
+    var previousGeneratedColumn = 0;
+    var previousOriginalLine = 0;
+    var previousOriginalColumn = 0;
+    var previousSource = 0;
+    var previousName = 0;
+    var length = aStr.length;
+    var index = 0;
+    var cachedSegments = {};
+    var temp = {};
+    var originalMappings = [];
+    var generatedMappings = [];
+    var mapping, str, segment, end, value;
+
+    while (index < length) {
+      if (aStr.charAt(index) === ';') {
+        generatedLine++;
+        index++;
+        previousGeneratedColumn = 0;
+      }
+      else if (aStr.charAt(index) === ',') {
+        index++;
+      }
+      else {
+        mapping = new Mapping();
+        mapping.generatedLine = generatedLine;
+
+        // Because each offset is encoded relative to the previous one,
+        // many segments often have the same encoding. We can exploit this
+        // fact by caching the parsed variable length fields of each segment,
+        // allowing us to avoid a second parse if we encounter the same
+        // segment again.
+        for (end = index; end < length; end++) {
+          if (this._charIsMappingSeparator(aStr, end)) {
+            break;
+          }
+        }
+        str = aStr.slice(index, end);
+
+        segment = cachedSegments[str];
+        if (segment) {
+          index += str.length;
+        } else {
+          segment = [];
+          while (index < end) {
+            base64VLQ.decode(aStr, index, temp);
+            value = temp.value;
+            index = temp.rest;
+            segment.push(value);
+          }
+
+          if (segment.length === 2) {
+            throw new Error('Found a source, but no line and column');
+          }
+
+          if (segment.length === 3) {
+            throw new Error('Found a source and line, but no column');
+          }
+
+          cachedSegments[str] = segment;
+        }
+
+        // Generated column.
+        mapping.generatedColumn = previousGeneratedColumn + segment[0];
+        previousGeneratedColumn = mapping.generatedColumn;
+
+        if (segment.length > 1) {
+          // Original source.
+          mapping.source = previousSource + segment[1];
+          previousSource += segment[1];
+
+          // Original line.
+          mapping.originalLine = previousOriginalLine + segment[2];
+          previousOriginalLine = mapping.originalLine;
+          // Lines are stored 0-based
+          mapping.originalLine += 1;
+
+          // Original column.
+          mapping.originalColumn = previousOriginalColumn + segment[3];
+          previousOriginalColumn = mapping.originalColumn;
+
+          if (segment.length > 4) {
+            // Original name.
+            mapping.name = previousName + segment[4];
+            previousName += segment[4];
+          }
+        }
+
+        generatedMappings.push(mapping);
+        if (typeof mapping.originalLine === 'number') {
+          originalMappings.push(mapping);
+        }
+      }
+    }
+
+    quickSort(generatedMappings, util.compareByGeneratedPositionsDeflated);
+    this.__generatedMappings = generatedMappings;
+
+    quickSort(originalMappings, util.compareByOriginalPositions);
+    this.__originalMappings = originalMappings;
+  };
+
+/**
+ * Find the mapping that best matches the hypothetical "needle" mapping that
+ * we are searching for in the given "haystack" of mappings.
+ */
+BasicSourceMapConsumer.prototype._findMapping =
+  function SourceMapConsumer_findMapping(aNeedle, aMappings, aLineName,
+                                         aColumnName, aComparator, aBias) {
+    // To return the position we are searching for, we must first find the
+    // mapping for the given position and then return the opposite position it
+    // points to. Because the mappings are sorted, we can use binary search to
+    // find the best mapping.
+
+    if (aNeedle[aLineName] <= 0) {
+      throw new TypeError('Line must be greater than or equal to 1, got '
+                          + aNeedle[aLineName]);
+    }
+    if (aNeedle[aColumnName] < 0) {
+      throw new TypeError('Column must be greater than or equal to 0, got '
+                          + aNeedle[aColumnName]);
+    }
+
+    return binarySearch.search(aNeedle, aMappings, aComparator, aBias);
+  };
+
+/**
+ * Compute the last column for each generated mapping. The last column is
+ * inclusive.
+ */
+BasicSourceMapConsumer.prototype.computeColumnSpans =
+  function SourceMapConsumer_computeColumnSpans() {
+    for (var index = 0; index < this._generatedMappings.length; ++index) {
+      var mapping = this._generatedMappings[index];
+
+      // Mappings do not contain a field for the last generated columnt. We
+      // can come up with an optimistic estimate, however, by assuming that
+      // mappings are contiguous (i.e. given two consecutive mappings, the
+      // first mapping ends where the second one starts).
+      if (index + 1 < this._generatedMappings.length) {
+        var nextMapping = this._generatedMappings[index + 1];
+
+        if (mapping.generatedLine === nextMapping.generatedLine) {
+          mapping.lastGeneratedColumn = nextMapping.generatedColumn - 1;
+          continue;
+        }
+      }
+
+      // The last mapping for each line spans the entire line.
+      mapping.lastGeneratedColumn = Infinity;
+    }
+  };
+
+/**
+ * Returns the original source, line, and column information for the generated
+ * source's line and column positions provided. The only argument is an object
+ * with the following properties:
+ *
+ *   - line: The line number in the generated source.
+ *   - column: The column number in the generated source.
+ *   - bias: Either 'SourceMapConsumer.GREATEST_LOWER_BOUND' or
+ *     'SourceMapConsumer.LEAST_UPPER_BOUND'. Specifies whether to return the
+ *     closest element that is smaller than or greater than the one we are
+ *     searching for, respectively, if the exact element cannot be found.
+ *     Defaults to 'SourceMapConsumer.GREATEST_LOWER_BOUND'.
+ *
+ * and an object is returned with the following properties:
+ *
+ *   - source: The original source file, or null.
+ *   - line: The line number in the original source, or null.
+ *   - column: The column number in the original source, or null.
+ *   - name: The original identifier, or null.
+ */
+BasicSourceMapConsumer.prototype.originalPositionFor =
+  function SourceMapConsumer_originalPositionFor(aArgs) {
+    var needle = {
+      generatedLine: util.getArg(aArgs, 'line'),
+      generatedColumn: util.getArg(aArgs, 'column')
+    };
+
+    var index = this._findMapping(
+      needle,
+      this._generatedMappings,
+      "generatedLine",
+      "generatedColumn",
+      util.compareByGeneratedPositionsDeflated,
+      util.getArg(aArgs, 'bias', SourceMapConsumer.GREATEST_LOWER_BOUND)
+    );
+
+    if (index >= 0) {
+      var mapping = this._generatedMappings[index];
+
+      if (mapping.generatedLine === needle.generatedLine) {
+        var source = util.getArg(mapping, 'source', null);
+        if (source !== null) {
+          source = this._sources.at(source);
+          if (this.sourceRoot != null) {
+            source = util.join(this.sourceRoot, source);
+          }
+        }
+        var name = util.getArg(mapping, 'name', null);
+        if (name !== null) {
+          name = this._names.at(name);
+        }
+        return {
+          source: source,
+          line: util.getArg(mapping, 'originalLine', null),
+          column: util.getArg(mapping, 'originalColumn', null),
+          name: name
+        };
+      }
+    }
+
+    return {
+      source: null,
+      line: null,
+      column: null,
+      name: null
+    };
+  };
+
+/**
+ * Return true if we have the source content for every source in the source
+ * map, false otherwise.
+ */
+BasicSourceMapConsumer.prototype.hasContentsOfAllSources =
+  function BasicSourceMapConsumer_hasContentsOfAllSources() {
+    if (!this.sourcesContent) {
+      return false;
+    }
+    return this.sourcesContent.length >= this._sources.size() &&
+      !this.sourcesContent.some(function (sc) { return sc == null; });
+  };
+
+/**
+ * Returns the original source content. The only argument is the url of the
+ * original source file. Returns null if no original source content is
+ * available.
+ */
+BasicSourceMapConsumer.prototype.sourceContentFor =
+  function SourceMapConsumer_sourceContentFor(aSource, nullOnMissing) {
+    if (!this.sourcesContent) {
+      return null;
+    }
+
+    if (this.sourceRoot != null) {
+      aSource = util.relative(this.sourceRoot, aSource);
+    }
+
+    if (this._sources.has(aSource)) {
+      return this.sourcesContent[this._sources.indexOf(aSource)];
+    }
+
+    var url;
+    if (this.sourceRoot != null
+        && (url = util.urlParse(this.sourceRoot))) {
+      // XXX: file:// URIs and absolute paths lead to unexpected behavior for
+      // many users. We can help them out when they expect file:// URIs to
+      // behave like it would if they were running a local HTTP server. See
+      // https://bugzilla.mozilla.org/show_bug.cgi?id=885597.
+      var fileUriAbsPath = aSource.replace(/^file:\/\//, "");
+      if (url.scheme == "file"
+          && this._sources.has(fileUriAbsPath)) {
+        return this.sourcesContent[this._sources.indexOf(fileUriAbsPath)]
+      }
+
+      if ((!url.path || url.path == "/")
+          && this._sources.has("/" + aSource)) {
+        return this.sourcesContent[this._sources.indexOf("/" + aSource)];
+      }
+    }
+
+    // This function is used recursively from
+    // IndexedSourceMapConsumer.prototype.sourceContentFor. In that case, we
+    // don't want to throw if we can't find the source - we just want to
+    // return null, so we provide a flag to exit gracefully.
+    if (nullOnMissing) {
+      return null;
+    }
+    else {
+      throw new Error('"' + aSource + '" is not in the SourceMap.');
+    }
+  };
+
+/**
+ * Returns the generated line and column information for the original source,
+ * line, and column positions provided. The only argument is an object with
+ * the following properties:
+ *
+ *   - source: The filename of the original source.
+ *   - line: The line number in the original source.
+ *   - column: The column number in the original source.
+ *   - bias: Either 'SourceMapConsumer.GREATEST_LOWER_BOUND' or
+ *     'SourceMapConsumer.LEAST_UPPER_BOUND'. Specifies whether to return the
+ *     closest element that is smaller than or greater than the one we are
+ *     searching for, respectively, if the exact element cannot be found.
+ *     Defaults to 'SourceMapConsumer.GREATEST_LOWER_BOUND'.
+ *
+ * and an object is returned with the following properties:
+ *
+ *   - line: The line number in the generated source, or null.
+ *   - column: The column number in the generated source, or null.
+ */
+BasicSourceMapConsumer.prototype.generatedPositionFor =
+  function SourceMapConsumer_generatedPositionFor(aArgs) {
+    var source = util.getArg(aArgs, 'source');
+    if (this.sourceRoot != null) {
+      source = util.relative(this.sourceRoot, source);
+    }
+    if (!this._sources.has(source)) {
+      return {
+        line: null,
+        column: null,
+        lastColumn: null
+      };
+    }
+    source = this._sources.indexOf(source);
+
+    var needle = {
+      source: source,
+      originalLine: util.getArg(aArgs, 'line'),
+      originalColumn: util.getArg(aArgs, 'column')
+    };
+
+    var index = this._findMapping(
+      needle,
+      this._originalMappings,
+      "originalLine",
+      "originalColumn",
+      util.compareByOriginalPositions,
+      util.getArg(aArgs, 'bias', SourceMapConsumer.GREATEST_LOWER_BOUND)
+    );
+
+    if (index >= 0) {
+      var mapping = this._originalMappings[index];
+
+      if (mapping.source === needle.source) {
+        return {
+          line: util.getArg(mapping, 'generatedLine', null),
+          column: util.getArg(mapping, 'generatedColumn', null),
+          lastColumn: util.getArg(mapping, 'lastGeneratedColumn', null)
+        };
+      }
+    }
+
+    return {
+      line: null,
+      column: null,
+      lastColumn: null
+    };
+  };
+
+exports.BasicSourceMapConsumer = BasicSourceMapConsumer;
+
+/**
+ * An IndexedSourceMapConsumer instance represents a parsed source map which
+ * we can query for information. It differs from BasicSourceMapConsumer in
+ * that it takes "indexed" source maps (i.e. ones with a "sections" field) as
+ * input.
+ *
+ * The only parameter is a raw source map (either as a JSON string, or already
+ * parsed to an object). According to the spec for indexed source maps, they
+ * have the following attributes:
+ *
+ *   - version: Which version of the source map spec this map is following.
+ *   - file: Optional. The generated file this source map is associated with.
+ *   - sections: A list of section definitions.
+ *
+ * Each value under the "sections" field has two fields:
+ *   - offset: The offset into the original specified at which this section
+ *       begins to apply, defined as an object with a "line" and "column"
+ *       field.
+ *   - map: A source map definition. This source map could also be indexed,
+ *       but doesn't have to be.
+ *
+ * Instead of the "map" field, it's also possible to have a "url" field
+ * specifying a URL to retrieve a source map from, but that's currently
+ * unsupported.
+ *
+ * Here's an example source map, taken from the source map spec[0], but
+ * modified to omit a section which uses the "url" field.
+ *
+ *  {
+ *    version : 3,
+ *    file: "app.js",
+ *    sections: [{
+ *      offset: {line:100, column:10},
+ *      map: {
+ *        version : 3,
+ *        file: "section.js",
+ *        sources: ["foo.js", "bar.js"],
+ *        names: ["src", "maps", "are", "fun"],
+ *        mappings: "AAAA,E;;ABCDE;"
+ *      }
+ *    }],
+ *  }
+ *
+ * [0]: https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k/edit#heading=h.535es3xeprgt
+ */
+function IndexedSourceMapConsumer(aSourceMap) {
+  var sourceMap = aSourceMap;
+  if (typeof aSourceMap === 'string') {
+    sourceMap = JSON.parse(aSourceMap.replace(/^\)\]\}'/, ''));
+  }
+
+  var version = util.getArg(sourceMap, 'version');
+  var sections = util.getArg(sourceMap, 'sections');
+
+  if (version != this._version) {
+    throw new Error('Unsupported version: ' + version);
+  }
+
+  this._sources = new ArraySet();
+  this._names = new ArraySet();
+
+  var lastOffset = {
+    line: -1,
+    column: 0
+  };
+  this._sections = sections.map(function (s) {
+    if (s.url) {
+      // The url field will require support for asynchronicity.
+      // See https://github.com/mozilla/source-map/issues/16
+      throw new Error('Support for url field in sections not implemented.');
+    }
+    var offset = util.getArg(s, 'offset');
+    var offsetLine = util.getArg(offset, 'line');
+    var offsetColumn = util.getArg(offset, 'column');
+
+    if (offsetLine < lastOffset.line ||
+        (offsetLine === lastOffset.line && offsetColumn < lastOffset.column)) {
+      throw new Error('Section offsets must be ordered and non-overlapping.');
+    }
+    lastOffset = offset;
+
+    return {
+      generatedOffset: {
+        // The offset fields are 0-based, but we use 1-based indices when
+        // encoding/decoding from VLQ.
+        generatedLine: offsetLine + 1,
+        generatedColumn: offsetColumn + 1
+      },
+      consumer: new SourceMapConsumer(util.getArg(s, 'map'))
+    }
+  });
+}
+
+IndexedSourceMapConsumer.prototype = Object.create(SourceMapConsumer.prototype);
+IndexedSourceMapConsumer.prototype.constructor = SourceMapConsumer;
+
+/**
+ * The version of the source mapping spec that we are consuming.
+ */
+IndexedSourceMapConsumer.prototype._version = 3;
+
+/**
+ * The list of original sources.
+ */
+Object.defineProperty(IndexedSourceMapConsumer.prototype, 'sources', {
+  get: function () {
+    var sources = [];
+    for (var i = 0; i < this._sections.length; i++) {
+      for (var j = 0; j < this._sections[i].consumer.sources.length; j++) {
+        sources.push(this._sections[i].consumer.sources[j]);
+      }
+    }
+    return sources;
+  }
+});
+
+/**
+ * Returns the original source, line, and column information for the generated
+ * source's line and column positions provided. The only argument is an object
+ * with the following properties:
+ *
+ *   - line: The line number in the generated source.
+ *   - column: The column number in the generated source.
+ *
+ * and an object is returned with the following properties:
+ *
+ *   - source: The original source file, or null.
+ *   - line: The line number in the original source, or null.
+ *   - column: The column number in the original source, or null.
+ *   - name: The original identifier, or null.
+ */
+IndexedSourceMapConsumer.prototype.originalPositionFor =
+  function IndexedSourceMapConsumer_originalPositionFor(aArgs) {
+    var needle = {
+      generatedLine: util.getArg(aArgs, 'line'),
+      generatedColumn: util.getArg(aArgs, 'column')
+    };
+
+    // Find the section containing the generated position we're trying to map
+    // to an original position.
+    var sectionIndex = binarySearch.search(needle, this._sections,
+      function(needle, section) {
+        var cmp = needle.generatedLine - section.generatedOffset.generatedLine;
+        if (cmp) {
+          return cmp;
+        }
+
+        return (needle.generatedColumn -
+                section.generatedOffset.generatedColumn);
+      });
+    var section = this._sections[sectionIndex];
+
+    if (!section) {
+      return {
+        source: null,
+        line: null,
+        column: null,
+        name: null
+      };
+    }
+
+    return section.consumer.originalPositionFor({
+      line: needle.generatedLine -
+        (section.generatedOffset.generatedLine - 1),
+      column: needle.generatedColumn -
+        (section.generatedOffset.generatedLine === needle.generatedLine
+         ? section.generatedOffset.generatedColumn - 1
+         : 0),
+      bias: aArgs.bias
+    });
+  };
+
+/**
+ * Return true if we have the source content for every source in the source
+ * map, false otherwise.
+ */
+IndexedSourceMapConsumer.prototype.hasContentsOfAllSources =
+  function IndexedSourceMapConsumer_hasContentsOfAllSources() {
+    return this._sections.every(function (s) {
+      return s.consumer.hasContentsOfAllSources();
+    });
+  };
+
+/**
+ * Returns the original source content. The only argument is the url of the
+ * original source file. Returns null if no original source content is
+ * available.
+ */
+IndexedSourceMapConsumer.prototype.sourceContentFor =
+  function IndexedSourceMapConsumer_sourceContentFor(aSource, nullOnMissing) {
+    for (var i = 0; i < this._sections.length; i++) {
+      var section = this._sections[i];
+
+      var content = section.consumer.sourceContentFor(aSource, true);
+      if (content) {
+        return content;
+      }
+    }
+    if (nullOnMissing) {
+      return null;
+    }
+    else {
+      throw new Error('"' + aSource + '" is not in the SourceMap.');
+    }
+  };
+
+/**
+ * Returns the generated line and column information for the original source,
+ * line, and column positions provided. The only argument is an object with
+ * the following properties:
+ *
+ *   - source: The filename of the original source.
+ *   - line: The line number in the original source.
+ *   - column: The column number in the original source.
+ *
+ * and an object is returned with the following properties:
+ *
+ *   - line: The line number in the generated source, or null.
+ *   - column: The column number in the generated source, or null.
+ */
+IndexedSourceMapConsumer.prototype.generatedPositionFor =
+  function IndexedSourceMapConsumer_generatedPositionFor(aArgs) {
+    for (var i = 0; i < this._sections.length; i++) {
+      var section = this._sections[i];
+
+      // Only consider this section if the requested source is in the list of
+      // sources of the consumer.
+      if (section.consumer.sources.indexOf(util.getArg(aArgs, 'source')) === -1) {
+        continue;
+      }
+      var generatedPosition = section.consumer.generatedPositionFor(aArgs);
+      if (generatedPosition) {
+        var ret = {
+          line: generatedPosition.line +
+            (section.generatedOffset.generatedLine - 1),
+          column: generatedPosition.column +
+            (section.generatedOffset.generatedLine === generatedPosition.line
+             ? section.generatedOffset.generatedColumn - 1
+             : 0)
+        };
+        return ret;
+      }
+    }
+
+    return {
+      line: null,
+      column: null
+    };
+  };
+
+/**
+ * Parse the mappings in a string in to a data structure which we can easily
+ * query (the ordered arrays in the `this.__generatedMappings` and
+ * `this.__originalMappings` properties).
+ */
+IndexedSourceMapConsumer.prototype._parseMappings =
+  function IndexedSourceMapConsumer_parseMappings(aStr, aSourceRoot) {
+    this.__generatedMappings = [];
+    this.__originalMappings = [];
+    for (var i = 0; i < this._sections.length; i++) {
+      var section = this._sections[i];
+      var sectionMappings = section.consumer._generatedMappings;
+      for (var j = 0; j < sectionMappings.length; j++) {
+        var mapping = sectionMappings[j];
+
+        var source = section.consumer._sources.at(mapping.source);
+        if (section.consumer.sourceRoot !== null) {
+          source = util.join(section.consumer.sourceRoot, source);
+        }
+        this._sources.add(source);
+        source = this._sources.indexOf(source);
+
+        var name = section.consumer._names.at(mapping.name);
+        this._names.add(name);
+        name = this._names.indexOf(name);
+
+        // The mappings coming from the consumer for the section have
+        // generated positions relative to the start of the section, so we
+        // need to offset them to be relative to the start of the concatenated
+        // generated file.
+        var adjustedMapping = {
+          source: source,
+          generatedLine: mapping.generatedLine +
+            (section.generatedOffset.generatedLine - 1),
+          generatedColumn: mapping.generatedColumn +
+            (section.generatedOffset.generatedLine === mapping.generatedLine
+            ? section.generatedOffset.generatedColumn - 1
+            : 0),
+          originalLine: mapping.originalLine,
+          originalColumn: mapping.originalColumn,
+          name: name
+        };
+
+        this.__generatedMappings.push(adjustedMapping);
+        if (typeof adjustedMapping.originalLine === 'number') {
+          this.__originalMappings.push(adjustedMapping);
+        }
+      }
+    }
+
+    quickSort(this.__generatedMappings, util.compareByGeneratedPositionsDeflated);
+    quickSort(this.__originalMappings, util.compareByOriginalPositions);
+  };
+
+exports.IndexedSourceMapConsumer = IndexedSourceMapConsumer;
+
+
+/***/ }),
+
+/***/ "./node_modules/source-map/lib/source-map-generator.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+/* -*- Mode: js; js-indent-level: 2; -*- */
+/*
+ * Copyright 2011 Mozilla Foundation and contributors
+ * Licensed under the New BSD license. See LICENSE or:
+ * http://opensource.org/licenses/BSD-3-Clause
+ */
+
+var base64VLQ = __webpack_require__("./node_modules/source-map/lib/base64-vlq.js");
+var util = __webpack_require__("./node_modules/source-map/lib/util.js");
+var ArraySet = __webpack_require__("./node_modules/source-map/lib/array-set.js").ArraySet;
+var MappingList = __webpack_require__("./node_modules/source-map/lib/mapping-list.js").MappingList;
+
+/**
+ * An instance of the SourceMapGenerator represents a source map which is
+ * being built incrementally. You may pass an object with the following
+ * properties:
+ *
+ *   - file: The filename of the generated source.
+ *   - sourceRoot: A root for all relative URLs in this source map.
+ */
+function SourceMapGenerator(aArgs) {
+  if (!aArgs) {
+    aArgs = {};
+  }
+  this._file = util.getArg(aArgs, 'file', null);
+  this._sourceRoot = util.getArg(aArgs, 'sourceRoot', null);
+  this._skipValidation = util.getArg(aArgs, 'skipValidation', false);
+  this._sources = new ArraySet();
+  this._names = new ArraySet();
+  this._mappings = new MappingList();
+  this._sourcesContents = null;
+}
+
+SourceMapGenerator.prototype._version = 3;
+
+/**
+ * Creates a new SourceMapGenerator based on a SourceMapConsumer
+ *
+ * @param aSourceMapConsumer The SourceMap.
+ */
+SourceMapGenerator.fromSourceMap =
+  function SourceMapGenerator_fromSourceMap(aSourceMapConsumer) {
+    var sourceRoot = aSourceMapConsumer.sourceRoot;
+    var generator = new SourceMapGenerator({
+      file: aSourceMapConsumer.file,
+      sourceRoot: sourceRoot
+    });
+    aSourceMapConsumer.eachMapping(function (mapping) {
+      var newMapping = {
+        generated: {
+          line: mapping.generatedLine,
+          column: mapping.generatedColumn
+        }
+      };
+
+      if (mapping.source != null) {
+        newMapping.source = mapping.source;
+        if (sourceRoot != null) {
+          newMapping.source = util.relative(sourceRoot, newMapping.source);
+        }
+
+        newMapping.original = {
+          line: mapping.originalLine,
+          column: mapping.originalColumn
+        };
+
+        if (mapping.name != null) {
+          newMapping.name = mapping.name;
+        }
+      }
+
+      generator.addMapping(newMapping);
+    });
+    aSourceMapConsumer.sources.forEach(function (sourceFile) {
+      var content = aSourceMapConsumer.sourceContentFor(sourceFile);
+      if (content != null) {
+        generator.setSourceContent(sourceFile, content);
+      }
+    });
+    return generator;
+  };
+
+/**
+ * Add a single mapping from original source line and column to the generated
+ * source's line and column for this source map being created. The mapping
+ * object should have the following properties:
+ *
+ *   - generated: An object with the generated line and column positions.
+ *   - original: An object with the original line and column positions.
+ *   - source: The original source file (relative to the sourceRoot).
+ *   - name: An optional original token name for this mapping.
+ */
+SourceMapGenerator.prototype.addMapping =
+  function SourceMapGenerator_addMapping(aArgs) {
+    var generated = util.getArg(aArgs, 'generated');
+    var original = util.getArg(aArgs, 'original', null);
+    var source = util.getArg(aArgs, 'source', null);
+    var name = util.getArg(aArgs, 'name', null);
+
+    if (!this._skipValidation) {
+      this._validateMapping(generated, original, source, name);
+    }
+
+    if (source != null) {
+      source = String(source);
+      if (!this._sources.has(source)) {
+        this._sources.add(source);
+      }
+    }
+
+    if (name != null) {
+      name = String(name);
+      if (!this._names.has(name)) {
+        this._names.add(name);
+      }
+    }
+
+    this._mappings.add({
+      generatedLine: generated.line,
+      generatedColumn: generated.column,
+      originalLine: original != null && original.line,
+      originalColumn: original != null && original.column,
+      source: source,
+      name: name
+    });
+  };
+
+/**
+ * Set the source content for a source file.
+ */
+SourceMapGenerator.prototype.setSourceContent =
+  function SourceMapGenerator_setSourceContent(aSourceFile, aSourceContent) {
+    var source = aSourceFile;
+    if (this._sourceRoot != null) {
+      source = util.relative(this._sourceRoot, source);
+    }
+
+    if (aSourceContent != null) {
+      // Add the source content to the _sourcesContents map.
+      // Create a new _sourcesContents map if the property is null.
+      if (!this._sourcesContents) {
+        this._sourcesContents = Object.create(null);
+      }
+      this._sourcesContents[util.toSetString(source)] = aSourceContent;
+    } else if (this._sourcesContents) {
+      // Remove the source file from the _sourcesContents map.
+      // If the _sourcesContents map is empty, set the property to null.
+      delete this._sourcesContents[util.toSetString(source)];
+      if (Object.keys(this._sourcesContents).length === 0) {
+        this._sourcesContents = null;
+      }
+    }
+  };
+
+/**
+ * Applies the mappings of a sub-source-map for a specific source file to the
+ * source map being generated. Each mapping to the supplied source file is
+ * rewritten using the supplied source map. Note: The resolution for the
+ * resulting mappings is the minimium of this map and the supplied map.
+ *
+ * @param aSourceMapConsumer The source map to be applied.
+ * @param aSourceFile Optional. The filename of the source file.
+ *        If omitted, SourceMapConsumer's file property will be used.
+ * @param aSourceMapPath Optional. The dirname of the path to the source map
+ *        to be applied. If relative, it is relative to the SourceMapConsumer.
+ *        This parameter is needed when the two source maps aren't in the same
+ *        directory, and the source map to be applied contains relative source
+ *        paths. If so, those relative source paths need to be rewritten
+ *        relative to the SourceMapGenerator.
+ */
+SourceMapGenerator.prototype.applySourceMap =
+  function SourceMapGenerator_applySourceMap(aSourceMapConsumer, aSourceFile, aSourceMapPath) {
+    var sourceFile = aSourceFile;
+    // If aSourceFile is omitted, we will use the file property of the SourceMap
+    if (aSourceFile == null) {
+      if (aSourceMapConsumer.file == null) {
+        throw new Error(
+          'SourceMapGenerator.prototype.applySourceMap requires either an explicit source file, ' +
+          'or the source map\'s "file" property. Both were omitted.'
+        );
+      }
+      sourceFile = aSourceMapConsumer.file;
+    }
+    var sourceRoot = this._sourceRoot;
+    // Make "sourceFile" relative if an absolute Url is passed.
+    if (sourceRoot != null) {
+      sourceFile = util.relative(sourceRoot, sourceFile);
+    }
+    // Applying the SourceMap can add and remove items from the sources and
+    // the names array.
+    var newSources = new ArraySet();
+    var newNames = new ArraySet();
+
+    // Find mappings for the "sourceFile"
+    this._mappings.unsortedForEach(function (mapping) {
+      if (mapping.source === sourceFile && mapping.originalLine != null) {
+        // Check if it can be mapped by the source map, then update the mapping.
+        var original = aSourceMapConsumer.originalPositionFor({
+          line: mapping.originalLine,
+          column: mapping.originalColumn
+        });
+        if (original.source != null) {
+          // Copy mapping
+          mapping.source = original.source;
+          if (aSourceMapPath != null) {
+            mapping.source = util.join(aSourceMapPath, mapping.source)
+          }
+          if (sourceRoot != null) {
+            mapping.source = util.relative(sourceRoot, mapping.source);
+          }
+          mapping.originalLine = original.line;
+          mapping.originalColumn = original.column;
+          if (original.name != null) {
+            mapping.name = original.name;
+          }
+        }
+      }
+
+      var source = mapping.source;
+      if (source != null && !newSources.has(source)) {
+        newSources.add(source);
+      }
+
+      var name = mapping.name;
+      if (name != null && !newNames.has(name)) {
+        newNames.add(name);
+      }
+
+    }, this);
+    this._sources = newSources;
+    this._names = newNames;
+
+    // Copy sourcesContents of applied map.
+    aSourceMapConsumer.sources.forEach(function (sourceFile) {
+      var content = aSourceMapConsumer.sourceContentFor(sourceFile);
+      if (content != null) {
+        if (aSourceMapPath != null) {
+          sourceFile = util.join(aSourceMapPath, sourceFile);
+        }
+        if (sourceRoot != null) {
+          sourceFile = util.relative(sourceRoot, sourceFile);
+        }
+        this.setSourceContent(sourceFile, content);
+      }
+    }, this);
+  };
+
+/**
+ * A mapping can have one of the three levels of data:
+ *
+ *   1. Just the generated position.
+ *   2. The Generated position, original position, and original source.
+ *   3. Generated and original position, original source, as well as a name
+ *      token.
+ *
+ * To maintain consistency, we validate that any new mapping being added falls
+ * in to one of these categories.
+ */
+SourceMapGenerator.prototype._validateMapping =
+  function SourceMapGenerator_validateMapping(aGenerated, aOriginal, aSource,
+                                              aName) {
+    if (aGenerated && 'line' in aGenerated && 'column' in aGenerated
+        && aGenerated.line > 0 && aGenerated.column >= 0
+        && !aOriginal && !aSource && !aName) {
+      // Case 1.
+      return;
+    }
+    else if (aGenerated && 'line' in aGenerated && 'column' in aGenerated
+             && aOriginal && 'line' in aOriginal && 'column' in aOriginal
+             && aGenerated.line > 0 && aGenerated.column >= 0
+             && aOriginal.line > 0 && aOriginal.column >= 0
+             && aSource) {
+      // Cases 2 and 3.
+      return;
+    }
+    else {
+      throw new Error('Invalid mapping: ' + JSON.stringify({
+        generated: aGenerated,
+        source: aSource,
+        original: aOriginal,
+        name: aName
+      }));
+    }
+  };
+
+/**
+ * Serialize the accumulated mappings in to the stream of base 64 VLQs
+ * specified by the source map format.
+ */
+SourceMapGenerator.prototype._serializeMappings =
+  function SourceMapGenerator_serializeMappings() {
+    var previousGeneratedColumn = 0;
+    var previousGeneratedLine = 1;
+    var previousOriginalColumn = 0;
+    var previousOriginalLine = 0;
+    var previousName = 0;
+    var previousSource = 0;
+    var result = '';
+    var next;
+    var mapping;
+    var nameIdx;
+    var sourceIdx;
+
+    var mappings = this._mappings.toArray();
+    for (var i = 0, len = mappings.length; i < len; i++) {
+      mapping = mappings[i];
+      next = ''
+
+      if (mapping.generatedLine !== previousGeneratedLine) {
+        previousGeneratedColumn = 0;
+        while (mapping.generatedLine !== previousGeneratedLine) {
+          next += ';';
+          previousGeneratedLine++;
+        }
+      }
+      else {
+        if (i > 0) {
+          if (!util.compareByGeneratedPositionsInflated(mapping, mappings[i - 1])) {
+            continue;
+          }
+          next += ',';
+        }
+      }
+
+      next += base64VLQ.encode(mapping.generatedColumn
+                                 - previousGeneratedColumn);
+      previousGeneratedColumn = mapping.generatedColumn;
+
+      if (mapping.source != null) {
+        sourceIdx = this._sources.indexOf(mapping.source);
+        next += base64VLQ.encode(sourceIdx - previousSource);
+        previousSource = sourceIdx;
+
+        // lines are stored 0-based in SourceMap spec version 3
+        next += base64VLQ.encode(mapping.originalLine - 1
+                                   - previousOriginalLine);
+        previousOriginalLine = mapping.originalLine - 1;
+
+        next += base64VLQ.encode(mapping.originalColumn
+                                   - previousOriginalColumn);
+        previousOriginalColumn = mapping.originalColumn;
+
+        if (mapping.name != null) {
+          nameIdx = this._names.indexOf(mapping.name);
+          next += base64VLQ.encode(nameIdx - previousName);
+          previousName = nameIdx;
+        }
+      }
+
+      result += next;
+    }
+
+    return result;
+  };
+
+SourceMapGenerator.prototype._generateSourcesContent =
+  function SourceMapGenerator_generateSourcesContent(aSources, aSourceRoot) {
+    return aSources.map(function (source) {
+      if (!this._sourcesContents) {
+        return null;
+      }
+      if (aSourceRoot != null) {
+        source = util.relative(aSourceRoot, source);
+      }
+      var key = util.toSetString(source);
+      return Object.prototype.hasOwnProperty.call(this._sourcesContents, key)
+        ? this._sourcesContents[key]
+        : null;
+    }, this);
+  };
+
+/**
+ * Externalize the source map.
+ */
+SourceMapGenerator.prototype.toJSON =
+  function SourceMapGenerator_toJSON() {
+    var map = {
+      version: this._version,
+      sources: this._sources.toArray(),
+      names: this._names.toArray(),
+      mappings: this._serializeMappings()
+    };
+    if (this._file != null) {
+      map.file = this._file;
+    }
+    if (this._sourceRoot != null) {
+      map.sourceRoot = this._sourceRoot;
+    }
+    if (this._sourcesContents) {
+      map.sourcesContent = this._generateSourcesContent(map.sources, map.sourceRoot);
+    }
+
+    return map;
+  };
+
+/**
+ * Render the source map being generated to a string.
+ */
+SourceMapGenerator.prototype.toString =
+  function SourceMapGenerator_toString() {
+    return JSON.stringify(this.toJSON());
+  };
+
+exports.SourceMapGenerator = SourceMapGenerator;
+
+
+/***/ }),
+
+/***/ "./node_modules/source-map/lib/source-node.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+/* -*- Mode: js; js-indent-level: 2; -*- */
+/*
+ * Copyright 2011 Mozilla Foundation and contributors
+ * Licensed under the New BSD license. See LICENSE or:
+ * http://opensource.org/licenses/BSD-3-Clause
+ */
+
+var SourceMapGenerator = __webpack_require__("./node_modules/source-map/lib/source-map-generator.js").SourceMapGenerator;
+var util = __webpack_require__("./node_modules/source-map/lib/util.js");
+
+// Matches a Windows-style `\r\n` newline or a `\n` newline used by all other
+// operating systems these days (capturing the result).
+var REGEX_NEWLINE = /(\r?\n)/;
+
+// Newline character code for charCodeAt() comparisons
+var NEWLINE_CODE = 10;
+
+// Private symbol for identifying `SourceNode`s when multiple versions of
+// the source-map library are loaded. This MUST NOT CHANGE across
+// versions!
+var isSourceNode = "$$$isSourceNode$$$";
+
+/**
+ * SourceNodes provide a way to abstract over interpolating/concatenating
+ * snippets of generated JavaScript source code while maintaining the line and
+ * column information associated with the original source code.
+ *
+ * @param aLine The original line number.
+ * @param aColumn The original column number.
+ * @param aSource The original source's filename.
+ * @param aChunks Optional. An array of strings which are snippets of
+ *        generated JS, or other SourceNodes.
+ * @param aName The original identifier.
+ */
+function SourceNode(aLine, aColumn, aSource, aChunks, aName) {
+  this.children = [];
+  this.sourceContents = {};
+  this.line = aLine == null ? null : aLine;
+  this.column = aColumn == null ? null : aColumn;
+  this.source = aSource == null ? null : aSource;
+  this.name = aName == null ? null : aName;
+  this[isSourceNode] = true;
+  if (aChunks != null) this.add(aChunks);
+}
+
+/**
+ * Creates a SourceNode from generated code and a SourceMapConsumer.
+ *
+ * @param aGeneratedCode The generated code
+ * @param aSourceMapConsumer The SourceMap for the generated code
+ * @param aRelativePath Optional. The path that relative sources in the
+ *        SourceMapConsumer should be relative to.
+ */
+SourceNode.fromStringWithSourceMap =
+  function SourceNode_fromStringWithSourceMap(aGeneratedCode, aSourceMapConsumer, aRelativePath) {
+    // The SourceNode we want to fill with the generated code
+    // and the SourceMap
+    var node = new SourceNode();
+
+    // All even indices of this array are one line of the generated code,
+    // while all odd indices are the newlines between two adjacent lines
+    // (since `REGEX_NEWLINE` captures its match).
+    // Processed fragments are removed from this array, by calling `shiftNextLine`.
+    var remainingLines = aGeneratedCode.split(REGEX_NEWLINE);
+    var shiftNextLine = function() {
+      var lineContents = remainingLines.shift();
+      // The last line of a file might not have a newline.
+      var newLine = remainingLines.shift() || "";
+      return lineContents + newLine;
+    };
+
+    // We need to remember the position of "remainingLines"
+    var lastGeneratedLine = 1, lastGeneratedColumn = 0;
+
+    // The generate SourceNodes we need a code range.
+    // To extract it current and last mapping is used.
+    // Here we store the last mapping.
+    var lastMapping = null;
+
+    aSourceMapConsumer.eachMapping(function (mapping) {
+      if (lastMapping !== null) {
+        // We add the code from "lastMapping" to "mapping":
+        // First check if there is a new line in between.
+        if (lastGeneratedLine < mapping.generatedLine) {
+          // Associate first line with "lastMapping"
+          addMappingWithCode(lastMapping, shiftNextLine());
+          lastGeneratedLine++;
+          lastGeneratedColumn = 0;
+          // The remaining code is added without mapping
+        } else {
+          // There is no new line in between.
+          // Associate the code between "lastGeneratedColumn" and
+          // "mapping.generatedColumn" with "lastMapping"
+          var nextLine = remainingLines[0];
+          var code = nextLine.substr(0, mapping.generatedColumn -
+                                        lastGeneratedColumn);
+          remainingLines[0] = nextLine.substr(mapping.generatedColumn -
+                                              lastGeneratedColumn);
+          lastGeneratedColumn = mapping.generatedColumn;
+          addMappingWithCode(lastMapping, code);
+          // No more remaining code, continue
+          lastMapping = mapping;
+          return;
+        }
+      }
+      // We add the generated code until the first mapping
+      // to the SourceNode without any mapping.
+      // Each line is added as separate string.
+      while (lastGeneratedLine < mapping.generatedLine) {
+        node.add(shiftNextLine());
+        lastGeneratedLine++;
+      }
+      if (lastGeneratedColumn < mapping.generatedColumn) {
+        var nextLine = remainingLines[0];
+        node.add(nextLine.substr(0, mapping.generatedColumn));
+        remainingLines[0] = nextLine.substr(mapping.generatedColumn);
+        lastGeneratedColumn = mapping.generatedColumn;
+      }
+      lastMapping = mapping;
+    }, this);
+    // We have processed all mappings.
+    if (remainingLines.length > 0) {
+      if (lastMapping) {
+        // Associate the remaining code in the current line with "lastMapping"
+        addMappingWithCode(lastMapping, shiftNextLine());
+      }
+      // and add the remaining lines without any mapping
+      node.add(remainingLines.join(""));
+    }
+
+    // Copy sourcesContent into SourceNode
+    aSourceMapConsumer.sources.forEach(function (sourceFile) {
+      var content = aSourceMapConsumer.sourceContentFor(sourceFile);
+      if (content != null) {
+        if (aRelativePath != null) {
+          sourceFile = util.join(aRelativePath, sourceFile);
+        }
+        node.setSourceContent(sourceFile, content);
+      }
+    });
+
+    return node;
+
+    function addMappingWithCode(mapping, code) {
+      if (mapping === null || mapping.source === undefined) {
+        node.add(code);
+      } else {
+        var source = aRelativePath
+          ? util.join(aRelativePath, mapping.source)
+          : mapping.source;
+        node.add(new SourceNode(mapping.originalLine,
+                                mapping.originalColumn,
+                                source,
+                                code,
+                                mapping.name));
+      }
+    }
+  };
+
+/**
+ * Add a chunk of generated JS to this source node.
+ *
+ * @param aChunk A string snippet of generated JS code, another instance of
+ *        SourceNode, or an array where each member is one of those things.
+ */
+SourceNode.prototype.add = function SourceNode_add(aChunk) {
+  if (Array.isArray(aChunk)) {
+    aChunk.forEach(function (chunk) {
+      this.add(chunk);
+    }, this);
+  }
+  else if (aChunk[isSourceNode] || typeof aChunk === "string") {
+    if (aChunk) {
+      this.children.push(aChunk);
+    }
+  }
+  else {
+    throw new TypeError(
+      "Expected a SourceNode, string, or an array of SourceNodes and strings. Got " + aChunk
+    );
+  }
+  return this;
+};
+
+/**
+ * Add a chunk of generated JS to the beginning of this source node.
+ *
+ * @param aChunk A string snippet of generated JS code, another instance of
+ *        SourceNode, or an array where each member is one of those things.
+ */
+SourceNode.prototype.prepend = function SourceNode_prepend(aChunk) {
+  if (Array.isArray(aChunk)) {
+    for (var i = aChunk.length-1; i >= 0; i--) {
+      this.prepend(aChunk[i]);
+    }
+  }
+  else if (aChunk[isSourceNode] || typeof aChunk === "string") {
+    this.children.unshift(aChunk);
+  }
+  else {
+    throw new TypeError(
+      "Expected a SourceNode, string, or an array of SourceNodes and strings. Got " + aChunk
+    );
+  }
+  return this;
+};
+
+/**
+ * Walk over the tree of JS snippets in this node and its children. The
+ * walking function is called once for each snippet of JS and is passed that
+ * snippet and the its original associated source's line/column location.
+ *
+ * @param aFn The traversal function.
+ */
+SourceNode.prototype.walk = function SourceNode_walk(aFn) {
+  var chunk;
+  for (var i = 0, len = this.children.length; i < len; i++) {
+    chunk = this.children[i];
+    if (chunk[isSourceNode]) {
+      chunk.walk(aFn);
+    }
+    else {
+      if (chunk !== '') {
+        aFn(chunk, { source: this.source,
+                     line: this.line,
+                     column: this.column,
+                     name: this.name });
+      }
+    }
+  }
+};
+
+/**
+ * Like `String.prototype.join` except for SourceNodes. Inserts `aStr` between
+ * each of `this.children`.
+ *
+ * @param aSep The separator.
+ */
+SourceNode.prototype.join = function SourceNode_join(aSep) {
+  var newChildren;
+  var i;
+  var len = this.children.length;
+  if (len > 0) {
+    newChildren = [];
+    for (i = 0; i < len-1; i++) {
+      newChildren.push(this.children[i]);
+      newChildren.push(aSep);
+    }
+    newChildren.push(this.children[i]);
+    this.children = newChildren;
+  }
+  return this;
+};
+
+/**
+ * Call String.prototype.replace on the very right-most source snippet. Useful
+ * for trimming whitespace from the end of a source node, etc.
+ *
+ * @param aPattern The pattern to replace.
+ * @param aReplacement The thing to replace the pattern with.
+ */
+SourceNode.prototype.replaceRight = function SourceNode_replaceRight(aPattern, aReplacement) {
+  var lastChild = this.children[this.children.length - 1];
+  if (lastChild[isSourceNode]) {
+    lastChild.replaceRight(aPattern, aReplacement);
+  }
+  else if (typeof lastChild === 'string') {
+    this.children[this.children.length - 1] = lastChild.replace(aPattern, aReplacement);
+  }
+  else {
+    this.children.push(''.replace(aPattern, aReplacement));
+  }
+  return this;
+};
+
+/**
+ * Set the source content for a source file. This will be added to the SourceMapGenerator
+ * in the sourcesContent field.
+ *
+ * @param aSourceFile The filename of the source file
+ * @param aSourceContent The content of the source file
+ */
+SourceNode.prototype.setSourceContent =
+  function SourceNode_setSourceContent(aSourceFile, aSourceContent) {
+    this.sourceContents[util.toSetString(aSourceFile)] = aSourceContent;
+  };
+
+/**
+ * Walk over the tree of SourceNodes. The walking function is called for each
+ * source file content and is passed the filename and source content.
+ *
+ * @param aFn The traversal function.
+ */
+SourceNode.prototype.walkSourceContents =
+  function SourceNode_walkSourceContents(aFn) {
+    for (var i = 0, len = this.children.length; i < len; i++) {
+      if (this.children[i][isSourceNode]) {
+        this.children[i].walkSourceContents(aFn);
+      }
+    }
+
+    var sources = Object.keys(this.sourceContents);
+    for (var i = 0, len = sources.length; i < len; i++) {
+      aFn(util.fromSetString(sources[i]), this.sourceContents[sources[i]]);
+    }
+  };
+
+/**
+ * Return the string representation of this source node. Walks over the tree
+ * and concatenates all the various snippets together to one string.
+ */
+SourceNode.prototype.toString = function SourceNode_toString() {
+  var str = "";
+  this.walk(function (chunk) {
+    str += chunk;
+  });
+  return str;
+};
+
+/**
+ * Returns the string representation of this source node along with a source
+ * map.
+ */
+SourceNode.prototype.toStringWithSourceMap = function SourceNode_toStringWithSourceMap(aArgs) {
+  var generated = {
+    code: "",
+    line: 1,
+    column: 0
+  };
+  var map = new SourceMapGenerator(aArgs);
+  var sourceMappingActive = false;
+  var lastOriginalSource = null;
+  var lastOriginalLine = null;
+  var lastOriginalColumn = null;
+  var lastOriginalName = null;
+  this.walk(function (chunk, original) {
+    generated.code += chunk;
+    if (original.source !== null
+        && original.line !== null
+        && original.column !== null) {
+      if(lastOriginalSource !== original.source
+         || lastOriginalLine !== original.line
+         || lastOriginalColumn !== original.column
+         || lastOriginalName !== original.name) {
+        map.addMapping({
+          source: original.source,
+          original: {
+            line: original.line,
+            column: original.column
+          },
+          generated: {
+            line: generated.line,
+            column: generated.column
+          },
+          name: original.name
+        });
+      }
+      lastOriginalSource = original.source;
+      lastOriginalLine = original.line;
+      lastOriginalColumn = original.column;
+      lastOriginalName = original.name;
+      sourceMappingActive = true;
+    } else if (sourceMappingActive) {
+      map.addMapping({
+        generated: {
+          line: generated.line,
+          column: generated.column
+        }
+      });
+      lastOriginalSource = null;
+      sourceMappingActive = false;
+    }
+    for (var idx = 0, length = chunk.length; idx < length; idx++) {
+      if (chunk.charCodeAt(idx) === NEWLINE_CODE) {
+        generated.line++;
+        generated.column = 0;
+        // Mappings end at eol
+        if (idx + 1 === length) {
+          lastOriginalSource = null;
+          sourceMappingActive = false;
+        } else if (sourceMappingActive) {
+          map.addMapping({
+            source: original.source,
+            original: {
+              line: original.line,
+              column: original.column
+            },
+            generated: {
+              line: generated.line,
+              column: generated.column
+            },
+            name: original.name
+          });
+        }
+      } else {
+        generated.column++;
+      }
+    }
+  });
+  this.walkSourceContents(function (sourceFile, sourceContent) {
+    map.setSourceContent(sourceFile, sourceContent);
+  });
+
+  return { code: generated.code, map: map };
+};
+
+exports.SourceNode = SourceNode;
+
+
+/***/ }),
+
+/***/ "./node_modules/source-map/lib/util.js":
+/***/ (function(module, exports) {
+
+/* -*- Mode: js; js-indent-level: 2; -*- */
+/*
+ * Copyright 2011 Mozilla Foundation and contributors
+ * Licensed under the New BSD license. See LICENSE or:
+ * http://opensource.org/licenses/BSD-3-Clause
+ */
+
+/**
+ * This is a helper function for getting values from parameter/options
+ * objects.
+ *
+ * @param args The object we are extracting values from
+ * @param name The name of the property we are getting.
+ * @param defaultValue An optional value to return if the property is missing
+ * from the object. If this is not specified and the property is missing, an
+ * error will be thrown.
+ */
+function getArg(aArgs, aName, aDefaultValue) {
+  if (aName in aArgs) {
+    return aArgs[aName];
+  } else if (arguments.length === 3) {
+    return aDefaultValue;
+  } else {
+    throw new Error('"' + aName + '" is a required argument.');
+  }
+}
+exports.getArg = getArg;
+
+var urlRegexp = /^(?:([\w+\-.]+):)?\/\/(?:(\w+:\w+)@)?([\w.]*)(?::(\d+))?(\S*)$/;
+var dataUrlRegexp = /^data:.+\,.+$/;
+
+function urlParse(aUrl) {
+  var match = aUrl.match(urlRegexp);
+  if (!match) {
+    return null;
+  }
+  return {
+    scheme: match[1],
+    auth: match[2],
+    host: match[3],
+    port: match[4],
+    path: match[5]
+  };
+}
+exports.urlParse = urlParse;
+
+function urlGenerate(aParsedUrl) {
+  var url = '';
+  if (aParsedUrl.scheme) {
+    url += aParsedUrl.scheme + ':';
+  }
+  url += '//';
+  if (aParsedUrl.auth) {
+    url += aParsedUrl.auth + '@';
+  }
+  if (aParsedUrl.host) {
+    url += aParsedUrl.host;
+  }
+  if (aParsedUrl.port) {
+    url += ":" + aParsedUrl.port
+  }
+  if (aParsedUrl.path) {
+    url += aParsedUrl.path;
+  }
+  return url;
+}
+exports.urlGenerate = urlGenerate;
+
+/**
+ * Normalizes a path, or the path portion of a URL:
+ *
+ * - Replaces consecutive slashes with one slash.
+ * - Removes unnecessary '.' parts.
+ * - Removes unnecessary '<dir>/..' parts.
+ *
+ * Based on code in the Node.js 'path' core module.
+ *
+ * @param aPath The path or url to normalize.
+ */
+function normalize(aPath) {
+  var path = aPath;
+  var url = urlParse(aPath);
+  if (url) {
+    if (!url.path) {
+      return aPath;
+    }
+    path = url.path;
+  }
+  var isAbsolute = exports.isAbsolute(path);
+
+  var parts = path.split(/\/+/);
+  for (var part, up = 0, i = parts.length - 1; i >= 0; i--) {
+    part = parts[i];
+    if (part === '.') {
+      parts.splice(i, 1);
+    } else if (part === '..') {
+      up++;
+    } else if (up > 0) {
+      if (part === '') {
+        // The first part is blank if the path is absolute. Trying to go
+        // above the root is a no-op. Therefore we can remove all '..' parts
+        // directly after the root.
+        parts.splice(i + 1, up);
+        up = 0;
+      } else {
+        parts.splice(i, 2);
+        up--;
+      }
+    }
+  }
+  path = parts.join('/');
+
+  if (path === '') {
+    path = isAbsolute ? '/' : '.';
+  }
+
+  if (url) {
+    url.path = path;
+    return urlGenerate(url);
+  }
+  return path;
+}
+exports.normalize = normalize;
+
+/**
+ * Joins two paths/URLs.
+ *
+ * @param aRoot The root path or URL.
+ * @param aPath The path or URL to be joined with the root.
+ *
+ * - If aPath is a URL or a data URI, aPath is returned, unless aPath is a
+ *   scheme-relative URL: Then the scheme of aRoot, if any, is prepended
+ *   first.
+ * - Otherwise aPath is a path. If aRoot is a URL, then its path portion
+ *   is updated with the result and aRoot is returned. Otherwise the result
+ *   is returned.
+ *   - If aPath is absolute, the result is aPath.
+ *   - Otherwise the two paths are joined with a slash.
+ * - Joining for example 'http://' and 'www.example.com' is also supported.
+ */
+function join(aRoot, aPath) {
+  if (aRoot === "") {
+    aRoot = ".";
+  }
+  if (aPath === "") {
+    aPath = ".";
+  }
+  var aPathUrl = urlParse(aPath);
+  var aRootUrl = urlParse(aRoot);
+  if (aRootUrl) {
+    aRoot = aRootUrl.path || '/';
+  }
+
+  // `join(foo, '//www.example.org')`
+  if (aPathUrl && !aPathUrl.scheme) {
+    if (aRootUrl) {
+      aPathUrl.scheme = aRootUrl.scheme;
+    }
+    return urlGenerate(aPathUrl);
+  }
+
+  if (aPathUrl || aPath.match(dataUrlRegexp)) {
+    return aPath;
+  }
+
+  // `join('http://', 'www.example.com')`
+  if (aRootUrl && !aRootUrl.host && !aRootUrl.path) {
+    aRootUrl.host = aPath;
+    return urlGenerate(aRootUrl);
+  }
+
+  var joined = aPath.charAt(0) === '/'
+    ? aPath
+    : normalize(aRoot.replace(/\/+$/, '') + '/' + aPath);
+
+  if (aRootUrl) {
+    aRootUrl.path = joined;
+    return urlGenerate(aRootUrl);
+  }
+  return joined;
+}
+exports.join = join;
+
+exports.isAbsolute = function (aPath) {
+  return aPath.charAt(0) === '/' || !!aPath.match(urlRegexp);
+};
+
+/**
+ * Make a path relative to a URL or another path.
+ *
+ * @param aRoot The root path or URL.
+ * @param aPath The path or URL to be made relative to aRoot.
+ */
+function relative(aRoot, aPath) {
+  if (aRoot === "") {
+    aRoot = ".";
+  }
+
+  aRoot = aRoot.replace(/\/$/, '');
+
+  // It is possible for the path to be above the root. In this case, simply
+  // checking whether the root is a prefix of the path won't work. Instead, we
+  // need to remove components from the root one by one, until either we find
+  // a prefix that fits, or we run out of components to remove.
+  var level = 0;
+  while (aPath.indexOf(aRoot + '/') !== 0) {
+    var index = aRoot.lastIndexOf("/");
+    if (index < 0) {
+      return aPath;
+    }
+
+    // If the only part of the root that is left is the scheme (i.e. http://,
+    // file:///, etc.), one or more slashes (/), or simply nothing at all, we
+    // have exhausted all components, so the path is not relative to the root.
+    aRoot = aRoot.slice(0, index);
+    if (aRoot.match(/^([^\/]+:\/)?\/*$/)) {
+      return aPath;
+    }
+
+    ++level;
+  }
+
+  // Make sure we add a "../" for each component we removed from the root.
+  return Array(level + 1).join("../") + aPath.substr(aRoot.length + 1);
+}
+exports.relative = relative;
+
+var supportsNullProto = (function () {
+  var obj = Object.create(null);
+  return !('__proto__' in obj);
+}());
+
+function identity (s) {
+  return s;
+}
+
+/**
+ * Because behavior goes wacky when you set `__proto__` on objects, we
+ * have to prefix all the strings in our set with an arbitrary character.
+ *
+ * See https://github.com/mozilla/source-map/pull/31 and
+ * https://github.com/mozilla/source-map/issues/30
+ *
+ * @param String aStr
+ */
+function toSetString(aStr) {
+  if (isProtoString(aStr)) {
+    return '$' + aStr;
+  }
+
+  return aStr;
+}
+exports.toSetString = supportsNullProto ? identity : toSetString;
+
+function fromSetString(aStr) {
+  if (isProtoString(aStr)) {
+    return aStr.slice(1);
+  }
+
+  return aStr;
+}
+exports.fromSetString = supportsNullProto ? identity : fromSetString;
+
+function isProtoString(s) {
+  if (!s) {
+    return false;
+  }
+
+  var length = s.length;
+
+  if (length < 9 /* "__proto__".length */) {
+    return false;
+  }
+
+  if (s.charCodeAt(length - 1) !== 95  /* '_' */ ||
+      s.charCodeAt(length - 2) !== 95  /* '_' */ ||
+      s.charCodeAt(length - 3) !== 111 /* 'o' */ ||
+      s.charCodeAt(length - 4) !== 116 /* 't' */ ||
+      s.charCodeAt(length - 5) !== 111 /* 'o' */ ||
+      s.charCodeAt(length - 6) !== 114 /* 'r' */ ||
+      s.charCodeAt(length - 7) !== 112 /* 'p' */ ||
+      s.charCodeAt(length - 8) !== 95  /* '_' */ ||
+      s.charCodeAt(length - 9) !== 95  /* '_' */) {
+    return false;
+  }
+
+  for (var i = length - 10; i >= 0; i--) {
+    if (s.charCodeAt(i) !== 36 /* '$' */) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+/**
+ * Comparator between two mappings where the original positions are compared.
+ *
+ * Optionally pass in `true` as `onlyCompareGenerated` to consider two
+ * mappings with the same original source/line/column, but different generated
+ * line and column the same. Useful when searching for a mapping with a
+ * stubbed out mapping.
+ */
+function compareByOriginalPositions(mappingA, mappingB, onlyCompareOriginal) {
+  var cmp = mappingA.source - mappingB.source;
+  if (cmp !== 0) {
+    return cmp;
+  }
+
+  cmp = mappingA.originalLine - mappingB.originalLine;
+  if (cmp !== 0) {
+    return cmp;
+  }
+
+  cmp = mappingA.originalColumn - mappingB.originalColumn;
+  if (cmp !== 0 || onlyCompareOriginal) {
+    return cmp;
+  }
+
+  cmp = mappingA.generatedColumn - mappingB.generatedColumn;
+  if (cmp !== 0) {
+    return cmp;
+  }
+
+  cmp = mappingA.generatedLine - mappingB.generatedLine;
+  if (cmp !== 0) {
+    return cmp;
+  }
+
+  return mappingA.name - mappingB.name;
+}
+exports.compareByOriginalPositions = compareByOriginalPositions;
+
+/**
+ * Comparator between two mappings with deflated source and name indices where
+ * the generated positions are compared.
+ *
+ * Optionally pass in `true` as `onlyCompareGenerated` to consider two
+ * mappings with the same generated line and column, but different
+ * source/name/original line and column the same. Useful when searching for a
+ * mapping with a stubbed out mapping.
+ */
+function compareByGeneratedPositionsDeflated(mappingA, mappingB, onlyCompareGenerated) {
+  var cmp = mappingA.generatedLine - mappingB.generatedLine;
+  if (cmp !== 0) {
+    return cmp;
+  }
+
+  cmp = mappingA.generatedColumn - mappingB.generatedColumn;
+  if (cmp !== 0 || onlyCompareGenerated) {
+    return cmp;
+  }
+
+  cmp = mappingA.source - mappingB.source;
+  if (cmp !== 0) {
+    return cmp;
+  }
+
+  cmp = mappingA.originalLine - mappingB.originalLine;
+  if (cmp !== 0) {
+    return cmp;
+  }
+
+  cmp = mappingA.originalColumn - mappingB.originalColumn;
+  if (cmp !== 0) {
+    return cmp;
+  }
+
+  return mappingA.name - mappingB.name;
+}
+exports.compareByGeneratedPositionsDeflated = compareByGeneratedPositionsDeflated;
+
+function strcmp(aStr1, aStr2) {
+  if (aStr1 === aStr2) {
+    return 0;
+  }
+
+  if (aStr1 > aStr2) {
+    return 1;
+  }
+
+  return -1;
+}
+
+/**
+ * Comparator between two mappings with inflated source and name strings where
+ * the generated positions are compared.
+ */
+function compareByGeneratedPositionsInflated(mappingA, mappingB) {
+  var cmp = mappingA.generatedLine - mappingB.generatedLine;
+  if (cmp !== 0) {
+    return cmp;
+  }
+
+  cmp = mappingA.generatedColumn - mappingB.generatedColumn;
+  if (cmp !== 0) {
+    return cmp;
+  }
+
+  cmp = strcmp(mappingA.source, mappingB.source);
+  if (cmp !== 0) {
+    return cmp;
+  }
+
+  cmp = mappingA.originalLine - mappingB.originalLine;
+  if (cmp !== 0) {
+    return cmp;
+  }
+
+  cmp = mappingA.originalColumn - mappingB.originalColumn;
+  if (cmp !== 0) {
+    return cmp;
+  }
+
+  return strcmp(mappingA.name, mappingB.name);
+}
+exports.compareByGeneratedPositionsInflated = compareByGeneratedPositionsInflated;
+
+
+/***/ }),
+
+/***/ "./node_modules/source-map/source-map.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+ * Copyright 2009-2011 Mozilla Foundation and contributors
+ * Licensed under the New BSD license. See LICENSE.txt or:
+ * http://opensource.org/licenses/BSD-3-Clause
+ */
+exports.SourceMapGenerator = __webpack_require__("./node_modules/source-map/lib/source-map-generator.js").SourceMapGenerator;
+exports.SourceMapConsumer = __webpack_require__("./node_modules/source-map/lib/source-map-consumer.js").SourceMapConsumer;
+exports.SourceNode = __webpack_require__("./node_modules/source-map/lib/source-node.js").SourceNode;
+
+
+/***/ }),
+
+/***/ "./node_modules/wrappy/wrappy.js":
+/***/ (function(module, exports) {
+
+// Returns a wrapper function that returns a wrapped callback
+// The wrapper function should do some stuff, and return a
+// presumably different callback function.
+// This makes sure that own properties are retained, so that
+// decorations and such are not lost along the way.
+module.exports = wrappy
+function wrappy (fn, cb) {
+  if (fn && cb) return wrappy(fn)(cb)
+
+  if (typeof fn !== 'function')
+    throw new TypeError('need wrapper function')
+
+  Object.keys(fn).forEach(function (k) {
+    wrapper[k] = fn[k]
+  })
+
+  return wrapper
+
+  function wrapper() {
+    var args = new Array(arguments.length)
+    for (var i = 0; i < args.length; i++) {
+      args[i] = arguments[i]
+    }
+    var ret = fn.apply(this, args)
+    var cb = args[args.length-1]
+    if (typeof ret === 'function' && ret !== cb) {
+      Object.keys(cb).forEach(function (k) {
+        ret[k] = cb[k]
+      })
+    }
+    return ret
+  }
+}
+
+
+/***/ }),
+
+/***/ 0:
+/***/ (function(module, exports) {
+
+module.exports = require("path");
+
+/***/ }),
+
+/***/ 1:
+/***/ (function(module, exports) {
+
+module.exports = require("fs");
+
+/***/ }),
+
+/***/ 10:
+/***/ (function(module, exports) {
+
+module.exports = require("https");
+
+/***/ }),
+
+/***/ 2:
+/***/ (function(module, exports) {
+
+module.exports = require("electron");
+
+/***/ }),
+
+/***/ 3:
+/***/ (function(module, exports) {
+
+module.exports = require("util");
+
+/***/ }),
+
+/***/ 4:
+/***/ (function(module, exports) {
+
+module.exports = require("assert");
+
+/***/ }),
+
+/***/ 5:
+/***/ (function(module, exports) {
+
+module.exports = require("module");
+
+/***/ }),
+
+/***/ 6:
+/***/ (function(module, exports) {
+
+module.exports = require("tty");
+
+/***/ }),
+
+/***/ 7:
+/***/ (function(module, exports) {
+
+module.exports = require("net");
+
+/***/ }),
+
+/***/ 8:
+/***/ (function(module, exports) {
+
+module.exports = require("events");
+
+/***/ }),
+
+/***/ 9:
+/***/ (function(module, exports) {
+
+module.exports = require("child_process");
+
+/***/ })
+
+/******/ });
 //# sourceMappingURL=main.prod.js.map
