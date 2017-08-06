@@ -1,4 +1,4 @@
-[![Stories in Ready](https://badge.waffle.io/nickrfer/code-sentinel.png?label=ready&title=Ready)](https://waffle.io/nickrfer/code-sentinel?utm_source=badge)
+
 # code-sentinel
 
 ### Code review electron app for SVN repositories built on the awesome boilerplate open source project [electron-react-boilerplate](https://github.com/chentsulin/electron-react-boilerplate), and also relies on the superb [diff2html](https://github.com/rtfpessoa/diff2html) project.
@@ -9,6 +9,7 @@
 [![Appveyor Build Status][appveyor-image]][appveyor-url]
 [![Dependency Status][david_img]][david_site]
 [![Github Tag][github-tag-image]][github-tag-url]
+[![Stories in Ready](https://badge.waffle.io/nickrfer/code-sentinel.png?label=ready&title=Ready)](https://waffle.io/nickrfer/code-sentinel?utm_source=badge)
 
 [![React](/internals/img/react-padded-90.png)](https://facebook.github.io/react/)
 [![Webpack](/internals/img/webpack-padded-90.png)](https://webpack.github.io/)
