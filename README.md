@@ -1,6 +1,6 @@
 # code-sentinel
 
-### Code review electron app for SVN repositories built on the awesome boilerplate open source project https://github.com/chentsulin/electron-react-boilerplate, and also relies on the superb https://github.com/rtfpessoa/diff2html project.
+### Code review electron app for SVN repositories built on the awesome boilerplate open source project [electron-react-boilerplate](https://github.com/chentsulin/electron-react-boilerplate), and also relies on the superb [diff2html](https://github.com/rtfpessoa/diff2html) project.
 
 <br/>
 
