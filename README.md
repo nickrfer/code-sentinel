@@ -8,7 +8,6 @@
 [![Build Status][travis-image]][travis-url]
 [![Appveyor Build Status][appveyor-image]][appveyor-url]
 [![Dependency Status][david_img]][david_site]
-[![Github Tag][github-tag-image]][github-tag-url]
 [![Stories in Ready](https://badge.waffle.io/nickrfer/code-sentinel.png?label=ready&title=Ready)](https://waffle.io/nickrfer/code-sentinel?utm_source=badge)
 
 [![React](/internals/img/react-padded-90.png)](https://facebook.github.io/react/)
@@ -247,7 +246,6 @@ git pull upstream master
 MIT © [Nícolas Ferreira](https://github.com/nickrfer)
 
 [npm-image]: https://img.shields.io/npm/v/code-sentinel.svg?style=flat-square
-[github-tag-image]: https://img.shields.io/github/tag/nickrfer/code-sentinel.svg
 [github-tag-url]: https://github.com/nickrfer/code-sentinel/releases/latest
 [travis-image]: https://travis-ci.org/nickrfer/code-sentinel.svg?branch=master
 [travis-url]: https://travis-ci.org/nickrfer/code-sentinel
