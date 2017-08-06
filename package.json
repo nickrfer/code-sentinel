@@ -2,7 +2,7 @@
   "name": "code-sentinel",
   "productName": "code-sentinel",
   "version": "0.12.0",
-  "description": "Code review electron app for SVN repositories built based off the awesome boilerplate open source project https://github.com/chentsulin/electron-react-boilerplate.",
+  "description": "Code review electron app for SVN repositories built on the awesome boilerplate open source project https://github.com/chentsulin/electron-react-boilerplate.",
   "scripts": {
     "build": "concurrently \"npm run build-main\" \"npm run build-renderer\"",
     "build-dll": "cross-env NODE_ENV=development node --trace-warnings -r babel-register ./node_modules/webpack/bin/webpack --config webpack.config.renderer.dev.dll.js --colors",
