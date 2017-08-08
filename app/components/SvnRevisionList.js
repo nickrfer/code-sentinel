@@ -69,6 +69,7 @@ export default class SvnRevisionList extends Component {
     console.log('revisionSelected:', revisionSelected.trim());
     diffSvn2Git.parse(revisionSelected.trim()).then((patch) => {
       console.log('Patch result: ');
+      console.log(patch);
 
       const diff2HtmlConfig = { inputFormat: 'diff',
         outputFormat: this.state.diffOutputFormat,
@@ -79,7 +80,6 @@ export default class SvnRevisionList extends Component {
 
       console.log('Diff2Html result: ');
       const diff2HtmlResult = Diff2Html.getPrettyHtml(patch, diff2HtmlConfig);
-      console.log(diff2HtmlResult);
 
       this.setState({ prettyDiffHtml: diff2HtmlResult });
       this.props.startRevisionLoading(false);

@@ -2604,9 +2604,9 @@ diffie-hellman@^5.0.0:
     miller-rabin "^4.0.0"
     randombytes "^2.0.0"
 
-diffsvn2git@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/diffsvn2git/-/diffsvn2git-0.1.0.tgz#d24fde67ab93205406e05177a5e6178b89fd6bff"
+diffsvn2git@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/diffsvn2git/-/diffsvn2git-0.1.1.tgz#e22440b9ddd206602cf1a0dd49d689b0f61c4aef"
   dependencies:
     async "^2.4.1"
     dateformat "^2.0.0"
