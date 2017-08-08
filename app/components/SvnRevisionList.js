@@ -29,6 +29,7 @@ export default class SvnRevisionList extends Component {
     revisionDate: date,
     onRevisionDateChanged: func.isRequired,
     startRevisionLoading: func.isRequired,
+    selectedRevision: string,
     prettyDiffHtml: string,
     diffOutputFormat: string
   };
@@ -67,6 +68,7 @@ export default class SvnRevisionList extends Component {
   generateDiffTest(revisionSelected) {
     this.props.startRevisionLoading(true);
     console.log('revisionSelected:', revisionSelected.trim());
+
     diffSvn2Git.parse(revisionSelected.trim()).then((patch) => {
       console.log('Patch result: ');
       console.log(patch);
@@ -92,7 +94,7 @@ export default class SvnRevisionList extends Component {
         <div
           style={styles.fileName}
         >
-          <i className="material-icons">label</i>
+          <i className="material-icons">{ this.state.selectedRevision == revision.$.revision ? 'label-outline' : 'label' }</i>
           <p role="button" onClick={() => this.generateDiffTest(revision.$.revision)}>
             {`r${revision.$.revision} | ${dateFormat(revision.date, 'dd/mm/yyyy HH:MM:ss')} | ${revision.author} | ${revision.msg}`}
           </p>
@@ -122,6 +124,11 @@ export default class SvnRevisionList extends Component {
           selected={this.state.revisionDate}
           onChange={this.fetchRevisionList.bind(this)}
         />
+        <a className="btn" href="#" onClick={() => this.fetchRevisionList(this.state.revisionDate) } 
+          disabled={this.state.revisionDate == null}
+          style={{marginLeft: '1rem'},{width: '0.1em'},{paddingLeft: '1rem'}}> 
+          <i className="material-icons">refresh</i>
+        </a>
         <ul>
           {rows}
         </ul>

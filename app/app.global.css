@@ -26,36 +26,12 @@ li {
   list-style: none;
 }
 
+td, th {
+  padding: 0px !important;
+}
+
 .d2h-file-name {
   font-size: 12px !important;
-}
-
-.d2h-file-wrapper {
-  font-size: 12px !important;
-  line-height: 0px !important;
-}
-
-.d2h-wrapper {
-  font-size: 12px !important;
-  line-height: 0px !important;
-  overflow-x: scroll;
-}
-
-.d2h-diff-tbody>tr>td {
-  font-size: 12px !important;
-  line-height: 0px !important;
-}
-
-.line-num1 {
-  overflow: visible;
-}
-
-.line-num2 {
-  overflow: visible;
-}
-
-.diff-container {
-  width: 85.000em !important;
 }
 
 .react-datepicker {
