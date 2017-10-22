@@ -6,17 +6,24 @@ import util from 'util';
 import _ from 'lodash';
 import dateFormat from 'dateformat';
 import DatePicker from 'react-datepicker';
+import Select from 'react-select';
 import moment from 'moment';
 import { Diff2Html, Diff2HtmlUI } from 'diff2html';
 import DiffSvn2Git from 'diffsvn2git';
 import ReactHtmlParser from 'react-html-parser';
 import { array, boolean, func, date } from 'prop-types';
+import { lstatSync, readdirSync } from 'fs';
+import { join } from 'path';
 import 'react-datepicker/dist/react-datepicker.css';
+import 'react-select/dist/react-select.css';
 import styles from './SvnRevisionList.css';
 
-const workingPath = path.resolve('repos/main');
-console.log('#workingPath: ', workingPath);
-const diffSvn2Git = new DiffSvn2Git({ cwd: workingPath });
+const isDirectory = source => lstatSync(source).isDirectory();
+const getDirectories = source =>
+  readdirSync(source).map(name => join(source, name)).filter(isDirectory);
+
+const repoRoot = 'repos/';
+let diffSvn2Git;
 
 export default class SvnRevisionList extends Component {
 
@@ -27,6 +34,8 @@ export default class SvnRevisionList extends Component {
   state: {
     revisions: array,
     revisionDate: date,
+    repositorySelected: string,
+    repositoryFolders: array,
     onRevisionDateChanged: func.isRequired,
     startRevisionLoading: func.isRequired,
     selectedRevision: string,
@@ -38,10 +47,22 @@ export default class SvnRevisionList extends Component {
     super(props);
     this.state = {
       revisions: [],
+      repositoryFolders: createRepositoryFolders(),
       revisionDate: moment(),
       diffOutputFormat: 'side-by-side',
       prettyDiffHtml: ''
     };
+  }
+
+  createRepositoryFolders() {
+    let directories = getDirectories(repoRoot);
+    console.log('#directories: ' + directories);
+
+    let folderOptions = [];
+    directories.forEach(dir => {
+      folderOptions.push({ value: dir, label: dir });
+    });
+    return folderOptions;
   }
 
   componentWillMount() {
@@ -49,7 +70,7 @@ export default class SvnRevisionList extends Component {
   }
 
   fetchRevisionList(dateChanged: date) {
-    if (moment(dateChanged, 'DD/MM/YYYY').isValid()) {
+    if (moment(dateChanged, 'DD/MM/YYYY').isValid() && repositorySelected) {
       this.setState({ revisions: [] });
 
       this.props.startRevisionLoading(true);
@@ -57,12 +78,21 @@ export default class SvnRevisionList extends Component {
 
       const revisionDateFormated = dateChanged.format('YYYY-MM-DD');
 
+      createDiffSvn2Git();
+
       diffSvn2Git.listRevisionsByDate(revisionDateFormated).then((loadedRevisions) => {
         self.setState({ revisions: loadedRevisions, prettyDiffHtml: '' });
         this.props.startRevisionLoading(false);
       });
       self.setState({ revisionDate: dateChanged });
     }
+    self.setState({ repositoryFolders: createRepositoryFolders() });
+  }
+
+  createDiffSvn2Git() {
+    const workingPath = path.resolve(repoRoot + repositorySelected);
+    console.log('#workingPath: ', workingPath);
+    diffSvn2Git = new DiffSvn2Git({ cwd: workingPath });
   }
 
   generateDiffTest(revisionSelected) {
@@ -123,6 +153,14 @@ export default class SvnRevisionList extends Component {
           dateFormat="DD/MM/YYYY"
           selected={this.state.revisionDate}
           onChange={this.fetchRevisionList.bind(this)}
+          required
+        />
+        <Select
+          name="repositorySelect"
+          value={this.state.repositorySelected}
+          options={this.state.repositoryFolders}
+          onChange={this.fetchRevisionList.bind(this)}
+          required
         />
         <a className="btn" href="#" onClick={() => this.fetchRevisionList(this.state.revisionDate) } 
           disabled={this.state.revisionDate == null}
