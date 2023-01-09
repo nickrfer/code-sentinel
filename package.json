@@ -188,7 +188,7 @@
     "devtron": "^1.4.0",
     "diff2html": "^2.3.0",
     "diffsvn2git": "^0.1.1",
-    "electron-debug": "^1.2.0",
+    "electron-debug": "^1.4.0",
     "font-awesome": "^4.7.0",
     "history": "^4.6.3",
     "loaders.css": "^0.1.2",
