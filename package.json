@@ -186,7 +186,7 @@
   "dependencies": {
     "dateformat": "^2.0.0",
     "devtron": "^1.4.0",
-    "diff2html": "^2.3.0",
+    "diff2html": "^2.8.0",
     "diffsvn2git": "^0.1.1",
     "electron-debug": "^1.2.0",
     "font-awesome": "^4.7.0",
@@ -196,7 +196,7 @@
     "react": "^15.6.1",
     "react-datepicker": "^0.47.0",
     "react-dom": "^15.6.1",
-    "react-hot-loader": "3.0.0-beta.6",
+    "react-hot-loader": "4.0.0",
     "react-html-parser": "^1.0.3",
     "react-loaders": "^2.5.0",
     "react-redux": "^5.0.5",
